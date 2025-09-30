@@ -69,7 +69,7 @@ async function getFileWebsite(filepath) {
 		["_Website_", await fs.promises.readFile("./html/fileshare.html")],
 		["_FOLDERNAME_", filepath],
 		["_LINKS_", links],
-		["_STYLEPATH_", "../"],
+		["_STYLEPATH_", ".."],
 	]
 
 	let website = replaceUsing(startFile, replacements);
