@@ -19,8 +19,8 @@ async function readTextFile(filename) {
 async function getWebsiteFrom(filepath) {
 	console.log(filepath);
 	try {
-		if (mime.getType("/home/dacoolest/node2/public" + filepath) == "text/html") {
-			const websiteFile = await readTextFile("/home/dacoolest/node2/public/" + filepath);
+		if (mime.getType("./public" + filepath) == "text/html") {
+			const websiteFile = await readTextFile("./public/" + filepath);
 			const replacements = [
 				["_PageTitle_", "mega title"],
 				["_Website_", websiteFile],
@@ -29,13 +29,13 @@ async function getWebsiteFrom(filepath) {
 
 				["_CoolThing_", "GAGAGAG"],
 			];
-			const startFile = await readTextFile("/home/dacoolest/node2/public/header.html");
+			const startFile = await readTextFile("./public/header.html");
 			let website = startFile;
 			website = replaceUsing(website, replacements);
 			return website;
 		}
 		else {
-			return await readTextFile("/home/dacoolest/node2/public/" + filepath);
+			return await readTextFile("./public/" + filepath);
 		}
 	}
 	catch {
@@ -53,7 +53,7 @@ function replaceUsing(website, replacements) {
 async function getFileWebsite(filepath) {
 	let files = await fs.promises.readdir("./public" + filepath);
 	let links = ``;
-	const startFile = await readTextFile("/home/dacoolest/node2/public/header.html");
+	const startFile = await readTextFile("./public/header.html");
 	for (const file of files) {
 		console.log(mime.getType(filepath + file));
 		if (mime.getType(filepath + file) == "image/png") {
