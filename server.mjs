@@ -26,6 +26,7 @@ async function getWebsiteFrom(filepath) {
 				["_Website_", websiteFile],
 				["_VISITORS_", await getVisitorAmount()],
 				["_QUOTE_", getRandomQuote()],
+				["_STYLEPATH_", ""],
 
 				["_CoolThing_", "GAGAGAG"],
 			];
@@ -60,7 +61,7 @@ async function getFileWebsite(filepath) {
 			links += `<a style="background-image:url('.${file}')" href="${file}">${file}</a><br>`;
 		}
 		else {
-			links += `<a href="${filepath}${file}">${file}</a><br>`;
+			links += `<a href="${file}">${file}</a><br>`;
 		}
 	}
 
@@ -68,6 +69,7 @@ async function getFileWebsite(filepath) {
 		["_Website_", await fs.promises.readFile("./html/fileshare.html")],
 		["_FOLDERNAME_", filepath],
 		["_LINKS_", links],
+		["_STYLEPATH_", "../"],
 	]
 
 	let website = replaceUsing(startFile, replacements);
@@ -88,19 +90,30 @@ app.get("/", async (req, res) => {
 app.get('/files/{*file}', async (req, res, next) => {
 	console.log("HEYEA");
 	const requestedPath = req.path
+	console.log("Path: " + requestedPath);
 	try {
 		console.log(requestedPath);
 		const stats = await fs.promises.stat("./public" + requestedPath);
 		console.log(stats);
 		if (stats.isDirectory) {
-			res.send(await getFileWebsite(`/files/${req.params.file ? req.params.file : ""}/`));
+			try {
+				let website = await getFileWebsite(`/files/${req.params.file ? req.params.file : ""}/`)
+				res.send(website);
+			}
+			catch (e) {
+				console.log("error reading shit" + e);
+				next();
+			}
 		}
 		else {
+			console.log("gregre is file");
 			next();
 		}
 	}
 	catch (e) {
 		console.log("OJOJOJ", e);
+		next();
+		res.status(418).send("ojojoj");
 	}
 }
 );
