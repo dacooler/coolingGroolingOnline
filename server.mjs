@@ -77,7 +77,7 @@ async function getFileWebsite(filepath) {
 }
 
 const app = express();
-const port = 8080;
+const port = 80;
 
 app.get("/", async (req, res) => {
 	let visitors = await getVisitorAmount();
