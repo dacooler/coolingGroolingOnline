@@ -1,0 +1,110 @@
+/*Cubestyle used to make spinning cubes, dark, middle and lightpro for shadow intensity, cubesize for size. div with class "cube" with divs with id c1 - c6 inside.*/
+:root {
+  --darkPro: 0.2;
+	--middlePro: 0.8;
+  --lightPro: 1;
+  --cubeSize: 100px;
+  --borderW: 0px;
+}
+
+.cube{
+	height: var(--cubeSize);
+	width: var(--cubeSize);
+	transform-origin: 50% 50% calc(var(--cubeSize) / 2 - var(--borderW));
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	transform-style: preserve-3d;
+	animation-duration: 4s;
+	animation-name: c6;
+}
+
+.cube > div{
+	position: relative;
+	transform-origin: 50% 50% calc(var(--cubeSize) / 2 - var(--borderW));
+	margin-bottom: calc(0px - var(--cubeSize));
+	height: calc(var(--cubeSize) - 2*var(--borderW));
+	width: calc(var(--cubeSize) - 2*var(--borderW));
+	background-color: black !important;
+	border: solid black var(--borderW);
+}
+
+.cube > div img{ 
+	width: var(--cubeSize);
+	height: var(--cubeSize);
+	border:  none;
+	transform: rotateY(0deg);	
+	//displa y: none;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	transform-style: preserve-3d;
+}
+
+#c6{
+  transform: rotateX(0deg);
+}
+#c5{
+  transform: rotateX(90deg);
+}
+#c4{
+  transform: rotateX(180deg);
+}
+#c3{
+  transform: rotateX(270deg);
+}
+#c2{
+	transform: rotateY(90deg);
+}
+#c1{
+	transform: rotateY(-90deg);
+}
+
+#c3 img{
+	animation-name: c3s;
+	animation-duration: 4s;
+}
+#c4 img{
+	animation-name: c4s;
+	animation-duration: 4s;
+}
+#c5 img{
+	animation-name: c5s;
+	animation-duration: 4s;
+}
+#c6 img{
+	animation-name: c6s;
+	animation-duration: 4s;
+}
+@keyframes c6{
+  0% {transform: rotateX(0deg);}
+  100% {transform: rotate3d(1, 2, 1, 360deg);}
+}
+
+@keyframes c6s{
+	0% {opacity: var(--middlePro);}
+	25% {opacity: var(--darkPro);}
+	50% {opacity: var(--middlePro);}
+	75% {opacity: var(--lightPro);}
+	100% {opacity: var(--middlePro);}
+}
+@keyframes c5s{
+	0% {opacity: var(--darkPro);}
+	25% {opacity: var(--middlePro);}
+	50% {opacity: var(--lightPro);}
+	75% {opacity: var(--middlePro);}
+	100% {opacity: var(--darkPro);}
+}
+@keyframes c4s{
+	0% {opacity: var(--middlePro);}
+	25% {opacity: var(--lightPro);}
+	50% {opacity: var(--middlePro);}
+	75% {opacity: var(--darkPro);}
+	100% {opacity: var(--middlePro);}
+@keyframes c3s{
+	0% {opacity: var(--lightPro);}
+	25% {opacity: var(--middlePro);}
+	50% {opacity: var(--darkPro);}
+	75% {opacity: var(--middlePro);}
+	100% {opacity: var(--lightPro);}
+}
+}
+

@@ -1,0 +1,165 @@
+/*Cubestyle used to make spinning cubes, dark, middle and lightpro for shadow intensity, cubesize for size. div with class "cube" with divs with id c1 - c6 inside.*/
+:root {
+  --darkPro: 0.2;
+	--middlePro: 0.8;
+  --lightPro: 1;
+  --cubeSize: 100px;
+  --borderW: 0px;
+}
+
+.cube{
+	height: var(--cubeSize);
+	width: var(--cubeSize);
+
+}
+
+.cube > div{
+	position: relative;
+	margin-bottom: calc(0px - var(--cubeSize));
+	height: calc(var(--cubeSize) - 2*var(--borderW));
+	width: calc(var(--cubeSize) - 2*var(--borderW));
+	transform-origin: 50% 50% calc(var(--cubeSize) / 2 - var(--borderW));
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	background-color: black !important;
+	border: solid black var(--borderW);
+	transform-style: preserve-3d;
+}
+
+.cube > div img{ 
+	width: var(--cubeSize);
+	height: var(--cubeSize);
+	border:  none;
+	transform: rotateY(0deg);	
+	//displa y: none;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	transform-style: preserve-3d;
+}
+
+.cube #c1{
+	background-color:white;
+}
+.cube #c2{
+	background-color:black;
+}
+.cube #c3{
+	background-color:blue;
+	transform: rotateX(270deg);
+	animation-name: c3, c3z;
+	animation-duration: 4s;
+	z-index: 6;
+}
+.cube #c4{
+	background-color:red;
+	transform: rotateX(180deg);
+	animation-name: c4, c4z;
+	animation-duration: 4s;
+	z-index: 4;
+
+}
+.cube #c5{
+	background-color:green;
+	transform: rotateX(90deg);
+	animation-name: c5, c5z;
+	animation-duration: 4s;
+	z-index: 3;
+
+}
+.cube #c6{
+	background-color:yellow;
+	transform: rotateX(0deg);
+	animation-name: c6, c6z;
+	animation-duration: 4s;
+	z-index: 5;
+
+}
+#c3 img{
+	animation-name: c3s;
+	animation-duration: 4s;
+	opacity: var(--darkPro);
+}
+#c4 img{
+	animation-name: c4s;
+	animation-duration: 4s;
+}
+#c5 img{
+	animation-name: c5s;
+	animation-duration: 4s;
+}
+#c6 img{
+	animation-name: c6s;
+	animation-duration: 4s;
+}
+@keyframes c6{
+  0% {transform: rotateX(0deg);}
+  100% {transform: rotateX(360deg);}
+}
+
+@keyframes c6s{
+	0% {opacity: var(--middlePro);}
+	25% {opacity: var(--darkPro);}
+	50% {opacity: var(--middlePro);}
+	75% {opacity: var(--lightPro);}
+	100% {opacity: var(--middlePro);}
+}
+@keyframes c6z{
+  0% {z-index: 8}
+  24% {z-index: 8;}
+  25% {z-index: 2;}
+  95% {z-index: 8;}
+  96% {z-index: 8;}
+  100% {z-index: 8;}
+}
+@keyframes c5{
+  0% {transform: rotateX(90deg);}
+  100% {transform: rotateX(calc(90deg + 360deg));}
+}
+@keyframes c5s{
+	0% {opacity: var(--darkPro);}
+	25% {opacity: var(--middlePro);}
+	50% {opacity: var(--lightPro);}
+	75% {opacity: var(--middlePro);}
+	100% {opacity: var(--darkPro);}
+}
+@keyframes c5z{
+  0% {z-index: 6}
+  49% {z-index: 6;}
+  50% {z-index: 7;}
+  100% {z-index: 7;}
+}
+@keyframes c4{
+  0% {transform: rotateX(180deg);}
+  100% {transform: rotateX(calc(180deg + 360deg));}
+}
+@keyframes c4s{
+	0% {opacity: var(--middlePro);}
+	25% {opacity: var(--lightPro);}
+	50% {opacity: var(--middlePro);}
+	75% {opacity: var(--darkPro);}
+	100% {opacity: var(--middlePro);}
+}
+@keyframes c4z{
+  0% {z-index: 3}
+  25% {z-index: 3;}
+  26% {z-index: 7;}
+  100% {z-index: 7;}
+}
+@keyframes c3{
+  0% {transform: rotateX(270deg);}
+  100% {transform: rotateX(calc(270deg + 360deg));}
+}
+@keyframes c3s{
+	0% {opacity: var(--lightPro);}
+	25% {opacity: var(--middlePro);}
+	50% {opacity: var(--darkPro);}
+	75% {opacity: var(--middlePro);}
+	100% {opacity: var(--lightPro);}
+}
+@keyframes c3z{
+  0% {z-index: 8}
+  49% {z-index: 8;}
+  50% {z-index: 2;}
+  100% {z-index: 2;}
+}
+
