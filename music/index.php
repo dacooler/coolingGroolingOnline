@@ -23,7 +23,7 @@
   </div>
   <div class="bigContainer">
         <h1> COOL ALBUMS </h1>
-        <div>
+        <div class="albums">
           <input id="flipper" type="checkbox">
           <label for="flipper">
             <div class="front">

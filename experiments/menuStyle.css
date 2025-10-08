@@ -1,26 +1,108 @@
-.dMenu{
-        position: relative;
+:root {
+        --degrees: calc(360deg / 5);
 }
 
-.dMenu > div{
+.dMenu{
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        width: 100px;
+        height: 100px;
+        transform-origin: 50% 50% 400px;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        transform: perspective(100cm) rotate3d(0, 0, 0, var(--degrees));
+}
+
+body{
+        background-color: lightblue;
+        background-image: url("../assets/images/sky.jpg");
+}
+
+.dMenu div{
         position: absolute;
         top: 0px;
         left: 0px;
         width: 100px;
         height: 100px;
-        transform-origin: 50% 50% 100px;
-
+        transform-origin: 50% 50% 400px;
+        background-color: lightblue;
+        transform-style: preserve-3d;
 }
 
-.dmenu div:nth-child(1){
-        transform: rotateY(40deg);
+.dMenu label{
+        position: absolute;
+        opacity: 0.5;
+        top: 100px;
+        left: 0px;
+        width: 100px;
+        height: 100px;
+        transform-origin: 50% 50% 400px;
+        background-color: red;
+        transform-style: preserve-3d;
 }
-.dmenu div:nth-child(2){
-        transform: rotateY(20deg);
+.dMenu label:nth-child(1){
+        transform: rotateY(calc(var(--degrees) * 2));
 }
-.dmenu div:nth-child(3){
+.dMenu label:nth-child(2){
+        transform: rotateY(calc(var(--degrees)));
+}
+.dMenu label:nth-child(3){
         transform: rotateY(0deg);
 }
-.dmenu div:nth-child(4){
-        transform: rotateY(-20deg);
+.dMenu label:nth-child(4){
+        transform: rotateY(calc(var(--degrees) * -1));
+}
+
+.dMenu label:nth-child(5){
+        transform: rotateY(calc(var(--degrees) * -2));
+}
+
+input{
+        z-index: 100;
+}
+
+
+input:checked#menu1 ~ .dMenu{
+        transform: perspective(100cm) rotateY(calc(var(--degrees) * -2));
+}
+input:checked#menu2 ~ .dMenu{
+        transform: perspective(100cm) rotateY(calc(var(--degrees) * -1));
+}
+input:checked#menu3 ~ .dMenu{
+        transform: perspective(100cm) rotate3d(0, 0, 0, var(--degrees));
+}
+input:checked#menu4 ~ .dMenu{
+        transform: perspective(100cm) rotate3d(0, 1, 0, var(--degrees));
+}
+input:checked#menu5 ~ .dMenu{
+        transform: perspective(100cm) rotateY(calc(var(--degrees)*2));
+}
+
+div.ground{
+        transform:rotateX(90deg);
+        height:2000px;
+        width:2000px;
+        top: 100px;
+        background-color:green;
+        transform-origin: 90% 10% 0px;
+        background-image: url("../assets/images/grass.jpeg");
+}
+
+img.future{
+        position: absolute;
+        top: -140px;
+        left: 0px;
+        transform-style: preserve-3d;
+            animation-name: float;
+            animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+
+@keyframes float{
+        0% {top: -140px;}
+        50% {top: -160px;}
+        100% {top: -140px;}
 }

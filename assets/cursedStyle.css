@@ -209,7 +209,7 @@ display:flex;
 }
 
 
-input:checked + label div {
+.albums input:checked + label div {
 	transform: perspective(20cm) rotateY(-180deg);
 }
 
