@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="../assets/cursedStyle.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
 </head>
 <body id="grad1">
 <div >
@@ -43,7 +42,7 @@
             <a href="https://prootrecords.bandcamp.com/album/stema-tarnyt-prt010"> Bandcamp </a>
           </div>
         </div>
-        <div>
+        <div class="albums">
           <input id="flipper2" type="checkbox">
           <label for="flipper2">
             <div class="front">
@@ -61,7 +60,7 @@
             <a href="https://www.youtube.com/watch?v=vie_8hVJhs8"> Youtube </a>
           </div>
         </div>
-        <div>
+        <div class="albums">
           <input id="flipper3" type="checkbox">
           <label for="flipper3">
             <div class="front">
@@ -79,7 +78,7 @@
             <a href="https://archive.org/details/planetdob1999"> Internet Archive </a>
           </div>
         </div>
-        <div>
+        <div class="albums">
           <input id="flipper4" type="checkbox">
           <label for="flipper4">
             <div class="front">
@@ -97,7 +96,7 @@
             <a href="https://sevish.bandcamp.com/album/harmony-hacker"> Bandcamp </a>
           </div>
         </div>
-        <div>
+        <div class="albums">
           <input id="flipper5" type="checkbox">
           <label for="flipper5">
             <div class="front">
