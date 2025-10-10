@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Require Authentication"
+AuthUserFile /home/dacoolest/passwordTest/.htpasswd
+Require valid-user

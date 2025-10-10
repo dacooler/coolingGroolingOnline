@@ -18,6 +18,17 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+        <style>
+                :root {
+                        --perspective: 100cm;
+                }
+
+                .cube {
+                        position: absolute !important;
+                        top: -50px !important;
+                        right: 100px !important;
+                }
+        </style>
 </head>
 
 <body>
@@ -41,17 +52,22 @@
                                 <div><a href="../music/">music</a></div>
                         </label>
                         <label for="menu5">
-                                <div><a>Hej5</a></div>
+                                <div>SITE
+                                        <input type="checkbox"><iframe src="http://coolinggrooling.online"></iframe>
+                                </div>
                         </label>
                         <div class="ground"></div>
                         <img src="../assets/images/future.png" class="future"></img>
-                        <div class="cube">
-                                <div id="c1"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
-                                <div id="c2"><img src="../assets/images/wallpaper.jpeg"></div>
-                                <div id="c3"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
-                                <div id="c4"><img src="../assets/images/wallpaper.jpeg"></div>
-                                <div id="c5"><img src="../assets/images/wallpaper.jpeg"></div>
-                                <div id="c6"><img src="../assets/images/wallpaper.jpeg"></div>
-                        </div>
+                        <a href="./cube.html"
+                                style="transform-style:preserve-3d;transform:perspective(var(--perspective));display:block">
+                                <div class="cube">
+                                        <div id="c1"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
+                                        <div id="c2"><img src="../assets/images/wallpaper.jpeg"></div>
+                                        <div id="c3"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
+                                        <div id="c4"><img src="../assets/images/wallpaper.jpeg"></div>
+                                        <div id="c5"><img src="../assets/images/wallpaper.jpeg"></div>
+                                        <div id="c6"><img src="../assets/images/wallpaper.jpeg"></div>
+                                </div>
+                        </a>
                 </div>
 </body>

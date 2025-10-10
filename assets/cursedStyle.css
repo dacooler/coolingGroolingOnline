@@ -87,9 +87,10 @@ a:hover .new{
 	height:32px;
 }
 
-.new{
+img.new{
 	transition: height 1s;
 	height: 16px;
+	transform: rotateX(0deg);
 }
 .left{
 	background-image: linear-gradient(to right, yellow, purple);

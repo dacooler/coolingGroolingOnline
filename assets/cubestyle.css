@@ -5,12 +5,13 @@
   --lightPro: 1;
   --cubeSize: 100px;
   --borderW: 0px;
+  --perspective: 10cm;
 }
 
 .cube{
 	height: var(--cubeSize);
 	width: var(--cubeSize);
-	transform-origin: 50% 50% calc(var(--cubeSize) / 2 - var(--borderW));
+	transform-origin: 50% 50% calc(var(--cubeSize) / 2 - var(--borderW)) !important; 
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	transform-style: preserve-3d;
@@ -76,8 +77,8 @@
 	animation-duration: 4s;
 }
 @keyframes c6{
-  0% {transform: perspective(5cm) rotateX(0deg);}
-  100% {transform: perspective(5cm) rotate3d(1, 2, 1, 360deg);}
+  0% {transform: perspective(var(--perspective)) rotateX(0deg);}
+  100% {transform: perspective(var(--perspective)) rotate3d(1, 2, 1, 360deg);}
 }
 
 @keyframes c6s{
@@ -100,6 +101,7 @@
 	50% {opacity: var(--middlePro);}
 	75% {opacity: var(--darkPro);}
 	100% {opacity: var(--middlePro);}
+}
 @keyframes c3s{
 	0% {opacity: var(--lightPro);}
 	25% {opacity: var(--middlePro);}
@@ -107,5 +109,23 @@
 	75% {opacity: var(--middlePro);}
 	100% {opacity: var(--lightPro);}
 }
+
+.spinner{
+	animation-name: spins;
+	animation-duration: 8s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	background-color: grey;
+	position: absolute;
+	top: 0px;
+	left: 100%;
+	transform-style:preserve-3d;
+	transform-origin: 0% 50% 0;
+	background-image: url("../assets/images/wood.jpg");
+
 }
 
+@keyframes spins{
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(360deg);}
+}
