@@ -240,6 +240,10 @@ input{
 	margin: 20px;
 }
 
+.front:hover{
+        cursor:pointer;
+}
+
 .front img{
 	position:absolute;
 	left: 0px;

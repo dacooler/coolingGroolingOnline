@@ -59,6 +59,7 @@ body{
 .dMenu iframe:hover{
         height: 768px;
         width:1336px;
+        cursor:pointer;
 }
 .dMenu label:nth-child(1){
         transform: rotateY(calc(var(--degrees) * 2));
