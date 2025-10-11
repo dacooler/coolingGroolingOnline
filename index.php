@@ -75,12 +75,6 @@
             </div>
           </div>
         </div>
-        <div style="background-color:pink">
-          <h1 style="color:blue;text-align:center;">
-            "JUST KEEP ON WORKING UNTIL YOU HAVE REACHED YOUR GOAL. BUT WHEN YOU REACH YOUR GOAL DON'T STOP THERE UNLESS
-            YOU ARE HAPPY AND YOU DON'T WANT TO REACH FURTHER IN YOUR CAREER" - Mårten "Marhinnio" Pettersson Belusa
-          </h1>
-        </div>
         <img src="./assets/images/ANI.gif" class="mitten">
         <iframe frameborder="0"
           src="https://itch.io/embed/3295620?border_width=5&amp;bg_color=1c7e84&amp;fg_color=ffffff&amp;link_color=0cfffb&amp;border_color=bebebe"

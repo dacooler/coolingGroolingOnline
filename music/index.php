@@ -33,9 +33,9 @@
           <div>
             <h2>Stema Tarnyt (2010)</h2>
             <h3>Batfinks</h3>
-            <p>This is a really strange album with many glitchy/folk/not so musical parts but i really love it despite/because of it. It's also free on bandcamp :). One Monik is probably the most "normal" track, but you still may have to re-listen a few times to "get" it. </p>
+            <p>This is a really strange album with many glitchy/folk/not so musical parts but i really love it despite/because of it. It's also free on bandcamp :). Two Wien is probably the most "normal" track, but you still may have to re-listen a few times to "get" it. </p>
             <h3>Best Tracks:</h3>
-            <p> Mrs Butels inn, One Monik </p>
+            <p> Mrs Butels inn, Two Wien, Knock That Door Write Down</p>
             <h3>Links:</h3>
             <a href="https://archive.org/details/PRT010-Batfinks-Stema_Tarnyt"> Internet Archive </a>
             <br>
