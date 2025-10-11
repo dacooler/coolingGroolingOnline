@@ -1,12 +1,13 @@
 :root {
         --degrees: calc(360deg / 5);
+        --skyboxSize: 10000px;
 }
 
 .dMenu{
         position: relative;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 100px;
+        margin-top: 300px;
         width: 100px;
         height: 100px;
         transform-origin: 50% 50% 400px;
@@ -136,4 +137,35 @@ img.future{
         0% {transform: translateY(-140px);}
         50% {transform: translateY(-160px);}
         100% {transform: translateY(-140px);}
+}
+
+.skybox{
+        transform-style: preserve-3d;
+        transform: translate3d(calc(var(--skyboxSize) / -2), calc(var(--skyboxSize) / -2), calc(var(--skyboxSize) / -2)) 
+}
+
+.skybox div{
+        transform-origin: 50% 50% calc(var(--skyboxSize) / 2);
+        background-image: url("../assets/images/sky.jpg");
+        height: var(--skyboxSize);
+        width: var(--skyboxSize);
+        background-size: 100% 100%;
+}
+
+.skybox div:nth-child(1){
+        transform: rotateY(90deg);
+}
+.skybox div:nth-child(2){
+        transform: rotateY(-90deg);
+}
+.skybox div:nth-child(3){
+        transform: rotateY(180deg);
+}
+.skybox div:nth-child(4){
+}
+.skybox div:nth-child(5){
+        transform: rotateX(90deg);
+}
+.skybox div:nth-child(6){
+        transform: rotateX(-90deg);
 }
