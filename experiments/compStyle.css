@@ -1,0 +1,41 @@
+:root{
+        --compSize: 100px;
+}
+
+.comp{
+        margin-top: 100px;
+        margin-left: 100px;
+        transform-style: preserve-3d;
+        transform: rotateY(45deg) rotateX(45deg) translate3d(calc(var(--compSize) / -2), calc(var(--compSize) / -2), calc(var(--compSize) / -2)) perspective(100cm)
+
+}
+
+.comp > div{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform-style: preserve-3d;
+        background-color:white;
+        transform-origin: 50% 50% calc(var(--compSize) / 2);
+        height: var(--compSize);
+        width: var(--compSize);
+        background-size: 100% 100%;
+        background-image:url("../assets/images/wood.jpg");
+}
+.comp div:nth-child(1){
+        transform: rotateY(90deg);
+}
+.comp div:nth-child(2){
+        transform: rotateY(-90deg);
+}
+.comp div:nth-child(3){
+        transform: rotateY(180deg);
+}
+.comp div:nth-child(4){
+}
+.comp div:nth-child(5){
+        transform: rotateX(90deg);
+}
+.comp div:nth-child(6){
+        transform: rotateX(-90deg);
+}

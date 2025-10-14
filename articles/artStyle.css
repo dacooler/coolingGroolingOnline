@@ -1,0 +1,51 @@
+@font-face {
+  font-family: myFont; /* set name */
+  src: url(../assets/fonts/AngloText.ttf); /* url of the font */
+}
+
+body > div{
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color:white;
+        margin-top: 0px;
+        padding-bottom: 500px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 20px;
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+}
+body > div.main2{
+        padding-bottom: 20px;
+}
+
+body div.heade{
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        background-image: linear-gradient(to bottom, red, yellow);
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+.main a{
+        display:block;
+}
+.main2 p::first-letter{
+        font-size:4em;
+        float:left;
+        font-family: myFont;
+}
+.main a::first-letter{
+        font-size:2em;
+}
+
+.heade p{
+        margin: 0px;
+        margin-left: 40px;
+        color:black;
+}
+.heade div{
+        width: 100%;
+}
+body {
+        background-color:lightgray;
+        background-image: linear-gradient(to bottom right, lightgray, gray);
+}
