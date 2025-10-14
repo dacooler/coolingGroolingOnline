@@ -37,6 +37,10 @@
         <a href="https://vancia100.github.io/tripple-trouble/">Tripple Trouble</a>
         <p>COOL WEBSITES</p>
         <a href="http://thorsson.tplinkdns.com:55744/index.html">THORSSON tplinkdns</a>
+        <a href="https://art-of-rally.sornas.dev/">rally</a>
+        <a href="http://art-of-rally.bonnaudet.de/">rally2</a>
+        <a href="https://art-of-rally.egas.dev/">rally3</a>
+        <a href="https://rally.egas.dev/">rally4</a>
         <button href="http://coolinggrooling.online" target="iframe_a" onclick="myFunction()">
           THIS SITE!!!! O:
         </button>
@@ -80,6 +84,7 @@
           src="https://itch.io/embed/3295620?border_width=5&amp;bg_color=1c7e84&amp;fg_color=ffffff&amp;link_color=0cfffb&amp;border_color=bebebe"
           width="560" height="175"><a href="https://harald-thorsson.itch.io/robo-os">ROBO-OS by Harald
             Thorsson</a></iframe>
+        <iframe frameborder="0" src="https://rally.egas.dev/" width="560" height="175"></iframe>
       </div>
     </div>
     <div class="footer">
@@ -87,6 +92,17 @@
           height="31" alt="Cool Text: Logo and Graphics Generator" /></a>
       <img src="assets/images/thorssontplinkdns.gif" width="88" height="31">
       <img src="assets/images/coolingGrooling.gif" width="88" height="31">
+      <script>
+        const t = document.getElementById("grad1");
+        function darkmode() {
+          t.setAttribute("style", "filter:invert(1);");
+        }
+        function lightmode() {
+          t.setAttribute("style", "filter:invert(0);");
+        }      
+      </script>
+      <button onclick="darkmode()"></button>
+      <button onclick="lightmode()"></button>
     </div>
   </div>
 </body>
