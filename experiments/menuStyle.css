@@ -214,6 +214,7 @@ img.future{
 .sky div{
         background-image: url("../assets/images/sky.jpg");
         background-position: calc(var(--spin) * 400%) 0%;
+        background-size: 100%;
         width: 101%;
         height: 101%;
         position: absolute;
