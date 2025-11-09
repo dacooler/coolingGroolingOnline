@@ -16,7 +16,7 @@ body > div{
 }
 
 img{
-	transition: transform 0.5s;
+	transition: transform 0.5s, width 1000s;
 
 }
 
@@ -27,6 +27,7 @@ h1{
 
 img:hover{
 	transform: rotateX(150deg);
+	width: 101%;
 }
 
 ul li {

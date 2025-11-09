@@ -1,6 +1,7 @@
 :root {
         --degrees: calc(360deg / 5);
         --skyboxSize: 10000px;
+        --spin: 0;
 }
 
 .dMenu{
@@ -13,7 +14,7 @@
         transform-origin: 50% 50% 400px;
         transform-style: preserve-3d;
         transition: transform 1s;
-        transform: perspective(100cm) rotate3d(0, 0, 0, var(--degrees));
+        transform: perspective(100cm) rotateY(calc(var(--degrees) * var(--spin)));
 }
 
 body{
@@ -22,22 +23,36 @@ body{
         overflow:hidden;
 }
 
-.dMenu label div{
+.dMenu > label div:nth-child(1){
         background-color: lightblue;
         transform-style: preserve-3d;
         transform-origin: 50% 50% 400px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 0px;
+        z-index: 100;
+        left: 0px;
+}
+.dMenu > label div:nth-child(2){
+        background-color: lightblue;
+        transform-style: preserve-3d;
+        transform-origin: 50% 50% 400px;
+        width: 100px;
+        height: 100px;
+        opacity: 0.5;
+        filter: blur(10px);
+        position: absolute;
+        top: 0px;
+        left: 0px;
 }
 
 .dMenu div{
         position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100px;
-        height: 100px;
         transform-style: preserve-3d;
 }
 
-.dMenu label{
+.dMenu > label{
         position: absolute;
         opacity: 0.5;
         top: 100px;
@@ -54,6 +69,14 @@ body{
         transform-origin: 50% 50% 400px;
         transform-style: preserve-3d;
         display:block;
+}
+
+.compTainer{
+        transform: rotateY(calc(var(--degrees) * -2));
+        transform-origin: 50% 50% 400px;
+        transform-style: preserve-3d;
+        position: absolute;
+        left: 100%;
 }
 .article{
         transform: rotateY(calc(var(--degrees) * 1));
@@ -87,14 +110,6 @@ body{
         display:inline;
 }
 
-.dMenu iframe{
-        transition: size 1s;
-        display:none;
-}
-.dMenu iframe:hover{
-        height: 768px;
-        width:1336px;
-}
 .dMenu label:nth-child(1){
         transform: rotateY(calc(var(--degrees) * 2));
 }
@@ -117,20 +132,23 @@ input{
 }
 
 
-input:checked#menu1 ~ .dMenu{
-        transform: perspective(100cm) rotateY(calc(var(--degrees) * -2));
+input:checked#menu1 ~ div{
+        --spin: -2;
 }
-input:checked#menu2 ~ .dMenu{
-        transform: perspective(100cm) rotateY(calc(var(--degrees) * -1));
+input:checked#menu2 ~ div{
+        --spin: -1;
 }
-input:checked#menu3 ~ .dMenu{
-        transform: perspective(100cm) rotate3d(0, 0, 0, var(--degrees));
+input:checked#menu3 ~ div{
+        --spin: 0;
 }
-input:checked#menu4 ~ .dMenu{
-        transform: perspective(100cm) rotate3d(0, 1, 0, var(--degrees));
+input:checked#menu4 ~ div{
+        --spin: 1;
+}
+input:checked#menu5 ~ div{
+        --spin: 2;
 }
 input:checked#menu5 ~ .dMenu{
-        transform: perspective(100cm) rotateY(calc(var(--degrees)*2));
+        transform: perspective(100cm) rotateY(calc(var(--degrees)*2)) translateY(25px) translateZ(-2750px) translateX(-2000px);
 }
 
 div.ground{
@@ -157,7 +175,7 @@ img.future{
         left: 0px;
         top: 0px;
         animation-name: float2;
-            animation-duration: 2s;
+            animation-duration: 2.5s;
 	animation-iteration-count: infinite;
         
 }
@@ -173,33 +191,43 @@ img.future{
         100% {transform: translateY(-140px);}
 }
 
-.skybox{
-        transform-style: preserve-3d;
-        transform: translate3d(calc(var(--skyboxSize) / -2), calc(var(--skyboxSize) / -2), calc(var(--skyboxSize) / -2)) 
+
+.sky{
+        background-image: linear-gradient(black, indigo, darkviolet, orange, lightgreen, powderblue, lightblue, powderblue, lightgreen, orange, darkviolet, indigo, black); /*url("../assets/images/sky.jpg");*/
+        background-size: 1500% 1500%;
+        background-position: calc(var(--spin) * 400%) 0%;
+        width: 101%;
+        height: 101%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transition: background-position;
+        transition-duration: 1s;
+
+        /*DAY NIGHT ANIMATION (:*/
+        animation-name: day-cycle;
+        animation-duration: 68400s; 
+        animation-timing-function: linear;
+	animation-iteration-count: infinite;
 }
 
-.skybox div{
-        transform-origin: 50% 50% calc(var(--skyboxSize) / 2);
+.sky div{
         background-image: url("../assets/images/sky.jpg");
-        height: var(--skyboxSize);
-        width: var(--skyboxSize);
-        background-size: 100% 100%;
+        background-position: calc(var(--spin) * 400%) 0%;
+        width: 101%;
+        height: 101%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transition: background-position;
+        transition-duration: 1s;
+        opacity: 0.15;
 }
 
-.skybox div:nth-child(1){
-        transform: rotateY(90deg);
+
+@keyframes day-cycle{
+        0%   {background-position: calc(var(--spin) * 400%) calc(0% +   (4.166% * var(--timeset)));}
+        100% {background-position: calc(var(--spin) * 400%) calc(101% + (4.166% * var(--timeset)));}
 }
-.skybox div:nth-child(2){
-        transform: rotateY(-90deg);
-}
-.skybox div:nth-child(3){
-        transform: rotateY(180deg);
-}
-.skybox div:nth-child(4){
-}
-.skybox div:nth-child(5){
-        transform: rotateX(90deg);
-}
-.skybox div:nth-child(6){
-        transform: rotateX(-90deg);
-}
+
+

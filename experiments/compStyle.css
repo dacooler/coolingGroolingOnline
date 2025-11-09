@@ -1,12 +1,26 @@
 :root{
         --compSize: 100px;
+        --compDepth: 100px;
+        --compWidth: 100px;
+        --compHeight: 80px;
+        --scDepth: calc(var(--compDepth) * 0.3);
+        --scHeight: calc(var(--compHeight) * 1.2);
+        --scWidth: calc(var(--compWidth) * 1.2);
+
+        --scWidthOff: calc((var(--compWidth) - var(--scWidth))* 0.5);
+        --scHeightOff: calc((var(--compHeight) - var(--scHeight))* -0.5);
 }
 
 .comp{
-        margin-top: 100px;
-        margin-left: 100px;
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
         transform-style: preserve-3d;
-        transform: rotateY(45deg) rotateX(45deg) translate3d(calc(var(--compSize) / -2), calc(var(--compSize) / -2), calc(var(--compSize) / -2)) perspective(100cm)
+        transform: rotateY(0deg) rotateX(10deg) translateZ(-100px)  perspective(100cm);
+        width: var(--compWidth) !important;
+        height: var(--compHeight) !important;
 
 }
 
@@ -15,27 +29,217 @@
         top: 0px;
         left: 0px;
         transform-style: preserve-3d;
-        background-color:white;
+        background-color: #d5d4c0;
         transform-origin: 50% 50% calc(var(--compSize) / 2);
         height: var(--compSize);
         width: var(--compSize);
         background-size: 100% 100%;
-        background-image:url("../assets/images/wood.jpg");
 }
-.comp div:nth-child(1){
+/*left*/
+.comp > div:nth-child(1){
         transform: rotateY(90deg);
+        height: var(--compHeight);
+        width: var(--compDepth);
+        background-image: url("../assets/images/crt-side.png");
 }
-.comp div:nth-child(2){
+.comp > div:nth-child(1) > div{
+        top: 50%;
+        width: var(--scDepth);
+        height: var(--scHeight);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(var(--scWidthOff));
+}
+/*right*/
+.comp > div:nth-child(2){
         transform: rotateY(-90deg);
+        height: var(--compHeight);
+        width: var(--compDepth);
+        background-image: url("../assets/images/crt-side.png");
+        
 }
-.comp div:nth-child(3){
+.comp > div:nth-child(2) > div{
+        top: 50%;
+        left: 100%;
+        width: var(--scDepth);
+        height: var(--scHeight);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(var(--scWidthOff));
+}
+/*front*/
+.comp > div:nth-child(3){
+        width: var(--compWidth);
+        height: var(--compHeight);
         transform: rotateY(180deg);
 }
-.comp div:nth-child(4){
+.comp > div:nth-child(3) > div{
+        top: 50%;
+        left: 50%;
+        width: calc(var(--scWidthOff) * -2 + var(--compWidth));
+        height: calc(var(--scHeightOff) * 2 + var(--compHeight));
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(calc((var(--scDepth) * -0.5)));
 }
-.comp div:nth-child(5){
-        transform: rotateX(90deg);
+/*back*/
+.comp > div:nth-child(4){
+        width: var(--compWidth);
+        height: var(--compHeight);
 }
-.comp div:nth-child(6){
+/*bottom*/
+.comp > div:nth-child(5){
+        width: var(--compWidth);
+        height: var(--compDepth);
+        bottom: 0px;
+        background-image: radial-gradient(grey, lightgray);
+        transform: rotateX(270deg) translateZ(calc(var(--compHeight) - var(--compWidth)));
+        transform-origin: 50% 100%;
+
+}
+.comp > div:nth-child(5) > div:nth-child(1){
+        top: 0%;
+        left: 50%;
+        width: var(--scWidth);
+        height: var(--scDepth);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(var(--scHeightOff));
+}
+
+.comp .bt{
+        transform: translateZ(-10px);
+        width: 80%;
+        height: 80%;
+        margin:auto;
+        background-image: url("../assets/images/wood.jpg");
+}
+
+/*left*/
+.comp .bt > div:nth-child(1){
+        transform: rotateY(90deg);
+        height: var(--compHeight);
+        width: var(--compDepth);
+        background-image: url("../assets/images/crt-side.png");
+}
+.comp .bt > div:nth-child(1) > div{
+        top: 50%;
+        width: var(--scDepth);
+        height: var(--scHeight);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(var(--scWidthOff));
+}
+/*right*/
+.comp .bt > div:nth-child(2){
+        transform: rotateY(-90deg);
+        height: var(--compHeight);
+        width: var(--compDepth);
+        background-image: url("../assets/images/crt-side.png");
+        
+}
+.comp .bt > div:nth-child(2) > div{
+        top: 50%;
+        left: 100%;
+        width: var(--scDepth);
+        height: var(--scHeight);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(var(--scWidthOff));
+}
+/*front*/
+.comp .bt > div:nth-child(3){
+        width: var(--compWidth);
+        height: var(--compHeight);
+        transform: rotateY(180deg);
+}
+.comp .bt > div:nth-child(3) > div{
+        top: 50%;
+        left: 50%;
+        width: calc(var(--scWidthOff) * -2 + var(--compWidth));
+        height: calc(var(--scHeightOff) * 2 + var(--compHeight));
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(calc((var(--scDepth) * -0.5)));
+}
+/*back*/
+.comp .bt > div:nth-child(4){
+        width: var(--compWidth);
+        height: var(--compHeight);
+}
+/*bottom*/
+.comp .bt > div:nth-child(5){
+        width: var(--compWidth);
+        height: var(--compDepth);
+        bottom: 0px;
+        transform: rotateX(270deg) translateZ(calc(var(--compHeight) - var(--compWidth)));
+        transform-origin: 50% 100%;
+
+}
+
+.comp .screen{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform-origin: 50% 50% 0px;
+        transform:  translate(-50%, -50%) scale(10%) rotateY(180deg);
+        width: 700%;
+        height: 700%;
+        margin: auto;
+        background-image: radial-gradient(darkgray, black);
+        z-index: 1000;
+}
+
+.comp .monitor > p{
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        font-size: 20px;
+        transform: scale(10%) rotateY(180deg) translateX(-50%) ;
+        background-image: linear-gradient(lightgray, gray);
+        padding: 2px;
+}
+.comp .monitor input{
+        display: none;
+}
+
+.comp .monitor input:checked ~ div > iframe{
+        display: block;
+}
+
+.comp .monitor input:checked ~ label{
+        border-style: inset;
+}
+
+.comp .monitor > label{
+        transform: scale(20%) rotateY(180deg) translateX(-50%) ;
+        position: absolute;
+        width: 20px;
+        height: 10px;
+        font-size: 7px;
+        text-align: center;
+        border-style: outset; 
+        border-width: 2px;
+        background-color: gray;
+        bottom: -3px;
+        left: -10px;
+}
+
+.comp .monitor{
+        width: 100%;
+        height: 100%;
+}
+
+.screen iframe{
+        display: none;
+        width: 100%;
+        height: 100%;
+}
+
+/*top*/
+.comp > div:nth-child(6){
         transform: rotateX(-90deg);
+        background-image: radial-gradient(white, lightgray);
 }
+.comp > div:nth-child(6) > div{
+        top: 0%;
+        left: 50%;
+        width: var(--scWidth);
+        height: var(--scDepth);
+        background-image: radial-gradient(grey, lightgray);
+        transform:  translate(-50%, -50%) translateZ(calc(var(--scHeightOff) * -1));
+}
+

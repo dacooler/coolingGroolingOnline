@@ -41,7 +41,7 @@
           THIS SITE!!!! O:
         </button>
         <p>!!!!!!</p>
-        <a href="experiments/3dmenu.html"> Navigation <img class="new" src="./assets/images/NEW.png"></a>
+        <a href="experiments/3dmenu.php"> Navigation</a>
         <img src="./assets/images/DANC.gif" class="mitten">
       </div>
     </div>

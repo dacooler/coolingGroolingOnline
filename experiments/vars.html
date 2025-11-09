@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<head>
+        <style>
+                :root {
+                        --lefts: 100px;
+                }
+
+                .megadiv {
+                        position: absolute;
+                        left: var(--lefts);
+                        --rights: calc(var(--lefts) - 1);
+                        --lefts: calc(var(--rights) + 2);
+                }
+
+                input:checked+div {
+                        --lefts: 200px;
+                }
+        </style>
+</head>
+
+<body>
+        <input id="test" type="checkbox">
+        <div class="megadiv">
+                hej
+        </div>
+</body>
