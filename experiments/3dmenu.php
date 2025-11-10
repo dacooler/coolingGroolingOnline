@@ -23,6 +23,10 @@
         <style>
                 :root {
                         --perspective: 100cm;
+                        --timeset:<?php 
+                                date_default_timezone_set('Europe/Stockholm');
+                        echo date('G.i'); 
+                        ?>
                 }
 
                 .cube {
@@ -39,10 +43,7 @@
                 <input type="radio" id="menu3" name="dm">
                 <input type="radio" id="menu4" name="dm">
                 <input type="radio" id="menu5" name="dm">
-                        <div class="sky" style="--timeset:<?php 
-                                date_default_timezone_set('Europe/Stockholm');
-                        echo date('G.i'); 
-                        ?>;">
+                        <div class="sky">
                         <div></div>
                 </div>
                 <div class="dMenu">
@@ -99,32 +100,7 @@
                                         <div>
                                                 <img src="../assets/images/cgnews.png">
                                                 <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Aliquam
-                                                        massa
-                                                        arcu,
-                                                        dictum ut enim in, tristique hendrerit diam. Vestibulum
-                                                        fringilla orci
-                                                        sit amet
-                                                        felis dignissim tristique. Mauris enim ante, porta quis
-                                                        egestas
-                                                        vitae,
-                                                        consequat
-                                                        quis risus. Curabitur auctor urna id sapien lobortis,
-                                                        tempus
-                                                        convallis
-                                                        velit
-                                                        ultricies. Proin ac aliquet dui. Maecenas non maximus
-                                                        eros. Duis
-                                                        interdum at
-                                                        neque at ultrices. Proin efficitur vestibulum luctus.
-                                                        Morbi nunc
-                                                        nulla,
-                                                        finibus
-                                                        in hendrerit sed, maximus in est. In non turpis augue.
-                                                        Vivamus
-                                                        id nulla
-                                                        felis.
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa arcu, dictum ut enim in, tristique hendrerit diam. Vestibulum fringilla orci sit amet felis dignissim tristique. Mauris enim ante, porta quis egestas vitae, consequat quis risus. Curabitur auctor urna id sapien lobortis, tempus convallis velit ultricies. Proin ac aliquet dui. Maecenas non maximus eros. Duis interdum at neque at ultrices. Proin efficitur vestibulum luctus. Morbi nunc nulla, finibus in hendrerit sed, maximus in est. In non turpis augue. Vivamus id nulla felis.
                                                 </p>
 
                                                 <p>
@@ -166,6 +142,8 @@
                                 </a>
                         </div>
                         <div class="compTainer">
+                                <label for="menu1" class="right"> <p> > </p> </label>
+                                <label for="menu4" class="left"> <p> < </p> </label>
                                 <div class="comp">
                                         <!-- left -->
                                         <div>
