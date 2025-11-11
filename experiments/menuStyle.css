@@ -197,12 +197,15 @@ input:checked#menu5 ~ .dMenu{
 }
 
 div.ground{
-        transform:rotateX(90deg) translateZ(-250px) translateY(-200px) translateX(-400px);
+        position:absolute;
+        top:-100%;
+        left:50%;
         width: 1000px;
         height: 1000px;
-        background-color:green;
-        transform-origin: 50% 0% 0px;
-        background-image: url("../assets/images/grass.jpeg");
+        transform-origin: 50% 50% 400px;
+        transform: translate(-50%, -50%) rotateX(90deg);
+        background-image: url("../assets/images/record.png");
+        background-size: 100%;
 }
 
 img.future{
