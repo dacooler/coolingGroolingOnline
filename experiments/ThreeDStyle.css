@@ -46,6 +46,37 @@
         background-size: 100%;
 }
 
+/*front*/
+.cubed{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(var(--flipY));
+        height:var(--cHeight) !important;
+        width: var(--cWidth) !important;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform-style: preserve-3d;
+        /*(in)SANE DEFAULTS*/
+        --cWidth: 100px;
+        --cHeight: 100px;
+        --cDepth: 100px;
+        --img: none;
+        --color: #ffffff;
+        --flipY: 0deg;
+        /*
+        DEBUG
+        */
+        
+        /*
+        transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
+        animation-name: debug;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        */
+}
+
 
 /* top */
 .cubed > div:nth-child(1){
@@ -98,39 +129,9 @@
         left: 50%;
         height:var(--cHeight);
         width: var(--cWidth);
-        transform: translate(-50%, -50%) rotateY(180deg);
-        transform-origin: 50% 50% calc(var(--cDepth) / 2);
+        transform: translate(-50%, -50%) translateZ(var(--cDepth));
 }
 
-/*front*/
-.cubed{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateY(var(--flipY));
-        height:var(--cHeight) !important;
-        width: var(--cWidth) !important;
-        background-image: var(--img);
-        background-color: var(--color);
-        transform-style: preserve-3d;
-        /*(in)SANE DEFAULTS*/
-        --cWidth: 100px;
-        --cHeight: 100px;
-        --cDepth: 100px;
-        --img: none;
-        --color: #ffffff;
-        --flipY: 0deg;
-        /*
-        DEBUG
-        */
-        /*
-        transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
-        animation-name: debug;
-        animation-iteration-count: infinite;
-        animation-duration: 4s;
-        animation-timing-function: linear;
-        */
-}
 
 @keyframes debug {
         from {transform: perspective(100cm) rotate3D(1, 1, 1, 0deg);}

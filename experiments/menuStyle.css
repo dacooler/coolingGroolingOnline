@@ -81,32 +81,47 @@ body{
 }
 
 .compTainer > label{
-        width: 20px;
-        height: 50px;
+        width: 200px;
+        height: 500px;
         display: none;
         position: absolute;
         background-color: white;
         opacity: 0.5;
+        transform: scale(10%);
+        top: -200px;
 }
 .compTainer > label > p{
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        font-size: 100px;
-        transform: scale(20%);
+        text-align: center;
+        transform:perspective(100cm) scale(1);
+        font-size: 200px;
+        backface-visibility:hidden;
 }
 .compTainer > .left{
-        left: -40px;
+        left: -150px;
 }
 .compTainer > .right{
-        right: -40px;
+        right: -150px;
 }
 
+/*
+                                mod(
+                                        calc(
+                                                (
+                                                        var(--timeset) / 24
+                                                ) + 
+                                                var(--time)
+                                        )
+                        ,1
+                        ) 
+*/
+
 .article{
-        transform: rotateY(calc(var(--degrees) * 1));
+        transform: rotateY(calc(var(--degrees) * 1)) translateZ(80px);
         transform-origin: 50% 50% 400px;
         transform-style: preserve-3d;
         display:block;
+        position: absolute;
+        left: -80px;
 }
 
 .article img{
@@ -233,15 +248,16 @@ img.future{
         top: 0px;
         transition: background-position;
         transition-duration: 1s;
-
+        background-position: calc(var(--spin) * 400%) calc(100% * (var(--times) + var(--time)));
         /*DAY NIGHT ANIMATION (:*/
-        animation-name: day-cycle;
-        animation-duration: 68400s; 
+        animation-name: day-cycle2;
+        animation-duration: 86400s; 
         animation-timing-function: linear;
 	animation-iteration-count: infinite;
 }
 
 .sky div{
+        --dayOp: calc(1 - (abs(calc(mod(var(--times) + var(--time), 1) - 1/2) * 2)));
         background-image: url("../assets/images/sky.jpg");
         background-position: calc(var(--spin) * 800%) 0%;
         background-size: 80%;
@@ -252,13 +268,37 @@ img.future{
         top: 0px;
         transition: background-position;
         transition-duration: 1s;
-        opacity: 0.25;
+        opacity: calc(0.5 * var(--dayOp));
+}
+
+.sky div + div{
+        width: 101%;
+        height: 101%;
+        background-image: url("../assets/images/nightsky.jpeg");
+        opacity: calc(0.5 * (1 - var(--dayOp)));
 }
 
 
 @keyframes day-cycle{
         0%   {background-position: calc(var(--spin) * 400%) calc(0% +   (4.166% * var(--timeset)));}
         100% {background-position: calc(var(--spin) * 400%) calc(101% + (4.166% * var(--timeset)));}
+}
+
+@property --time{
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+}
+
+@property --times{
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+}
+
+@keyframes day-cycle2{
+        0%      {--time: 0};
+        100%    {--time: 1};
 }
 
 

@@ -24,6 +24,7 @@
 
 }
 
+
 .comp > div{
         position: absolute;
         top: 0px;
@@ -198,6 +199,15 @@
 
 .comp .monitor input:checked ~ div > iframe{
         display: block;
+}
+
+.comp .monitor input:checked ~ .screen{
+       background-image: none; 
+        background-color: white;
+}
+.comp .monitor input:checked ~ .screen{
+       background-image: none; 
+        background-color: white;
 }
 
 .comp .monitor input:checked ~ label{

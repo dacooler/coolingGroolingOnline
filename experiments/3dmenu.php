@@ -26,7 +26,9 @@
                         --timeset:<?php 
                                 date_default_timezone_set('Europe/Stockholm');
                         echo date('G.i'); 
-                        ?>
+                        ?>;
+
+                        --times: calc(var(--timeset)/24));
                 }
 
                 .cube {
@@ -44,6 +46,7 @@
                 <input type="radio" id="menu4" name="dm">
                 <input type="radio" id="menu5" name="dm">
                         <div class="sky">
+                        <div></div>
                         <div></div>
                 </div>
                 <div class="dMenu">
@@ -159,6 +162,7 @@
                                         <div>
                                                 <div class="monitor">
                                                         <input id="grulComp" type="checkbox">
+                                                        <div class="scree"></div>
                                                         <div class="screen">
                                                                 <iframe src="../">
 
@@ -193,7 +197,7 @@
                                                         <!-- back-->
                                                         <div>
                                                                 <div class="cubed"
-                                                                        style="--cHeight:80px;--cWidth:80px;--cDepth:10px;--img:radial-gradient(gray, lightgray);--flipY:180deg;">
+                                                                        style="--cHeight:80px;--cWidth:80px;--cDepth:10px;--img:radial-gradient(gray, lightgray);">
                                                                         <!-- bottom -->
                                                                         <div>
                                                                         </div>
