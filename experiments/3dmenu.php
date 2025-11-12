@@ -28,7 +28,7 @@
                         echo date('G.i'); 
                         ?>;
 
-                        --times: calc(var(--timeset)/24));
+                        --times: calc(var(--timeset)/24);
                 }
 
                 .cube {
