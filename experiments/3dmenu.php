@@ -4,22 +4,11 @@
 <head>
         <meta charset="UTF-8">
         <title>_PageTitle_</title>
-        <script src="./assets/script.js" type="module"></script>
-        <script src="./assets/cursor.js"></script>
-        <script>
-                function myFunction() {
-                        document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
-                }
-        </script>
-        <style>
-        </style>
         <link rel="stylesheet" href="menuStyle.css">
         <link rel="stylesheet" href="gramStyle.css">
         <link rel="stylesheet" href="compStyle.css">
         <link rel="stylesheet" href="ThreeDStyle.css">
         <link rel="stylesheet" href="../assets/cubestyle.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <style>
                 :root {
                         --perspective: 100cm;
