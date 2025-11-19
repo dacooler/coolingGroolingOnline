@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="compStyle.css">
         <link rel="stylesheet" href="ThreeDStyle.css">
         <link rel="stylesheet" href="../assets/cubestyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <style>
                 :root {
                         --perspective: 100cm;
@@ -34,9 +36,9 @@
                 <input type="radio" id="menu3" name="dm">
                 <input type="radio" id="menu4" name="dm">
                 <input type="radio" id="menu5" name="dm">
-                        <div class="sky">
-                        <div></div>
-                        <div></div>
+                <div class="sky">
+                <div></div>
+                <div></div>
                 </div>
                 <div class="dMenu">
                         <label for="menu1">
@@ -151,7 +153,7 @@
                                         <div>
                                                 <div class="monitor">
                                                         <input id="grulComp" type="checkbox">
-                                                        <div class="scree"></div>
+                                                        <div class="backscreen"></div>
                                                         <div class="screen">
                                                                 <iframe src="../">
 

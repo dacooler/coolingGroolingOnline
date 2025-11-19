@@ -1,0 +1,98 @@
+.pyramid{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(var(--flipY));
+        height:var(--cHeight) !important;
+        width: var(--cWidth) !important;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform-style: preserve-3d;
+        /*(in)SANE DEFAULTS*/
+        --cWidth: 100px;
+        --cHeight: 100px;
+        --cDepth: 100px;
+        --img: none;
+        --color: #ffffff;
+        --flipY: 0deg;
+        /*
+        DEBUG
+        */
+        
+        /*
+        transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
+        animation-name: debug;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        */
+}
+
+
+/* top */
+.pyramid> div:nth-child(1){
+        position: absolute;
+        top: calc(var(--cDepth) / 2);
+        left: 50%;
+        width: var(--cWidth);
+        height: var(--cDepth);
+        transform: translate(-50%, -50%) rotateX(90deg);
+        transform-origin: 50% 0% 0;
+}
+
+/* bottom */
+.pyramid > div:nth-child(2){
+        position: absolute;
+        top: calc(var(--cHeight) - var(--cDepth) / 2);
+        left: 50%;
+        width: var(--cWidth);
+        height: var(--cDepth);
+        transform: translate(-50%, -50%) rotateX(-90deg);
+        transform-origin: 50% 100% 0;
+}
+
+/* right */
+.pyramid > div:nth-child(3){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--cWidth) - var(--cDepth) / 2);
+        width: var(--cDepth); 
+        height: var(--cHeight);
+        transform: translate(-50%, -50%) rotateY(90deg);
+        transform-origin: 100% 50% 0;
+}
+
+/* left */
+.pyramid > div:nth-child(4){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--cDepth) / 2);
+        width: var(--cDepth); 
+        height: var(--cHeight);
+        transform: translate(-50%, -50%) rotateY(-90deg);
+        transform-origin: 0% 50% 0;
+}
+
+/*back*/
+.pyramid > div:nth-child(5){
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height:var(--cHeight);
+        width: var(--cWidth);
+        transform: translate(-50%, -50%) translateZ(var(--cDepth));
+}
+
+.pyramid > div{
+        transform-style: preserve-3d;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform: perspective(100cm);
+        background-size: 100%;
+}
+
+@keyframes debug {
+        from {transform: perspective(100cm) rotate3D(1, 1, 1, 0deg);}
+        to {transform: perspective(100cm) rotate3D(1, 1, 1, 360deg);}
+}
+

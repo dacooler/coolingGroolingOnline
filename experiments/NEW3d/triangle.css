@@ -1,0 +1,17 @@
+.triangle{
+        mask-image: url("../../assets/svgs/triangle.svg");
+        --txSize: 100;
+        position: absolute;
+        top: 0px;
+        left: 100px;
+        width: calc(var(--txSize) * 1px);
+        height: calc(var(--txSize) * 1px);
+        mask-size: 100% 100%; 
+        transform-origin: 0% 100%;
+        transform:scale(calc(1/var(--txSize))) matrix(
+        calc( var(--x1) - var(--x3)) , calc(var(--x2) - var(--x3)), 
+        calc( var(--y3) - var(--y1)), calc(var(--y3) - var(--y2)),
+        calc(var(--x3)), calc(var(--y3)) 
+        );
+}
+

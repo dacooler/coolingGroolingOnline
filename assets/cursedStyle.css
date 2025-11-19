@@ -1,4 +1,4 @@
-@import url(https://db.onlinewebfonts.com/c/107eaa009712278feeb98175016a8a81?family=Papyrus); 
+@import url('https://db.onlinewebfonts.com/c/107eaa009712278feeb98175016a8a81?family=Papyrus'); 
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
 body{
@@ -27,7 +27,6 @@ h1{
 
 img:hover{
 	transform: rotateX(150deg);
-	width: 101%;
 }
 
 ul li {

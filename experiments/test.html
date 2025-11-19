@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+        <style>
+                @property --test1 {
+                        syntax: "<number>";
+                        inherits: true;
+                        inital-value 0;
+                }
+
+                @property --test2 {
+                        syntax: "<number>";
+                        inherits: true;
+                        inital-value 0;
+                }
+
+                .test {
+                        animation-name: anim;
+                        animation-time: 2s;
+                        transition: background-color 2s linear;
+                        background-color: green;
+                        width: 100px;
+                        height: 100px;
+                }
+
+                .test:hover {
+                        background-color: blue;
+                }
+
+                @keyframes anim {
+                        from {
+                                --test1: var(--test2);
+                        }
+
+                        to {
+                                --test1: var(--test2);
+                        }
+
+                }
+        </style>
+</head>
+
+<body>
+        <div class="test">
+        </div>
+</body>

@@ -241,7 +241,7 @@ img.future{
 
 
 .sky{
-        background-image: linear-gradient(black, indigo, darkviolet, orange, lightgreen, lightblue, lightgreen, orange, darkviolet, indigo, black); /*url("../assets/images/sky.jpg");*/
+        background-image: linear-gradient(black, indigo, darkviolet, orange, lightgreen, lightblue, lightgreen, orange, darkviolet, indigo, black) !important; /*url("../assets/images/sky.jpg");*/
         background-size: 1500% 1500%;
         background-position: calc(var(--spin) * 400%) 0%;
         width: 101%;
@@ -251,7 +251,7 @@ img.future{
         top: 0px;
         transition: background-position;
         transition-duration: 1s;
-        background-position: calc(var(--spin) * 400%) calc(100% * (var(--times) + var(--time)));
+        background-position: calc(var(--spin) * 400%) calc(100% * mod((var(--times) + var(--time)), 1));
         /*DAY NIGHT ANIMATION (:*/
         animation-name: day-cycle2;
         animation-duration: 86400s; 
@@ -280,6 +280,19 @@ img.future{
         background-image: url("../assets/images/nightsky.jpeg");
         opacity: calc(0.5 * (1 - var(--dayOp)));
 }
+
+.skybox{
+        z-index: -1000;
+        transform-style:preserve-3d;
+        position: absolute;
+        top: 50%;
+        left:50%;
+        perspective: 100cm;
+        transition: transform 1s;
+        transform: rotateY(180deg) rotateY(calc(var(--spin) * 90deg)) scale(1) ;
+        transform-origin: 50% 50% -400px;
+}
+
 
 
 @keyframes day-cycle{

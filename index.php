@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>COOLING GROOLING</title>
-  <script src="./assets/script.js" type="module"></script>
-  <script src="./assets/cursor.js"></script>
   <script>
     function myFunction() {
       document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
     }
 
   </script>
-  <style>
-  </style>
   <link rel="stylesheet" href="./assets/cubestyle.css">
   <link rel="stylesheet" href="./assets/cursedStyle.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
