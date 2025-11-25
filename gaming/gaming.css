@@ -1,0 +1,138 @@
+
+body{
+        background-color: black;
+}
+.room{
+        transform-style: preserve-3d;
+        transform: rotateX(-15deg);
+        perspective: 50cm;
+
+        /*animation: spin 2s linear infinite;*/
+}
+.wall{
+        transform-style: preserve-3d;
+        background-image:url("../assets/images/wallpaper.jpeg");
+        width: 2000px;
+        height: 500px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform-origin: 0% 100%;
+        mask: linear-gradient(black, transparent);
+}
+.floor{
+        background-image:url("../assets/images/wood.jpg");
+        transform-style: preserve-3d;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 2000px;
+        height: 400px;
+        transform-origin: 0% 100%;
+        transform: rotateX(-90deg);
+}
+
+.cubed.machine .cubed{
+        --upSize: 2;
+}
+.cubed.machine{
+        /*animation: spin 2s ease infinite;*/
+        top: 50%;
+        left: 20%;
+        transform: rotateY(180deg) translate(-50%, -50%);
+        --cWidth:200px;
+        --cHeight:200px;
+        --cDepth:160px;
+        --flipY:360deg;
+        --img:url('../assets/images/wood.jpg');
+        --upSize: 2;
+.front{
+                background-image: url("../assets/images/machine-front.png");
+        }
+
+.controlpad{
+        width: 198px;
+        height: 80px;
+                background-image: url("../assets/images/gameMachineBoard.png");
+        transform-origin: 50% 0%;
+        transform: rotateX(20deg) rotate(180deg) translateY(-100%);
+        }
+
+.cubed.machine-lip{
+        --cWidth: 198px;
+        --cHeight: 60px;
+        --cDepth: 64px;
+        --img:url('../assets/images/wood.jpg');
+        .display{
+                        background-image: url("../assets/images/gameMachineLip.png");
+                }
+}
+.machine-left{
+        background-image:url("../assets/images/gameMachine-side.png");
+        background-size: 100% 100%;
+        width: 200px;
+        height: 400px;
+        position: absolute;
+        bottom:0px;
+}
+.machine-right{
+        background-image:url("../assets/images/gameMachine-side.png");
+        background-size: 100% 100%;
+        width: 200px;
+        height: 400px;
+        position: absolute;
+        bottom:0px;
+        transform: matrix(
+        -1, 0, 0, 1, 0, 0);
+}
+
+.cubed.machine-upper{
+        bottom: 0px;
+        z-index: -100;
+        --cWidth:198px;
+        --cHeight:80px;
+        --cDepth:240px;
+        --img:url('../assets/images/wood.jpg');
+        left: 1px;
+}
+
+.screen-holder{
+                width: 200px;
+                height:200px;
+                background-color: gray;
+                background-size: 100% 100%;
+                position: absolute;
+                top: 50px;
+                left: -1px;
+                transform-origin: 50% 0%;
+                transform: rotateX(17deg);
+                .screen{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 90%;
+                        height: 100%;
+                }
+                a{
+                        background-color:white;
+                        display:block;
+                        position: absolute;
+                        top: 40px;
+                        left: 0px;
+                        width: 200%;
+                        height: 100%;
+                        transform-origin: 0 0;
+                        transform: scale(0.5);
+                }
+
+        }
+}
+
+
+@keyframes spin 
+{
+0% { transform: rotateY(180deg) rotate(-90deg);}
+50% { transform: rotateY(180deg) rotate(90deg);}
+100% { transform: rotateY(180deg) rotate(-90deg);}
+}

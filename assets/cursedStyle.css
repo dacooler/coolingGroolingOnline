@@ -1,9 +1,12 @@
 @import url('https://db.onlinewebfonts.com/c/107eaa009712278feeb98175016a8a81?family=Papyrus'); 
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
+.graph{
+	width: 400px;
+	height:300px;
+}
 body{
 	cursor: url(cursors/BlueglassArrow.cur), auto;	
-	width: 100 vw;
 }
 
 body > div{

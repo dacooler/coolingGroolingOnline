@@ -7,10 +7,8 @@
         <link rel="stylesheet" href="menuStyle.css">
         <link rel="stylesheet" href="gramStyle.css">
         <link rel="stylesheet" href="compStyle.css">
-        <link rel="stylesheet" href="ThreeDStyle.css">
+        <link rel="stylesheet" href="../styles/ThreeDStyle.css">
         <link rel="stylesheet" href="../assets/cubestyle.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <style>
                 :root {
                         --perspective: 100cm;
@@ -78,7 +76,7 @@
                                         </div>
                                 </div>
                         </a>
-                        <a href="./cube.html"
+                        <a href="../experiments/cube.html"
                                 style="transform-style:preserve-3d;transform:perspective(var(--perspective));display:block">
                                 <div class="cube">
                                         <div id="c1"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>

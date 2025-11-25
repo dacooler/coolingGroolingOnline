@@ -37,7 +37,7 @@
           THIS SITE!!!! O:
         </button>
         <p>!!!!!!</p>
-        <a href="experiments/3dmenu.php"> Navigation</a>
+        <a href="./navigation/"> Navigation</a>
         <img src="./assets/images/DANC.gif" class="mitten">
       </div>
     </div>
@@ -71,6 +71,7 @@
             </div>
           </div>
         </div>
+          <iframe src="./graph/" class="graph"></iframe>
         <img src="./assets/images/ANI.gif" class="mitten">
         <iframe frameborder="0"
           src="https://itch.io/embed/3295620?border_width=5&amp;bg_color=1c7e84&amp;fg_color=ffffff&amp;link_color=0cfffb&amp;border_color=bebebe"

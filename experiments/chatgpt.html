@@ -2,160 +2,160 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <title>Text with Div Pixels</title>
-        <style>
-                body {
-                        background: #111;
-                        color: #fff;
-                        display: flex;
-                        justify-content: center;
-                        margin-top: 50px;
-                        font-family: monospace;
-                }
+  <meta charset="UTF-8">
+  <title>Text with Div Pixels</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      font-family: monospace;
+    }
 
-                .pixel {
-                        width: 10px;
-                        height: 10px;
-                        background-color: #0f0;
-                        margin: 1px;
-                        display: inline-block;
-                }
+    .pixel {
+      width: 10px;
+      height: 10px;
+      background-color: #0f0;
+      margin: 1px;
+      display: inline-block;
+    }
 
-                .row {
-                        height: 12px;
-                }
+    .row {
+      height: 12px;
+    }
 
-                .char {
-                        display: inline-block;
-                        margin-right: 10px;
-                }
-        </style>
+    .char {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 
 <body>
-        <div id="output"></div>
+  <div id="output"></div>
 
-        <script>
-                const FONT = {
-                        A: [
-                                "01110",
-                                "10001",
-                                "10001",
-                                "11111",
-                                "10001",
-                                "10001",
-                                "10001"
-                        ],
-                        B: [
-                                "11110",
-                                "10001",
-                                "10001",
-                                "11110",
-                                "10001",
-                                "10001",
-                                "11110"
-                        ],
-                        C: [
-                                "01110",
-                                "10001",
-                                "10000",
-                                "10000",
-                                "10000",
-                                "10001",
-                                "01110"
-                        ],
-                        D: [
-                                "11100",
-                                "10010",
-                                "10001",
-                                "10001",
-                                "10001",
-                                "10010",
-                                "11100"
-                        ],
-                        E: [
-                                "11111",
-                                "10000",
-                                "10000",
-                                "11110",
-                                "10000",
-                                "10000",
-                                "11111"
-                        ],
-                        L: [
-                                "10000",
-                                "10000",
-                                "10000",
-                                "10000",
-                                "10000",
-                                "10000",
-                                "11111"
-                        ],
-                        H: [
-                                "10001",
-                                "10001",
-                                "10001",
-                                "11111",
-                                "10001",
-                                "10001",
-                                "10001"
-                        ],
-                        O: [
-                                "01110",
-                                "10001",
-                                "10001",
-                                "10001",
-                                "10001",
-                                "10001",
-                                "01110"
-                        ],
-                        ' ': [
-                                "00000",
-                                "00000",
-                                "00000",
-                                "00000",
-                                "00000",
-                                "00000",
-                                "00000"
-                        ]
-                };
+  <script>
+    const FONT = {
+      A: [
+        "01110",
+        "10001",
+        "10001",
+        "11111",
+        "10001",
+        "10001",
+        "10001"
+      ],
+      B: [
+        "11110",
+        "10001",
+        "10001",
+        "11110",
+        "10001",
+        "10001",
+        "11110"
+      ],
+      C: [
+        "01110",
+        "10001",
+        "10000",
+        "10000",
+        "10000",
+        "10001",
+        "01110"
+      ],
+      D: [
+        "11100",
+        "10010",
+        "10001",
+        "10001",
+        "10001",
+        "10010",
+        "11100"
+      ],
+      E: [
+        "11111",
+        "10000",
+        "10000",
+        "11110",
+        "10000",
+        "10000",
+        "11111"
+      ],
+      L: [
+        "10000",
+        "10000",
+        "10000",
+        "10000",
+        "10000",
+        "10000",
+        "11111"
+      ],
+      H: [
+        "10001",
+        "10001",
+        "10001",
+        "11111",
+        "10001",
+        "10001",
+        "10001"
+      ],
+      O: [
+        "01110",
+        "10001",
+        "10001",
+        "10001",
+        "10001",
+        "10001",
+        "01110"
+      ],
+      ' ': [
+        "00000",
+        "00000",
+        "00000",
+        "00000",
+        "00000",
+        "00000",
+        "00000"
+      ]
+    };
 
-                function drawText(text, containerId) {
-                        const container = document.getElementById(containerId);
-                        container.innerHTML = "";
+    function drawText(text, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
 
-                        text = text.toUpperCase();
+      text = text.toUpperCase();
 
-                        for (let row = 0; row < 7; row++) {
-                                const line = document.createElement("div");
-                                line.className = "row";
+      for (let row = 0; row < 7; row++) {
+        const line = document.createElement("div");
+        line.className = "row";
 
-                                for (let char of text) {
-                                        const pattern = FONT[char] || FONT[' '];
-                                        const charRow = pattern[row];
+        for (let char of text) {
+          const pattern = FONT[char] || FONT[' '];
+          const charRow = pattern[row];
 
-                                        const charDiv = document.createElement("div");
-                                        charDiv.className = "char";
+          const charDiv = document.createElement("div");
+          charDiv.className = "char";
 
-                                        for (let col = 0; col < charRow.length; col++) {
-                                                const pixel = document.createElement("div");
-                                                pixel.className = "pixel";
-                                                if (charRow[col] === "0") {
-                                                        pixel.style.backgroundColor = "transparent";
-                                                }
-                                                charDiv.appendChild(pixel);
-                                        }
+          for (let col = 0; col < charRow.length; col++) {
+            const pixel = document.createElement("div");
+            pixel.className = "pixel";
+            if (charRow[col] === "0") {
+              pixel.style.backgroundColor = "transparent";
+            }
+            charDiv.appendChild(pixel);
+          }
 
-                                        line.appendChild(charDiv);
-                                }
+          line.appendChild(charDiv);
+        }
 
-                                container.appendChild(line);
-                        }
-                }
+        container.appendChild(line);
+      }
+    }
 
-                drawText("hello", "output");
-        </script>
+    drawText("hello", "output");
+  </script>
 </body>
 
 </html>
