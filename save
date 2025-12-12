@@ -1,0 +1,57 @@
+float rand(vec2 co){
+    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+float getAmount(vec2 fragCoord){
+vec2 uv = fragCoord/iResolution.xy;
+vec4 text = texture(iChannel0, uv / 20.);
+    //float TIMEFUNK = sin(fragCoord.x + fragCoord.y + iTime / 4.);
+    //float TIMEAMP = TIMEFUNK / 16.;
+    return (text.x + 0.4) * 400.0;
+}
+
+float getLight(vec2 fragCoord){
+    float lightness = rand(fragCoord);
+            return pow(lightness, getAmount(fragCoord));
+}
+
+float bloom(vec2 fragCoord, float lightness){
+    float addLightness = 0.0;
+        vec2 uv = fragCoord/iResolution.xy;
+        int starSize = 12;
+        float text = texture(iChannel0, uv / 10.).x;
+        float TIMEFUNK = sin(text * 12. + iTime * 2.);
+        float TIMEAMP = (0.7 + TIMEFUNK * 0.3);
+        for(int x = -starSize; x <= starSize; x++){
+            for (int y = -starSize; y <= starSize; y++){
+                vec2 nextlight = vec2(float(x) + fragCoord[0], float(y) + fragCoord[1]);
+                if(getLight(nextlight) > 0.1){
+                    addLightness += (getLight(nextlight) / (pow(float(y), 2.0) + pow(float(x), 2.0))) * TIMEAMP;
+                }
+            }
+        }
+        if(addLightness > 1.0)
+        {
+            addLightness = 1.0;
+        }
+        lightness += addLightness / 2.0;
+        return lightness;
+
+}
+
+
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = fragCoord/iResolution.xy;
+    float lightness = getLight(fragCoord);
+    lightness = bloom(fragCoord, lightness);
+    
+    
+    
+    // Output to screen
+    fragColor = vec4(lightness, lightness, lightness ,1.0);
+    //fragColor = vec4(galaxy, galaxy, galaxy, 1.0);
+    }

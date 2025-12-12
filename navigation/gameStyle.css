@@ -1,0 +1,84 @@
+a.gameTainer{
+  transform: rotateY(calc(var(--degrees) * 2));
+  transform-origin: 50% 50% 400px;
+  transform-style: preserve-3d;
+  position:absolute;
+  transition: --opening 1s;
+  --opening: 0deg;
+  top:50%;
+  left:50%;
+
+  .gaming{
+    --cWidth:48px;
+    --cHeight:27px;
+    --cDepth:4px;
+    --color:gray;
+    position:absolute;
+    left:-20px;
+    top:-15px;
+    background-color:gray;
+    transform: rotateX(70deg);
+    background-image:url("../assets/images/ds-casebottom.jpg");
+    background-size:100% 100%;
+    .bottomback{
+      background-image:url("../assets/images/ds-bottomback.jpg");
+      background-size:100% 100%;
+    }
+    .bottomfront{
+      background-image:url("../assets/images/ds-bottomfront.jpg");
+      background-size:100% 100%;
+    }
+    .bottomright{
+      background-image:url("../assets/images/ds-bottomright.jpg");
+      background-size:100% 100%;
+    }
+    .bottomleft{
+      background-image:url("../assets/images/ds-bottomleft.jpg");
+      background-size:100% 100%;
+    }
+    .bottomPart{
+      background-image:url("../assets/images/ds-bottom.png");
+      background-size:100% 100%;
+    }
+
+    .screenPart{
+      background-color:green;
+      background-image:url("../assets/images/ds-top.png");
+      background-size:100% 100%;
+      --cWidth:48px;
+      --cHeight:27px;
+      --cDepth:4px;
+      --color:gray;
+      transform: rotateX(var(--opening));
+      transform-origin: 50% 0%;
+      .topback{
+        background-image:url("../assets/images/ds-topback.jpg");
+        background-size:100% 100%;
+      }
+      .topfront{
+        background-image:url("../assets/images/ds-topfront.jpg");
+        background-size:100% 100%;
+      }
+      .topright{
+        background-image:url("../assets/images/ds-topright.jpg");
+        background-size:100% 100%;
+      }
+      .topleft{
+        background-image:url("../assets/images/ds-topleft.jpg");
+        background-size:100% 100%;
+      }
+      .caseTop{
+        background-image:url("../assets/images/ds-casetop.jpg");
+        background-size:100% 100%;
+      }
+    }
+  }
+}
+a:hover {
+  --opening: 100deg;
+}
+@property --opening{
+        syntax: "<angle>";
+        inherits: true;
+        initial-value: 0deg;
+}

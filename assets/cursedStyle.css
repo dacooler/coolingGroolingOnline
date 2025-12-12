@@ -20,7 +20,7 @@ body > div{
 
 img{
 	transition: transform 0.5s, width 1000s;
-
+  image-rendering: pixelated;
 }
 
 h1{

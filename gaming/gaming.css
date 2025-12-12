@@ -1,7 +1,9 @@
 
 body{
         background-color: black;
+  overflow:hidden; 
 }
+
 .room{
         transform-style: preserve-3d;
         transform: rotateX(-15deg);
@@ -96,6 +98,11 @@ body{
         left: 1px;
 }
 
+.gg.screen-holder{
+    background-image:url('gg-gg/assets/wall.png');
+    background-size: 20% 20%;
+}
+
 .screen-holder{
                 width: 200px;
                 height:200px;
@@ -106,6 +113,7 @@ body{
                 left: -1px;
                 transform-origin: 50% 0%;
                 transform: rotateX(17deg);
+
                 .screen{
                         position: absolute;
                         top: 50%;
@@ -116,6 +124,8 @@ body{
                 }
                 a{
                         background-color:white;
+                        background-image:url("../assets/images/ggggShowScreen.png");
+                        box-sizing: border-box;
                         display:block;
                         position: absolute;
                         top: 40px;
@@ -124,6 +134,7 @@ body{
                         height: 100%;
                         transform-origin: 0 0;
                         transform: scale(0.5);
+                        border: inset black 8px;
                 }
 
         }

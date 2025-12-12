@@ -22,6 +22,29 @@
         width: var(--compWidth) !important;
         height: var(--compHeight) !important;
 
+  .standpart{
+    --cHeight:60px;
+    --cWidth:60px;
+    --cDepth:10px;
+    --color:#d5d4c0;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    
+
+    .standbottom{
+      --cHeight:80px;
+      --cWidth:80px;
+      --cDepth:10px;
+      --img:radial-gradient(gray, lightgray);
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+  }
+
 }
 
 
