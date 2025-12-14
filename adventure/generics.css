@@ -1,0 +1,30 @@
+.cameraHolder .floor{
+  --img: linear-gradient(transparent, #000a), url("../assets/images/books.jpg");
+  transform-style: preserve-3d;
+  position:absolute;
+  --offsetY: 0px;
+  --offsetX: 0px;
+  top:calc(50% - var(--cHeight)/2 +var(--offsetY));
+  left:calc(50% - var(--cWidth)/2 +var(--offsetX));
+  background-image: linear-gradient(#000a, #000a), url("../assets/images/wood.jpg");
+  background-size:400px 400px;
+
+  div{
+    transform-style: preserve-3d;
+    background-size:100% 100%, 100px 100px;
+  }
+  .roof{
+    background-image: url("../assets/images/wood.jpg");
+    mask: none;
+  }
+  .marker{
+    top: calc(50% - var(--posZ) - 50px);
+    left: calc(50% - var(--posX) - 50px);
+    position:absolute;
+    width:100px;
+    height:100px;
+    background-image:url("../assets/svgs/circle.svg");
+    background-size:100px 100px;
+    opacity:0.7;
+  }
+}

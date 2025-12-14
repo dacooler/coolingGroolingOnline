@@ -1,0 +1,38 @@
+.marker:hover{
+  cursor: grab;
+}
+
+.floor1{
+      .marker.m1{
+        --posX:0px;
+        --posZ:2800px;
+      }
+      .marker.m0{
+        --posX:0px;
+        --posZ:0px;
+      }
+}
+.floor2{
+      .marker.m2{
+        --posX:0px;
+        --posZ:2800px;
+      }
+      .marker.m3{
+        --posX:0px;
+        --posZ:0px;
+      }
+}
+
+input:checked#mark1 ~ div{
+  --moveZ: 2800px;
+}
+input:checked#mark0 ~ div{
+  --moveX: 0px;
+}
+input:checked#mark2 ~ div{
+  --moveZ: 2800px;
+  --moveX: 900px;
+}
+input:checked#mark3 ~ div{
+  --moveX: 900px;
+}

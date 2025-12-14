@@ -1,0 +1,89 @@
+<!doctype HTML> 
+<html>
+  <head>
+    <title>TEST</title>
+
+    <link rel="stylesheet" href="cameraStyle.css">
+    <link rel="stylesheet" href="generics.css">
+    <link rel="stylesheet" href="floors.css">
+    <link rel="stylesheet" href="markers.css">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="../styles/ThreeDStyle.css">
+  </head>
+  <body>
+    <input type="radio" id="rot0" name="rot" checked>
+    <input type="radio" id="rot1" name="rot">
+    <input type="radio" id="rot2" name="rot">
+    <input type="radio" id="rot3" name="rot">
+    <input type="radio" id="mark0" name="mk">
+    <input type="radio" id="mark1" name="mk">
+    <input type="radio" id="mark2" name="mk">
+    <input type="radio" id="mark3" name="mk">
+    <input type="checkbox" id="door0">
+    <div class="cameraRig">
+      <div class="cameraHolder">
+        <div class="floor floor1 cubed">
+          <!-- bottom -->
+          <div>
+          </div>
+          <!-- front -->
+          <div>
+          </div>
+          <!-- left -->
+          <div>
+          </div>
+          <!-- right-->
+          <div class="right">
+            <div class="books"></div>
+            <div class="doorway">
+              <label for="door0" class="door d0">
+              </label>
+            </div>
+          </div>
+          <!-- back-->
+          <div class="roof">
+          </div>
+          <label for="mark1" class="marker m1"></label>
+          <label for="mark0" class="marker m0"></label>
+        </div>
+        <div class="floor floor2 cubed">
+          <!-- bottom -->
+          <div>
+          </div>
+          <!-- front -->
+          <div>
+          </div>
+          <!-- left -->
+          <div class="left">
+          </div>
+          <!-- right-->
+          <div class="right">
+          </div>
+          <!-- back-->
+          <div>
+          </div>
+          <label for="mark2" class="marker m2"></label>
+          <label for="mark3" class="marker m3"></label>
+        </div>
+      </div>
+    </div>
+    <div class="arrows">
+      <div class="c0">
+        <label for="rot1" class="spin Left"></label>
+        <label for="rot3" class="spin Right"></label>
+      </div>
+      <div class="c1">
+        <label for="rot2" class="spin Left"></label>
+        <label for="rot0" class="spin Right"></label>
+      </div>
+      <div class="c2">
+        <label for="rot3" class="spin Left"></label>
+        <label for="rot1" class="spin Right"></label>
+      </div>
+      <div class="c3">
+        <label for="rot0" class="spin Left"></label>
+        <label for="rot2" class="spin Right"></label>
+      </div>
+    </div>
+  </body>
+</html>

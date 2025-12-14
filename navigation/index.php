@@ -92,7 +92,7 @@
             <div id="c6"><img src="../assets/images/wallpaper.jpeg"></div>
           </div>
         </a>
-        <a href="../gaming" class="gameTainer">
+        <a href="../gaming/" class="gameTainer">
           <div class="gaming cubed">
                 <!-- bottom -->
                 <div class="bottomback">

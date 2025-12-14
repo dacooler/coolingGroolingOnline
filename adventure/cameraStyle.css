@@ -1,0 +1,56 @@
+body{
+  overflow: hidden;
+  background-image:url("../assets/images/debug.png");
+}
+input{
+  z-index: 1000;
+}
+.cameraRig *{
+  overflow: visible !important;
+}
+.cameraRig{
+  --rotateAmount: 0deg;
+  --fov: 30cm;
+  --scaleFactor: 1;
+  transform-style: preserve-3d;
+  top:50%;
+  left:50%;
+  position:absolute;
+  transition: transform 3s;
+  transform: perspective(var(--fov)) translateZ(var(--fov)) rotateX(89deg) rotate(var(--rotateAmount));
+
+  .cameraHolder{
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    transform: translateX(var(--moveX)) translateZ(var(--moveY)) translateY(var(--moveZ));
+    position:absolute;
+    width:0px;
+    height:0px;
+    /* All rooms */
+  }
+}
+
+.door:hover{
+  cursor: grab;
+}
+
+input:checked#door0 ~ div .d0{
+  transform: rotateY(-120deg);
+}
+
+/*Move Properties*/
+@property --moveX{
+        syntax: "<length>";
+        inherits: true;
+        initial-value: 0px;
+}
+@property --moveY{
+        syntax: "<length>";
+        inherits: true;
+        initial-value: -150px;
+}
+@property --moveZ{
+        syntax: "<length>";
+        inherits: true;
+        initial-value: 0px;
+}

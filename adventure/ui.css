@@ -1,0 +1,39 @@
+input:checked#rot0 ~ div{
+  --rotateAmount: 0deg;
+}
+input:checked#rot1 ~ div{
+  --rotateAmount: 90deg;
+}
+input:checked#rot2 ~ div{
+  --rotateAmount: 180deg;
+}
+input:checked#rot3 ~ div{
+  --rotateAmount: 270deg;
+}
+.c0, .c1, .c2, .c3{
+  display: none;
+}
+input:checked#rot0 ~ div .c0{
+  display: block;
+}
+input:checked#rot1 ~ div .c1{
+  display: block;
+}
+input:checked#rot2 ~ div .c2{
+  display: block;
+}
+input:checked#rot3 ~ div .c3{
+  display: block;
+}
+
+.spin.Right{
+  transform: rotateY(180deg);
+  left: 100px;
+}
+.spin{
+  background-image: url("../assets/images/icons/arrow-spin.png");
+  width:100px;
+  height:100px;
+  background-size: 100% 100%;
+  position: absolute;
+}
