@@ -9,24 +9,31 @@ input{
   overflow: visible !important;
 }
 .cameraRig{
-  --rotateAmount: 0deg;
-  --fov: 30cm;
+  --fov: 15cm;
   --scaleFactor: 1;
+  --moveX: -600px;
+  --moveZ: -300px;
+  --rotateAmount: 0deg;
   transform-style: preserve-3d;
   top:50%;
   left:50%;
   position:absolute;
-  transition: transform 3s;
-  transform: perspective(var(--fov)) translateZ(var(--fov)) rotateX(89deg) rotate(var(--rotateAmount));
+  transition: transform 1s;
+  transform: perspective(var(--fov)) translateZ(var(--fov)) rotateX(89deg) rotateZ(var(--rotateAmount));
 
   .cameraHolder{
     transform-style: preserve-3d;
     transition: transform 1s;
-    transform: translateX(var(--moveX)) translateZ(var(--moveY)) translateY(var(--moveZ));
+    transform: 
+      translateX(calc(var(--moveX))) 
+      translateZ(var(--moveY)) 
+      translateY(calc(var(--moveZ)));
     position:absolute;
-    width:0px;
-    height:0px;
-    /* All rooms */
+    width: 2000px;
+    height: 1000px;
+    display: grid;
+    background-color:green;
+    grid-template-columns: auto auto;
   }
 }
 

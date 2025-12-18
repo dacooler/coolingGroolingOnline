@@ -1,25 +1,22 @@
 .cameraHolder .floor{
-  --img: linear-gradient(transparent, #000a), url("../assets/images/books.jpg");
+  --img: linear-gradient(transparent, #000a), url("../assets/images/wall.png"), url("../assets/images/wallpaper.jpeg");
+  --color: darkred;
   transform-style: preserve-3d;
-  position:absolute;
-  --offsetY: 0px;
-  --offsetX: 0px;
-  top:calc(50% - var(--cHeight)/2 +var(--offsetY));
-  left:calc(50% - var(--cWidth)/2 +var(--offsetX));
   background-image: linear-gradient(#000a, #000a), url("../assets/images/wood.jpg");
   background-size:400px 400px;
 
   div{
     transform-style: preserve-3d;
-    background-size:100% 100%, 100px 100px;
+    background-size:100% 100%, 300px 500px, 100px 100px;
+    cursor-events: auto;
   }
   .roof{
     background-image: url("../assets/images/wood.jpg");
     mask: none;
   }
   .marker{
-    top: calc(50% - var(--posZ) - 50px);
-    left: calc(50% - var(--posX) - 50px);
+    top: calc(var(--posZ) - 50px);
+    left: calc(var(--posX) - 50px);
     position:absolute;
     width:100px;
     height:100px;

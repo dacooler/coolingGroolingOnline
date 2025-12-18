@@ -3,36 +3,50 @@
 }
 
 .floor1{
-      .marker.m1{
-        --posX:0px;
-        --posZ:2800px;
-      }
       .marker.m0{
-        --posX:0px;
-        --posZ:0px;
+        --posX:600px;
+        --posZ:300px;
+      }
+      .marker.m1{
+        --posX:600px;
+        --posZ:800px;
+      }
+      .marker.m4{
+        --posX:250px;
+        --posZ:250px;
       }
 }
 .floor2{
       .marker.m2{
-        --posX:0px;
-        --posZ:2800px;
+        --posX:200px;
+        --posZ:800px;
       }
       .marker.m3{
-        --posX:0px;
-        --posZ:0px;
+        --posX:200px;
+        --posZ:300px;
       }
 }
 
-input:checked#mark1 ~ div{
-  --moveZ: 2800px;
-}
+/* FLOOR1 */
 input:checked#mark0 ~ div{
-  --moveX: 0px;
+  --moveX: -600px;
+  --moveZ: -300px;
 }
+input:checked#mark1 ~ div{
+  --moveX: -600px;
+  --moveZ: -800px;
+}
+input:checked#mark4 ~ div{
+  --moveX: -250px;
+  --moveZ: -250px;
+}
+
+/* FLOOR2 */
 input:checked#mark2 ~ div{
-  --moveZ: 2800px;
-  --moveX: 900px;
+  --moveX: -1200px;
+  --moveZ: -800px;
 }
 input:checked#mark3 ~ div{
-  --moveX: 900px;
+  --moveX: -1200px;
+  --moveZ: -300px;
 }

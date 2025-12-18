@@ -48,7 +48,6 @@
 
 /*front*/
 .cubed{
-        position: absolute;
         height:var(--cHeight) !important;
         width: var(--cWidth) !important;
         background-image: var(--img);

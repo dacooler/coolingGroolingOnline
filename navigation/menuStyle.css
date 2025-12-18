@@ -95,7 +95,7 @@ body{
   height: 100px;
   position: absolute;
 
-  label{
+  label.bloom{
     width: 200px;
     height: 500px;
     display: none;
