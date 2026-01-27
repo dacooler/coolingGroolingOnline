@@ -1,0 +1,25 @@
+##[pylyzer] failed /home/dacooler/prog/coolingGroolingOnline/adventure/replace.py 1769154323 729
+.os: Never
+
+.dir: {"src."}
+.files: Never
+.inName: {"pIndex.html"}
+.outName: {"index.html"}
+.changeFile: global::File!
+.changeText: Str
+
+
+.addSrc: (inText: Str) -> Str
+
+
+
+
+.changeText: Str
+
+
+
+
+
+
+
+

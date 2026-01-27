@@ -16,22 +16,33 @@ input:checked#rot3 ~ div .c3{
 
 input:checked#rot0 ~ div{
    --rotateAmount: 0deg;
+  #inner{
+    transform: rotateZ(0deg);
+  }
 }
 input:checked#rot1 ~ div{
    --rotateAmount: 90deg;
+  #inner{
+    transform: scaleX(1);
+  }
 }
 input:checked#rot2 ~ div{
    --rotateAmount: 180deg;
+  #inner{
+    transform: scaleX(1);
+  }
 }
 input:checked#rot3 ~ div{
    --rotateAmount: 270deg;
+  #inner{
+    transform: rotateZ(-360deg);
+  }
 }
 
 #inner{
+  transition: transform 0.25s;
   width: 0px;
   height: 0px;
-  top:50%;
-  left:50%;
   transform-style: preserve-3d;
 }
 

@@ -18,7 +18,7 @@ input{
   top:50%;
   left:50%;
   position:absolute;
-  transition: transform 1s;
+  transition: transform 0.25s;
   transform: perspective(var(--fov)) translateZ(var(--fov)) rotateX(89deg) rotateZ(var(--rotateAmount));
 
   .cameraHolder{
