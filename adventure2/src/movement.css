@@ -1,0 +1,92 @@
+
+@property --world-rot-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-rot-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes rotate-pos { to { --world-rot-pos: 1; } }
+@keyframes rotate-neg { to { --world-rot-neg: 1; } }
+@keyframes move-x-pos { to { --world-move-x-pos: 1; } }
+@keyframes move-x-neg { to { --world-move-x-neg: 1; } }
+@keyframes move-y-pos { to { --world-move-y-pos: 1; } }
+@keyframes move-y-neg { to { --world-move-y-neg: 1; } }
+
+.world-anim {
+  animation:
+    rotate-pos 5s linear infinite,
+    rotate-neg 5s linear infinite,
+    move-x-pos 5s linear infinite,
+    move-x-neg 5s linear infinite,
+    move-y-pos 5s linear infinite,
+    move-y-neg 5s linear infinite;
+  animation-play-state: paused, paused, paused, paused, paused, paused;
+
+  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * 360deg));
+  --world-translation: translate(
+    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * 500px - 250px),
+    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * 500px - 250px)
+    );
+
+  &:has(button:active .rot-r:hover) {
+    animation-play-state: running, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .rot-l:hover) {
+    animation-play-state: paused, running, paused, paused, paused, paused;
+  }
+  &:has(button:active .move-l:hover) {
+    animation-play-state: paused, paused, running, paused, paused, paused;
+  }
+  &:has(button:active .move-r:hover) {
+    animation-play-state: paused, paused, paused, running, paused, paused;
+  }
+  &:has(button:active .move-u:hover) {
+    animation-play-state: paused, paused, paused, paused, running, paused;
+  }
+  &:has(button:active .move-d:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, running;
+  }
+}
+
+.world-translation {
+  transform: var(--world-translation);
+}
+.world-rotation {
+  transform: var(--world-rotation);
+}
+.world-transform {
+  transform: var(--world-rotation) var(--world-translation);
+}
+
+@keyframes animator {
+from { width: 0px }
+to { width: 100px }
+}
+.animator {
+  animation: animator linear 1s infinite;
+}

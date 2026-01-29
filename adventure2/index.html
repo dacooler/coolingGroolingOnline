@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .world-content {
+  position: relative;
+  width: 0px;
+  height: 0px;
+
+  div {
+    position: absolute;
+    background-color: black;
+  }
+}
+
+.world {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.world-inner {
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform:  perspective(40cm) translateY(50px) translateZ(40cm) rotateX(80deg) ;
+  transition: transform 2s;
+  top: 50%;
+  left: 50%;
+  width:0px;
+  height:0px;
+}
+.ground {
+  position: absolute;
+  top: -1500px;
+  left: -1500px;
+  z-index: -100;
+  width: 3000px;
+  height: 3000px;
+  background-image: url("../assets/images/wood.jpg");
+}
+
+
+.player {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+}
+
+      
+      :root {
+        --cs: 100px;
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 0px;
+        left: 0%;
+        display: grid;
+        grid-template-rows: var(--cs);
+        grid-template-columns: var(--cs) var(--cs);
+
+        .angle, .motion {
+          background-color: lightgray;
+        }
+
+        button {
+          display: block;
+          background: none;
+          margin: 0;
+          padding: 0;
+          border: none;
+
+          &:active span:hover {
+            background-color: pink;
+          }
+        }
+
+        .angle {
+          display: grid;
+          grid-template-rows: 1fr;
+          grid-template-columns: 1fr 1fr;
+        }
+        .motion {
+          position: relative;
+          overflow: hidden;
+          border-radius: 100%;
+        }
+        .motion .motion-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          width: 100%;
+          height: 100%;
+          transform: rotateZ(-45deg);
+        }
+        .cover {
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: scale(30);
+          opacity: 0.1;
+
+          .world-content div {
+            /* expandera hitboxar för bättre kollision */
+            border: 5px solid black;
+            transform: translate(-5px, -5px);
+          }
+        }
+      }
+
+      
+@property --world-rot-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-rot-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes rotate-pos { to { --world-rot-pos: 1; } }
+@keyframes rotate-neg { to { --world-rot-neg: 1; } }
+@keyframes move-x-pos { to { --world-move-x-pos: 1; } }
+@keyframes move-x-neg { to { --world-move-x-neg: 1; } }
+@keyframes move-y-pos { to { --world-move-y-pos: 1; } }
+@keyframes move-y-neg { to { --world-move-y-neg: 1; } }
+
+.world-anim {
+  animation:
+    rotate-pos 5s linear infinite,
+    rotate-neg 5s linear infinite,
+    move-x-pos 5s linear infinite,
+    move-x-neg 5s linear infinite,
+    move-y-pos 5s linear infinite,
+    move-y-neg 5s linear infinite;
+  animation-play-state: paused, paused, paused, paused, paused, paused;
+
+  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * 360deg));
+  --world-translation: translate(
+    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * 500px - 250px),
+    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * 500px - 250px)
+    );
+
+  &:has(button:active .rot-r:hover) {
+    animation-play-state: running, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .rot-l:hover) {
+    animation-play-state: paused, running, paused, paused, paused, paused;
+  }
+  &:has(button:active .move-l:hover) {
+    animation-play-state: paused, paused, running, paused, paused, paused;
+  }
+  &:has(button:active .move-r:hover) {
+    animation-play-state: paused, paused, paused, running, paused, paused;
+  }
+  &:has(button:active .move-u:hover) {
+    animation-play-state: paused, paused, paused, paused, running, paused;
+  }
+  &:has(button:active .move-d:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, running;
+  }
+}
+
+.world-translation {
+  transform: var(--world-translation);
+}
+.world-rotation {
+  transform: var(--world-rotation);
+}
+.world-transform {
+  transform: var(--world-rotation) var(--world-translation);
+}
+
+@keyframes animator {
+from { width: 0px }
+to { width: 100px }
+}
+.animator {
+  animation: animator linear 1s infinite;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="animator"></div>
+    <div class="world-anim">
+      
+      <div class="world">
+        <div class="world-inner">
+          <div class="player"></div>
+          <div class="world-content world-transform" id="template-world">
+            <!-- Världen -->
+            <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
+            <div style="left: 30px; top: 20px; width: 25px; height: 80px"></div>
+          </div>
+          <div class="ground world-transform"></div>
+        </div>
+      </div>
+
+      
+      <div class="controls">
+        <button class="angle">
+          <span class="rot-l"></span>
+          <span class="rot-r"></span>
+        </button>
+        <button class="motion world-rotation">
+          <div class="motion-grid">
+            <span class="move-l"></span>
+            <span class="move-u"></span>
+            <span class="move-d"></span>
+            <span class="move-r"></span>
+          </div>
+          <div class="cover">
+            <div class="world-content world-translation" id="template-world">
+              <!-- Hitboxar -->
+              <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
+              <div style="left: 30px; top: 20px; width: 25px; height: 80px"></div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </body>
+</html>

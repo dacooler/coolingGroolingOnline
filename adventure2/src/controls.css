@@ -1,0 +1,63 @@
+
+      :root {
+        --cs: 100px;
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 0px;
+        left: 0%;
+        display: grid;
+        grid-template-rows: var(--cs);
+        grid-template-columns: var(--cs) var(--cs);
+
+        .angle, .motion {
+          background-color: lightgray;
+        }
+
+        button {
+          display: block;
+          background: none;
+          margin: 0;
+          padding: 0;
+          border: none;
+
+          &:active span:hover {
+            background-color: pink;
+          }
+        }
+
+        .angle {
+          display: grid;
+          grid-template-rows: 1fr;
+          grid-template-columns: 1fr 1fr;
+        }
+        .motion {
+          position: relative;
+          overflow: hidden;
+          border-radius: 100%;
+        }
+        .motion .motion-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          width: 100%;
+          height: 100%;
+          transform: rotateZ(-45deg);
+        }
+        .cover {
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: scale(30);
+          opacity: 0.1;
+
+          .world-content div {
+            /* expandera hitboxar för bättre kollision */
+            border: 5px solid black;
+            transform: translate(-5px, -5px);
+          }
+        }
+      }
