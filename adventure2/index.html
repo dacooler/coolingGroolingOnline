@@ -22,10 +22,11 @@
   overflow: hidden;
 }
 .world-inner {
+  --fov: 20cm;
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
-  transform:  perspective(40cm) translateY(50px) translateZ(40cm) rotateX(80deg) ;
+  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
   transition: transform 2s;
   top: 50%;
   left: 50%;
@@ -34,11 +35,10 @@
 }
 .ground {
   position: absolute;
-  top: -1500px;
-  left: -1500px;
-  z-index: -100;
-  width: 3000px;
-  height: 3000px;
+  top: 0px;
+  left: 0px;
+  width: var(--mapSizeXPx);
+  height: var(--mapSizeYPx);
   background-image: url("../assets/images/wood.jpg");
 }
 
@@ -158,19 +158,27 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
+  --mapSizeX: 1000;
+  --mapSizeY: 2000;
+  --mapSizeXPx: calc(var(--mapSizeX) * 1px);
+  --mapSizeYPx: calc(var(--mapSizeY) * 1px);
+
+  --moveTimeX: calc(var(--mapSizeX) / 100 * 1s);
+  --moveTimeY: calc(var(--mapSizeY) / 100 * 1s);
+
   animation:
     rotate-pos 5s linear infinite,
     rotate-neg 5s linear infinite,
-    move-x-pos 5s linear infinite,
-    move-x-neg 5s linear infinite,
-    move-y-pos 5s linear infinite,
-    move-y-neg 5s linear infinite;
+    move-x-pos var(--moveTimeX) linear infinite,
+    move-x-neg var(--moveTimeX) linear infinite,
+    move-y-pos var(--moveTimeY) linear infinite,
+    move-y-neg var(--moveTimeY) linear infinite;
   animation-play-state: paused, paused, paused, paused, paused, paused;
 
-  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * 360deg));
+  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
   --world-translation: translate(
-    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * 500px - 250px),
-    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * 500px - 250px)
+    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
+    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
     );
 
   &:has(button:active .rot-r:hover) {
@@ -211,6 +219,154 @@ to { width: 100px }
   animation: animator linear 1s infinite;
 }
 
+      .center{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+.tEdgeTurn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateX(90deg);
+        transform-origin: 50% 0% 0;
+}
+.bEdgeTurn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateX(90deg);
+        transform-origin: 50% 100% 0;
+}
+
+.rEdgeTurn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(90deg);
+        transform-origin: 100% 50% 0;
+}
+.lEdgeTurn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateY(-90deg);
+        transform-origin: 0% 50% 0;
+}
+.threeD{
+        margin-top: 100px;
+        margin-left: 100px;
+        transform-style: preserve-3d;
+        transform: perspective(100cm);
+}
+
+.threeD div{
+        transform-style: preserve-3d;
+        background-image: url("../assets/images/debug.png");
+        background-size: 100%;
+}
+
+/*front*/
+.cubed{
+        height:var(--height) !important;
+        width: var(--width) !important;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform-style: preserve-3d;
+        /*(in)SANE DEFAULTS*/
+        --width: 100px;
+        --height: 100px;
+        --depth: 100px;
+        --img: none;
+        --color: #000;
+        --flipY: 0deg;
+        /*
+        DEBUG
+        */
+        /* 
+        transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
+        animation-name: debug;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+*/
+}
+
+
+/* top */
+.cubed > div:nth-child(1){
+        position: absolute;
+        top: calc(var(--depth) / 2);
+        left: 50%;
+        width: var(--width);
+        height: var(--depth);
+        transform: translate(-50%, -50%) rotateX(90deg) rotate(180deg) translate(0, -100%);
+        transform-origin: 50% 0% 0;
+}
+
+/* bottom */
+.cubed > div:nth-child(2){
+        position: absolute;
+        top: calc(var(--height) - var(--depth) / 2);
+        left: 50%;
+        width: var(--width);
+        height: var(--depth);
+        transform: translate(-50%, -50%) rotateX(-90deg);
+        transform-origin: 50% 100% 0;
+}
+
+/* right */
+.cubed > div:nth-child(3){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--width) - var(--height) / 2);
+        width: var(--height); 
+        height: var(--depth);
+        transform: translate(-50%, -50%) rotateY(90deg) rotate(-90deg) translate(50%, -50%);
+        transform-origin: 100% 50% 0;
+}
+
+/* left */
+.cubed > div:nth-child(4){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--height) / 2);
+        width: var(--height); 
+        height: var(--depth);
+        transform: translate(-50%, -50%) rotateY(-90deg) rotate(90deg) translate(-50%, -50%);
+        transform-origin: 0% 50% 0;
+}
+
+/*back*/
+.cubed > div:nth-child(5){
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height:var(--height);
+        width: var(--width);
+        transform: translate(-50%, -50%) translateZ(var(--Depth));
+}
+
+
+@keyframes debug {
+        from {transform: perspective(100cm) rotate3D(1, 1, 1, 0deg);}
+        to {transform: perspective(100cm) rotate3D(1, 1, 1, 360deg);}
+}
+
+.cubed > div{
+        transform-style: preserve-3d;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform: perspective(100cm);
+        background-size: 100% 100%;
+}
+
+.extrude{
+}
+
+
+
     </style>
   </head>
   <body>
@@ -220,12 +376,12 @@ to { width: 100px }
       <div class="world">
         <div class="world-inner">
           <div class="player"></div>
-          <div class="world-content world-transform" id="template-world">
+          <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
             <!-- Världen -->
-            <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-            <div style="left: 30px; top: 20px; width: 25px; height: 80px"></div>
+              <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
+            <div class="cubed" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="ground"></div>
           </div>
-          <div class="ground world-transform"></div>
         </div>
       </div>
 
@@ -237,16 +393,15 @@ to { width: 100px }
         </button>
         <button class="motion world-rotation">
           <div class="motion-grid">
-            <span class="move-l"></span>
-            <span class="move-u"></span>
-            <span class="move-d"></span>
             <span class="move-r"></span>
+            <span class="move-d"></span>
+            <span class="move-u"></span>
+            <span class="move-l"></span>
           </div>
           <div class="cover">
             <div class="world-content world-translation" id="template-world">
               <!-- Hitboxar -->
-              <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-              <div style="left: 30px; top: 20px; width: 25px; height: 80px"></div>
+              <div style=" left: 5px; top: 0px; width: 50px; height: 20px"></div><div style=" left: 200px; top: 500px; width: 80px; height: 10px"></div>
             </div>
           </div>
         </button>

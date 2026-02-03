@@ -18,10 +18,11 @@
   overflow: hidden;
 }
 .world-inner {
+  --fov: 20cm;
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
-  transform:  perspective(40cm) translateY(50px) translateZ(40cm) rotateX(80deg) ;
+  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
   transition: transform 2s;
   top: 50%;
   left: 50%;
@@ -30,11 +31,10 @@
 }
 .ground {
   position: absolute;
-  top: -1500px;
-  left: -1500px;
-  z-index: -100;
-  width: 3000px;
-  height: 3000px;
+  top: 0px;
+  left: 0px;
+  width: var(--mapSizeXPx);
+  height: var(--mapSizeYPx);
   background-image: url("../assets/images/wood.jpg");
 }
 

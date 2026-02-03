@@ -38,19 +38,27 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
+  --mapSizeX: 1000;
+  --mapSizeY: 2000;
+  --mapSizeXPx: calc(var(--mapSizeX) * 1px);
+  --mapSizeYPx: calc(var(--mapSizeY) * 1px);
+
+  --moveTimeX: calc(var(--mapSizeX) / 100 * 1s);
+  --moveTimeY: calc(var(--mapSizeY) / 100 * 1s);
+
   animation:
     rotate-pos 5s linear infinite,
     rotate-neg 5s linear infinite,
-    move-x-pos 5s linear infinite,
-    move-x-neg 5s linear infinite,
-    move-y-pos 5s linear infinite,
-    move-y-neg 5s linear infinite;
+    move-x-pos var(--moveTimeX) linear infinite,
+    move-x-neg var(--moveTimeX) linear infinite,
+    move-y-pos var(--moveTimeY) linear infinite,
+    move-y-neg var(--moveTimeY) linear infinite;
   animation-play-state: paused, paused, paused, paused, paused, paused;
 
-  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * 360deg));
+  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
   --world-translation: translate(
-    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * 500px - 250px),
-    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * 500px - 250px)
+    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
+    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
     );
 
   &:has(button:active .rot-r:hover) {

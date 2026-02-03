@@ -1,4 +1,6 @@
 import os
+from map import getMap
+
 dir = "src/"
 files = os.listdir(dir)
 inName = "src/pIndex.html"
@@ -16,6 +18,9 @@ def addSrc(inText: str) -> str:
         if "_" + file + "_" in inText:
             add = addSrc(add)
         inText = inText.replace("_" + file + "_", add)
+    cubes, cubesCubed = getMap()
+    inText = inText.replace("_WORLDMAP_", cubesCubed)
+    inText = inText.replace("_CONTROLMAP_", cubes)
     return inText
 
 print("IN")

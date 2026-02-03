@@ -1,0 +1,4 @@
+##[pylyzer] succeed /home/dacooler/prog/coolingGroolingOnline/adventure2/map.py 1770150690 878
+.buildPart: |K: Type, Self <: global::Indexable(?K, ?R), R: Type, Self <: global::Indexable(?K, ?R)|(cords: Self, size: Self) -> global::Tuple([Str, Str])
+.getMap: () -> global::Tuple([Str, Str])
+uple([Str, Str])
