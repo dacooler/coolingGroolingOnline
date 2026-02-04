@@ -1,3 +1,6 @@
+body{
+  overflow: hidden;
+}
 .world-content {
   position: relative;
   width: 0px;
@@ -7,6 +10,9 @@
     position: absolute;
     background-color: black;
   }
+}
+:root{
+  --fov: 10cm;
 }
 
 .world {
@@ -18,7 +24,6 @@
   overflow: hidden;
 }
 .world-inner {
-  --fov: 20cm;
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;

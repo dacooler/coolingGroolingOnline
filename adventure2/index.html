@@ -2,7 +2,10 @@
 <html>
   <head>
     <style>
-      .world-content {
+      body{
+  overflow: hidden;
+}
+.world-content {
   position: relative;
   width: 0px;
   height: 0px;
@@ -11,6 +14,9 @@
     position: absolute;
     background-color: black;
   }
+}
+:root{
+  --fov: 10cm;
 }
 
 .world {
@@ -22,7 +28,6 @@
   overflow: hidden;
 }
 .world-inner {
-  --fov: 20cm;
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
@@ -345,7 +350,7 @@ to { width: 100px }
         left: 50%;
         height:var(--height);
         width: var(--width);
-        transform: translate(-50%, -50%) translateZ(var(--Depth));
+        transform: translate(-50%, -50%) translateZ(var(--depth));
 }
 
 
@@ -367,11 +372,56 @@ to { width: 100px }
 
 
 
+      .wall{
+  --img:url("../assets/images/books.jpg");
+}
+
+      .skyboxHolder{
+  --skyboxSize: 10px;
+  transform-style:preserve-3d;
+  position: absolute;
+  width:0px;
+  height:0px;
+  left:50%;
+  top:50%;
+  --fov: 10cm;
+  transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
+  transition: transform 1s;
+  .skybox{
+    --img: linear-gradient(lightblue, blue); 
+    position:absolute;
+    left:calc(var(--skyboxSize)/-2);
+    top:calc(var(--skyboxSize)/-2);
+    --width:var(--skyboxSize);
+    --height:var(--skyboxSize);
+    --depth:var(--skyboxSize);
+    transform-origin: 50% 50% calc(var(--skyboxSize)/2);
+    transform: rotateX(90deg) var(--world-rotation);
+    div:nth-child(5){
+      background-image: none;
+      background-color:lightblue;
+    }
+    background-image: none;
+    background-color:blue;
+  }
+}
+
     </style>
   </head>
   <body>
     <div class="animator"></div>
     <div class="world-anim">
+        <div class="skyboxHolder">
+    <div class="skybox cubed">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
       
       <div class="world">
         <div class="world-inner">
@@ -379,7 +429,7 @@ to { width: 100px }
           <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
             <!-- Världen -->
               <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-            <div class="cubed" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="cubed wall" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 600px; top: 600px; --width: 80px; --height: 80px; --depth: 10000px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
             <div class="ground"></div>
           </div>
         </div>
@@ -401,7 +451,7 @@ to { width: 100px }
           <div class="cover">
             <div class="world-content world-translation" id="template-world">
               <!-- Hitboxar -->
-              <div style=" left: 5px; top: 0px; width: 50px; height: 20px"></div><div style=" left: 200px; top: 500px; width: 80px; height: 10px"></div>
+              <div style=" left: 5px; top: 0px; width: 50px; height: 20px"></div><div style=" left: 200px; top: 500px; width: 80px; height: 10px"></div><div style=" left: 600px; top: 600px; width: 80px; height: 80px"></div>
             </div>
           </div>
         </button>

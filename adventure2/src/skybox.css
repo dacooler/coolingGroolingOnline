@@ -1,0 +1,29 @@
+.skyboxHolder{
+  --skyboxSize: 10px;
+  transform-style:preserve-3d;
+  position: absolute;
+  width:0px;
+  height:0px;
+  left:50%;
+  top:50%;
+  --fov: 10cm;
+  transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
+  transition: transform 1s;
+  .skybox{
+    --img: linear-gradient(lightblue, blue); 
+    position:absolute;
+    left:calc(var(--skyboxSize)/-2);
+    top:calc(var(--skyboxSize)/-2);
+    --width:var(--skyboxSize);
+    --height:var(--skyboxSize);
+    --depth:var(--skyboxSize);
+    transform-origin: 50% 50% calc(var(--skyboxSize)/2);
+    transform: rotateX(90deg) var(--world-rotation);
+    div:nth-child(5){
+      background-image: none;
+      background-color:lightblue;
+    }
+    background-image: none;
+    background-color:blue;
+  }
+}

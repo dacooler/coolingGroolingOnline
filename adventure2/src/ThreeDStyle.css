@@ -124,7 +124,7 @@
         left: 50%;
         height:var(--height);
         width: var(--width);
-        transform: translate(-50%, -50%) translateZ(var(--Depth));
+        transform: translate(-50%, -50%) translateZ(var(--depth));
 }
 
 
