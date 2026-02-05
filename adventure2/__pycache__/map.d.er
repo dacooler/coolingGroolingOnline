@@ -1,4 +1,4 @@
-##[pylyzer] succeed /home/dacooler/prog/coolingGroolingOnline/adventure2/map.py 1770150690 878
-.buildPart: |K: Type, Self <: global::Indexable(?K, ?R), R: Type, Self <: global::Indexable(?K, ?R)|(cords: Self, size: Self) -> global::Tuple([Str, Str])
-.getMap: () -> global::Tuple([Str, Str])
+##[pylyzer] succeed /home/dacooler/prog/coolingGroolingOnline/adventure2/map.py 1770199398 928
+.buildPart: |K :> {2, 1, 0}, Self <: global::Indexable(K, R), Self <: global::Indexable(K, R), R <: Str, K :> {1, 0}|(cords: Self, size: Self, clas: R) -> global::Tuple([Str, Str])
+.getMap: Never
 uple([Str, Str])

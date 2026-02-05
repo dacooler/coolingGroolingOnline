@@ -6,7 +6,6 @@
   height:0px;
   left:50%;
   top:50%;
-  --fov: 10cm;
   transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
   transition: transform 1s;
   .skybox{

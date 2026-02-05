@@ -1,0 +1,14 @@
+:root{
+  --fov: 10cm;
+}
+.world-inner {
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
+  transition: transform 2s;
+  top: 50%;
+  left: 50%;
+  width:0px;
+  height:0px;
+}

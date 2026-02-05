@@ -45,6 +45,15 @@
           height: 100%;
           transform: rotateZ(-45deg);
         }
+        .middle-cover{
+          width: 25%;
+          height: 25%;
+          position: absolute;
+          left: 37.5%;
+          top: 37.5%;
+          border-radius: 100%;
+          background-color: lightgray;
+        }
         .cover {
           width: 0px;
           height: 0px;

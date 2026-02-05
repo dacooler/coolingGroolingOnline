@@ -1,3 +1,9 @@
 .wall{
   --img:url("../assets/images/books.jpg");
 }
+.pole{
+  transform: translateZ(100px);
+}
+.roof{
+  transform: translateZ(var(--extra));
+}

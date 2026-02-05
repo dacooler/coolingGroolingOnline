@@ -15,9 +15,6 @@
     background-color: black;
   }
 }
-:root{
-  --fov: 10cm;
-}
 
 .world {
   position: fixed;
@@ -27,17 +24,7 @@
   left: 0px;
   overflow: hidden;
 }
-.world-inner {
-  position: absolute;
-  transform-origin: 50% 50%;
-  transform-style: preserve-3d;
-  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
-  transition: transform 2s;
-  top: 50%;
-  left: 50%;
-  width:0px;
-  height:0px;
-}
+
 .ground {
   position: absolute;
   top: 0px;
@@ -106,6 +93,15 @@
           height: 100%;
           transform: rotateZ(-45deg);
         }
+        .middle-cover{
+          width: 25%;
+          height: 25%;
+          position: absolute;
+          left: 37.5%;
+          top: 37.5%;
+          border-radius: 100%;
+          background-color: lightgray;
+        }
         .cover {
           width: 0px;
           height: 0px;
@@ -164,7 +160,7 @@
 
 .world-anim {
   --mapSizeX: 1000;
-  --mapSizeY: 2000;
+  --mapSizeY: 1000;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 
@@ -228,36 +224,6 @@ to { width: 100px }
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-}
-
-.tEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateX(90deg);
-        transform-origin: 50% 0% 0;
-}
-.bEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateX(90deg);
-        transform-origin: 50% 100% 0;
-}
-
-.rEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateY(90deg);
-        transform-origin: 100% 50% 0;
-}
-.lEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateY(-90deg);
-        transform-origin: 0% 50% 0;
 }
 .threeD{
         margin-top: 100px;
@@ -367,13 +333,14 @@ to { width: 100px }
         background-size: 100% 100%;
 }
 
-.extrude{
-}
-
-
-
       .wall{
   --img:url("../assets/images/books.jpg");
+}
+.pole{
+  transform: translateZ(100px);
+}
+.roof{
+  transform: translateZ(var(--extra));
 }
 
       .skyboxHolder{
@@ -384,7 +351,6 @@ to { width: 100px }
   height:0px;
   left:50%;
   top:50%;
-  --fov: 10cm;
   transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
   transition: transform 1s;
   .skybox{
@@ -404,6 +370,21 @@ to { width: 100px }
     background-image: none;
     background-color:blue;
   }
+}
+
+      :root{
+  --fov: 10cm;
+}
+.world-inner {
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
+  transition: transform 2s;
+  top: 50%;
+  left: 50%;
+  width:0px;
+  height:0px;
 }
 
     </style>
@@ -429,7 +410,7 @@ to { width: 100px }
           <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
             <!-- Världen -->
               <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-            <div class="cubed wall" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 600px; top: 600px; --width: 80px; --height: 80px; --depth: 10000px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="cubed wall" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 600px; top: 600px; --width: 80px; --height: 80px; --depth: 10000px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed pole" style=" left: 680px; top: 600px; --width: 100px; --height: 20px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed roof" style=" left: 680px; top: 620px; --width: 500px; --height: 500px; --depth: 10px; --extra: 200px;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
             <div class="ground"></div>
           </div>
         </div>
@@ -447,6 +428,8 @@ to { width: 100px }
             <span class="move-d"></span>
             <span class="move-u"></span>
             <span class="move-l"></span>
+          </div>
+          <div class="middle-cover">
           </div>
           <div class="cover">
             <div class="world-content world-translation" id="template-world">

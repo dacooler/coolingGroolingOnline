@@ -39,7 +39,7 @@
 
 .world-anim {
   --mapSizeX: 1000;
-  --mapSizeY: 2000;
+  --mapSizeY: 1000;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 
