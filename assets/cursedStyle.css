@@ -28,7 +28,7 @@
   }
   a{
     transition: transform 1s;
-    animation: 1s blinkColor infinite;
+    animation: 1s blinkSmall infinite;
     animation-timing-function: steps(2, jump-none);
     text-align: center;
     line-height: 2.0;
@@ -39,8 +39,9 @@
     background-image: radial-gradient(green, blue, red);
   }
   a:hover{
+    animation: 0.2s blinkColor infinite;
+    animation-timing-function: steps(2, jump-none);
     transform: scale(1.1);
-    animation-duration: 0.2s;
   }
 }
   @keyframes blink{
@@ -51,6 +52,10 @@
     0% {color: yellow};
     100% {color: black};
   }
+  @keyframes blinkSmall{
+    0% {color: yellow};
+    100% {color: orange};
+}
 
 body{
 	cursor: url(cursors/BlueglassArrow.cur), auto;	

@@ -37,8 +37,8 @@
       <input type="radio" id="menu5" name="dm">
       <div class="sky">
         <div class="clouds"></div>
-        <div class="bloom bigstars"></div>
-        <div class="bloom smallstars"></div>
+        <div class="bigstars"></div>
+        <div class="smallstars"></div>
         <div class="blinkstars1"></div>
         <div class="blinkstars2"></div>
         <div class="blinkstars3"></div>
