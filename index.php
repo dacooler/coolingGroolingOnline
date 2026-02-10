@@ -38,6 +38,7 @@
         </button>
         <p>!!!!!!</p>
         <a href="./navigation/"> Navigation</a>
+        <a href="./adventure2/"> Adventure Demo <img class="new" src="assets/images/NEW.png">  </a>
         <img src="./assets/images/DANC.gif" class="mitten">
       </div>
     </div>
