@@ -5,6 +5,53 @@
 	width: 400px;
 	height:300px;
 }
+.GoNavigate{
+    margin-top: 20px;
+  .arrow{
+    animation: 1s blink infinite;
+    animation-timing-function: steps(2, jump-none);
+    position: relative;
+    background-image: url("./images/icons/bigRedArrow.png");
+    background-size: 100% 100%;
+    width: 100px;
+    height: 80px;
+  }
+  .a1{
+    left: -50px;
+    top: -100px;
+    transform: rotate(-80deg);
+  }
+  .a2{
+    right: -74%;
+    top: -180px;
+    transform: rotate(80deg);
+  }
+  a{
+    transition: transform 1s;
+    animation: 1s blinkColor infinite;
+    animation-timing-function: steps(2, jump-none);
+    text-align: center;
+    line-height: 2.0;
+    width: 80%;
+    height: 100px;
+    display: block;
+    font-size:50px;
+    background-image: radial-gradient(green, blue, red);
+  }
+  a:hover{
+    transform: scale(1.1);
+    animation-duration: 0.2s;
+  }
+}
+  @keyframes blink{
+    0% {opacity: 1.0};
+    100% {opacity: 0.0};
+  }
+  @keyframes blinkColor{
+    0% {color: yellow};
+    100% {color: black};
+  }
+
 body{
 	cursor: url(cursors/BlueglassArrow.cur), auto;	
 }
@@ -80,11 +127,6 @@ a, button{
   margin-top: 10px;
 }
 
-a:hover, button:hover{
-	font-size: 32px;
-	width: 200%;
-  box-shadow: 5px 5px rgba(0,0,0,0.5);
-}
 
 a:hover .new{
 	height:32px;
@@ -102,6 +144,11 @@ img.new{
 	transition: box-shadow 0.5s, opacity 1s;
 	border-style: outset;
 	overflow:visible;
+  a:hover, button:hover{
+    font-size: 32px;
+    width: 200%;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+  }
 }
 
 .left:hover{
@@ -291,7 +338,7 @@ margin:AUTO;
 
 
 
-
+curl 'https://wifi.liu.se/cgi-bin/login' -X POST --
 
 
 

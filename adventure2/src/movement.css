@@ -38,8 +38,8 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
-  --mapSizeX: 1000;
-  --mapSizeY: 1000;
+  --mapSizeX: 2000;
+  --mapSizeY: 2000;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 

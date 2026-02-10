@@ -31,6 +31,7 @@
   left: 0px;
   width: var(--mapSizeXPx);
   height: var(--mapSizeYPx);
+  background-size: 300px 200px;
   background-image: url("../assets/images/wood.jpg");
 }
 
@@ -159,8 +160,8 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
-  --mapSizeX: 1000;
-  --mapSizeY: 1000;
+  --mapSizeX: 2000;
+  --mapSizeY: 2000;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 
@@ -333,14 +334,54 @@ to { width: 100px }
         background-size: 100% 100%;
 }
 
-      .wall{
-  --img:url("../assets/images/books.jpg");
-}
-.pole{
-  transform: translateZ(100px);
-}
-.roof{
-  transform: translateZ(var(--extra));
+      .world-content{
+  div{
+    div{
+      backface-visibility:hidden;
+    }
+  }
+  .wall{
+    --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
+    div{
+      image-rendering: pixelated;
+      background-size: 100% 100%, 210px 210px;
+    }
+  }
+  .pole{
+    transform: translateZ(100px);
+    --img:url("../assets/images/bricks.jpg");
+    div{
+      background-size:200px 200px;
+    }
+  }
+  .roof{
+    transform: translateZ(var(--arg0));
+    --img:url("../assets/images/wood.jpg");
+  }
+  .nPaper{
+    div:nth-child(2){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .wPaper{
+    div:nth-child(3){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .sPaper{
+    div:nth-child(1){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .ePaper{
+    div:nth-child(4){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
 }
 
       .skyboxHolder{
@@ -370,6 +411,16 @@ to { width: 100px }
     background-image: none;
     background-color:blue;
   }
+  .floor{
+    left:calc(var(--skyboxSize)/-2);
+    top:0px;
+    background-image:url("../assets/images/wood.jpg");
+    position:absolute;
+    width:var(--skyboxSize);
+    height:var(--skyboxSize);
+    transform: rotateX(89deg) var(--world-rotation);
+    transform-origin: top left;
+  }
 }
 
       :root{
@@ -379,7 +430,7 @@ to { width: 100px }
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
-  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(80deg) ;
+  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(90deg) ;
   transition: transform 2s;
   top: 50%;
   left: 50%;
@@ -410,7 +461,7 @@ to { width: 100px }
           <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
             <!-- Världen -->
               <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-            <div class="cubed wall" style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall" style=" left: 600px; top: 600px; --width: 80px; --height: 80px; --depth: 10000px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed pole" style=" left: 680px; top: 600px; --width: 100px; --height: 20px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed roof" style=" left: 680px; top: 620px; --width: 500px; --height: 500px; --depth: 10px; --extra: 200px;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="cubed wall " style=" left: 5px; top: 0px; --width: 50px; --height: 20px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall " style=" left: 300px; top: 300px; --width: 80px; --height: 80px; --depth: 10000px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall " style=" left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall nPaper" style=" left: 780px; top: 600px; --width: 500px; --height: 20px; --depth: 210px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed pole nPaper" style=" left: 680px; top: 600px; --width: 100px; --height: 20px; --depth: 110px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall wPaper" style=" left: 660px; top: 600px; --width: 20px; --height: 520px; --depth: 210px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall sPaper" style=" left: 680px; top: 1120px; --width: 600px; --height: 20px; --depth: 210px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed wall ePaper" style=" left: 1260px; top: 600px; --width: 20px; --height: 520px; --depth: 210px;"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="cubed roof" style=" left: 680px; top: 620px; --width: 600px; --height: 500px; --depth: 10px;--arg0: 200px; "><div></div><div></div><div></div><div></div><div></div><div></div></div>
             <div class="ground"></div>
           </div>
         </div>
@@ -434,7 +485,7 @@ to { width: 100px }
           <div class="cover">
             <div class="world-content world-translation" id="template-world">
               <!-- Hitboxar -->
-              <div style=" left: 5px; top: 0px; width: 50px; height: 20px"></div><div style=" left: 200px; top: 500px; width: 80px; height: 10px"></div><div style=" left: 600px; top: 600px; width: 80px; height: 80px"></div>
+              <div style=" left: 5px; top: 0px; width: 50px; height: 20px"></div><div style=" left: 300px; top: 300px; width: 80px; height: 80px"></div><div style=" left: 200px; top: 500px; width: 80px; height: 10px"></div><div style=" left: 780px; top: 600px; width: 500px; height: 20px"></div><div style=" left: 660px; top: 600px; width: 20px; height: 520px"></div><div style=" left: 680px; top: 1120px; width: 600px; height: 20px"></div><div style=" left: 1260px; top: 600px; width: 20px; height: 520px"></div>
             </div>
           </div>
         </button>

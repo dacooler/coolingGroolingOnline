@@ -1,9 +1,49 @@
-.wall{
-  --img:url("../assets/images/books.jpg");
-}
-.pole{
-  transform: translateZ(100px);
-}
-.roof{
-  transform: translateZ(var(--extra));
+.world-content{
+  div{
+    div{
+      backface-visibility:hidden;
+    }
+  }
+  .wall{
+    --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
+    div{
+      image-rendering: pixelated;
+      background-size: 100% 100%, 210px 210px;
+    }
+  }
+  .pole{
+    transform: translateZ(100px);
+    --img:url("../assets/images/bricks.jpg");
+    div{
+      background-size:200px 200px;
+    }
+  }
+  .roof{
+    transform: translateZ(var(--arg0));
+    --img:url("../assets/images/wood.jpg");
+  }
+  .nPaper{
+    div:nth-child(2){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .wPaper{
+    div:nth-child(3){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .sPaper{
+    div:nth-child(1){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
+  .ePaper{
+    div:nth-child(4){
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+  }
 }

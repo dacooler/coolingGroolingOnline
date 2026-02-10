@@ -47,6 +47,11 @@
           <img class="title" src="./assets/images/cooltext.gif">
           <img class="title" src="./assets/images/number2.gif">
         </div>
+        <div class="GoNavigate">
+          <a href="navigation/"> GO NAVIGATE!!! </a>
+          <div class="arrow a1"></div>
+          <div class="arrow a2"></div>
+        </div>
         <img class="cool" src="./assets/images/KOLBILD.jpg" width="300" style="display:block;margin:auto">
                 <div class="cube">
                         <div id="c1"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
