@@ -39,7 +39,7 @@
     background-image: radial-gradient(green, blue, red);
   }
   a:hover{
-    animation: 0.2s blinkColor infinite;
+    animation: 0.3s blinkColor infinite;
     animation-timing-function: steps(2, jump-none);
     transform: scale(1.1);
   }
