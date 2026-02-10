@@ -173,7 +173,7 @@ span:hover{
 	background-image: url("./images/scroll-middle.png");
 	background-repeat: repeat-y;
 	height: 2%;
-	transition: height 3s;	
+	transition: height 10s;	
 	display:inline;
 	height:10px;
 	overflow:visible;
@@ -212,17 +212,17 @@ span:hover{
   margin-left: 50px;
   width: 50%;
   height: 10px;
-  transition: height 3s;
+  transition: height 10s;
   overflow: hidden;
 
 }
 
 .speech:hover{
-	height: 1000px;
+	height: 10000px;
 }
 
 .speech:hover p{
-	height: 1000px;
+	height: 10000px;
 }
 
 .footer{
