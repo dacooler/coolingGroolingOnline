@@ -6,11 +6,15 @@
 	height:300px;
 }
 .GoNavigate{
-    margin-top: 20px;
+  margin-top: 20px;
+  position: relative;
+  width: 80%;
+  height: 80px;
+  margin-bottom: 40px;
   .arrow{
     animation: 1s blink infinite;
     animation-timing-function: steps(2, jump-none);
-    position: relative;
+    position: absolute;
     background-image: url("./images/icons/bigRedArrow.png");
     background-size: 100% 100%;
     width: 100px;
@@ -18,21 +22,20 @@
   }
   .a1{
     left: -50px;
-    top: -100px;
     transform: rotate(-80deg);
   }
   .a2{
-    right: -74%;
-    top: -180px;
+    right: -50px;
     transform: rotate(80deg);
   }
   a{
+    position: absolute;
     transition: transform 1s;
     animation: 1s blinkSmall infinite;
     animation-timing-function: steps(2, jump-none);
     text-align: center;
     line-height: 2.0;
-    width: 80%;
+    width: 100%;
     height: 100px;
     display: block;
     font-size:50px;
