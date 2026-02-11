@@ -53,7 +53,7 @@
   }
   @keyframes blinkColor{
     0% {color: yellow};
-    100% {color: red};
+    100% {color: red; };
   }
   @keyframes blinkSmall{
     0% {color: yellow};
