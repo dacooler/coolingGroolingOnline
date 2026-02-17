@@ -143,30 +143,6 @@ body{
                         ) 
 */
 
-.article{
-  transform: rotateY(calc(var(--degrees) * 1)) translateZ(80px);
-  transform-origin: 50% 50% 400px;
-  transform-style: preserve-3d;
-  display:block;
-  position: absolute;
-  left: -80px;
-}
-
-.article img{
-  width: 80px;
-}
-
-.article div{
-  transform-style: preserve-3d;
-  background-color: white;
-  transform: translateY(-10px) rotateX(5deg);
-  font-size:2px;
-  width: 80px;
-}
-
-.article div p{
-  margin: 2px;
-}
 
 .dMenu label:hover{
   opacity: 1;
@@ -339,6 +315,43 @@ img.future{
         transform: rotateY(180deg) rotateY(calc(var(--spin) * 90deg)) scale(1) ;
         transform-origin: 50% 50% -400px;
 }
+
+.article{
+  transform: rotateY(calc(var(--degrees) * 1)) translateZ(20px);
+  transform-origin: 50% 50% 400px;
+  transform-style: preserve-3d;
+  display:block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  left: 50%;
+  top: 50%;
+
+  img{
+    width: 80px;
+  }
+
+  div{
+    transform-style: preserve-3d;
+    background-color: white;
+    transform: translateY(-10px) rotateX(5deg);
+    font-size:2px;
+    width: 80px;
+  }
+
+  div p{
+    margin: 2px;
+  }
+
+  .articlePage{
+    width: 1000px;
+    height: 1200px;
+    transform: translateY(20px) translate(-50%, -50%) scale(0.08);
+    position: absolute;
+  }
+}
+
+
 
 
 
