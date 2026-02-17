@@ -95,6 +95,11 @@ ul li {
 	
 }
 
+.minilinks{
+  padding-top:100px;
+  border-top: solid black 1px; 
+}
+
 ul {
 	list-style-position: inside;
 }
