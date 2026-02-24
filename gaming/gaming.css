@@ -6,8 +6,8 @@ body{
 
 .room{
         transform-style: preserve-3d;
-        transform: rotateX(-15deg);
-        perspective: 50cm;
+        transform: perspective(20cm) rotateX(-15deg);
+        transition: transform 1s;
 
         /*animation: spin 2s linear infinite;*/
 }
@@ -39,7 +39,8 @@ body{
 }
 .cubed.machine{
         /*animation: spin 2s ease infinite;*/
-        top: 50%;
+        position: absolute;
+        bottom: -25%;
         left: 20%;
         transform: rotateY(180deg) translate(-50%, -50%);
         --cWidth:200px;
@@ -89,6 +90,7 @@ body{
 }
 
 .cubed.machine-upper{
+        position: absolute;
         bottom: 0px;
         z-index: -100;
         --cWidth:198px;

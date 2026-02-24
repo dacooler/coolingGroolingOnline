@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="gramStyle.css">
     <link rel="stylesheet" href="gameStyle.css">
     <link rel="stylesheet" href="compStyle.css">
+    <link rel="stylesheet" href="skyStyle.css">
     <link rel="stylesheet" href="../styles/ThreeDStyle.css">
     <link rel="stylesheet" href="../assets/cubestyle.css">
     <style>
@@ -35,14 +36,9 @@
       <input type="radio" id="menu3" name="dm">
       <input type="radio" id="menu4" name="dm">
       <input type="radio" id="menu5" name="dm">
-      <div class="sky">
-        <div class="clouds"></div>
-        <div class="bigstars"></div>
-        <div class="smallstars"></div>
-        <div class="blinkstars1"></div>
-        <div class="blinkstars2"></div>
-        <div class="blinkstars3"></div>
-      </div>
+      <?php
+        require("src/skybox.php");
+      ?>
       <div class="dMenu">
         <label for="menu1">
           <div><a href="../gaming/">Gaming</a></div>

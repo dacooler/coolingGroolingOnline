@@ -2,6 +2,7 @@
         --degrees: calc(360deg / 5);
         --skyboxSize: 10000px;
         --spin: 0;
+        --fov: 100cm;
 }
 
 .bloom::before{
@@ -30,7 +31,7 @@
   transform-origin: 50% 50% 400px;
   transform-style: preserve-3d;
   transition: transform 1s;
-  transform: perspective(100cm) rotateY(calc(var(--degrees) * var(--spin)));
+  transform: perspective(var(--fov)) rotateY(calc(var(--degrees) * var(--spin)));
 }
 
 body{
@@ -108,7 +109,7 @@ body{
 
     p{
       text-align: center;
-      transform:perspective(100cm) scale(1);
+      transform:perspective(var(--fov)) scale(1);
       font-size: 200px;
       backface-visibility:hidden;
     }
@@ -197,7 +198,7 @@ input:checked#menu5 ~ div .left{
   display: block;
 }
 input:checked#menu5 ~ .dMenu{
-  transform: perspective(100cm) rotateY(calc(var(--degrees)*2)) translateY(25px) translateZ(-2750px) translateX(-2000px);
+  transform: perspective(var(--fov)) rotateY(calc(var(--degrees)*2)) translateY(25px) translateZ(-2750px) translateX(-2000px);
 }
 
 div.ground{
@@ -304,17 +305,6 @@ img.future{
   }
 }
 
-.skybox{
-        z-index: -1000;
-        transform-style:preserve-3d;
-        position: absolute;
-        top: 50%;
-        left:50%;
-        perspective: 100cm;
-        transition: transform 1s;
-        transform: rotateY(180deg) rotateY(calc(var(--spin) * 90deg)) scale(1) ;
-        transform-origin: 50% 50% -400px;
-}
 
 .article{
   transform: rotateY(calc(var(--degrees) * 1)) translateZ(20px);

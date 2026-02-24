@@ -1,0 +1,33 @@
+.skyboxHolder{
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  left: 50%;
+  top: 50%;
+  transform: perspective(var(--fov)) translateZ(calc(var(--fov) - 1000px/2));
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  pointer-events: none;
+
+  .skybox{
+    position: absolute;
+    left: -500px;
+    top: -500px;
+    transform-origin: 50% 50% 50px;
+    transition: transform 1s;
+    transform: rotateX(90deg) rotateZ(calc(var(--degrees) * var(--spin)));
+    --cWidth: 1000px;
+    --cHeight: 1000px;
+    --cDepth: 1000px;
+    --color: transparent;
+    --dayOp: calc(1 - (abs(calc(mod(var(--times) + var(--time), 1) - 1/2) * 2)));
+    div:nth-child(2n){
+      background-image: url("../assets/images/clouds.png");
+      opacity: calc(0.5 * var(--dayOp));
+      background-size: 25%;
+      background-repeat: no-repeat;
+      background-position: bottom left;
+    }
+
+  }
+}
