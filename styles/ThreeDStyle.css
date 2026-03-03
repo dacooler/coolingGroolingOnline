@@ -4,35 +4,6 @@
         transform: translate(-50%, -50%);
 }
 
-.tEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateX(90deg);
-        transform-origin: 50% 0% 0;
-}
-.bEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateX(90deg);
-        transform-origin: 50% 100% 0;
-}
-
-.rEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateY(90deg);
-        transform-origin: 100% 50% 0;
-}
-.lEdgeTurn{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotateY(-90deg);
-        transform-origin: 0% 50% 0;
-}
 .threeD{
         margin-top: 100px;
         margin-left: 100px;
@@ -48,9 +19,11 @@
 
 /*front*/
 .cubed{
+        background-size: 100% 100%;
         height:var(--cHeight) !important;
         width: var(--cWidth) !important;
         background-image: var(--img);
+        background-position: top left;
         background-color: var(--color);
         transform-style: preserve-3d;
         /*(in)SANE DEFAULTS*/
@@ -63,7 +36,10 @@
         /*
         DEBUG
         */
-        /* 
+        /*
+        position: absolute;
+        top: 50%;
+        left: 50%;
         transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
         animation-name: debug;
         animation-iteration-count: infinite;
@@ -76,55 +52,55 @@
 /* top */
 .cubed > div:nth-child(1){
         position: absolute;
-        top: calc(var(--cDepth) / 2);
-        left: 50%;
+        top: 0px;
+        left: 0px;
         width: var(--cWidth);
         height: var(--cDepth);
-        transform: translate(-50%, -50%) rotateX(90deg) rotate(180deg) translate(0, -100%);
+        transform: rotateX(90deg) rotate(180deg) translateY(calc(-1 *var(--cDepth)));
         transform-origin: 50% 0% 0;
 }
 
 /* bottom */
 .cubed > div:nth-child(2){
         position: absolute;
-        top: calc(var(--cHeight) - var(--cDepth) / 2);
-        left: 50%;
+        top: 0px;
+        left: 0px;
         width: var(--cWidth);
         height: var(--cDepth);
-        transform: translate(-50%, -50%) rotateX(-90deg);
-        transform-origin: 50% 100% 0;
+        transform: rotateX(-90deg) translateZ(var(--cHeight)) translateY(calc(-1 * var(--cDepth)));
+        transform-origin: 50% 0% 0;
 }
 
 /* right */
 .cubed > div:nth-child(3){
         position: absolute;
-        top: 50%;
-        left: calc(var(--cWidth) - var(--cHeight) / 2);
+        top: 0px;
+        left: 0px;
         width: var(--cHeight); 
         height: var(--cDepth);
-        transform: translate(-50%, -50%) rotateY(90deg) rotate(-90deg) translate(50%, -50%);
-        transform-origin: 100% 50% 0;
+        transform: rotateX(90deg) rotateY(90deg) translateZ(var(--cWidth)) rotate(180deg) translate(-100%, -100%);
+        transform-origin: 0% 0% 0;
 }
 
 /* left */
 .cubed > div:nth-child(4){
         position: absolute;
-        top: 50%;
-        left: calc(var(--cHeight) / 2);
+        top: 0px;
+        left: 0px;
         width: var(--cHeight); 
         height: var(--cDepth);
-        transform: translate(-50%, -50%) rotateY(-90deg) rotate(90deg) translate(-50%, -50%);
-        transform-origin: 0% 50% 0;
+        transform: rotateX(90deg) rotateY(90deg) rotate(180deg) translate(-100%, -100%);
+        transform-origin: 0% 0% 0;
 }
 
 /*back*/
 .cubed > div:nth-child(5){
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 0px;
+        left: 0px;
         height:var(--cHeight);
         width: var(--cWidth);
-        transform: translate(-50%, -50%) translateZ(var(--cDepth));
+        transform: translateZ(var(--cDepth));
 }
 
 

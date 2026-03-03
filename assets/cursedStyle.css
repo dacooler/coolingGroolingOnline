@@ -112,8 +112,17 @@ a, button{
 	cursor: url(cursors/BlueGlassLink.cur), auto;	
 }
 
-.title{
-	background-image: linear-gradient(green, blue);
+.titleholder{
+  background-image: linear-gradient(brown, orange);
+  border-style: double;
+  width: 879px;
+
+  .flexer{
+    margin-left: -30px;
+    .title{
+      background-image: linear-gradient(green, blue);
+    }
+  }
 }
 
 .list{
