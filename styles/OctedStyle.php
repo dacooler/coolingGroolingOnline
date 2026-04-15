@@ -55,8 +55,7 @@ for ($side = 1; $side <= 2; $side++) {
     height: var(--cWidth);
     <?php if($side == 1) { echo "transform: translateZ(var(--cDepth));"; } ?>
     transform-origin: 50% 50% 0;
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>');
-    mask-size: 100% 100%;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') 100% 100%;
 }
 <?php
 }
