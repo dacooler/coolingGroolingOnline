@@ -11,6 +11,7 @@ if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['color'])) {
 
     $data = [];
     $beadsFileName = "beads.csv";
+    $snapshotFolder= "snapshots/";
 
     if (($handle = fopen($beadsFileName, "r")) !== false) {
         while (($row = fgetcsv($handle, escape: "\\")) !== false) {
@@ -29,5 +30,6 @@ if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['color'])) {
         }
         fclose($handle);
     }
+    copy($beadsFileName, $snapshotFolder . date("W") . ".csv");
 }
 ?>

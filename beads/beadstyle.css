@@ -1,0 +1,28 @@
+.main{
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
+  gap: 20px;
+  #beads-base{
+    display: grid; 
+    margin: none;
+    background-image: linear-gradient(gray, black);
+    padding: 10px;
+    .bead{
+      background-color: coral; 
+      width: 16px; 
+      height: 16px;
+    }
+  }
+  .selector{
+    height: 300px;
+    button{
+      height: 16px;
+    }
+  }
+  .goback{
+    align-self:start;
+  }
+}
