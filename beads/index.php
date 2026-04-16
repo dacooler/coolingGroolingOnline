@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Beads TM</title>
+  <link rel="stylesheet" href="beadstyle.css">
+
 </head>
 
 <script>
@@ -40,25 +42,30 @@
 </script>
 
 <body onload="setUpBeads()">
-  <div style="display: flex; flex-direction: row; align-items: center;">
+  <div class="main">
+      <div class="goback">
+        <a href="../">
+        Go Back
+        </a>
+      </div>
     <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 29; $i++) { echo("16px "); } ?>" id="beads-base">
       <?php
         for ($y = 0; $y < 29; $y++) {
           for ($x = 0; $x < 29; $x++) {
             ?>
-            <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> style="background-color: coral; width: 16px; height: 16px;" onclick="setColorOn(this)"</button>
+            <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead" onclick="setColorOn(this)"</button>
             <?php
           }
         }
       ?>
     </div>
-    <div style="width: 16px;"></div>
-    <div style="height: 16px;">
+    <div class="selector">
+      <h3> Select color: </h3>
       <?php
       $colors = ["#ffffff", "#000000", "#ff0000", "#ff8800", "#ffff00", "#00ff00", "#0088ff", "#bb22ff"];
       for ($colorIndex = 0; $colorIndex < 8; $colorIndex++) {
         ?>
-        <button style="background-color: <?php echo $colors[$colorIndex]; ?>; height: 16px" onclick="selectColor('<?php echo $colorIndex; ?>')"></button>
+        <button style="background-color: <?php echo $colors[$colorIndex]; ?>;" onclick="selectColor('<?php echo $colorIndex; ?>')"></button>
         <?php
       }
       ?>

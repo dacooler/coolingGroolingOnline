@@ -351,6 +351,40 @@ width: 70%;
 margin:AUTO;
 }
 
+.bead{
+  transform: rotateX(45deg);
+  animation: perlsnurr 2s linear infinite;
+  transform-origin: 50% 50% 50px;
+  div{
+    filter: hue-rotate(90deg);
+    animation: rainbows 3s linear infinite;
+  }
+  div.octed{
+    filter: none;
+    animation: none;
+    position:absolute;
+    left:25px;
+    top:25px;
+    background-color: #0000;
+  }
+
+  div:nth-child(9), div:nth-child(10){
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 0px 0px,  
+url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 25px 25px !important; 
+    mask-size: 100%, 50% !important;
+    mask-composite: subtract, add!important;
+    --color: darkred;
+  }
+}
+@keyframes perlsnurr{
+  0%{transform: rotateY(0deg);};
+  100%{transform: rotate3d(1, 1, 1, 360deg);};
+}
+@keyframes rainbows{
+  0%{filter: hue-rotate(0deg);};
+  100%{filter: hue-rotate(360deg);};
+}
+
 
 
 
