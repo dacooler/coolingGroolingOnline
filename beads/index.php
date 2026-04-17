@@ -43,9 +43,9 @@
     let beadColors = beads.split("\n").map((row) => row.split(",").map((elem) => colors[parseInt(elem)]));
 
     let kids = document.getElementById("beads-base").children;
-    for (let y = 0; y < 29; y++) {
-      for (let x = 0; x < 29; x++) {
-        let i = y * 29 + x;
+    for (let y = 0; y < 30; y++) {
+      for (let x = 0; x < 30; x++) {
+        let i = y * 30 + x;
         kids[i].style.backgroundColor = beadColors[y][x];
       }
     }
@@ -66,10 +66,10 @@
         </a>
       </div>
   <div class="holder">
-    <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 29; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
+    <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
       <?php
-        for ($y = 0; $y < 29; $y++) {
-          for ($x = 0; $x < 29; $x++) {
+        for ($y = 0; $y < 30; $y++) {
+          for ($x = 0; $x < 30; $x++) {
             ?>
             <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead" onclick="setColorOn(this)"</button>
             <?php

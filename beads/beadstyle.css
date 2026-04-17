@@ -53,7 +53,7 @@
   }
 }
 .beads-base{
-  grid-template-columns: 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px;
+  grid-template-columns: 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px;
   display: grid; 
   margin: none;
   border: gray 1px solid;
