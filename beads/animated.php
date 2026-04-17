@@ -30,7 +30,7 @@
       function clearBeads() {
         let kids = document.getElementById("beads-base").children;
         for (let kid of kids) {
-          kid.style.backgroundColor = "#ffffff";
+          kid.style.backgroundColor = "#ECE9E3";
         }
       }
 
