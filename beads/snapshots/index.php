@@ -18,6 +18,7 @@
     for($i = 0; $i < count($files); $i+=1){
       $file = $files[$i];
     ?>
+  <div class="backgr">
         <div class="beads-base">
       <?php 
         $data = [[]];
@@ -37,6 +38,7 @@
         }
       } 
         ?>
+        </div>
         </div>
         <?php
     }
