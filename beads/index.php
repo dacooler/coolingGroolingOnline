@@ -66,6 +66,7 @@
         </a>
       </div>
   <div class="holder">
+  <div class="backgr">
     <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
       <?php
         for ($y = 0; $y < 30; $y++) {
@@ -76,6 +77,7 @@
           }
         }
       ?>
+    </div>
     </div>
     </div>
     <div class="selector">
