@@ -27,8 +27,8 @@
             }
             fclose($handle);
         }
-      for($x = 0; $x < count($data) - 1; $x+=1){
-        for($y = 0; $y < count($data[$x]) - 1; $y+=1){
+      for($x = 0; $x < count($data); $x+=1){
+        for($y = 0; $y < count($data[$x]); $y+=1){
           ?>
         <div style="background-color:<?php echo $colors[$data[$x][$y]] ?>" class="bead">
           </div>
