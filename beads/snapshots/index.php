@@ -13,7 +13,7 @@
 </div>
 <div class="snapshots">
 <?php
-      $colors = ["#ffffff", "#000000", "#8664a0", "#4c3579", "#07b1cb", "#f41321", "#72716d", "#154889", "#17b1bb", "#e8c008", "#aba7a5", "#a45f40", "#e9660e", "#9b5039", "#d4440f", "#f0a260", "#116333", "#da538e", "#47ac5c", "#dcc38a"];
+    $colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
     $files = array_values(array_diff(scandir("."), array('.', '..', "index.php", ".gitkeep", ".gitignore")));
     for($i = 0; $i < count($files); $i+=1){
       $file = $files[$i];
