@@ -64,6 +64,10 @@
         <a href="./snapshots/">
           Snapshots
         </a>
+        <br>
+        <a href="animated.php">
+          Animation
+        </a>
       </div>
   <div class="holder">
   <div class="backgr">

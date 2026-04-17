@@ -65,8 +65,9 @@
   margin: none;
 }
   .bead{
-    background-color: coral; 
+    box-sizing: border-box;
     border: none;
+    background-color: white; 
     width: 16px; 
     height: 16px;
   }
