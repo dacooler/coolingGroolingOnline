@@ -1,8 +1,9 @@
 <?php
-if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['color'])) {
-    $x = $_GET['x'];
-    $y = $_GET['y'];
-    $color = $_GET['color'];
+$args = json_decode(file_get_contents("php://input"), true);
+if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
+    $x = $args['x'];
+    $y = $args['y'];
+    $color = $args['color'];
 
     if (!is_numeric($x) || !is_numeric($y) || !is_numeric($color) ||
         intval($x) != $x || intval($y) != $y || intval($color) != $color) {

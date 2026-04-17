@@ -14,7 +14,18 @@
 
   function setColorOn(element) {
     element.style.backgroundColor = selectedColor;
-    fetch("/beads/paint.php/?x=" + element.dataset.x + "&y=" + element.dataset.y + "&color=" + selectedColorIndex);
+    //fetch("/beads/paint.php/?x=" + element.dataset.x + "&y=" + element.dataset.y + "&color=" + selectedColorIndex);
+    fetch("paint.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        x: element.dataset.x,
+        y: element.dataset.y,
+        color: selectedColorIndex,
+      })
+    });
   }
 
   function selectColor(colorIndex) {
