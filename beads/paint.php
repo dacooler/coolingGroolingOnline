@@ -10,6 +10,11 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
         die("Invalid input: x, y, and color must all be integers");
     }
 
+    if (($handle = fopen("logs/" . date("W-Y") . ".log", "a")) !== false) {
+        fwrite($handle, $x . " " . $y . " " . $color . "\n");
+        fclose($handle);
+    }
+
     $data = [];
     $beadsFileName = "beads.csv";
     $snapshotFolder= "snapshots/";

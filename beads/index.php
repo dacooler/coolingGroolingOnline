@@ -64,6 +64,10 @@
         <a href="./snapshots/">
           Snapshots
         </a>
+        <br>
+        <a href="animated.php">
+          Animation
+        </a>
       </div>
   <div class="holder">
     <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
