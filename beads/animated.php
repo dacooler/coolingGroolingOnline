@@ -22,7 +22,7 @@
         let x = parseInt(items[0]);
         let y = parseInt(items[1]);
         let color = parseInt(items[2]);
-        let i = y * 29 + x;
+        let i = y * 30 + x;
         kids[i].style.backgroundColor = colors[color];
         currentStep++;
       }
