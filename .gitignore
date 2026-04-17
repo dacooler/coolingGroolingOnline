@@ -1,5 +1,4 @@
 idious-counter.log
 graph/count.csv
-beads/beads.csv
-beads/snapshots/*
-!beads/snapshots.gitkeep
+*.csv
+

@@ -5,24 +5,44 @@
   justify-content: center;
   flex-wrap:wrap;
   gap: 20px;
-  #beads-base{
-    display: grid; 
-    margin: none;
-    background-image: linear-gradient(gray, black);
+  .bead:hover{
+    filter: hue-rotate(10deg);
+  }
+
+  .beads-base{
     padding: 10px;
-    .bead{
-      background-color: coral; 
-      width: 16px; 
-      height: 16px;
-    }
+    background-image: linear-gradient(gray, black);
   }
   .selector{
     height: 300px;
+    h3{
+      mix-blend-mode: difference;
+      color:white;
+      filter: grayscale();
+    }
     button{
       height: 16px;
     }
   }
   .goback{
     align-self:start;
+  }
+}
+.snapshots{
+  display: grid; 
+  grid-template-columns: 464px 464px 464px 464px 464px 464px 464px 464px 464px 464px; 
+  padding: 16px;
+}
+.beads-base{
+  grid-template-columns: 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px;
+  display: grid; 
+  margin: none;
+  border: gray 1px solid;
+  .bead{
+    box-sizing: border-box;
+    border: gray 1px solid;
+    background-color: coral; 
+    width: 16px; 
+    height: 16px;
   }
 }
