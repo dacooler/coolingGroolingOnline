@@ -67,7 +67,7 @@
   .bead{
     box-sizing: border-box;
     border: none;
-    background-color: white; 
+    background-color: #ECE9E3; 
     width: 16px; 
     height: 16px;
   }
