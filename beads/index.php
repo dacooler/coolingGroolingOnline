@@ -8,7 +8,7 @@
 </head>
 
 <script>
-  const colors = ["#ffffff", "#000000", "#ff0000", "#ff8800", "#ffff00", "#00ff00", "#0088ff", "#bb22ff"];
+  const colors = ["#ffffff", "#000000", "#8664a0", "#4c3579", "#07b1cb", "#f41321", "#72716d", "#154889", "#17b1bb", "#e8c008", "#aba7a5", "#a45f40", "#e9660e", "#9b5039", "#d4440f", "#f0a260", "#116333", "#da538e", "#47ac5c", "#dcc38a"];
   let selectedColorIndex = 0;
   let selectedColor = colors[selectedColorIndex];
 
@@ -82,14 +82,16 @@
       <div id = "selected">
         <h3 > Select color: </h3>
       </div>
+      <div class="selections">
       <?php
-      $colors = ["#ffffff", "#000000", "#ff0000", "#ff8800", "#ffff00", "#00ff00", "#0088ff", "#bb22ff"];
-      for ($colorIndex = 0; $colorIndex < 8; $colorIndex++) {
+      $colors = ["#ffffff", "#000000", "#8664a0", "#4c3579", "#07b1cb", "#f41321", "#72716d", "#154889", "#17b1bb", "#e8c008", "#aba7a5", "#a45f40", "#e9660e", "#9b5039", "#d4440f", "#f0a260", "#116333", "#da538e", "#47ac5c", "#dcc38a"];
+      for ($colorIndex = 0; $colorIndex < count($colors); $colorIndex++) {
         ?>
         <button style="background-color: <?php echo $colors[$colorIndex]; ?>;" onclick="selectColor('<?php echo $colorIndex; ?>')"></button>
         <?php
       }
       ?>
+      </div>
     </div>
   </div>
 </body>

@@ -33,6 +33,11 @@
     button{
       height: 16px;
     }
+    .selections{
+      display: grid;
+      grid-template-columns: 20px 20px 20px 20px 20px;
+      gap: 4px;
+    }
   }
   .goback{
     align-self:start;
