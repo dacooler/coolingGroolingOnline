@@ -4,21 +4,31 @@
   align-items: center;
   justify-content: center;
   flex-wrap:wrap;
+  margin: 20px;
   gap: 20px;
   .bead:hover{
-    filter: hue-rotate(10deg);
+    opacity: 0.5;
   }
 
-  .beads-base{
+  .holder{
     padding: 10px;
     background-image: linear-gradient(gray, black);
   }
   .selector{
     height: 300px;
     h3{
-      mix-blend-mode: difference;
+      box-shadow: 2px 2px 2px black;
       color:white;
-      filter: grayscale();
+      text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -3px 0px 0 #000,
+                3px 0px 0 #000,
+                0px -3px 0 #000,
+                0px 3px 0 #000;
+
     }
     button{
       height: 16px;
@@ -28,10 +38,19 @@
     align-self:start;
   }
 }
-.snapshots{
-  display: grid; 
-  grid-template-columns: 464px 464px 464px 464px 464px 464px 464px 464px 464px 464px; 
-  padding: 16px;
+.selector, .goback{
+  background-color:white;
+  padding:5px;
+  box-sizing: border-box;
+  border: 1px solid grey;
+}
+.snapmain{
+  margin: 20px;
+  .snapshots{
+    display: grid; 
+    grid-template-columns: 464px 464px 464px 464px 464px 464px 464px 464px 464px 464px; 
+    margin-top: 10px;
+  }
 }
 .beads-base{
   grid-template-columns: 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px 16px;
@@ -45,4 +64,15 @@
     width: 16px; 
     height: 16px;
   }
+}
+
+body{
+  margin: 0px;
+  background-image:linear-gradient(white, gray);
+  height: 100vh;
+  background-attachment: fixed;
+
+}
+:root{
+  margin: 0px;
 }

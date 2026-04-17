@@ -21,6 +21,7 @@
     selectedColorIndex = colorIndex
     selectedColor = colors[colorIndex];
     document.getElementById("selected").style.backgroundColor = selectedColor;
+    document.getElementById("beads-base").style.backgroundColor = selectedColor;
   }
 
   async function setUpBeads() {
@@ -48,7 +49,12 @@
         <a href="../">
         Go Back
         </a>
+        <br>
+        <a href="./snapshots/">
+          Snapshots
+        </a>
       </div>
+  <div class="holder">
     <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 29; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
       <?php
         for ($y = 0; $y < 29; $y++) {
@@ -59,6 +65,7 @@
           }
         }
       ?>
+    </div>
     </div>
     <div class="selector">
       <div id = "selected">

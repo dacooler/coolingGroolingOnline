@@ -6,10 +6,15 @@
 
 </head>
 <body>
+<div class="snapmain">
+<h1>Snapshots</h1>
+<div class="goback">
+<a href="../">Go back</a>
+</div>
 <div class="snapshots">
 <?php
       $colors = ["#ffffff", "#000000", "#ff0000", "#ff8800", "#ffff00", "#00ff00", "#0088ff", "#bb22ff"];
-    $files = array_values(array_diff(scandir("."), array('.', '..', "index.php", ".gitkeep")));
+    $files = array_values(array_diff(scandir("."), array('.', '..', "index.php", ".gitkeep", ".gitignore")));
     for($i = 0; $i < count($files); $i+=1){
       $file = $files[$i];
     ?>
@@ -36,5 +41,6 @@
         <?php
     }
     ?>
+    </div>
     </div>
 </body>
