@@ -24,17 +24,17 @@
   }
 
   async function setUpBeads() {
-    let url = "/beads/beads.csv"
+    let url = "get-beads.php"
     let response = await fetch(url)
     let beads = await response.text();
 
-    let beadColors = beads.split(",").map((elem) => colors[parseInt(elem)]);
+    let beadColors = beads.split("\n").map((row) => row.split(",").map((elem) => colors[parseInt(elem)]));
 
     let kids = document.getElementById("beads-base").children;
     for (let y = 0; y < 29; y++) {
       for (let x = 0; x < 29; x++) {
         let i = y * 29 + x;
-        kids[i].style.backgroundColor = beadColors[i];
+        kids[i].style.backgroundColor = beadColors[y][x];
       }
     }
   }
