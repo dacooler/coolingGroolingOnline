@@ -31,6 +31,6 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
         }
         fclose($handle);
     }
-    copy($beadsFileName, $snapshotFolder . date("W") . ".csv");
+    copy($beadsFileName, $snapshotFolder . date("W-Y") . ".csv");
 }
 ?>
