@@ -11,7 +11,10 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
     }
 
     if (($handle = fopen("logs/" . date("W-Y") . ".log", "a")) !== false) {
-        fwrite($handle, $x . " " . $y . " " . $color . "\n");
+
+        if (flock($handle, LOCK_EX)){
+          fwrite($handle, $x . " " . $y . " " . $color . "\n");
+        }
         fclose($handle);
     }
 
@@ -20,9 +23,13 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
     $snapshotFolder= "snapshots/";
 
     if (($handle = fopen($beadsFileName, "r")) !== false) {
-        while (($row = fgetcsv($handle, escape: "\\")) !== false) {
-            $data[] = $row;
+
+        if (flock($handle, LOCK_EX)){
+          while (($row = fgetcsv($handle, escape: "\\")) !== false) {
+              $data[] = $row;
+          }
         }
+
         fclose($handle);
     }
 
@@ -31,8 +38,10 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
     } 
 
     if (($handle = fopen($beadsFileName, "w")) !== false) {
-        foreach ($data as $row) {
-            fputcsv($handle, $row, escape: "\\");
+        if (flock($handle, LOCK_EX)){
+          foreach ($data as $row) {
+              fputcsv($handle, $row, escape: "\\");
+          }
         }
         fclose($handle);
     }
