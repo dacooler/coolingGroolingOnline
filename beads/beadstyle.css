@@ -88,3 +88,16 @@ body{
 :root{
   margin: 0px;
 }
+.playbackMain{
+  display: flex; 
+  flex-direction: column; 
+  #timeline{
+    width: 100%;
+  }
+  .options{
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    gap: 40px;
+  }
+}

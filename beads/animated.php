@@ -14,10 +14,14 @@
       function startSlider(){
         input = document.getElementById("timeline");
         button = document.getElementById("playback");
+        speed = document.getElementById("speed");
         input.max = steps.length;
         button.addEventListener("click", (event) => {
           changePlayback(button);
         });
+        speed.addEventListener("input", (event) => {
+          changeSpeed(event.target.value);
+});
         input.addEventListener("input", (event) => {
           animateTo(event.target.value);
 });
@@ -46,11 +50,20 @@
 
       let playing = false;
       let playIntervalId = 0;
+      let pSpeed = 10;
+      function changeSpeed(speed){
+        pSpeed = speed; 
+        if (playing){
+          clearInterval(playIntervalId);
+          playIntervalId = setInterval(updateTime, 1000/speed);
+        }
+      }
 
       function changePlayback(button){
         if (!playing){
           playIntervalId = setInterval(updateTime, 100);
           playing = true;
+          changeSpeed(pSpeed);
           button.value = "⏸";
         }
         else{
@@ -89,23 +102,33 @@
       <div class="goback">
       <a href=".">Go back</a>
       </div>
-      <div class="holder">
-        <div class="backgr">
-        <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
-          <?php
-            for ($y = 0; $y < 30; $y++) {
-              for ($x = 0; $x < 30; $x++) {
-                ?>
-                <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead"</button>
-                <?php
-              }
-            }
-          ?>
-        </div>
+      <div class="playbackMain">
+        <div class="holder">
+          <div class="backgr">
+            <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-base" class="beads-base">
+              <?php
+                for ($y = 0; $y < 30; $y++) {
+                  for ($x = 0; $x < 30; $x++) {
+                    ?>
+                    <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead"</button>
+                    <?php
+                  }
+                }
+              ?>
+            </div>
+          </div>
+          <div class="goBack">
+            <input type="range" step="1" min="0"  id="timeline"></input>
+            <div class="options">
+              <input type="button" id="playback" value="▶">
+              <div class="speedholder">
+                <label for="speed">Speed:</label>
+                <input type="range" value="10" step="any" min="1" max="1000" id="speed"></input>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    <input type="range" step="1" min="0"  id="timeline"></input>
-    <input type="button" id="playback" value="▶">
     </div>
   </body>
 </html>
