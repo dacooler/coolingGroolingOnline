@@ -11,6 +11,23 @@
       let currentStep = 0;
       const colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
 
+      function startSlider(){
+        input = document.getElementById("timeline");
+        button = document.getElementById("playback");
+        input.max = steps.length;
+        button.addEventListener("click", (event) => {
+          changePlayback(button);
+        });
+        input.addEventListener("input", (event) => {
+          animateTo(event.target.value);
+});
+      }
+      function updateTime(){
+        animateOneStep();
+        input = document.getElementById("timeline");
+        input.value = currentStep;
+
+      }
       function animateOneStep() {
         if (currentStep >= steps.length) {
           clearBeads();
@@ -27,6 +44,37 @@
         currentStep++;
       }
 
+      let playing = false;
+      let playIntervalId = 0;
+
+      function changePlayback(button){
+        if (!playing){
+          playIntervalId = setInterval(updateTime, 100);
+          playing = true;
+          button.value = "⏸";
+        }
+        else{
+          clearInterval(playIntervalId);
+          playing = false;
+          button.value = "▶";
+        }
+      }
+
+      function animateTo(step){
+        if(step < currentStep){
+          clearBeads();
+          currentStep = 0;
+          for(let i = step; i >= 0; i--){
+            animateOneStep();
+          }
+        }
+        else{
+          for(let i = step - currentStep; i >= 0; i--){
+            animateOneStep();
+          }
+        }
+      }
+
       function clearBeads() {
         let kids = document.getElementById("beads-base").children;
         for (let kid of kids) {
@@ -34,10 +82,9 @@
         }
       }
 
-      setInterval(animateOneStep, 100);
     </script>
   </head>
-  <body>
+  <body onload="startSlider()">
     <div class="main">
       <div class="goback">
       <a href=".">Go back</a>
@@ -57,6 +104,8 @@
         </div>
         </div>
       </div>
+    <input type="range" step="1" min="0"  id="timeline"></input>
+    <input type="button" id="playback" value="▶">
     </div>
   </body>
 </html>
