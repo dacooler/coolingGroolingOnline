@@ -4,7 +4,9 @@
     <script>
       let fileContent = `<?php
       if (($handle = fopen("logs/" . date("W-Y") . ".log", "r")) !== false) {
-        echo fread($handle, 300000);
+        if (flock($handle, LOCK_EX)){
+          echo fread($handle, 300000);
+        }
       }
       ?>`
       let steps = fileContent.slice(0, -1).split("\n");
