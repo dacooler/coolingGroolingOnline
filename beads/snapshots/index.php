@@ -19,7 +19,7 @@
       $file = $files[$i];
     ?>
   <div class="backgr">
-        <div class="beads-base">
+    <div class="beads-base">
       <?php 
         $data = [[]];
         if (($handle = fopen($file, "r")) !== false) {
@@ -43,8 +43,8 @@
         </div>
         </div>
         <?php
-    }
-    ?>
-    </div>
+      }
+      ?>
+      </div>
     </div>
 </body>
