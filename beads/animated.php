@@ -3,9 +3,10 @@
     <link rel="stylesheet" href="beadstyle.css">
     <script>
       let fileContent = `<?php
-      if (($handle = fopen("logs/" . date("W-Y") . ".log", "r")) !== false) {
+      $filename = "logs/" . date("W-Y") . ".log";
+      if (($handle = fopen($filename, "r")) !== false) {
         if (flock($handle, LOCK_EX)){
-          echo fread($handle, filesize("logs/" . date("W-Y") . ".log"), "r"));
+          echo fread($handle, filesize($filename), "r");
         }
       }
       ?>`
