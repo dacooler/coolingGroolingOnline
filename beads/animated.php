@@ -6,7 +6,7 @@
       $filename = "logs/" . date("W-Y") . ".log";
       if (($handle = fopen($filename, "r")) !== false) {
         if (flock($handle, LOCK_EX)){
-          echo fread($handle, filesize($filename), "r");
+          echo fread($handle, filesize($filename));
         }
       }
       ?>`
