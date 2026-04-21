@@ -5,7 +5,7 @@
       let fileContent = `<?php
       if (($handle = fopen("logs/" . date("W-Y") . ".log", "r")) !== false) {
         if (flock($handle, LOCK_EX)){
-          echo fread($handle, filesize("logs/" . date("W-Y") . ".log", "r"));
+          echo fread($handle, filesize("logs/" . date("W-Y") . ".log"), "r"));
         }
       }
       ?>`
