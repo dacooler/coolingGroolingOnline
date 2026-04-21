@@ -23,9 +23,11 @@
       <?php 
         $data = [[]];
         if (($handle = fopen($file, "r")) !== false) {
+          if (flock($handle, LOCK_EX)){
             while (($row = fgetcsv($handle, escape: "\\")) !== false) {
                 $data[] = $row;
             }
+          }
             fclose($handle);
         }
       for($x = 0; $x < count($data); $x+=1){
