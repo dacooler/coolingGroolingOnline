@@ -182,7 +182,7 @@
                         i ett försök att en gång för alla förgöra alla andra universitet i Sverige.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="../../images/akademiskahus.png" alt="Akademiska hus." width="40%">
+                    <img src="../../images/akademiskahus.jpg" alt="Akademiska hus." width="40%">
                 </div>
             </div>
             <div class="timeline-item">
