@@ -5,11 +5,21 @@
     <meta charset="UTF-8">
     <title>Skaparen av Haskell</title>
     <style>
+        .timeline-holder {
+            margin-left: -60px;
+            margin-right: -60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+            gap: 2em;
+        }
+
         .timeline-item {
             background-color: lightgoldenrodyellow;
             border-radius: 2em;
             padding: 2em;
-            width: 25%;
+            width: 24vw;
         }
 
         .timeline-item-header {
@@ -68,7 +78,7 @@
                     Vad är det Chalmers döljer för oss? 
                 </p>
             </div>
-            <img src="../../images/haskell-type-system.png" alt="Haskells typsystem." width="50%">
+            <img src="../../images/haskell-type-system.png" alt="Haskells typsystem." style="width:30vw">
         </div>
 
         <h2>Transportstyrelsens inblandning</h2>
@@ -109,7 +119,7 @@
         
 
         <h2>Den fullständiga tidslinjen</h2>
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; gap: 2em;">
+        <div class="timeline-holder" >
             <div class="timeline-item">
                 <div class="timeline-item-header">
                     <h3>Henry Ford</h3>
@@ -167,7 +177,7 @@
                         förgöra alla andra universitet.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="../../images/secret-alliance.png" alt="Chalmers och KTHs allians." width="40%">
+                    <img src="../../images/secret-alliance.png" alt="Chalmers och KTHs allians." width="100px">
                 </div>
             </div>
             <div class="timeline-item">
@@ -182,7 +192,7 @@
                         i ett försök att en gång för alla förgöra alla andra universitet i Sverige.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="../../images/akademiskahus.jpg" alt="Akademiska hus." width="40%">
+                    <img src="../../images/akademiskahus.jpg" alt="Akademiska hus." width="100px">
                 </div>
             </div>
             <div class="timeline-item">
@@ -196,7 +206,7 @@
                         stoppa studenterna och förinta Linköpings Universitet.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="../../images/staketet.png" alt="Staketet." width="40%">
+                    <img src="../../images/staketet.png" alt="Staketet." width="100px">
                 </div>
             </div>
         </div>
