@@ -4,17 +4,7 @@
 <head>
         <meta charset="UTF-8">
         <title>COOLING GROOLING</title>
-        <script src="./assets/script.js" type="module"></script>
-        <script src="./assets/cursor.js"></script>
-        <script>
-                function myFunction() {
-                        document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
-                }
-
-        </script>
-        <style>
-        </style>
-        <link rel="stylesheet" href="./artStyle.css">
+        <link rel="stylesheet" href="../../artStyle.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -25,12 +15,9 @@
 </head>
 
 <body>
-        <div class="heade">
-                <img src="../assets/images/cgnews.png">
-                <div>
-                        <p> C THE NEWS</p>
-                </div>
-        </div>
+    <?php
+      include("../../header.php")
+    ?>
         <div class="main2">
                 <h1> Sanningen bakom Akademiska Hus och KTH </h1>
 
@@ -48,8 +35,11 @@
                 <p>
                     Bara titta på deras loggor, det är uppenbart Q.E.D.
                 </p>
-                <img class="left" width="400px" src="./images/akademiskahus.jpg">
-                <img class="right" width="400px" src="./images/kth.jpg">
+                <img class="left" width="400px" src="../../images/akademiskahus.jpg">
+                <img class="right" width="400px" src="../../images/kth.jpg">
         </div>
 </body>
+<?php
+  include("../../bottom.php")
+?>
 

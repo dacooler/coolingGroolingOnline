@@ -76,7 +76,7 @@
         for ($y = 0; $y < 30; $y++) {
           for ($x = 0; $x < 30; $x++) {
             ?>
-            <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead" onclick="setColorOn(this)"</button>
+            <button data-x="<?php echo $x ?>" data-y="<?php echo $y ?>" class="bead" onclick="setColorOn(this)" ></button>
             <?php
           }
         }

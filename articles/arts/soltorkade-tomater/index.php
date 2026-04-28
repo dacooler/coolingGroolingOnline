@@ -6,7 +6,7 @@
         <title>COOLING GROOLING</title>
         <style>
         </style>
-        <link rel="stylesheet" href="./artStyle.css">
+        <link rel="stylesheet" href="../../artStyle.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -17,15 +17,12 @@
 </head>
 
 <body>
-        <div class="heade">
-                <img src="../assets/images/cgnews.png">
-                <div>
-                        <p> C THE NEWS</p>
-                </div>
-        </div>
+    <?php
+      include("../../header.php")
+    ?>
         <div class="main2">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em;">
-                        <img width="100%" src="./images/pregnant-tomatoes.jpg">
+                        <img width="100%" src="../../images/pregnant-tomatoes.jpg">
 
                         <div>
                                 <h1> Wifi och konsumtion av soltorkade tomater </h1>
@@ -60,7 +57,10 @@
                                 </p>
                         </div>
 
-                        <img width="100%" src="./images/no5g.jpg">
+                        <img width="100%" src="../../images/no5g.jpg">
                 </div>
         </div>
+<?php
+  include("../../bottom.php")
+?>
 </body>

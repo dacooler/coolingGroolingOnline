@@ -8,24 +8,29 @@ body > div{
         margin-right: 10%;
         background-color:white;
         margin-top: 0px;
-        padding-bottom: 500px;
         padding-left: 80px;
         padding-right: 80px;
         padding-top: 20px;
         box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+        padding-bottom: 10px;
 }
 body > div.main2{
         padding-bottom: 20px;
 }
 
+:root{
+  background-color: black;
+}
+
 body div.heade{
-        padding-bottom: 10px;
-        margin-bottom: 10px;
         background-image: linear-gradient(to bottom, red, yellow);
         box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .main {
+  padding-bottom: 500px;
   a{
         display:block;
   }
@@ -34,6 +39,7 @@ body div.heade{
   }
 }
 .main2 {
+  margin-top: 10px;
   p::first-letter{
           font-size:4em;
           float:left;
@@ -61,6 +67,48 @@ body div.heade{
         width: 100%;
 }
 body {
+  margin: 0px;
         background-color:lightgray;
         background-image: linear-gradient(to bottom right, lightgray, gray);
+}
+.marquee{
+  border:2px outset black;
+  height: 1pt;
+  margin-left: 0px;
+  margin-right: 0px;
+  white-space: nowrap;
+  overflow:hidden;
+  padding-left: 0px;
+  padding-right: 0px;
+  line-height: 0.1;
+  div{
+    width: fit-content;
+    animation: marquee 10s linear infinite;
+    height: 1pt;
+    margin:none;
+  }
+  margin-bottom: 10px;
+}
+.bottom{
+  height: 300px;
+  background-image: linear-gradient(transparent, black, black, black);
+  background-color: transparent;
+  margin: 0px;
+  padding-left:10px;
+  margin-top: 100px;
+  div{
+    p{
+      font-size: 13px;
+      text-shadow: white 1px 0 10px;
+    }
+    height: 60%;
+    position:relative;
+    top: 40%;
+    color: white;
+  }
+}
+
+@keyframes marquee{
+  0%{transform: translateX(0%)};
+  100%{transform: translateX(-33.33%)};
 }

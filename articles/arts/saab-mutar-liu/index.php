@@ -5,16 +5,7 @@
     <meta charset="UTF-8">
     <title>SAAB mutar LiU</title>
 
-    <script src="./assets/script.js" type="module"></script>
-    <script src="./assets/cursor.js"></script>
-    <script>
-            function myFunction() {
-                    document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
-            }
-    </script>
-    <style>
-    </style>
-    <link rel="stylesheet" href="./artStyle.css">
+    <link rel="stylesheet" href="../../artStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -25,12 +16,9 @@
 </head>
 
 <body>
-    <div class="heade">
-        <img src="../assets/images/cgnews.png">
-        <div>
-            <p> C THE NEWS</p>
-        </div>
-    </div>
+    <?php
+      include("../../header.php")
+    ?>
     <div class="main2">
         <p>
             SAAB mutar LiU för att SAAB vill att studenterna ska lära sig Ada
@@ -42,4 +30,7 @@
             crafta en JAS Gripen TM.
         </p>
     </div>
+<?php
+  include("../../bottom.php")
+?>
 </body>

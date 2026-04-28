@@ -4,17 +4,7 @@
 <head>
         <meta charset="UTF-8">
         <title>COOLING GROOLING</title>
-        <script src="./assets/script.js" type="module"></script>
-        <script src="./assets/cursor.js"></script>
-        <script>
-                function myFunction() {
-                        document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
-                }
-
-        </script>
-        <style>
-        </style>
-        <link rel="stylesheet" href="./artStyle.css">
+        <link rel="stylesheet" href="../../artStyle.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -25,16 +15,13 @@
 </head>
 
 <body>
-        <div class="heade">
-                <img src="../assets/images/cgnews.png">
-                <div>
-                        <p> C THE NEWS</p>
-                </div>
-        </div>
+    <?php
+      include("../../header.php")
+    ?>
         <div class="main2">
                 <h1> Sanningen bakom viagraparken </h1>
 
-                <img class="right" width="600px" src="./images/viagra.png">
+                <img class="right" width="600px" src="../../images/viagra.png">
                 <p>
                         Vi känner alla till viagraparken, med sin ståtliga prakt och närhet till campus är det en
                         klassiker för
@@ -87,7 +74,7 @@
                         deras
                         projekt...
                 </p>
-                <img class="left" width="400px" src="./images/karta.png">
+                <img class="left" width="400px" src="../../images/karta.png">
 
                 <h2> En ny idé </h2>
 
@@ -156,7 +143,7 @@
 
                 <h2> Incidenten 1985 </h2>
 
-                <img class="right" width="400px" src="./images/ankor.png">
+                <img class="right" width="400px" src="../../images/ankor.png">
                 <p>
                         Till en början gick experimentet bra. Populationen gräsänder verkade öka, vilket var i
                         linje med
@@ -272,4 +259,7 @@
                         LANDERYD, 585 93 Linköping
                 </p>
         </div>
+<?php
+  include("../../bottom.php")
+?>
 </body>

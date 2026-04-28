@@ -276,6 +276,7 @@ img.future{
           background-size: 80%;
   }
   div.clouds{
+          background-size: 80% 100vh;
           background-image: url("../assets/images/sky.jpg");
           opacity: calc(0.5 * var(--dayOp));
   }

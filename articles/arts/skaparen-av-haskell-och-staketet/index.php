@@ -4,14 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Skaparen av Haskell</title>
-    <script src="./assets/script.js" type="module"></script>
-    <script src="./assets/cursor.js"></script>
-    <script>
-        function myFunction() {
-            document.getElementById("this").innerHTML = `<iframe src="http://coolinggrooling.online" style="width:100%;height:1000px"></iframe>`;
-        }
-
-    </script>
     <style>
         .timeline-item {
             background-color: lightgoldenrodyellow;
@@ -31,7 +23,7 @@
             flex-direction: row;
         }
     </style>
-    <link rel="stylesheet" href="./artStyle.css">
+    <link rel="stylesheet" href="../../artStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
@@ -42,12 +34,9 @@
 </head>
 
 <body>
-    <div class="heade">
-        <img src="../assets/images/cgnews.png">
-        <div>
-            <p> C THE NEWS</p>
-        </div>
-    </div>
+    <?php
+      include("../../header.php")
+    ?>
     <div class="main2">
         <div style="display: flex; flex-direction: row;">
             <div>
@@ -69,7 +58,7 @@
                     programmering i trevliga språk som Python, Java och c/c++ har andra
                     valt en annan väg. Linköpings Universitet exempelvis indoktrinerar
                     en stor skala ingenjörer i konsten av Ada då
-                    <a href="saab-mutar-liu.html">SAAB i hemlighet mutar LiU</a>
+                    <a href="../saab-mutar-liu/">SAAB i hemlighet mutar LiU</a>
                     med miljontals dollar varje år för att de behöver
                     ingenjörer som kan läsa deras legacy kod. Men ännu mer bisarrt är
                     Chalmers val av första språk, inget mindre än Haskell. 
@@ -79,7 +68,7 @@
                     Vad är det Chalmers döljer för oss? 
                 </p>
             </div>
-            <img src="images/haskell-type-system.png" alt="Haskells typsystem." width="50%">
+            <img src="../../images/haskell-type-system.png" alt="Haskells typsystem." width="50%">
         </div>
 
         <h2>Transportstyrelsens inblandning</h2>
@@ -109,8 +98,8 @@
 
         <figure>
             <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
-                <img src="images/haskell.png" alt="Haskells logga" width="269px">
-                <img src="images/transportstyrelsen.png" alt="Transportstyrelses logga", width="269px">
+                <img src="../../images/haskell.png" alt="Haskells logga" width="269px">
+                <img src="../../images/transportstyrelsen.png" alt="Transportstyrelses logga", width="269px">
             </div>
             <figcaption>
                 Bilaga 67. Corporate wants you to find the difference between these pictures.
@@ -132,7 +121,7 @@
                         och sälja bilar.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/henry-ford.png" alt="Henry Ford." width="100px">
+                    <img src="../../images/henry-ford.png" alt="Henry Ford." width="100px">
                 </div>
             </div>
             <div class="timeline-item">
@@ -148,7 +137,7 @@
                         Transportstyrelsen tvingas minska sina utsläpp.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/transportstyrelsen.png" alt="Transportstyrelsen." width="100px">
+                    <img src="../../images/transportstyrelsen.png" alt="Transportstyrelsen." width="100px">
                 </div>
             </div>
             <div class="timeline-item">
@@ -163,7 +152,7 @@
                         är TS som ligger bakom det.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/chalmers.png" alt="Chalmers." width="100px">
+                    <img src="../../images/chalmers.png" alt="Chalmers." width="100px">
                 </div>
             </div>
             <div class="timeline-item">
@@ -178,7 +167,7 @@
                         förgöra alla andra universitet.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/secret-alliance.png" alt="Chalmers och KTHs allians." width="40%">
+                    <img src="../../images/secret-alliance.png" alt="Chalmers och KTHs allians." width="40%">
                 </div>
             </div>
             <div class="timeline-item">
@@ -189,11 +178,11 @@
                 <div class="timeline-item-content">
                     <i>
                         Chalmers och 
-                        <a href="akademiska-hus-kth.html">KTH grundar tillsammans Akademiska Hus</a>
+                        <a href="../akademiska-hus-kth/">KTH grundar tillsammans Akademiska Hus</a>
                         i ett försök att en gång för alla förgöra alla andra universitet i Sverige.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/akademiskahus.jpg" alt="Akademiska hus." width="40%">
+                    <img src="../../images/akademiskahus.png" alt="Akademiska hus." width="40%">
                 </div>
             </div>
             <div class="timeline-item">
@@ -207,7 +196,7 @@
                         stoppa studenterna och förinta Linköpings Universitet.
                     </i>
                     <div style="width: 8em;"></div>
-                    <img src="images/staketet.png" alt="Staketet." width="40%">
+                    <img src="../../images/staketet.png" alt="Staketet." width="40%">
                 </div>
             </div>
         </div>
@@ -223,4 +212,7 @@
             mycket letande är det ändå självklart. Det var Henry Ford som satte upp staketet.
         </p>
     </div>
+<?php
+  include("../../bottom.php")
+?>
 </body>
