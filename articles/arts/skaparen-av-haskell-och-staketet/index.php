@@ -84,7 +84,7 @@
             tills nu skrivit sina program i C# på svenska. C#, som vi alla vet,
             har ett koldioxidindex på 3,14 som inte görs bättre av att kod
             skriven på svenska har en
-            multiplicitetsfaktorsskalärinversortogonalskomponentsinpliciteringsfakultetskonstant
+            multiplicitets&shy;faktors&shy;skalär&shy;invers&shy;ortogonal&shy;komponents&shy;inpliciterings&shy;fakultets&shy;konstant
             på 915. Detta har alltså gjort att varje rad kod skriven på TS har
             släppt ut totalt 11 ton koldioxid. Men ledningen på TS upptäckte då
             något kritiskt. For-loopar och abstrakta factory factory klasser
