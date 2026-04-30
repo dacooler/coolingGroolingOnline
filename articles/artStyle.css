@@ -37,6 +37,11 @@ body div.heade{
   a::first-letter{
             font-size:2em;
   }
+  h2::first-letter{
+            font-size:2em;
+  }
+  display:flex;
+  flex-wrap: wrap;
 }
 .main2 {
   margin-top: 10px;
@@ -106,6 +111,16 @@ body {
     top: 40%;
     color: white;
   }
+}
+.article{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  img{
+    width: 100%;
+  }
+  border: solid 1px gray;
+  margin-bottom: 20px;
 }
 
 @keyframes marquee{

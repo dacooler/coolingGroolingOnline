@@ -32,6 +32,9 @@
             display: flex;
             flex-direction: row;
         }
+        .sidbild{
+          style="width:30vw";
+        }
     </style>
     <link rel="stylesheet" href="../../artStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,7 +81,7 @@
                     Vad är det Chalmers döljer för oss? 
                 </p>
             </div>
-            <img src="../../images/haskell-type-system.png" alt="Haskells typsystem." style="width:30vw">
+            <img src="../../images/haskell-type-system.png" alt="Haskells typsystem." class="sidbild">
         </div>
 
         <h2>Transportstyrelsens inblandning</h2>
