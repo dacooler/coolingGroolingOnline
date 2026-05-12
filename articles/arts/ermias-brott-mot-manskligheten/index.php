@@ -65,17 +65,29 @@
 
       <img src="../../images/bevisen-mot-ermia.png" alt="Övertygande bevis om att Ermia begått allvarliga brott mot mänskligheten" width="100%">
 
+      <h2>Kommentarer</h2>
       <p>
         Kommentar från Bo "keso" Nils Hjalmar Rodin 18:49 2026-05-12
         <br>
         Nog kommer jag ihåg första gången jag träffade Ermia. Det var en solig sommardag i mitten av Nolle-P.
-        STABEN hade just gjort klart sin morgonrutin och den trötta skaran Nollan började röra sig mot C-husets västra dörr.
+        STABEN hade just gjort klart sin morgonrutin och den trötta skaran Nollan började röra sig mot C-husets östra <s>västra</s>* dörr.
         Det var då jag såg honom. En så sympatisk och cool människa som utstrålade visdom och kulturinsikt. En idol för alla Nollan på Linköpings Universitet.
         Aldrig skulle jag kunna tro att Ermia Berzhadifar, Lysators underbarn, skulle utföra något så här otänkbart blott ett halvår senare.
         Jag skickar mina djupaste medkänslor till samtliga som påverkats av brottet. Vi kan ta oss igenom detta, tillsammans.
         Och låt Ermia möta rättvisa imorgon och bli relegerad till djupet av Lysators styrelse.
         /kesomannen
+        <br>
+        *Ändrades 21:01 2026-05-12: Under perioden Sensommar 2025 - Tidig vår 2026 var Corson avstängd mellan A- och C-huset. Därför skulle Nollan inte kunna komma in genom C-husets västra dörr, utan enbart den östra dörren. Alltså dörren som pekar mot kolonilotterna vid Colonia, Vallamassivet, Spektrum, och Östersjön.
       </p>
+      
+      <p>
+        Kommentar från Oscar "jidosc" Jidemo typ 20:55, typ 2026-05-12
+        <br>
+        Det är sådana här misstag och/eller medvetna uppsåt som stoppar LitheKod, Lysator, och andra studentföreningar i ~ (t.o.m. Admittansen!) från att uppnå total utopi och symbios med varandra. Fy skäms Ermia.
+        Tur att han inte sitter på någon viktig post, typ lokalansvarig. @keso kulturinsikt?
+      </p>
+
+      <button>Klicka här för att se fler reaktioner</button>
     </div>
 </body>
 <?php
