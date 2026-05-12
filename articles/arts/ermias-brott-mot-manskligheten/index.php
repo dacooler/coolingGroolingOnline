@@ -64,6 +64,18 @@
       </p>
 
       <img src="../../images/bevisen-mot-ermia.png" alt="Övertygande bevis om att Ermia begått allvarliga brott mot mänskligheten" width="100%">
+
+      <p>
+        Kommentar från Bo "keso" Nils Hjalmar Rodin 18:49 2026-05-12
+        <br>
+        Nog kommer jag ihåg första gången jag träffade Ermia. Det var en solig sommardag i mitten av Nolle-P.
+        STABEN hade just gjort klart sin morgonrutin och den trötta skaran Nollan började röra sig mot C-husets västra dörr.
+        Det var då jag såg honom. En så sympatisk och cool människa som utstrålade visdom och kulturinsikt. En idol för alla Nollan på Linköpings Universitet.
+        Aldrig skulle jag kunna tro att Ermia Berzhadifar, Lysators underbarn, skulle utföra något så här otänkbart blott ett halvår senare.
+        Jag skickar mina djupaste medkänslor till samtliga som påverkats av brottet. Vi kan ta oss igenom detta, tillsammans.
+        Och låt Ermia möta rättvisa imorgon och bli relegerad till djupet av Lysators styrelse.
+        /kesomannen
+      </p>
     </div>
 </body>
 <?php
