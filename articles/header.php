@@ -1,5 +1,5 @@
         <div class="heade">
-                <img src="../../../assets/images/cgnews.png">
+                <a href="../../"><img src="../../../assets/images/cgnews.png"></a>
                 <div>
                         <p> C THE NEWS</p>
                 </div>
