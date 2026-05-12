@@ -22,7 +22,7 @@
         <?php
       function hello() {
       }
-        $dir = array_values(array_diff(scandir("./arts/"), array('.', '..', "index.php", ".gitkeep", ".gitignore")));
+        $dir = array_reverse(array_values(array_diff(scandir("./arts/"), array('.', '..', "index.php", ".gitkeep", ".gitignore"))));
       $titles = array();
       $links = array();
       $images = array();
