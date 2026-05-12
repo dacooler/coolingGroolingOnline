@@ -1,7 +1,5 @@
 
         <div class="compTainer">
-          <label for="menu1" class="right bloom"> <p> > </p> </label>
-          <label for="menu4" class="left bloom"> <p> < </p> </label>
           <div class="comp">
             <!-- left -->
             <div>

@@ -191,14 +191,29 @@ input:checked#menu4 ~ div{
 input:checked#menu5 ~ div{
   --spin: 2;
 }
+input:checked#menu6 ~ div{
+  --spin: 2;
+}
 input:checked#menu5 ~ div .right{
   display: block;
 }
 input:checked#menu5 ~ div .left{
   display: block;
 }
-input:checked#menu5 ~ .dMenu{
+input:checked#menu5 ~ .dMenu .menu5{
+  pointer-events: none;
+}
+input:checked#menu5 ~ .dMenu .menu5 .menu6{
+  width:100px;
+  height:100px;
+  display:block;
+  pointer-events: auto;
+}
+input:checked#menu6 ~ .dMenu{
   transform: perspective(var(--fov)) rotateY(calc(var(--degrees)*2)) translateY(25px) translateZ(-2750px) translateX(-2000px);
+}
+.menu6{
+  display: none;
 }
 
 div.ground{

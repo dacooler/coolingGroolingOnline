@@ -36,6 +36,7 @@
       <input type="radio" id="menu3" name="dm">
       <input type="radio" id="menu4" name="dm">
       <input type="radio" id="menu5" name="dm">
+      <input type="checkbox" id="menu6" name="dm2">
       <?php
         require("src/skybox.php");
       ?>
@@ -56,9 +57,10 @@
           <div><a href="../music/">music</a></div>
           <div></div>
         </label>
-        <label for="menu5">
+        <label for="menu5" class="menu5">
           <div></div>
           <div></div>
+          <label for="menu6" class="menu6"></label>
         </label>
         <div class="ground"> </div>
         <img src="../assets/images/future.png" class="future"></img>
