@@ -2,15 +2,41 @@
   <head>
     <link rel="stylesheet" href="beadstyle.css">
     <script>
-      let fileContent = `<?php
-      $filename = "logs/" . date("W-Y") . ".log";
-      if (($handle = fopen($filename, "r")) !== false) {
-        if (flock($handle, LOCK_EX)){
-          echo fread($handle, filesize($filename));
+      let page = 0;
+      let fileContent = [<?php
+      $files = array_values(array_diff(scandir("./logs"), array('.', '..', "index.php", ".gitkeep", ".gitignore")));
+      foreach($files as $file){
+        echo "`";
+        if (($handle = fopen("./logs/" . $file, "r")) !== false) {
+          if (flock($handle, LOCK_EX)){
+            echo fread($handle, filesize("./logs/".$file));
+          }
         }
+        echo "`,";
       }
-      ?>`
-      let steps = fileContent.slice(0, -1).split("\n");
+      ?>
+      ];
+      let steps = fileContent[page].slice(0, -1).split("\n");
+      function increase(){
+        page = (page + 1)%fileContent.length;
+        steps = fileContent[page].slice(0, -1).split("\n");
+        input = document.getElementById("timeline");
+        speed = document.getElementById("speed");
+        input.max = steps.length;
+        changeSpeed(speed.value)
+        animateTo(input.value);
+        clearBeads()
+      }
+      function decrease(){
+        page = (page - 1)%fileContent.length;
+        steps = fileContent[page].slice(0, -1).split("\n");
+        input = document.getElementById("timeline");
+        speed = document.getElementById("speed");
+        input.max = steps.length;
+        changeSpeed(speed.value)
+        animateTo(input.value);
+        clearBeads()
+      }
       let currentStep = 0;
       const colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
 
@@ -108,8 +134,11 @@
   </head>
   <body onload="startSlider()">
     <div class="main">
-      <div class="goback">
-      <a href=".">Go back</a>
+        <div class="goback">
+        <a href=".">Go back</a>
+        </div>
+      <div class="left">
+        <button class="back" onclick="decrease()"><</button>
       </div>
       <div class="playbackMain">
         <div class="holder">
@@ -149,6 +178,9 @@
           </div>
         </div>
       </div>
+        <div class="right">
+          <button class="forward" onclick="increase()">></button>
+        </div>
     </div>
   </body>
 </html>
