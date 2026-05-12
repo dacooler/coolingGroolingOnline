@@ -71,7 +71,7 @@
                     programmering i trevliga språk som Python, Java och c/c++ har andra
                     valt en annan väg. Linköpings Universitet exempelvis indoktrinerar
                     en stor skala ingenjörer i konsten av Ada då
-                    <a href="../saab-mutar-liu/">SAAB i hemlighet mutar LiU</a>
+                    <a href="../2026-04-20-saab-mutar-liu/">SAAB i hemlighet mutar LiU</a>
                     med miljontals dollar varje år för att de behöver
                     ingenjörer som kan läsa deras legacy kod. Men ännu mer bisarrt är
                     Chalmers val av första språk, inget mindre än Haskell. 
