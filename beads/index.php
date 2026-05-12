@@ -43,10 +43,12 @@
     let beadColors = beads.split("\n").map((row) => row.split(",").map((elem) => colors[parseInt(elem)]));
 
     let kids = document.getElementById("beads-base").children;
+    let kids2 = document.getElementById("beads-back").children
     for (let y = 0; y < 30; y++) {
       for (let x = 0; x < 30; x++) {
         let i = y * 30 + x;
         kids[i].style.backgroundColor = beadColors[y][x];
+        kids2[i].style.backgroundColor = beadColors[y][x];
       }
     }
   }
@@ -77,6 +79,17 @@
           for ($x = 0; $x < 30; $x++) {
             ?>
             <button data-x="<?php echo $x ?>" data-y="<?php echo $y ?>" class="bead" onclick="setColorOn(this)" ></button>
+            <?php
+          }
+        }
+      ?>
+    </div>
+    <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-back" class="beads-back">
+      <?php
+        for ($y = 0; $y < 30; $y++) {
+          for ($x = 0; $x < 30; $x++) {
+            ?>
+            <div class="bead" onclick="setColorOn(this)" ></div>
             <?php
           }
         }

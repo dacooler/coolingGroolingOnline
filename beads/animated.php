@@ -42,12 +42,14 @@
           return;
         }
         let kids = document.getElementById("beads-base").children;
+        let kids2 = document.getElementById("beads-back").children;
         let items = steps[currentStep % steps.length].split(" "); 
         let x = parseInt(items[0]);
         let y = parseInt(items[1]);
         let color = parseInt(items[2]);
         let i = y * 30 + x;
         kids[i].style.backgroundColor = colors[color];
+        kids2[i].style.backgroundColor = colors[color];
         currentStep++;
       }
 
@@ -96,6 +98,10 @@
         for (let kid of kids) {
           kid.style.backgroundColor = "#ECE9E3";
         }
+        let kids2 = document.getElementById("beads-back").children;
+        for (let kid of kids2) {
+          kid.style.backgroundColor = "#ECE9E3";
+        }
       }
 
     </script>
@@ -114,6 +120,17 @@
                   for ($x = 0; $x < 30; $x++) {
                     ?>
                     <button data-x=<?php echo $x ?> data-y=<?php echo $y ?> class="bead"</button>
+                    <?php
+                  }
+                }
+              ?>
+            </div>
+            <div style="display: grid; grid-template-columns: <?php for ($i = 0; $i < 30; $i++) { echo("16px "); } ?>" id="beads-back" class="beads-back">
+              <?php
+                for ($y = 0; $y < 30; $y++) {
+                  for ($x = 0; $x < 30; $x++) {
+                    ?>
+                    <div class="bead"></div>
                     <?php
                   }
                 }

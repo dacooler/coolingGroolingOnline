@@ -41,6 +41,19 @@
       } 
         ?>
         </div>
+    <div class="beads-back">
+      <?php 
+      for($x = 0; $x < count($data); $x+=1){
+        for($y = 0; $y < count($data[$x]); $y+=1){
+          ?>
+        <div style="background-color:<?php echo $colors[$data[$x][$y]] ?>" class="bead">
+          </div>
+          <?php
+          
+        }
+      } 
+        ?>
+        </div>
         </div>
         <?php
       }
