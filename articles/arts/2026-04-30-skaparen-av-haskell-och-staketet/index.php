@@ -191,7 +191,7 @@
                 <div class="timeline-item-content">
                     <i>
                         Chalmers och 
-                        <a href="../akademiska-hus-kth/">KTH grundar tillsammans Akademiska Hus</a>
+                        <a href="../2026-01-01-akademiska-hus-kth/">KTH grundar tillsammans Akademiska Hus</a>
                         i ett försök att en gång för alla förgöra alla andra universitet i Sverige.
                     </i>
                     <div style="width: 8em;"></div>
