@@ -22,5 +22,8 @@
         <a href="./adventure2/"> Adventure Demo <img class="new" src="assets/images/NEW.png">  </a>
         <a href="./contact">contact</a>
         <img src="./assets/images/DANC.gif" class="mitten">
+        <p>LYSATOR WEBRING</p>
+        <a href="https://webring.lysator.liu.se/link/coolinggrooling/next">NEXT</a>
+        <a href="https://webring.lysator.liu.se/link/coolinggrooling/prev">PREVIOUS</a>
       </div>
     </div>
