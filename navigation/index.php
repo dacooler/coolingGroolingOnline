@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    <meta name="darkreader" content="disabled">
     <meta charset="UTF-8">
     <title>_PageTitle_</title>
     <link rel="stylesheet" href="menuStyle.css">

@@ -2,6 +2,7 @@
 <html>
 
   <head>
+    <meta name="darkreader" content="disabled">
     <meta charset="UTF-8">
     <title>COOLING GROOLING</title>
     <link rel="stylesheet" href="./artStyle.css">

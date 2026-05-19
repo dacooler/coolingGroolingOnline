@@ -1,6 +1,7 @@
 <!DOCTYPE html> <html>
 
 <head>
+  <meta name="darkreader" content="disabled">
   <meta charset="UTF-8">
   <title>COOLING GROOLING</title>
   <script>
