@@ -9,7 +9,7 @@
 <div class="snapmain">
 <h1>Snapshots</h1>
 <div class="goback">
-<a href="../">Go back</a>
+<a href="../">Go back</a><br><input id="flip" type="checkbox">Flip the BEADS</input>
 </div>
 <div class="snapshots">
 <?php
