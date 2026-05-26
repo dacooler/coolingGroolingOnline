@@ -11,17 +11,24 @@
   const colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
   let selectedColorIndex = 0;
   let selectedColor = colors[selectedColorIndex];
+  let flipped = false;
 
   function setColorOn(element) {
     element.style.backgroundColor = selectedColor;
     //fetch("/beads/paint.php/?x=" + element.dataset.x + "&y=" + element.dataset.y + "&color=" + selectedColorIndex);
+    let x;
+    if (flipped) {
+      x = 29 - element.dataset.x;
+    } else {
+      x = element.dataset.x;
+    }
     fetch("paint.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        x: element.dataset.x,
+        x: x,
         y: element.dataset.y,
         color: selectedColorIndex,
       })
@@ -35,6 +42,11 @@
     document.getElementById("beads-base").style.backgroundColor = selectedColor;
   }
 
+  function flipTheBeads() {
+    flipped = !flipped;
+    setUpBeads();
+  }
+
   async function setUpBeads() {
     let url = "get-beads.php"
     let response = await fetch(url)
@@ -43,10 +55,16 @@
     let beadColors = beads.split("\n").map((row) => row.split(",").map((elem) => colors[parseInt(elem)]));
 
     let kids = document.getElementById("beads-base").children;
-    let kids2 = document.getElementById("beads-back").children
+    let kids2 = document.getElementById("beads-back").children;
     for (let y = 0; y < 30; y++) {
       for (let x = 0; x < 30; x++) {
-        let i = y * 30 + x;
+        let i;
+        if (flipped) {
+          i = y * 30 + 29 - x;
+        }
+        else {
+          i = y * 30 + x;
+        }
         kids[i].style.backgroundColor = beadColors[y][x];
         kids2[i].style.backgroundColor = beadColors[y][x];
       }
@@ -112,6 +130,9 @@
       ?>
       </div>
     </div>
+    <button onclick="flipTheBeads();">
+      FLIP THE BEADS!
+    </button>
   </div>
 </body>
 
