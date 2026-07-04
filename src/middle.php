@@ -5,6 +5,9 @@
           <div class="flexer" style="display:flex">
             <img class="title" src="./assets/images/cooltext.gif">
             <img class="title" src="./assets/images/number2.gif">
+            <div class="undertext">
+              <h2>ON HOLIDAY</h2>
+            </div>
           </div>
           <?php
             echo date("Y-M-d D \W\k W");
@@ -38,6 +41,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="closed">
+          closed for the summer!!!!
         </div>
         <a href="./beads/">
           <div class="octed bead" style="--cWidth: 100px; --cHeight: 100px;--cDepth:100px;--color:red;">

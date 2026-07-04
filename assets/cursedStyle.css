@@ -376,6 +376,19 @@ url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100"
     --color: darkred;
   }
 }
+
+.closed{
+  background-image: url("./images/wood.jpg");
+  position: absolute;
+  font-size: 20px;
+  width: 150px;
+  height: 100px;
+  z-index: 10000;
+  border: 5px inset gray;
+  box-shadow: 3px 3px 3px black;
+}
+
+
 @keyframes perlsnurr{
   0%{transform: rotateY(0deg);};
   100%{transform: rotate3d(1, 1, 1, 360deg);};
