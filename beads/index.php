@@ -8,7 +8,7 @@
 </head>
 
 <script>
-  const colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
+  const colors = ["#ECE9E3", "#353535", "#a287b9", "#7f548e", "#6db4c9", "#de262f", "#93928f", "#23578e", "#71d4b0", "#efd034", "#c0bfbe", "#d59871", "#ff7b17", "#a76555", "#e8734f", "#f4c29b", "#147240", "#f15ca1", "#8cd85c", "#fae5bc"];
   let selectedColorIndex = 0;
   let selectedColor = colors[selectedColorIndex];
   let flipped = false;
@@ -121,7 +121,7 @@
       </div>
       <div class="selections">
       <?php
-      $colors = ["#ECE9E3", "#202020", "#7A5C95", "#433264", "#0F9DC8", "#D80F19", "#62615E", "#154171", "#10ACB5", "#E7B310", "#868583", "#8A5534", "#EE3710", "#743C2E", "#C13F18", "#E49457", "#105832", "#DE448C", "#209F49", "#E2C58B"];
+      $colors = ["#ECE9E3", "#353535", "#a287b9", "#7f548e", "#6db4c9", "#de262f", "#93928f", "#23578e", "#71d4b0", "#efd034", "#c0bfbe", "#d59871", "#ff7b17", "#a76555", "#e8734f", "#f4c29b", "#147240", "#f15ca1", "#8cd85c", "#fae5bc"];
       for ($colorIndex = 0; $colorIndex < count($colors); $colorIndex++) {
         ?>
         <button style="background-color: <?php echo $colors[$colorIndex]; ?>;" onclick="selectColor('<?php echo $colorIndex; ?>')"></button>
