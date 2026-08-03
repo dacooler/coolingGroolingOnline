@@ -30,7 +30,7 @@
       background-size: 100% 100%;
       height: <?php echo count($dir) * 300 / 4 + 100;?>px;
 
-      .file:has(a:focus){
+      .file:has(a:focus), .file:hover{
           div{
             background-image: radial-gradient(gray, white);
             transform-style: preserve-3d;
