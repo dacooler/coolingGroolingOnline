@@ -42,9 +42,6 @@
             </div>
           </div>
         </div>
-        <div class="closed">
-          closed for the summer!!!!
-        </div>
         <a href="./beads/">
           <div class="octed bead" style="--cWidth: 100px; --cHeight: 100px;--cDepth:100px;--color:red;">
             <div></div>
