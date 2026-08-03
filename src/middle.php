@@ -6,7 +6,7 @@
             <img class="title" src="./assets/images/cooltext.gif">
             <img class="title" src="./assets/images/number2.gif">
             <div class="undertext">
-              <h2>ON HOLIDAY</h2>
+              <h2>CERTIFIED AND ON HOLIDAY</h2>
             </div>
           </div>
           <?php
