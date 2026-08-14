@@ -28,10 +28,10 @@
   margin-top: 10%;
   width: 100px;
   height: 100px;
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   transform-style: preserve-3d;
   transition: transform 1s;
-  transform: perspective(var(--fov)) rotateY(calc(var(--degrees) * var(--spin)));
+  transform: perspective(var(--fov)) rotateY(calc(var(--degrees) * var(--spin))); 
 }
 
 body{
@@ -40,28 +40,22 @@ body{
   overflow:hidden;
 }
 
-.dMenu > label div:nth-child(1){
+.dMenu > label > div{
+  transform-origin: 50% 50% -400px;
   background-color: white;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% 400px;
   position: absolute;
   width: 100px;
   height: 100px;
   top: 0px;
-  z-index: 100;
   left: 0px;
 }
+.dMenu > label div:nth-child(1){
+  z-index: 100;
+}
 .dMenu > label div:nth-child(2){
-  background-color: white;
-  transform-style: preserve-3d;
-  transform-origin: 50% 50% 400px;
-  width: 100px;
-  height: 100px;
   opacity: 0.5;
   filter: blur(10px);
-  position: absolute;
-  top: 0px;
-  left: 0px;
 }
 
 .dMenu div{
@@ -76,21 +70,21 @@ body{
   left: 0px;
   width: 100px;
   height: 100px;
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   background-color: red;
   transform-style: preserve-3d;
 }
 
 .gramCont{
   transform: rotateY(calc(var(--degrees) * -1));
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   transform-style: preserve-3d;
   display:block;
 }
 
 .compTainer{
   transform: rotateY(calc(var(--degrees) * -2));
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   transform-style: preserve-3d;
   width: 100px;
   height: 100px;
@@ -129,21 +123,6 @@ body{
   }
 
 }
-
-
-
-/*
-                                mod(
-                                        calc(
-                                                (
-                                                        var(--timeset) / 24
-                                                ) + 
-                                                var(--time)
-                                        )
-                        ,1
-                        ) 
-*/
-
 
 .dMenu label:hover{
   opacity: 1;
@@ -210,7 +189,7 @@ input:checked#menu5 ~ .dMenu .menu5 .menu6{
   pointer-events: auto;
 }
 input:checked#menu6 ~ .dMenu{
-  transform: perspective(var(--fov)) rotateY(calc(var(--degrees)*2)) translateY(25px) translateZ(-2750px) translateX(-2000px);
+  transform: perspective(var(--fov)) translateZ(2600px) rotateY(calc(var(--degrees)*2)) translateY(25px);
 }
 .menu6{
   display: none;
@@ -223,7 +202,7 @@ div.ground{
   width: 1000px;
   height: 1000px;
   transform-origin: 50% 50% 400px;
-  transform: translate(-50%, -50%) rotateX(90deg);
+  transform: translate(-50%, -50%) translateZ(-800px) rotateX(90deg);
   background-image: url("../assets/images/record.png");
   background-size: 100%;
 }
@@ -324,7 +303,7 @@ img.future{
 
 .article{
   transform: rotateY(calc(var(--degrees) * 1)) translateZ(20px);
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   transform-style: preserve-3d;
   display:block;
   position: absolute;

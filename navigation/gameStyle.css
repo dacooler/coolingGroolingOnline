@@ -1,6 +1,6 @@
 a.gameTainer{
   transform: rotateY(calc(var(--degrees) * 2));
-  transform-origin: 50% 50% 400px;
+  transform-origin: 50% 50% -400px;
   transform-style: preserve-3d;
   position:absolute;
   transition: --opening 1s;

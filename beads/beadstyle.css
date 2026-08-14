@@ -98,7 +98,7 @@ body{
   top: 3px;
   position: relative;
   .bead{
-    filter: brightness(50%)
+    filter: brightness(50%);
   }
 }
 :root{
