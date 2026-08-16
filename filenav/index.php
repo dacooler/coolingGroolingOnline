@@ -189,7 +189,7 @@
           <div></div>
           <div></div>
           <div></div>
-          <div> <div><a class=\"row" . floor($i/4) . "\" href=\"" . $dir[$i] . "/\" > <p>"  . $dir[$i] . "</p>" . $inside . "</a></div></div>
+          <div> <div><a class=\"row" . floor($i/4) . "\" href=\"" . $dir[$i] . "\" > <p>"  . $dir[$i] . "</p>" . $inside . "</a></div></div>
           <div></div>
         </div>
         ";

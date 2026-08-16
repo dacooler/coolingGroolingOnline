@@ -41,7 +41,8 @@ body div.heade{
             font-size:2em;
   }
   display:flex;
-  flex-wrap: wrap;
+  align-items:center;
+  flex-direction: column;
 }
 .main2 {
   margin-top: 10px;
@@ -115,9 +116,10 @@ body {
 .article{
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 90%;
   img{
     width: 100%;
+    border: solid 1px gray;
   }
   border: solid 1px gray;
   margin-bottom: 20px;

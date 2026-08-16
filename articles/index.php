@@ -63,7 +63,7 @@
           ?>
       <a class="article" href="<?php echo $links[$j]?>/"> 
         <?php echo $images[$j]; ?> 
-        <p><?php echo $titles[$j] ?> </p>
+        <h2><?php echo $titles[$j] ?> </h2>
       </a><?php
             }
       ?></div>
