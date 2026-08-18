@@ -130,6 +130,28 @@ body{
 
 }
 
+.tooltip {
+  text-align: center;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden; /* Hidden by default */
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 100%;
+  z-index: 1; /* Ensure tooltip is displayed above content */
+  transform: translateX(-50%);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 @property --spin{
         syntax: "<angle>";
         inherits: true;
