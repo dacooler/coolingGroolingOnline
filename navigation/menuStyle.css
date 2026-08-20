@@ -132,7 +132,7 @@ body{
 
 }
 
-.dMenu label:hover{
+.dMenu > #inner > label:hover{
   opacity: 1;
   cursor:pointer;
 }
