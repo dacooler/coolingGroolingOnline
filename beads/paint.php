@@ -45,6 +45,32 @@ if (isset($args['x']) && isset($args['y']) && isset($args['color'])) {
         }
         fclose($handle);
     }
-    copy($beadsFileName, $snapshotFolder . date("W-Y") . ".csv");
+  $snapshotFile = $snapshotFolder . date("W-Y") . ".csv";
+  if (file_exists($snapshotFile)) {
+    copy($beadsFileName, $snapshotFile);
+  }
+  else{
+    $handle = fopen($snapshotFile, "w");
+    if (flock($handle, LOCK_EX)){
+      for ($y = 1; $y <= 30; $y++) {
+          $row = [];
+          for ($x = 1; $x <= 30; $x++) {
+              $row[$x] = 0;
+          }
+          fputcsv($handle, $row);
+      }
+    }
+    $handle = fopen($beadsFileName, "w");
+    if (flock($handle, LOCK_EX)){
+      for ($y = 1; $y <= 30; $y++) {
+          $row = [];
+          for ($x = 1; $x <= 30; $x++) {
+              $row[$x] = 0;
+          }
+          fputcsv($handle, $row);
+      }
+    }
+    fclose($handle);
+  }
 }
 ?>
