@@ -42,43 +42,45 @@
         require("src/skybox.php");
       ?>
       <div class="dMenu">
-        <label for="menu1">
-          <div><a href="../gaming/">Gaming</a></div>
-          <div></div>
-        </label>
-        <label for="menu2">
-          <div><a href="../articles/">Articles</a></div>
-          <div></div>
-        </label>
-        <label for="menu3">
-          <div><a href="../">Homepage</a></div>
-          <div></div>
-        </label>
-        <label for="menu4">
-          <div><a href="../music/">music</a></div>
-          <div></div>
-        </label>
-        <label for="menu5" class="menu5">
-          <div></div>
-          <div></div>
-          <label for="menu6" class="menu6"></label>
-        </label>
-        <div class="ground"> </div>
-        <img src="../assets/images/future.png" class="future"></img>
-<?php
-        require("src/music.php");
-?>
-<?php
-        require("src/cube.php");
-?>
-<?php
-        require("src/gaming.php");
-?>
-<?php
-        require("src/articles.php");
-?>
-<?php
-        require("src/computer.php");
-?>
+        <div id="inner">
+          <label for="menu1">
+            <div><a href="../gaming/">Gaming</a></div>
+            <div></div>
+          </label>
+          <label for="menu2">
+            <div><a href="../articles/">Articles</a></div>
+            <div></div>
+          </label>
+          <label for="menu3">
+            <div><a href="../">Homepage</a></div>
+            <div></div>
+          </label>
+          <label for="menu4">
+            <div><a href="../music/">music</a></div>
+            <div></div>
+          </label>
+          <label for="menu5" class="menu5">
+            <div></div>
+            <div></div>
+            <label for="menu6" class="menu6"></label>
+          </label>
+          <div class="ground"> </div>
+          <img src="../assets/images/future.png" class="future"></img>
+  <?php
+          require("src/music.php");
+  ?>
+  <?php
+          require("src/cube.php");
+  ?>
+  <?php
+          require("src/gaming.php");
+  ?>
+  <?php
+          require("src/articles.php");
+  ?>
+  <?php
+          require("src/computer.php");
+  ?>
+        </div>
       </div>
   </body>

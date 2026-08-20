@@ -32,6 +32,14 @@
   transform-style: preserve-3d;
   transition: transform 1s;
   transform: perspective(var(--fov)) rotateY(calc(var(--degrees) * var(--spin))); 
+
+  #inner{
+    transition: transform 1s;
+    width: 0px;
+    height: 0px;
+    transform-origin: 50% 50% -400px;
+    position: absolute;
+  }
 }
 
 body{
@@ -40,7 +48,7 @@ body{
   overflow:hidden;
 }
 
-.dMenu > label > div{
+.dMenu > #inner > label > div{
   transform-origin: 50% 50% -400px;
   background-color: white;
   transform-style: preserve-3d;
@@ -50,10 +58,10 @@ body{
   top: 0px;
   left: 0px;
 }
-.dMenu > label div:nth-child(1){
+.dMenu > #inner > label div:nth-child(1){
   z-index: 100;
 }
-.dMenu > label div:nth-child(2){
+.dMenu > #inner > label div:nth-child(2){
   opacity: 0.5;
   filter: blur(10px);
 }
@@ -63,7 +71,7 @@ body{
   transform-style: preserve-3d;
 }
 
-.dMenu > label{
+.dMenu > #inner > label{
   position: absolute;
   opacity: 0.5;
   top: 100px;
@@ -133,20 +141,20 @@ body{
   display:inline;
 }
 
-.dMenu > label:nth-child(1){
+.dMenu > #inner > label:nth-child(1){
   transform: rotateY(calc(var(--degrees) * 2));
 }
-.dMenu > label:nth-child(2){
+.dMenu > #inner > label:nth-child(2){
   transform: rotateY(calc(var(--degrees)));
 }
-.dMenu > label:nth-child(3){
+.dMenu > #inner > label:nth-child(3){
   transform: rotateY(0deg);
 }
-.dMenu > label:nth-child(4){
+.dMenu > #inner > label:nth-child(4){
   transform: rotateY(calc(var(--degrees) * -1));
 }
 
-.dMenu > label:nth-child(5){
+.dMenu > #inner > label:nth-child(5){
   transform: rotateY(calc(var(--degrees) * -2));
 }
 
@@ -157,21 +165,39 @@ input{
 
 input:checked#menu1 ~ div{
   --spin: -2;
+  #inner{
+    transform: rotateY(0deg);
+  }
 }
 input:checked#menu2 ~ div{
   --spin: -1;
+  #inner{
+    transform: scaleX(1);
+  }
 }
 input:checked#menu3 ~ div{
   --spin: 0;
+  #inner{
+    transform: scaleX(1);
+  }
 }
 input:checked#menu4 ~ div{
   --spin: 1;
+  #inner{
+    transform: scaleX(1);
+  }
 }
 input:checked#menu5 ~ div{
   --spin: 2;
+  #inner{
+    transform: rotateY(-360deg);
+  }
 }
 input:checked#menu6 ~ div{
   --spin: 2;
+  #inner{
+    transform: rotateY(-360deg);
+  }
 }
 input:checked#menu5 ~ div .right{
   display: block;
