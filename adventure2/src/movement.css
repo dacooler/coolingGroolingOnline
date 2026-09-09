@@ -9,6 +9,16 @@
   initial-value: 0;
   inherits: false;
 }
+@property --world-pitch-pos{
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-pitch-neg{
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
 @property --world-move-x-pos {
   syntax: "<number>";
   initial-value: 0;
@@ -32,6 +42,8 @@
 
 @keyframes rotate-pos { to { --world-rot-pos: 1; } }
 @keyframes rotate-neg { to { --world-rot-neg: 1; } }
+@keyframes pitch-pos{ to { --world-pitch-pos: 1; } }
+@keyframes pitch-neg { to { --world-pitch-neg: 1; } }
 @keyframes move-x-pos { to { --world-move-x-pos: 1; } }
 @keyframes move-x-neg { to { --world-move-x-neg: 1; } }
 @keyframes move-y-pos { to { --world-move-y-pos: 1; } }
@@ -52,32 +64,41 @@
     move-x-pos var(--moveTimeX) linear infinite,
     move-x-neg var(--moveTimeX) linear infinite,
     move-y-pos var(--moveTimeY) linear infinite,
-    move-y-neg var(--moveTimeY) linear infinite;
-  animation-play-state: paused, paused, paused, paused, paused, paused;
+    move-y-neg var(--moveTimeY) linear infinite,
+    pitch-pos 5s linear infinite,
+    pitch-neg 5s linear infinite;
+  animation-play-state: paused, paused, paused, paused, paused, paused, paused, paused;
 
   --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
+  --world-pitch: rotateX(calc((var(--world-pitch-pos) - var(--world-pitch-neg)) * -360deg));
   --world-translation: translate(
     calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
     calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
     );
 
   &:has(button:active .rot-r:hover) {
-    animation-play-state: running, paused, paused, paused, paused, paused;
+    animation-play-state: running, paused, paused, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .rot-d:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, paused, running, paused;
+  }
+  &:has(button:active .rot-u:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, paused, paused, running;
   }
   &:has(button:active .rot-l:hover) {
-    animation-play-state: paused, running, paused, paused, paused, paused;
+    animation-play-state: paused, running, paused, paused, paused, paused, paused, paused;
   }
   &:has(button:active .move-l:hover) {
-    animation-play-state: paused, paused, running, paused, paused, paused;
+    animation-play-state: paused, paused, running, paused, paused, paused, paused, paused;
   }
   &:has(button:active .move-r:hover) {
-    animation-play-state: paused, paused, paused, running, paused, paused;
+    animation-play-state: paused, paused, paused, running, paused, paused, paused, paused;
   }
   &:has(button:active .move-u:hover) {
-    animation-play-state: paused, paused, paused, paused, running, paused;
+    animation-play-state: paused, paused, paused, paused, running, paused, paused, paused;
   }
   &:has(button:active .move-d:hover) {
-    animation-play-state: paused, paused, paused, paused, paused, running;
+    animation-play-state: paused, paused, paused, paused, paused, running, paused, paused;
   }
 }
 
@@ -88,7 +109,7 @@
   transform: var(--world-rotation);
 }
 .world-transform {
-  transform: var(--world-rotation) var(--world-translation);
+  transform: var(--world-pitch) var(--world-rotation) var(--world-translation);
 }
 
 @keyframes animator {

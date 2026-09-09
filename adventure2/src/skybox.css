@@ -16,7 +16,7 @@
     --height:var(--skyboxSize);
     --depth:var(--skyboxSize);
     transform-origin: 50% 50% calc(var(--skyboxSize)/2);
-    transform: rotateX(90deg) var(--world-rotation);
+    transform: rotateX(90deg) var(--world-pitch) var(--world-rotation);
     background-color:blue;
     background-image: url("../assets/images/sky/night/face_ny_bottom.png");
     background-size: 100% 100%;
