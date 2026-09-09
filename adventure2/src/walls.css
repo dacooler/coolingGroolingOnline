@@ -22,28 +22,63 @@
     transform: translateZ(var(--arg0));
     --img:url("../assets/images/wood.jpg");
   }
-  .nPaper{
+  .Paper{
+    background-color:green;
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+  }
+  .north {
     div:nth-child(2){
-      background-color:green;
-      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+      background-image: var(--special);
     }
   }
-  .wPaper{
+  .west{
     div:nth-child(3){
-      background-color:green;
-      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+      background-image: var(--special);
     }
   }
-  .sPaper{
+  .south{
     div:nth-child(1){
-      background-color:green;
-      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+      background-image: var(--special);
     }
   }
-  .ePaper{
+  .east{
     div:nth-child(4){
+      background-image: var(--special);
+    }
+  }
+  .museum{
+      /*animation: spin 8s linear infinite;*/
+    div{
       background-color:green;
       background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
     }
+    div:nth-child(3)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/contact.gif");
+    }
+    div:nth-child(4)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/hello.gif");
+    }
+    div:nth-child(5)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/contact.gif");
+    }
   }
+}
+@keyframes spin {
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
 }

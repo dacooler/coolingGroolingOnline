@@ -1,5 +1,5 @@
 .skyboxHolder{
-  --skyboxSize: 10px;
+  --skyboxSize: 1000px;
   transform-style:preserve-3d;
   position: absolute;
   width:0px;
@@ -9,7 +9,6 @@
   transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
   transition: transform 1s;
   .skybox{
-    --img: linear-gradient(lightblue, blue); 
     position:absolute;
     left:calc(var(--skyboxSize)/-2);
     top:calc(var(--skyboxSize)/-2);
@@ -18,12 +17,30 @@
     --depth:var(--skyboxSize);
     transform-origin: 50% 50% calc(var(--skyboxSize)/2);
     transform: rotateX(90deg) var(--world-rotation);
-    div:nth-child(5){
-      background-image: none;
-      background-color:lightblue;
-    }
-    background-image: none;
     background-color:blue;
+    background-image: url("../assets/images/sky/night/face_ny_bottom.png");
+    background-size: 100% 100%;
+    div{
+      background-size: 100% 100%;
+    }
+    div:nth-child(1){
+      background-image: url("../assets/images/sky/night/face_nz_back.png")
+    }
+    div:nth-child(2){
+      background-image: url("../assets/images/sky/night/face_pz_front.png")
+    }
+    div:nth-child(3){
+      background-image: url("../assets/images/sky/night/face_px_right.png")
+    }
+    div:nth-child(4){
+      background-image: url("../assets/images/sky/night/face_nx_left.png")
+    }
+    div:nth-child(5){
+      background-image: url("../assets/images/sky/night/face_py_top.png")
+    }
+    div:nth-child(6){
+      background-image: url("../assets/images/sky/night/face_ny_bottom.png")
+    }
   }
   .floor{
     left:calc(var(--skyboxSize)/-2);

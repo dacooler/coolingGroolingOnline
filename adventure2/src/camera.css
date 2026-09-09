@@ -1,5 +1,5 @@
 :root{
-  --fov: 10cm;
+  --fov: 11cm;
 }
 .world-inner {
   position: absolute;
