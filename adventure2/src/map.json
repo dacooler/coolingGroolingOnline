@@ -1,0 +1,123 @@
+[
+    {
+        "type": "block",
+        "position": {
+            "x": 5,
+            "y": 0
+        },
+        "size": {
+            "width": 50,
+            "height": 20,
+            "depth": 100
+        },
+        "css_classes": [
+            "wall"
+        ]
+    },
+    {
+        "type": "block",
+        "position": {
+            "x": 300,
+            "y": 300
+        },
+        "size": {
+            "width": 80,
+            "height": 80,
+            "depth": 10000
+        },
+        "css_classes": [
+            "wall"
+        ]
+    },
+    {
+        "type": "block",
+        "position": {
+            "x": 200,
+            "y": 500
+        },
+        "size": {
+            "width": 80,
+            "height": 10,
+            "depth": 100
+        },
+        "css_classes": [
+            "wall"
+        ]
+    },
+    {
+        "type": "room",
+        "position": {
+            "x": 400,
+            "y": 400
+        },
+        "size": {
+            "width": 400,
+            "height": 400,
+            "depth": 210
+        },
+        "css_classes": [
+            "wall",
+            "Paper"
+        ],
+        "doors": [
+            {
+                "wall_index": 1,
+                "position": 60,
+                "width": 100
+            },
+            {
+                "wall_index": 3,
+                "position": 60,
+                "width": 100
+            },
+            {
+                "wall_index": 4,
+                "position": 60,
+                "width": 100
+            }
+        ]
+    },
+    {
+        "type": "room",
+        "position": {
+            "x": 900,
+            "y": 400
+        },
+        "size": {
+            "width": 800,
+            "height": 400,
+            "depth": 210
+        },
+        "css_classes": [
+            "wall",
+            "Paper"
+        ],
+        "doors": [
+            {
+                "wall_index": 2,
+                "position": 60,
+                "width": 100
+            },
+            {
+                "wall_index": 3,
+                "position": 60,
+                "width": 100
+            }
+        ]
+    },
+    {
+        "type": "block",
+        "position": {
+            "x": 100,
+            "y": 100
+        },
+        "size": {
+            "width": 200,
+            "height": 200,
+            "depth": 200
+        },
+        "css_classes": [
+            "museum"
+        ]
+    }
+]
