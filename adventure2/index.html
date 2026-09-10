@@ -243,7 +243,7 @@
   transform: var(--world-rotation);
 }
 .world-transform {
-  transform: var(--world-pitch) var(--world-rotation) var(--world-translation);
+  transform:  var(--world-pitch) translateZ(-50px) var(--world-rotation) var(--world-translation) ;
 }
 
 @keyframes animator {
@@ -515,7 +515,7 @@ to { width: 100px }
   position: absolute;
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
-  transform:  perspective(var(--fov)) translateY(50px) translateZ(var(--fov)) rotateX(90deg) ;
+  transform: perspective(var(--fov)) translateZ(var(--fov))  rotateX(90deg);
   transition: transform 2s;
   top: 50%;
   left: 50%;

@@ -109,7 +109,7 @@
   transform: var(--world-rotation);
 }
 .world-transform {
-  transform: var(--world-pitch) var(--world-rotation) var(--world-translation);
+  transform:  var(--world-pitch) translateZ(-50px) var(--world-rotation) var(--world-translation) ;
 }
 
 @keyframes animator {
