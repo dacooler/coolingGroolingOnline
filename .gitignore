@@ -2,4 +2,4 @@ idious-counter.log
 graph/count.csv
 *.csv
 .vscode
-
+__pycache__/
