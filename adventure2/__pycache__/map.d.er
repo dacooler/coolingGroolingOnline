@@ -1,6 +1,0 @@
-##[pylyzer] failed /home/dacooler/prog/coolingGroolingOnline/adventure2/map.py 1770731839 1153
-.buildPart: |R <: Str|(cords: global::Indexable(Obj, R), size: Never, clas: R) -> global::Tuple([Str, Str])
-.getMap: Never
-: Self, size: Self, clas: R) -> global::Tuple([Str, Str])
-.getMap: Never
-uple([Str, Str])
