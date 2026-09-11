@@ -50,8 +50,8 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
-  --mapSizeX: 2000;
-  --mapSizeY: 2000;
+  --mapSizeX: _MAP_SIZE_X_;
+  --mapSizeY: _MAP_SIZE_Y_;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 
@@ -71,6 +71,9 @@
 
   --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
   --world-pitch: rotateX(calc((var(--world-pitch-pos) - var(--world-pitch-neg)) * -360deg));
+  --pitch-movement-down: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * -15% + 7.5% - 50%));
+  --pitch-movement-up: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * 15% - 7.5% - 50%)) ;
+
   --world-translation: translate(
     calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
     calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
@@ -107,6 +110,12 @@
 }
 .world-rotation {
   transform: var(--world-rotation);
+}
+.pitch-control-movement-up {
+  transform: var(--pitch-movement-up);
+}
+.pitch-control-movement-down {
+  transform: var(--pitch-movement-down);
 }
 .world-transform {
   transform:  var(--world-pitch) translateZ(-50px) var(--world-rotation) var(--world-translation) ;

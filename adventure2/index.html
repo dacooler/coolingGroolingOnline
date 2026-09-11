@@ -78,17 +78,29 @@
         }
 
         .angle {
+          position: relative;
+          overflow: hidden;
 
           .motion-grid{
             display: grid;
+            position: static;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
             width: 100%;
             height: 100%;
             transform-origin:50% 50%;
             transform: rotateZ(135deg);
-            span{
-              width: 100%;
+            div{
+              height: calc(var(--cs)/2);
+              overflow: hidden;
+              span{
+                display: block;
+                width: 100%;
+                height: 100%;
+              }
+              .rot-u, .rot-d{
+                height: 720px;
+              }
             }
           }
 
@@ -184,8 +196,8 @@
 @keyframes move-y-neg { to { --world-move-y-neg: 1; } }
 
 .world-anim {
-  --mapSizeX: 2000;
-  --mapSizeY: 2000;
+  --mapSizeX: 3000;
+  --mapSizeY: 3000;
   --mapSizeXPx: calc(var(--mapSizeX) * 1px);
   --mapSizeYPx: calc(var(--mapSizeY) * 1px);
 
@@ -205,6 +217,9 @@
 
   --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
   --world-pitch: rotateX(calc((var(--world-pitch-pos) - var(--world-pitch-neg)) * -360deg));
+  --pitch-movement-down: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * -15% + 7.5% - 50%));
+  --pitch-movement-up: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * 15% - 7.5% - 50%)) ;
+
   --world-translation: translate(
     calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
     calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
@@ -241,6 +256,12 @@
 }
 .world-rotation {
   transform: var(--world-rotation);
+}
+.pitch-control-movement-up {
+  transform: var(--pitch-movement-up);
+}
+.pitch-control-movement-down {
+  transform: var(--pitch-movement-down);
 }
 .world-transform {
   transform:  var(--world-pitch) translateZ(-50px) var(--world-rotation) var(--world-translation) ;
@@ -851,10 +872,20 @@ to { width: 100px }
       <div class="controls">
         <button class="angle">
           <div class="motion-grid">
-            <span class="rot-r"></span>
-            <span class="rot-d"></span>
-            <span class="rot-u"></span>
-            <span class="rot-l"></span>
+            <div>
+              <span class="rot-r"></span>
+            </div>
+            <div>
+              <span class="rot-d pitch-control-movement-down"></span>
+            </div>
+            <div>
+              <span class="rot-u pitch-control-movement-up"></span>
+            </div>
+            <div>
+              <span class="rot-l"></span>
+            </div>
+          </div>
+          <div class="middle-cover">
           </div>
         </button>
         <button class="motion world-rotation">

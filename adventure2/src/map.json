@@ -1,5 +1,10 @@
 [
     {
+        "type": "size",
+        "x": 3000,
+        "y": 3000
+    },
+    {
         "type": "block",
         "position": {
             "x": 5,
