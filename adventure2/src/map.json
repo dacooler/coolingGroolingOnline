@@ -1,8 +1,11 @@
 [
     {
         "type": "size",
-        "x": 3000,
-        "y": 3000
+        "size": {
+            "width": 3000,
+            "height": 3000,
+            "depth": 1
+        }
     },
     {
         "type": "block",
@@ -66,17 +69,17 @@
         ],
         "doors": [
             {
-                "wall_index": 1,
+                "wall_index": 0,
+                "position": 60,
+                "width": 100
+            },
+            {
+                "wall_index": 2,
                 "position": 60,
                 "width": 100
             },
             {
                 "wall_index": 3,
-                "position": 60,
-                "width": 100
-            },
-            {
-                "wall_index": 4,
                 "position": 60,
                 "width": 100
             }
@@ -99,14 +102,39 @@
         ],
         "doors": [
             {
+                "wall_index": 1,
+                "position": 60,
+                "width": 100
+            },
+            {
+                "wall_index": 1,
+                "position": 180,
+                "width": 100
+            },
+            {
+                "wall_index": 1,
+                "position": 300,
+                "width": 50
+            },
+            {
                 "wall_index": 2,
                 "position": 60,
                 "width": 100
             },
             {
-                "wall_index": 3,
-                "position": 60,
+                "wall_index": 2,
+                "position": 170,
                 "width": 100
+            },
+            {
+                "wall_index": 2,
+                "position": 370,
+                "width": 200
+            },
+            {
+                "wall_index": 2,
+                "position": 600,
+                "width": 50
             }
         ]
     },
