@@ -1,8 +1,11 @@
 [
     {
         "type": "size",
-        "x": 3000,
-        "y": 3000
+        "size": {
+            "width": 3000,
+            "height": 3000,
+            "depth": 1
+        }
     },
     {
         "type": "block",

@@ -310,7 +310,7 @@ class Room:
 class Map:
     rooms: list[Room]
     blocks: list[Part]
-    size: list[int]
+    size: Size
 
     def get_collision_parts(self):
         for room in self.rooms:
@@ -338,7 +338,6 @@ class Map:
     def __init__(self):
         self.rooms = []
         self.blocks = []
-        self.size = Size
 
         file = open('src/map.json')
         map_data_raw = file.read()
@@ -349,7 +348,7 @@ class Map:
             match object['type']:
                 case "block": self._parse_block(object)
                 case "room": self._parse_room(object)
-                case "size": self._parse_size(object)
+                case "size": self.size = Size.from_json(object['size'])
                 case _: raise ValueError('invalid value for type of object.')
 
     def _parse_block(self, block: dict[str, Any]):
@@ -367,10 +366,6 @@ class Map:
             20,
             Doors.from_json(room['doors'])
         ))
-
-    def _parse_size(self, size: dict[str, int]):
-        self.size.width = size['x']
-        self.size.height = size['y']
 
 
 def getMap():
