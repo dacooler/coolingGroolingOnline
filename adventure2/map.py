@@ -14,6 +14,9 @@ class Coord:
     def from_json(json: dict[str, float]):
         return Coord(json['x'], json['y'])
 
+    def clone(self):
+        return Coord(self.x, self.y)
+
     def __add__(self, other):
         if isinstance(other, Coord):
             return Coord(self.x + other.x, self.y + other.y)
@@ -36,6 +39,9 @@ class Size:
     @staticmethod
     def from_json(json: dict[str, float]):
         return Size(json['width'], json['height'], json['depth'])
+
+    def clone(self):
+        return Size(self.width, self.height, self.depth)
 
 
 class Style:
@@ -104,42 +110,49 @@ class HtmlElement:
 
 """Class representing a single part. Has a visual cube and a collision rect."""
 class Part:
-    """The visual component of this part. Will be a cube with a certain texture."""
-    visual_cube: HtmlElement
-    """The collision rect of this part. Will be just a simple rectangle div."""
-    collision_rect: HtmlElement
+    position: Coord
+    size: Size
+    css_classes: list[str]
+    args: list[str]
 
-    def __init__(self, top_left: Coord, size: Size, css_classes: list[str], args: list[str] = []):
-        self._set_collision_rect(top_left, size)
-        self._set_visual_cube(top_left, size, css_classes, args)
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = []):
+        self.position = position
+        self.size = size
+        self.css_classes = css_classes
+        self.args = args
 
-    def _set_collision_rect(self, top_left: Coord, size: Size):
-        self.collision_rect = HtmlElement(
+    def get_collision_rect(self):
+        """The collision rect of this part. Will be just a simple rectangle div."""
+        return HtmlElement(
             'div',
             style=[
-                Style('left', top_left.x, 'px'),
-                Style('top', top_left.y, 'px'),
-                Style('width', size.width, 'px'),
-                Style('height', size.height, 'px'),
+                Style('left', self.position.x, 'px'),
+                Style('top', self.position.y, 'px'),
+                Style('width', self.size.width, 'px'),
+                Style('height', self.size.height, 'px'),
             ]
         )
 
-    def _set_visual_cube(self, top_left: Coord, size: Size, css_classes: list[str], args: list[str]):
+    def get_visual_cube(self):
+        """The visual component of this part. Will be a cube with a certain texture."""
         style=[
-            Style('left', top_left.x, 'px'),
-            Style('top', top_left.y, 'px'),
-            Style('--width', size.width, 'px'),
-            Style('--height', size.height, 'px'),
-            Style('--depth', size.depth, 'px'),
+            Style('left', self.position.x, 'px'),
+            Style('top', self.position.y, 'px'),
+            Style('--width', self.size.width, 'px'),
+            Style('--height', self.size.height, 'px'),
+            Style('--depth', self.size.depth, 'px'),
         ] + [
-            Style(f'--arg{i}', arg, '') for i, arg in enumerate(args)
+            Style(f'--arg{i}', arg, '') for i, arg in enumerate(self.args)
         ]
 
-        self.visual_cube = HtmlElement(
-            css_classes=['cubed'] + css_classes,
+        return HtmlElement(
+            css_classes=['cubed'] + self.css_classes,
             style=style,
             children=[HtmlElement('div') for _ in range(6)]
         )
+        
+    def clone(self):
+        return Part(self.position.clone(), self.size.clone(), list(self.css_classes), list(self.args))
 
 
 class Door:
@@ -150,19 +163,25 @@ class Door:
         self.position = position
         self.width = width
 
+    def __lt__(self, other: 'Door'):
+        return self.position < other.position
 
-"""Represents the 4 doors of a normal house. (yes, a normal house has 4 doors (or less))."""
+    def __str__(self):
+        return f'Door(position={self.position}, width={self.width})'
+
+    def __repr__(self):
+        return str(self)
+
+
 class Doors:
-    door1: None | Door
-    door2: None | Door
-    door3: None | Door
-    door4: None | Door
+    """Represents the 4 (or more) doors of a normal house. (yes, a normal house has 4 (or more) doors (or less))."""
+    _wall_doors: list[list[Door]]
 
     def __init__(self):
-        self.door1 = None
-        self.door2 = None
-        self.door3 = None
-        self.door4 = None
+        self._wall_doors = [[], [], [], []]
+
+    def get_doors_of_wall(self, wall_index: int):
+        return self._wall_doors[wall_index]
 
     @staticmethod
     def from_json(json: list[dict[str, Any]]):
@@ -172,139 +191,134 @@ class Doors:
                 door_json['position'],
                 door_json['width'],
             )
-            match door_json['wall_index']:
-                case 1: doors.door1 = door
-                case 2: doors.door2 = door
-                case 3: doors.door3 = door
-                case 4: doors.door4 = door
+            doors._wall_doors[int(door_json['wall_index'])].append(door)
 
         return doors
 
+    def __str__(self):
+        return f'Doors({str(self._wall_doors)})'
 
-class Room:
+        
+class Wall:
+    """The wall of a room."""
+    DOOR_HEIGHT = 100
+
+    position: Coord
+    size: Size
+    doors: list[Door]
+    css_classes: list[str]
+
+    _collision_parts: list[Part]
     """Parts of the room that are both visual and have collision."""
-    collision_parts: list[Part]
+    _visual_parts: list[Part]
     """Parts of the room that are only visual and have no collision."""
-    visual_parts: list[Part]
 
     def get_visual_cubes(self):
-        return [part.visual_cube for part in self.collision_parts + self.visual_parts]
+        return self._visual_parts
+    
+    def get_collision_rects(self):
+        return self._collision_parts
+
+    def __init__(self, position: Coord, size: Size, doors: list[Door], css_classes: list[str], is_horizontal: bool):
+        self.position = position
+        self.size = size
+        self.doors = doors
+        self.css_classes = css_classes
+
+        self._collision_parts = []
+        self._visual_parts = []
+
+        self._generate_parts(is_horizontal)
+
+    def _generate_parts(self, is_horizontal: bool):
+        current_wall_part = Part(self.position, self.size, self.css_classes)
+        for door in sorted(self.doors):
+            door_part = current_wall_part.clone()
+            next_wall_part = current_wall_part.clone()
+
+            if is_horizontal:
+                current_wall_part.size.width = self.position.x + door.position - current_wall_part.position.x
+
+                next_wall_part.position.x = self.position.x + door.position + door.width
+                next_wall_part.size.width -= current_wall_part.size.width + door.width
+
+                door_part.position.x = self.position.x + door.position
+                door_part.size.width = door.width
+
+            else:
+                current_wall_part.size.height = self.position.y + door.position - current_wall_part.position.y
+
+                next_wall_part.position.y = self.position.y + door.position + door.width
+                next_wall_part.size.height -= current_wall_part.size.height + door.width
+
+                door_part.position.y = self.position.y + door.position
+                door_part.size.height = door.width
+            
+            door_part.size.depth -= self.DOOR_HEIGHT
+            door_part.css_classes.append('pole')
+
+            self._collision_parts.append(current_wall_part)
+            self._visual_parts.append(door_part)
+            current_wall_part = next_wall_part
+
+        self._collision_parts.append(current_wall_part)
+
+
+class Room:
+    ROOF_THICCNESS = 10
+
+    walls: list[Wall]
+    roof: Part 
+    """Part with no collision."""
+
+    def get_visual_cubes(self):
+        for wall in self.walls:
+            for cube in wall.get_visual_cubes():
+                yield cube
+        yield self.roof
 
     def get_collision_rects(self):
-        return [part.collision_rect for part in self.collision_parts]
+        for wall in self.walls:
+            for cube in wall.get_collision_rects():
+                yield cube
 
     def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: Doors):
-        self.collision_parts = []
-        self.visual_parts = []
-        
-        width = size.width
-        height = size.height
-        depth = size.depth
-
-        css_class_north = "north"
-        if doors.door1:
-            door_pos = doors.door1.position  # type: ignore
-            door_width = doors.door1.width  # type: ignore
-
-            self._add_part_with_collision(Part(
+        self.walls = [
+            Wall(
                 position,
-                Size(door_pos, wall_thickness, depth),
-                css_classes + [css_class_north]))
-            self._add_part_without_collision(Part(
-                position + (door_pos, 0),
-                Size(door_width, wall_thickness, depth-100),
-                css_classes + ["pole", css_class_north]))
-            self._add_part_with_collision(Part(
-                position + (door_pos + door_width, 0),
-                Size(width - door_width - door_pos, wall_thickness, depth),
-                css_classes + [css_class_north]))
-        else:
-            self._add_part_with_collision(Part(
-                position,
-                Size(width, wall_thickness, depth),
-                css_classes + [css_class_north]))
-
-        css_class_east = "east"
-        if doors.door2:
-            door_pos = doors.door2.position  # type: ignore
-            door_width = doors.door2.width  # type: ignore
-
-            self._add_part_with_collision(Part(
-                position + (width, 0),
-                Size(wall_thickness, door_pos, depth),
-                css_classes + [css_class_east]))
-            self._add_part_without_collision(Part(
-                position + (width, door_pos),
-                Size(wall_thickness, door_width, depth-100),
-                css_classes + ["pole", css_class_east]))
-            self._add_part_with_collision(Part(
-                position + (width, door_pos + door_width),
-                Size(wall_thickness, height - door_width - door_pos, depth),
-                css_classes + [css_class_east]))
-        else:
-            self._add_part_with_collision(Part(
-                position + (width, 0),
-                Size(wall_thickness, height, depth),
-                css_classes + [css_class_east]))
-
-        css_class_south = "south"
-        if doors.door3:
-            door_pos = doors.door3.position  # type: ignore
-            door_width = doors.door3.width  # type: ignore
-
-            self._add_part_with_collision(Part(
-                position + (wall_thickness, height),
-                Size(door_pos, wall_thickness, depth),
-                css_classes + [css_class_south]))
-            self._add_part_without_collision(Part(
-                position + (wall_thickness + door_pos, height),
-                Size(door_width, wall_thickness, depth-100),
-                css_classes + ["pole", css_class_south]))
-            self._add_part_with_collision(Part(
-                position + (wall_thickness + door_pos + door_width, height),
-                Size(width - door_width - door_pos, wall_thickness, depth),
-                css_classes + [css_class_south]))
-        else:
-            self._add_part_with_collision(Part(
-                position + (wall_thickness, height),
-                Size(width, wall_thickness, depth),
-                css_classes + [css_class_south]))
-
-        css_class_west = "west"
-        if doors.door4:
-            door_pos = doors.door4.position  # type: ignore
-            door_width = doors.door4.width  # type: ignore
-
-            self._add_part_with_collision(Part(
+                Size(size.width, wall_thickness, size.depth),
+                doors.get_doors_of_wall(0),
+                css_classes + ['north'],
+                True
+            ),
+            Wall(
+                position + (size.width, 0),
+                Size(wall_thickness, size.height, size.depth),
+                doors.get_doors_of_wall(1),
+                css_classes + ['east'],
+                False
+            ),
+            Wall(
+                position + (wall_thickness, size.height),
+                Size(size.width, wall_thickness, size.depth),
+                doors.get_doors_of_wall(2),
+                css_classes + ['south'],
+                True
+            ),
+            Wall(
                 position + (0, wall_thickness),
-                Size(wall_thickness, door_pos, depth),
-                css_classes + [css_class_west]))
-            self._add_part_without_collision(Part(
-                position + (0, wall_thickness + door_pos),
-                Size(wall_thickness, door_width, depth-100),
-                css_classes + ["pole", css_class_west]))
-            self._add_part_with_collision(Part(
-                position + (0, wall_thickness + door_pos + door_width),
-                Size(wall_thickness, height - door_pos - door_width, depth),
-                css_classes + [css_class_west]))
-        else:
-            self._add_part_with_collision(Part(
-                position + (0, wall_thickness),
-                Size(wall_thickness, height, depth),
-                css_classes + [css_class_west]))
+                Size(wall_thickness, size.height, size.depth),
+                doors.get_doors_of_wall(3),
+                css_classes + ['west'],
+                False
+            ),
+        ]
 
-        self._add_part_without_collision(Part(
+        self.roof = Part(
             position + (wall_thickness, wall_thickness),
-            Size(width - wall_thickness, height - wall_thickness, 10),
+            Size(size.width - wall_thickness, size.height - wall_thickness, Room.ROOF_THICCNESS),
             css_classes=["roof"],
-            args=['200px']))
-
-    def _add_part_with_collision(self, wall: Part):
-        self.collision_parts.append(wall)
-        self._add_part_without_collision(wall)
-
-    def _add_part_without_collision(self, wall: Part):
-        self.visual_parts.append(wall)
+            args=['200px'])
 
 
 class Map:
@@ -314,23 +328,23 @@ class Map:
 
     def get_collision_parts(self):
         for room in self.rooms:
-            for part in room.collision_parts:
-                yield part.collision_rect
+            for part in room.get_collision_rects():
+                yield part.get_collision_rect()
 
         for block in self.blocks:
-            yield block.collision_rect
+            yield block.get_collision_rect()
     
     def get_visual_parts(self):
         for room in self.rooms:
-            for part in room.collision_parts:
-                yield part.visual_cube
+            for part in room.get_collision_rects():
+                yield part.get_visual_cube()
 
         for room in self.rooms:
-            for part in room.visual_parts:
-                yield part.visual_cube
+            for part in room.get_visual_cubes():
+                yield part.get_visual_cube()
 
         for block in self.blocks:
-            yield block.visual_cube
+            yield block.get_visual_cube()
         
     def get_size(self):
         return (self.size.width, self.size.height)
