@@ -1,4 +1,22 @@
 .world-content{
+  .roof{
+    transform: translateZ(var(--arg0));
+    --img:url("../assets/images/wood.jpg");
+    div:nth-child(1){
+      transform: rotateX(45deg);
+      width:var(--width);
+      height:var(--height);
+      top: 0px;
+      left: 0px;
+    }
+    div:nth-child(2){
+      transform: rotateX(-45deg);
+      width:var(--width);
+      height:var(--height);
+      top: 0px;
+      left: 0px;
+    }
+  }
   div{
     div{
       backface-visibility:hidden;
@@ -18,11 +36,7 @@
       background-size:200px 200px;
     }
   }
-  .roof{
-    transform: translateZ(var(--arg0));
-    --img:url("../assets/images/wood.jpg");
-  }
-  .Paper{
+    .Paper{
     background-color:green;
     --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
   }
