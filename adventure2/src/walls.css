@@ -2,19 +2,42 @@
   .roof{
     transform: translateZ(var(--arg0));
     --img:url("../assets/images/wood.jpg");
+    --roofImg:url("../assets/images/roof.jpg");
+    --angle: 45deg;
+    --overhang: 30px;
+    --roofA: calc((var(--height) / 2 + var(--overhang)));
     div:nth-child(1){
-      transform: rotateX(45deg);
-      width:var(--width);
-      height:var(--height);
-      top: 0px;
-      left: 0px;
+      transform: rotateX(var(--angle));
+      height: calc(var(--roofA) / cos(var(--angle)));
+      width:calc(var(--width) + var(--overhang) * 2);
+      left: calc(var(--overhang) * -1);
+      top: calc(var(--overhang) * -1);
+      backface-visibility: visible;
+      background-image: var(--roofImg);
+      background-size: 200px 200px;
     }
     div:nth-child(2){
-      transform: rotateX(-45deg);
-      width:var(--width);
-      height:var(--height);
-      top: 0px;
-      left: 0px;
+      transform: rotateX(calc(-1 * var(--angle)));
+      height: calc(var(--roofA) / cos(var(--angle)));
+      bottom: calc(var(--overhang) * -1);
+      top: initial;
+      width:calc(var(--width) + var(--overhang) * 2);
+      left: calc(var(--overhang) * -1);
+      backface-visibility: visible;
+      background-image: var(--roofImg);
+      background-size: 200px 200px;
+    }
+    div:nth-child(3){
+      height:calc(tan(var(--angle)) * var(--roofA));
+      left: calc(var(--width) - var(--height) / 2 - var(--overhang));
+      width:calc(var(--height) + var(--overhang) * 2);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+    div:nth-child(4){
+      height:calc(tan(var(--angle)) * var(--roofA));
+      left: calc(var(--height) / 2 + var(--overhang));
+      width:calc(var(--height) + var(--overhang) * 2);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
     }
   }
   div{
