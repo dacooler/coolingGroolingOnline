@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Any
 import json
 
@@ -154,16 +155,33 @@ class Part:
     def clone(self):
         return Part(self.position.clone(), self.size.clone(), list(self.css_classes), list(self.args))
 
+        
+class WallOpeningType(Enum):
+    DOOR = 0
+    WINDOW = 1
 
-class Door:
+
+class WallOpening:
+    DOOR_HEIGHT = WINDOW_TOP_HEIGHT = 100  # must be 100 since the pole css class moves up wall openings by exactly 100px
+    WINDOW_BOTTOM_HEIGHT = 40
     position: float
     width: float
+    type: WallOpeningType
 
-    def __init__(self, position: float, width: float):
+    def __init__(self, position: float, width: float, type: WallOpeningType):
         self.position = position
         self.width = width
+        self.type = type
 
-    def __lt__(self, other: 'Door'):
+    @staticmethod
+    def from_json(json: dict[str, Any]):
+        return WallOpening(
+            json['position'],
+            json['width'],
+            WallOpeningType.DOOR if json['type'] == 'door' else WallOpeningType.WINDOW 
+        )
+
+    def __lt__(self, other: 'WallOpening'):
         return self.position < other.position
 
     def __str__(self):
@@ -173,39 +191,35 @@ class Door:
         return str(self)
 
 
-class Doors:
+class WallOpenings:
     """Represents the 4 (or more) doors of a normal house. (yes, a normal house has 4 (or more) doors (or less))."""
-    _wall_doors: list[list[Door]]
+    _wall_openings: list[list[WallOpening]]
 
     def __init__(self):
-        self._wall_doors = [[], [], [], []]
+        self._wall_openings = [[], [], [], []]
 
-    def get_doors_of_wall(self, wall_index: int):
-        return self._wall_doors[wall_index]
+    def get_openings_of_wall(self, wall_index: int):
+        return self._wall_openings[wall_index]
 
     @staticmethod
     def from_json(json: list[dict[str, Any]]):
-        doors = Doors()
-        for door_json in json:
-            door = Door(
-                door_json['position'],
-                door_json['width'],
-            )
-            doors._wall_doors[int(door_json['wall_index'])].append(door)
+        wall_openings = WallOpenings()
+        for wall_opening_json in json:
+            wall_opening = WallOpening.from_json(wall_opening_json)
+            wall_openings._wall_openings[int(wall_opening_json['wall_index'])].append(wall_opening)
 
-        return doors
+        return wall_openings
 
     def __str__(self):
-        return f'Doors({str(self._wall_doors)})'
+        return f'Doors({str(self._wall_openings)})'
 
         
 class Wall:
     """The wall of a room."""
-    DOOR_HEIGHT = 100
 
     position: Coord
     size: Size
-    doors: list[Door]
+    wall_openings: list[WallOpening]
     css_classes: list[str]
 
     _collision_parts: list[Part]
@@ -219,10 +233,10 @@ class Wall:
     def get_collision_rects(self):
         return self._collision_parts
 
-    def __init__(self, position: Coord, size: Size, doors: list[Door], css_classes: list[str], is_horizontal: bool):
+    def __init__(self, position: Coord, size: Size, wall_openings: list[WallOpening], css_classes: list[str], is_horizontal: bool):
         self.position = position
         self.size = size
-        self.doors = doors
+        self.wall_openings = wall_openings
         self.css_classes = css_classes
 
         self._collision_parts = []
@@ -232,33 +246,43 @@ class Wall:
 
     def _generate_parts(self, is_horizontal: bool):
         current_wall_part = Part(self.position, self.size, self.css_classes)
-        for door in sorted(self.doors):
-            door_part = current_wall_part.clone()
+        for wall_opening in sorted(self.wall_openings):
+            wall_opening_part = current_wall_part.clone()
             next_wall_part = current_wall_part.clone()
 
             if is_horizontal:
-                current_wall_part.size.width = self.position.x + door.position - current_wall_part.position.x
+                current_wall_part.size.width = self.position.x + wall_opening.position - current_wall_part.position.x
 
-                next_wall_part.position.x = self.position.x + door.position + door.width
-                next_wall_part.size.width -= current_wall_part.size.width + door.width
+                next_wall_part.position.x = self.position.x + wall_opening.position + wall_opening.width
+                next_wall_part.size.width -= current_wall_part.size.width + wall_opening.width
 
-                door_part.position.x = self.position.x + door.position
-                door_part.size.width = door.width
+                wall_opening_part.position.x = self.position.x + wall_opening.position
+                wall_opening_part.size.width = wall_opening.width
 
             else:
-                current_wall_part.size.height = self.position.y + door.position - current_wall_part.position.y
+                current_wall_part.size.height = self.position.y + wall_opening.position - current_wall_part.position.y
 
-                next_wall_part.position.y = self.position.y + door.position + door.width
-                next_wall_part.size.height -= current_wall_part.size.height + door.width
+                next_wall_part.position.y = self.position.y + wall_opening.position + wall_opening.width
+                next_wall_part.size.height -= current_wall_part.size.height + wall_opening.width
 
-                door_part.position.y = self.position.y + door.position
-                door_part.size.height = door.width
+                wall_opening_part.position.y = self.position.y + wall_opening.position
+                wall_opening_part.size.height = wall_opening.width
             
-            door_part.size.depth -= self.DOOR_HEIGHT
-            door_part.css_classes.append('pole')
+            if (wall_opening.type == WallOpeningType.DOOR):
+                wall_opening_part.size.depth -= WallOpening.DOOR_HEIGHT
+                wall_opening_part.css_classes.append('pole')
+                self._visual_parts.append(wall_opening_part)
+            elif (wall_opening.type == WallOpeningType.WINDOW):
+                window_bottom = wall_opening_part.clone()
+                wall_opening_part.size.depth -= WallOpening.WINDOW_TOP_HEIGHT
+                window_bottom.size.depth = WallOpening.WINDOW_BOTTOM_HEIGHT
+                wall_opening_part.css_classes.append('pole')
+                self._collision_parts.append(wall_opening_part)
+                self._collision_parts.append(window_bottom)
+            else:
+                raise ValueError('Unknown type of Wall Opening')
 
             self._collision_parts.append(current_wall_part)
-            self._visual_parts.append(door_part)
             current_wall_part = next_wall_part
 
         self._collision_parts.append(current_wall_part)
@@ -282,33 +306,33 @@ class Room:
             for cube in wall.get_collision_rects():
                 yield cube
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: Doors):
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings):
         self.walls = [
             Wall(
                 position,
                 Size(size.width, wall_thickness, size.depth),
-                doors.get_doors_of_wall(0),
+                doors.get_openings_of_wall(0),
                 css_classes + ['north'],
                 True
             ),
             Wall(
                 position + (size.width, 0),
                 Size(wall_thickness, size.height, size.depth),
-                doors.get_doors_of_wall(1),
+                doors.get_openings_of_wall(1),
                 css_classes + ['east'],
                 False
             ),
             Wall(
                 position + (wall_thickness, size.height),
                 Size(size.width, wall_thickness, size.depth),
-                doors.get_doors_of_wall(2),
+                doors.get_openings_of_wall(2),
                 css_classes + ['south'],
                 True
             ),
             Wall(
                 position + (0, wall_thickness),
                 Size(wall_thickness, size.height, size.depth),
-                doors.get_doors_of_wall(3),
+                doors.get_openings_of_wall(3),
                 css_classes + ['west'],
                 False
             ),
@@ -378,7 +402,7 @@ class Map:
             Size.from_json(room['size']),
             room['css_classes'],
             20,
-            Doors.from_json(room['doors'])
+            WallOpenings.from_json(room['wall_openings'])
         ))
 
 
