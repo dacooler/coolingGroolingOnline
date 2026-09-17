@@ -53,12 +53,38 @@
     }
   }
   .pole{
-    transform: translateZ(100px);
+    --pHeight: 100px;
+    transform: translateZ(var(--pHeight));
     --img:url("../assets/images/bricks.jpg");
     div{
       background-size:200px 200px;
     }
   }
+  .window{
+    --pHeight:100px;
+    --img:url("../assets/images/bricks.jpg");
+    --windowImage: url("../assets/images/window.png");
+    div{
+      background-size:200px 200px;
+    }
+    div:nth-child(5)::before{
+      display:block;
+      background-image: var(--windowImage);
+      background-size: 100% 100%;
+      height:60px;
+      content:"";
+    }
+  }
+    .window.horizontal div:nth-child(5)::before{
+      width:var(--width);
+      transform-origin: 0 0;
+      transform:rotateX(90deg);
+    }
+    .window.vertical div:nth-child(5)::before{
+      width:var(--height);
+      transform-origin: 0 0;
+      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height)));
+    }
     .Paper{
     background-color:green;
     --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");

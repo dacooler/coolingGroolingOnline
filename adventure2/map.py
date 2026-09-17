@@ -251,6 +251,7 @@ class Wall:
             next_wall_part = current_wall_part.clone()
 
             if is_horizontal:
+                wall_opening_part.css_classes.append('horizontal')
                 current_wall_part.size.width = self.position.x + wall_opening.position - current_wall_part.position.x
 
                 next_wall_part.position.x = self.position.x + wall_opening.position + wall_opening.width
@@ -260,6 +261,7 @@ class Wall:
                 wall_opening_part.size.width = wall_opening.width
 
             else:
+                wall_opening_part.css_classes.append('vertical')
                 current_wall_part.size.height = self.position.y + wall_opening.position - current_wall_part.position.y
 
                 next_wall_part.position.y = self.position.y + wall_opening.position + wall_opening.width
@@ -277,6 +279,7 @@ class Wall:
                 wall_opening_part.size.depth -= WallOpening.WINDOW_TOP_HEIGHT
                 window_bottom.size.depth = WallOpening.WINDOW_BOTTOM_HEIGHT
                 wall_opening_part.css_classes.append('pole')
+                window_bottom.css_classes.append('window')
                 self._collision_parts.append(wall_opening_part)
                 self._collision_parts.append(window_bottom)
             else:
