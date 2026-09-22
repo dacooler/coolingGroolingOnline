@@ -439,24 +439,22 @@ to { width: 100px }
     --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
     div{
       image-rendering: pixelated;
-      background-size: 100% 100%, 210px 210px;
+      background-size: 100% 100px, 210px 210px;
+      background-position: bottom 0px center;
+      background-repeat: repeat-x, repeat;
     }
   }
-  .pole{
+  div.pole{
     --pHeight: 100px;
     transform: translateZ(var(--pHeight));
-    --img:url("../assets/images/bricks.jpg");
     div{
-      background-size:200px 200px;
+      background-position: bottom var(--pHeight) center;
+      background-size:210px 210px;
     }
   }
   .window{
     --pHeight:100px;
-    --img:url("../assets/images/bricks.jpg");
     --windowImage: url("../assets/images/window.png");
-    div{
-      background-size:200px 200px;
-    }
     div:nth-child(5)::before{
       display:block;
       background-image: var(--windowImage);
