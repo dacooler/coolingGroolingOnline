@@ -28,7 +28,7 @@ body{
   width: var(--mapSizeXPx);
   height: var(--mapSizeYPx);
   background-size: 300px 200px;
-  background-image: url("../assets/images/wood.jpg");
+  background-image: url("../assets/images/grass.jpeg");
 }
 
 

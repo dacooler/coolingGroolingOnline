@@ -78,12 +78,12 @@
     .window.horizontal div:nth-child(5)::before{
       width:var(--width);
       transform-origin: 0 0;
-      transform:rotateX(90deg);
+      transform:rotateX(90deg) translateZ(calc(var(--height) / -2));
     }
     .window.vertical div:nth-child(5)::before{
       width:var(--height);
       transform-origin: 0 0;
-      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height)));
+      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height))) translateZ(calc(var(--width) / -2));
     }
     .Paper{
     background-color:green;
@@ -139,6 +139,9 @@
       background-repeat: no-repeat;
       background-image:url("/assets/images/contact.gif");
     }
+  }
+  .floor{
+    --img: url("/assets/images/wood.jpg");
   }
 }
 @keyframes spin {

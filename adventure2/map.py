@@ -303,6 +303,7 @@ class Room:
             for cube in wall.get_visual_cubes():
                 yield cube
         yield self.roof
+        yield self.floor
 
     def get_collision_rects(self):
         for wall in self.walls:
@@ -346,6 +347,13 @@ class Room:
             Size(size.width - wall_thickness, size.height - wall_thickness, Room.ROOF_THICCNESS),
             css_classes=["roof"],
             args=['200px'])
+
+        self.floor = Part(
+            position,
+            Size(size.width + wall_thickness, size.height + wall_thickness, 1),
+            css_classes=["floor"],
+        )
+        
 
 
 class Map:

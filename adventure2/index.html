@@ -32,7 +32,7 @@
   width: var(--mapSizeXPx);
   height: var(--mapSizeYPx);
   background-size: 300px 200px;
-  background-image: url("../assets/images/wood.jpg");
+  background-image: url("../assets/images/grass.jpeg");
 }
 
 
@@ -468,12 +468,12 @@ to { width: 100px }
     .window.horizontal div:nth-child(5)::before{
       width:var(--width);
       transform-origin: 0 0;
-      transform:rotateX(90deg);
+      transform:rotateX(90deg) translateZ(calc(var(--height) / -2));
     }
     .window.vertical div:nth-child(5)::before{
       width:var(--height);
       transform-origin: 0 0;
-      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height)));
+      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height))) translateZ(calc(var(--width) / -2));
     }
     .Paper{
     background-color:green;
@@ -529,6 +529,9 @@ to { width: 100px }
       background-repeat: no-repeat;
       background-image:url("/assets/images/contact.gif");
     }
+  }
+  .floor{
+    --img: url("/assets/images/wood.jpg");
   }
 }
 @keyframes spin {
@@ -870,6 +873,14 @@ to { width: 100px }
 <div></div>
 <div></div>
 </div>
+<div class="cubed floor " style="left: 400px; top: 400px; --width: 420px; --height: 420px; --depth: 1px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
 <div class="cubed wall Paper east vertical pole " style="left: 1700px; top: 460px; --width: 20px; --height: 100px; --depth: 110px; ">
 <div></div>
 <div></div>
@@ -895,6 +906,14 @@ to { width: 100px }
 <div></div>
 </div>
 <div class="cubed roof " style="left: 920px; top: 420px; --width: 780px; --height: 380px; --depth: 10px; --arg0: 200px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed floor " style="left: 900px; top: 400px; --width: 820px; --height: 420px; --depth: 1px; ">
 <div></div>
 <div></div>
 <div></div>
