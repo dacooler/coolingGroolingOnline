@@ -219,10 +219,25 @@
   --world-pitch: rotateX(calc((var(--world-pitch-pos) - var(--world-pitch-neg)) * -360deg));
   --pitch-movement-down: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * -15% + 7.5% - 50%));
   --pitch-movement-up: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * 15% - 7.5% - 50%)) ;
+  --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
+  --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
 
+  --movement-z: calc(-50 -
+    (
+      min(
+        abs(min(var(--movement-x) - 1000, 0) * max(var(--movement-x) + 1000, 0)),
+        10
+      ) *
+      min(
+        abs(min(var(--movement-y) - 1000, 0) * max(var(--movement-y) + 1000, 0)),
+        10
+      )
+    )
+  );
+  --world-depth: translateZ(calc(var(--movement-z) * 1px));
   --world-translation: translate(
-    calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeXPx) * -1), /*Is this correct?*/
-    calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeYPx) * -1)
+      calc(var(--movement-x) * 1px),
+      calc(var(--movement-y) * 1px)
     );
 
   &:has(button:active .rot-r:hover) {
@@ -264,12 +279,12 @@
   transform: var(--pitch-movement-down);
 }
 .world-transform {
-  transform:  var(--world-pitch) translateZ(-50px) var(--world-rotation) var(--world-translation) ;
+  transform:  var(--world-pitch) var(--world-depth) var(--world-rotation) var(--world-translation) ;
 }
 
 @keyframes animator {
-from { width: 0px }
-to { width: 100px }
+from { width: 0px; }
+to { width: 100px; }
 }
 .animator {
   animation: animator linear 1s infinite;
