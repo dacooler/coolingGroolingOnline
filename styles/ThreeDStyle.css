@@ -33,6 +33,7 @@
         --img: none;
         --color: #ffffff;
         --flipY: 0deg;
+        --extraTransform: ;
         /*
         DEBUG
         */
@@ -56,7 +57,7 @@
         left: 0px;
         width: var(--cWidth);
         height: var(--cDepth);
-        transform: rotateX(90deg) rotate(180deg) translateY(calc(-1 *var(--cDepth)));
+        --baseTransform: rotateX(90deg) rotate(180deg) translateY(calc(-1 *var(--cDepth)));
         transform-origin: 50% 0% 0;
 }
 
@@ -67,7 +68,7 @@
         left: 0px;
         width: var(--cWidth);
         height: var(--cDepth);
-        transform: rotateX(-90deg) translateZ(var(--cHeight)) translateY(calc(-1 * var(--cDepth)));
+        --baseTransform: rotateX(-90deg) translateZ(var(--cHeight)) translateY(calc(-1 * var(--cDepth)));
         transform-origin: 50% 0% 0;
 }
 
@@ -78,7 +79,7 @@
         left: 0px;
         width: var(--cHeight); 
         height: var(--cDepth);
-        transform: rotateX(90deg) rotateY(90deg) translateZ(var(--cWidth)) rotate(180deg) translate(-100%, -100%);
+        --baseTransform: rotateX(90deg) rotateY(90deg) translateZ(var(--cWidth)) rotate(180deg) translate(-100%, -100%);
         transform-origin: 0% 0% 0;
 }
 
@@ -89,7 +90,7 @@
         left: 0px;
         width: var(--cHeight); 
         height: var(--cDepth);
-        transform: rotateX(90deg) rotateY(90deg) rotate(180deg) translate(-100%, -100%);
+        --baseTransform: rotateX(90deg) rotateY(90deg) rotate(180deg) translate(-100%, -100%);
         transform-origin: 0% 0% 0;
 }
 
@@ -100,7 +101,7 @@
         left: 0px;
         height:var(--cHeight);
         width: var(--cWidth);
-        transform: translateZ(var(--cDepth));
+        --baseTransform: translateZ(var(--cDepth));
 }
 
 
@@ -110,11 +111,14 @@
 }
 
 .cubed > div{
+        transform: var(--baseTransform) var(--extraTransform);
         transform-style: preserve-3d;
         background-image: var(--img);
         background-color: var(--color);
-        transform: perspective(100cm);
         background-size: 100% 100%;
+        --cWidth: var(--width);
+        --cHeight: var(--height);
+        --cDepth: var(--depth);
 }
 
 .extrude{
