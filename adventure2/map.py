@@ -108,17 +108,15 @@ class HtmlElement:
 
         return name
 
-
-"""Class representing a single part. Has a visual cube and a collision rect."""
+        
 class Part:
+    """Class representing a single part without size (the size gets set in the css instead (trust))."""
     position: Coord
-    size: Size
     css_classes: list[str]
     args: list[str]
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = []):
+    def __init__(self, position: Coord, css_classes: list[str], args: list[str] = []):
         self.position = position
-        self.size = size
         self.css_classes = css_classes
         self.args = args
 
@@ -129,8 +127,6 @@ class Part:
             style=[
                 Style('left', self.position.x, 'px'),
                 Style('top', self.position.y, 'px'),
-                Style('width', self.size.width, 'px'),
-                Style('height', self.size.height, 'px'),
             ]
         )
 
@@ -139,9 +135,6 @@ class Part:
         style=[
             Style('left', self.position.x, 'px'),
             Style('top', self.position.y, 'px'),
-            Style('--width', self.size.width, 'px'),
-            Style('--height', self.size.height, 'px'),
-            Style('--depth', self.size.depth, 'px'),
         ] + [
             Style(f'--arg{i}', arg, '') for i, arg in enumerate(self.args)
         ]
@@ -151,9 +144,41 @@ class Part:
             style=style,
             children=[HtmlElement('div') for _ in range(6)]
         )
+
+    def clone(self):
+        return Part(self.position.clone(), list(self.css_classes), list(self.args))
+    
+
+class SizedPart(Part):
+    """Class representing a single part. Has a visual cube and a collision rect."""
+    size: Size
+
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = []):
+        super().__init__(position, css_classes, args)
+        self.size = size
+
+    def get_collision_rect(self):
+        """The collision rect of this part. Will be just a simple rectangle div."""
+        collision_rect = super().get_collision_rect()
+        collision_rect.styles += [
+            Style('width', self.size.width, 'px'),
+            Style('height', self.size.height, 'px'),
+        ]
+        return collision_rect
+
+    def get_visual_cube(self):
+        """The visual component of this part. Will be a cube with a certain texture."""
+        visual_cube = super().get_visual_cube()
+        visual_cube.styles += [
+            Style('--width', self.size.width, 'px'),
+            Style('--height', self.size.height, 'px'),
+            Style('--depth', self.size.depth, 'px'),
+        ]
+        return visual_cube
         
     def clone(self):
-        return Part(self.position.clone(), self.size.clone(), list(self.css_classes), list(self.args))
+        return SizedPart(self.position.clone(), self.size.clone(), list(self.css_classes), list(self.args))
+
 
 class HeightDifference:
     position: Coord
@@ -172,8 +197,6 @@ class HeightDifference:
         depth = str(self.size.depth ** (1/2))
         
         return "min(abs(min(var(--movement-x) + " + x_start + ", 0) * max(var(--movement-x) + " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) + " + y_start + ", 0) * max(var(--movement-x) + " + y_end + ", 0))," + depth + ")"
-    
-
 
     
 class WallOpeningType(Enum):
@@ -242,9 +265,9 @@ class Wall:
     wall_openings: list[WallOpening]
     css_classes: list[str]
 
-    _collision_parts: list[Part]
+    _collision_parts: list[SizedPart]
     """Parts of the room that are both visual and have collision."""
-    _visual_parts: list[Part]
+    _visual_parts: list[SizedPart]
     """Parts of the room that are only visual and have no collision."""
 
     def get_visual_cubes(self):
@@ -265,7 +288,7 @@ class Wall:
         self._generate_parts(is_horizontal)
 
     def _generate_parts(self, is_horizontal: bool):
-        current_wall_part = Part(self.position, self.size, self.css_classes)
+        current_wall_part = SizedPart(self.position, self.size, self.css_classes)
         for wall_opening in sorted(self.wall_openings):
             wall_opening_part = current_wall_part.clone()
             next_wall_part = current_wall_part.clone()
@@ -315,7 +338,7 @@ class Room:
     ROOF_THICCNESS = 10
 
     walls: list[Wall]
-    roof: Part 
+    roof: SizedPart 
     """Part with no collision."""
 
     def get_visual_cubes(self):
@@ -362,24 +385,22 @@ class Room:
             ),
         ]
 
-        self.roof = Part(
+        self.roof = SizedPart(
             position + (wall_thickness, wall_thickness),
             Size(size.width - wall_thickness, size.height - wall_thickness, Room.ROOF_THICCNESS),
             css_classes=["roof"],
             args=['200px'])
 
-        self.floor = Part(
+        self.floor = SizedPart(
             position,
             Size(size.width + wall_thickness, size.height + wall_thickness, 1),
             css_classes=["floor"],
         )
         
 
-    
-
 class Map:
     rooms: list[Room]
-    blocks: list[Part]
+    blocks: list[SizedPart]
     size: Size
 
     def get_collision_parts(self):
@@ -422,7 +443,7 @@ class Map:
                 case _: raise ValueError('invalid value for type of object.')
 
     def _parse_block(self, block: dict[str, Any]):
-        self.blocks.append(Part(
+        self.blocks.append(SizedPart(
             Coord.from_json(block['position']),
             Size.from_json(block['size']),
             block['css_classes'],
