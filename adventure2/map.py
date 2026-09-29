@@ -198,6 +198,64 @@ class HeightDifference:
         
         return "min(abs(min(var(--movement-x) + " + x_start + ", 0) * max(var(--movement-x) + " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) + " + y_start + ", 0) * max(var(--movement-x) + " + y_end + ", 0))," + depth + ")"
 
+
+class FurnitureBlueprint:
+    BLUEPRINTS: dict[str, 'FurnitureBlueprint']
+
+    size: Size
+    has_collision: bool
+    height_difference: int
+    css_classes: list[str]
+
+    def __init__(self, size: Size, has_collision: bool, height_difference: int, css_classes: list[str]):
+        self.size = size
+        self.has_collision = has_collision
+        self.height_difference = height_difference
+        self.css_classes = css_classes
+    
+    @staticmethod
+    def from_json(json: dict[str, Any]):
+        size = Size.from_json(json['size'])
+        has_collision = json['has_collision']
+        if has_collision:
+            height_difference = json['height_difference']
+        else:
+            height_difference = 0
+        css_classes = json['css_classes']
+
+        return FurnitureBlueprint(size, has_collision, height_difference, css_classes)
+
+with open('src/furniture.json') as file:
+    json_data: list[dict[str, Any]] = json.loads(file.read())
+    FurnitureBlueprint.BLUEPRINTS = {furniture_data['type']: FurnitureBlueprint.from_json(furniture_data) for furniture_data in json_data}
+
+        
+class Furniture:
+    blueprint: FurnitureBlueprint
+    position: Coord
+
+    @property
+    def part(self):
+        return SizedPart(
+            self.position,
+            self.blueprint.size,
+            self.blueprint.css_classes,
+        )
+
+    @property
+    def has_collision(self):
+        return self.blueprint.has_collision
+    
+    def __init__(self, blueprint: FurnitureBlueprint, position: Coord):
+        self.blueprint = blueprint
+        self.position = position
+
+    @staticmethod
+    def from_json(json: dict[str, Any]):
+        blueprint = FurnitureBlueprint.BLUEPRINTS[json['furniture_type']]
+        position = Coord.from_json(json['position'])
+        return Furniture(blueprint, position)
+
     
 class WallOpeningType(Enum):
     DOOR = 0
@@ -401,6 +459,7 @@ class Room:
 class Map:
     rooms: list[Room]
     blocks: list[SizedPart]
+    furnitures: list[Furniture]
     size: Size
 
     def get_collision_parts(self):
@@ -410,6 +469,10 @@ class Map:
 
         for block in self.blocks:
             yield block.get_collision_rect()
+
+        for furniture in self.furnitures:
+            if furniture.has_collision:
+                yield furniture.part.get_collision_rect()
     
     def get_visual_parts(self):
         for room in self.rooms:
@@ -422,6 +485,9 @@ class Map:
 
         for block in self.blocks:
             yield block.get_visual_cube()
+
+        for furniture in self.furnitures:
+            yield furniture.part.get_visual_cube()
         
     def get_size(self):
         return (self.size.width, self.size.height)
@@ -429,6 +495,7 @@ class Map:
     def __init__(self):
         self.rooms = []
         self.blocks = []
+        self.furnitures = []
 
         file = open('src/map.json')
         map_data_raw = file.read()
@@ -439,8 +506,9 @@ class Map:
             match object['type']:
                 case "block": self._parse_block(object)
                 case "room": self._parse_room(object)
+                case "furniture": self._parse_furniture(object)
                 case "size": self.size = Size.from_json(object['size'])
-                case _: raise ValueError('invalid value for type of object.')
+                case type: raise ValueError(f'invalid type "{type}" for object.')
 
     def _parse_block(self, block: dict[str, Any]):
         self.blocks.append(SizedPart(
@@ -458,6 +526,9 @@ class Map:
             WallOpenings.from_json(room['wall_openings'])
         ))
 
+    def _parse_furniture(self, furniture: dict[str, Any]):
+        self.furnitures.append(Furniture.from_json(furniture))
+        
 
 def getMap():
     map = Map()
