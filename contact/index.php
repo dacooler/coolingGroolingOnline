@@ -11,7 +11,7 @@
         padding: 5px;
         position: absolute;
         top: 640px;
-        left: calc(50% - 250px);
+        left: calc(1000px);
       }
       .submit:hover{
         background-color:gray;
@@ -22,8 +22,7 @@
         margin:auto;
         position: absolute;
         top: 100px;
-        left: 50%;
-        transform:translate(-50%, 0);
+        left: 430px;
         transition: top 8s;
       }
       #submit:checked + .text{
@@ -48,7 +47,7 @@
           width: 100%;
           height: 100%;
           background-size: 100% 1000px;
-          background-image: url("./contact/shredder.webp");
+          background-image: url("./shredder.webp");
         }
         :nth-child(1){
           z-index: 100;
