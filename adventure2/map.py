@@ -196,7 +196,7 @@ class HeightDifference:
 
         depth = str(self.size.depth ** (1/2))
         
-        return "min(abs(min(var(--movement-x) + " + x_start + ", 0) * max(var(--movement-x) + " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) + " + y_start + ", 0) * max(var(--movement-x) + " + y_end + ", 0))," + depth + ")"
+        return "min(abs(min(var(--movement-x) - " + x_start + ", 0) * max(var(--movement-x) - " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) - " + y_start + ", 0) * max(var(--movement-x) - " + y_end + ", 0))," + depth + ")"
 
 
 class FurnitureBlueprint:
