@@ -1,7 +1,4 @@
 .cubed.table{
-  --width: 60px;
-  --height: 100px;
-  --depth: 50px;
   div{
     background-image: url("../assets/images/wood.jpg");
   }
@@ -13,10 +10,6 @@
 }
 
 .cubed.chair{
-  --width: 30px;
-  --height: 30px;
-  --depth: 30px;
-
   div{
     background-image:url("../assets/images/wood.jpg");
   }
@@ -28,8 +21,39 @@
   div:nth-child(4)::before{
     content: "";
     display:block;
-    height:30px;
+    height:25px;
     background-image: url("../assets/images/wood.jpg");
-    transform:translateY(-30px);
+    transform:translateY(-25px);
   }
+}
+
+.cubed.tv{
+  transform: translateZ(45px);
+  div{
+    background-image: radial-gradient(black, gray);
+  }
+  div:nth-child(4){
+    background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
+  }
+}
+.cubed.tv::before{
+  content: "";
+  display: block;
+  position:absolute;
+  transform: translateX(-50%) rotateY(90deg) translateX(50%);
+  width:4px;
+  height:33%;
+  top:33%;
+  left:50%;
+  background-image: radial-gradient(black, gray);
+}
+.cubed.tv::after{
+  content: "";
+  display: block;
+  position:absolute;
+  transform: translateY(-50%) translateZ(-4px);
+  background-image: radial-gradient(black, gray);
+  width: 10px;
+  height: 30px;
+  top: 50%;
 }

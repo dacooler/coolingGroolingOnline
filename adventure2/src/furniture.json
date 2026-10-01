@@ -1,0 +1,41 @@
+[
+    {
+        "type": "table",
+        "size": {
+            "width": 60,
+            "height": 100,
+            "depth": 40
+        },
+        "has_collision": false,
+        "height_difference": 25,
+        "css_classes": [
+            "table"
+        ]
+    },
+    {
+        "type": "chair",
+        "size": {
+            "width": 25,
+            "height": 25,
+            "depth": 20
+        },
+        "has_collision": false,
+        "height_difference": 25,
+        "css_classes": [
+            "chair"
+        ]
+    },
+    {
+        "type": "tv",
+        "size": {
+            "width": 8,
+            "height": 60,
+            "depth": 40
+        },
+        "has_collision": false,
+        "height_difference": 25,
+        "css_classes": [
+            "tv"
+        ]
+    }
+]

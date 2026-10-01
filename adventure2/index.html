@@ -625,9 +625,6 @@ to { width: 100px; }
 }
 
       .cubed.table{
-  --width: 60px;
-  --height: 100px;
-  --depth: 50px;
   div{
     background-image: url("../assets/images/wood.jpg");
   }
@@ -639,10 +636,6 @@ to { width: 100px; }
 }
 
 .cubed.chair{
-  --width: 30px;
-  --height: 30px;
-  --depth: 30px;
-
   div{
     background-image:url("../assets/images/wood.jpg");
   }
@@ -654,10 +647,41 @@ to { width: 100px; }
   div:nth-child(4)::before{
     content: "";
     display:block;
-    height:30px;
+    height:25px;
     background-image: url("../assets/images/wood.jpg");
-    transform:translateY(-30px);
+    transform:translateY(-25px);
   }
+}
+
+.cubed.tv{
+  transform: translateZ(45px);
+  div{
+    background-image: radial-gradient(black, gray);
+  }
+  div:nth-child(4){
+    background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
+  }
+}
+.cubed.tv::before{
+  content: "";
+  display: block;
+  position:absolute;
+  transform: translateX(-50%) rotateY(90deg) translateX(50%);
+  width:4px;
+  height:33%;
+  top:33%;
+  left:50%;
+  background-image: radial-gradient(black, gray);
+}
+.cubed.tv::after{
+  content: "";
+  display: block;
+  position:absolute;
+  transform: translateY(-50%) translateZ(-4px);
+  background-image: radial-gradient(black, gray);
+  width: 10px;
+  height: 30px;
+  top: 50%;
 }
 
     </style>
@@ -979,14 +1003,6 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed chair " style="left: 1000px; top: 1500px; --width: 30px; --height: 30px; --depth: 30px; ">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
 <div class="cubed wall " style="left: 300px; top: 300px; --width: 80px; --height: 80px; --depth: 10000px; ">
 <div></div>
 <div></div>
@@ -995,7 +1011,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed table " style="left: 200px; top: 500px; --width: 80px; --height: 10px; --depth: 100px; ">
+<div class="cubed museum " style="left: 100px; top: 100px; --width: 200px; --height: 200px; --depth: 200px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1003,7 +1019,71 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed museum " style="left: 100px; top: 100px; --width: 200px; --height: 200px; --depth: 200px; ">
+<div class="cubed table " style="left: 1720px; top: 1700px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed table " style="left: 1720px; top: 1800px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed table " style="left: 1700px; top: 1900px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="left: 1750px; top: 1750px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="left: 1800px; top: 1750px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="left: 1750px; top: 1820px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="left: 1750px; top: 1890px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="left: 1620px; top: 1720px; --width: 25px; --height: 25px; --depth: 20px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="left: 1620px; top: 1780px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1075,9 +1155,7 @@ to { width: 100px; }
 <div style="left: 1570px; top: 800px; width: 150px; height: 20px; "></div>
 <div style="left: 900px; top: 420px; width: 20px; height: 400px; "></div>
 <div style="left: 5px; top: 0px; width: 50px; height: 20px; "></div>
-<div style="left: 1000px; top: 1500px; width: 30px; height: 30px; "></div>
 <div style="left: 300px; top: 300px; width: 80px; height: 80px; "></div>
-<div style="left: 200px; top: 500px; width: 80px; height: 10px; "></div>
 <div style="left: 100px; top: 100px; width: 200px; height: 200px; "></div>
             </div>
           </div>
