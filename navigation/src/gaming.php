@@ -15,21 +15,23 @@
                 </div>
                 <!-- back-->
                 <div class="bottomPart">
-                  <div class="screenPart cubed">
-                    <!-- bottom -->
-                    <div class="topback">
-                    </div>
-                    <!-- front -->
-                    <div class="topfront">
-                    </div>
-                    <!-- left -->
-                    <div class="topright">
-                    </div>
-                    <!-- right-->
-                    <div class="topleft">
-                    </div>
-                    <!-- back-->
-                    <div class="caseTop">
+                  <div class="screenRotator">
+                    <div class="screenPart cubed">
+                      <!-- bottom -->
+                      <div class="topback">
+                      </div>
+                      <!-- front -->
+                      <div class="topfront">
+                      </div>
+                      <!-- left -->
+                      <div class="topright">
+                      </div>
+                      <!-- right-->
+                      <div class="topleft">
+                      </div>
+                      <!-- back-->
+                      <div class="caseTop">
+                      </div>
                     </div>
                   </div>
                 </div>

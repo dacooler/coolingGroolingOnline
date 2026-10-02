@@ -9,15 +9,15 @@ a.gameTainer{
   left:50%;
 
   .gaming{
-    --cWidth:48px;
-    --cHeight:27px;
-    --cDepth:4px;
+    --width:48px;
+    --height:27px;
+    --depth:4px;
     --color:gray;
     position:absolute;
     left:-70px;
     top:-15px;
     background-color:gray;
-    transform: rotateX(70deg);
+    --startTransform: rotateX(70deg);
     background-image:url("../assets/images/ds-casebottom.jpg");
     background-size:100% 100%;
     .bottomback{
@@ -41,16 +41,26 @@ a.gameTainer{
       background-size:100% 100%;
     }
 
+    .screenRotator{
+      transform: rotateX(var(--opening));
+      top: 0;
+      left: 0;
+      position: absolute;
+      
+    }
+
     .screenPart{
+      top: 0px;
+      left:50%;
       background-color:green;
       background-image:url("../assets/images/ds-top.png");
       background-size:100% 100%;
-      --cWidth:48px;
-      --cHeight:27px;
-      --cDepth:4px;
+      --startTransform: ;
+      --width:48px;
+      --height:27px;
+      --depth
+:4px;
       --color:gray;
-      transform: rotateX(var(--opening));
-      transform-origin: 50% 0%;
       .topback{
         background-image:url("../assets/images/ds-topback.jpg");
         background-size:100% 100%;

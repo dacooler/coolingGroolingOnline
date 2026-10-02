@@ -1,0 +1,119 @@
+.center{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+.threeD{
+        margin-top: 100px;
+        margin-left: 100px;
+        transform-style: preserve-3d;
+        transform: perspective(100cm);
+}
+
+.threeD div{
+        transform-style: preserve-3d;
+        background-image: url("../assets/images/debug.png");
+        background-size: 100%;
+}
+
+/*front*/
+.cubed{
+        background-size: 100% 100%;
+        height:var(--height) !important;
+        width: var(--width) !important;
+        background-image: var(--img);
+        background-position: top left;
+        background-color: var(--color);
+        transform-style: preserve-3d;
+        transform: var(--startTransform) rotateX(180deg) var(--baseTransform) var(--extraTransform) !important;
+        /*(in)SANE DEFAULTS*/
+        --width: 100px;
+        --height: 100px;
+        --depth: 100px;
+        --img: none;
+        --color: #ffffff;
+        --flipY: 0deg;
+        --extraTransform: ;
+        --baseTransform: ;
+        /*
+        DEBUG
+        */
+        /*
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        --startTransform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
+        animation-name: debug;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        */
+}
+
+
+/* top */
+
+/* bottom */
+.cubed > div:nth-child(1){
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: var(--width);
+        height: var(--depth);
+        --baseTransform: rotateX(-90deg) rotate(180deg) translateZ(var(--height)) translateY(calc(-1 * var(--depth)));
+        transform-origin: 50% 0% 0;
+}
+
+.cubed > div:nth-child(2){
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: var(--width);
+        height: var(--depth);
+        --baseTransform: rotateX(90deg) translateY(calc(-1 * var(--depth)));
+        transform-origin: 50% 0% 0;
+}
+
+/* right */
+.cubed > div:nth-child(3){
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: var(--height); 
+        height: var(--depth);
+        --baseTransform: rotateX(-90deg) rotateY(90deg) translateZ(var(--width)) rotate(180deg) translateY(-100%);
+        transform-origin: 0% 0% 0;
+}
+
+/* left */
+.cubed > div:nth-child(4){
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: var(--height); 
+        height: var(--depth);
+        --baseTransform: rotateX(-90deg) rotateY(90deg) rotate(180deg) translateY(-100%);
+        transform-origin: 0% 0% 0;
+}
+
+/*back*/
+.cubed > div:nth-child(5){
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height:var(--height);
+        width: var(--width);
+        --baseTransform: rotateX(180deg) translateZ(calc(var(--depth)));
+}
+
+.cubed > div{
+        transform: var(--baseTransform) var(--extraTransform);
+        transform-style: preserve-3d;
+        background-image: var(--img);
+        background-color: var(--color);
+        background-size: 100% 100%;
+}
+
+
+

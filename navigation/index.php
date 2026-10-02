@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="gameStyle.css">
     <link rel="stylesheet" href="compStyle.css">
     <link rel="stylesheet" href="skyStyle.css">
-    <link rel="stylesheet" href="../styles/ThreeDStyle.css">
+    <link rel="stylesheet" href="../styles/CubedStyle.css">
     <link rel="stylesheet" href="../assets/cubestyle.css">
     <style>
     :root {
