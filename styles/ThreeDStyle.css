@@ -116,9 +116,6 @@
         background-image: var(--img);
         background-color: var(--color);
         background-size: 100% 100%;
-        --cWidth: var(--width);
-        --cHeight: var(--height);
-        --cDepth: var(--depth);
 }
 
 .extrude{
