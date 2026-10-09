@@ -464,8 +464,7 @@ to { width: 100px; }
     --pHeight: 100px;
     transform: translateZ(var(--pHeight));
     div{
-      background-position: bottom var(--pHeight) center;
-      background-size:210px 210px;
+      background-position: bottom calc(-1 * var(--pHeight)) center, bottom calc(-1 * var(--pHeight)) center;
     }
   }
   .window{
