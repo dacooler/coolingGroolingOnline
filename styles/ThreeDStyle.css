@@ -1,6 +1,8 @@
 /*front*/
 .cubed{
         background-size: 100% 100%;
+        height:var(--cHeight) !important;
+        width: var(--cWidth) !important;
         background-image: var(--img);
         background-position: top left;
         background-color: var(--color);
