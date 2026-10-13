@@ -96,8 +96,21 @@
       Tur att han inte sitter på någon viktig post, typ lokalansvarig. @keso kulturinsikt?
     </p>
 
-    <button>Klicka här för att se fler reaktioner</button>
+    <button id="show-comments" onclick="explosion()">Klicka här för att se fler reaktioner</button>
 
+    <img
+      id="explosion"
+      src="../../images/explosion.jpg"
+      alt="explosion!!!!"
+      style="width: 200px"
+      hidden
+    >
+
+    <p  id=ncse-comment hidden>
+      Kommentar från Noah "ncse" Eriksson typ 17:26, typ idag
+      <br>
+      tldr någon?
+    </p>
 
     <div style="position: relative;">
       <img src="../../images/donkenad.png" alt="Milleniets donkenerbjudande" width="100%" style="margin-top: 20px;">
@@ -105,6 +118,22 @@
         style="position: absolute; right: 25%; top: 25%; height: 60%; width: 10%; z-index: 1;">
     </div>
   </div>
+  <script>
+    let timer;
+
+    function explosion() {
+      document.getElementById("ncse-comment").hidden = false;
+      document.getElementById("show-comments").hidden = true;
+      const explosion = document.getElementById("explosion");
+      explosion.style.display = "block";
+      window.scrollTo(0, document.documentElement.scrollHeight);
+
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        explosion.style.display = "none";
+      }, 1000);
+    }
+  </script>
 </body>
 <?php
 include("../../bottom.php")
