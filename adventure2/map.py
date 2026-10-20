@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any
+from typing import Any, Iterable
 import json
 
 
@@ -198,19 +198,30 @@ class HeightDifference:
         
         return "min(abs(min(var(--movement-x) - " + x_start + ", 0) * max(var(--movement-x) - " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) - " + y_start + ", 0) * max(var(--movement-x) - " + y_end + ", 0))," + depth + ")"
 
+        
+class HeightDifferences:
+    height_differences: list[HeightDifference]
+
+    def __init__(self, height_differences: Iterable[HeightDifference]):
+        self.height_differences = list(height_differences)
+
+    def get_calcs(self):
+        return "calc(" + '+'.join((diff.get_calc() for diff in self.height_differences)) + ")"
+
 
 class FurnitureBlueprint:
     BLUEPRINTS: dict[str, 'FurnitureBlueprint']
 
     size: Size
     has_collision: bool
-    height_difference: int
+    height_difference_size: Size
     css_classes: list[str]
 
-    def __init__(self, size: Size, has_collision: bool, height_difference: int, css_classes: list[str]):
+    def __init__(self, size: Size, has_collision: bool, height_difference_depth: int, css_classes: list[str]):
         self.size = size
         self.has_collision = has_collision
-        self.height_difference = height_difference
+        self.height_difference_size = self.size.clone()
+        self.height_difference_size.depth = height_difference_depth
         self.css_classes = css_classes
     
     @staticmethod
@@ -233,6 +244,13 @@ with open('src/furniture.json') as file:
 class Furniture:
     blueprint: FurnitureBlueprint
     position: Coord
+
+    @property
+    def height_difference(self):
+        return HeightDifference(
+            self.position,
+            self.blueprint.height_difference_size,
+        )
 
     @property
     def part(self):
@@ -475,7 +493,8 @@ class Map:
     furnitures: list[Furniture]
     size: Size
 
-    def get_collision_parts(self):
+    @property
+    def collision_parts(self):
         for room in self.rooms:
             for part in room.get_collision_rects():
                 yield part.get_collision_rect()
@@ -487,7 +506,8 @@ class Map:
             if furniture.has_collision:
                 yield furniture.part.get_collision_rect()
     
-    def get_visual_parts(self):
+    @property
+    def visual_parts(self):
         for room in self.rooms:
             for part in room.get_collision_rects():
                 yield part.get_visual_cube()
@@ -502,8 +522,15 @@ class Map:
         for furniture in self.furnitures:
             yield furniture.part.get_visual_cube()
         
-    def get_size(self):
+    @property
+    def size_2d(self):
         return (self.size.width, self.size.height)
+
+    @property
+    def height_differences(self):
+        return HeightDifferences(
+            (furniture.height_difference for furniture in self.furnitures)
+        )
 
     def __init__(self):
         self.rooms = []
@@ -544,10 +571,10 @@ class Map:
 
     def to_result(self):
         return MapResult(
-            colliders='\n'.join((str(collider) for collider in self.get_collision_parts())),
-            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.get_visual_parts())),
-            size=self.get_size(),
-            height_differences='',
+            colliders='\n'.join((str(collider) for collider in self.collision_parts)),
+            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.visual_parts)),
+            size=self.size_2d,
+            height_differences=self.height_differences.get_calcs(),
         )
         
 
