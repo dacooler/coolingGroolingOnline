@@ -76,8 +76,7 @@
   --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
   --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
 
-  --movement-z: _HEIGHT_DIFFERENCE_
-
+  --movement-z: calc(-50 - _HEIGHT_DIFFERENCE_);
   /* calc(-50 -
     (
       min(

@@ -18,11 +18,18 @@ def addSrc(inText: str) -> str:
         if "_" + file + "_" in inText:
             add = addSrc(add)
         inText = inText.replace("_" + file + "_", add)
-    cubes, cubesCubed, size = getMap()
+
+    map = getMap()
+    cubes = map.colliders
+    cubesCubed = map.visual_cubes
+    size = map.size
+    height_differences = map.height_differences
+
     inText = inText.replace("_WORLDMAP_", cubesCubed)
     inText = inText.replace("_CONTROLMAP_", cubes)
     inText = inText.replace("_MAP_SIZE_X_", str(size[0]))
     inText = inText.replace("_MAP_SIZE_Y_", str(size[1]))
+    inText = inText.replace("_HEIGHT_DIFFERENCE_", height_differences)
     return inText
 
 print("IN")

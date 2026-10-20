@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any
+from typing import Any, Iterable
 import json
 
 
@@ -192,11 +192,21 @@ class HeightDifference:
         x_start = str(self.position.x)
         x_end = str(self.position.x + self.size.width)
         y_start = str(self.position.y)
-        y_end = str(self.position.y + self.size.width)
+        y_end = str(self.position.y + self.size.height)
 
         depth = str(self.size.depth ** (1/2))
         
-        return "min(abs(min(var(--movement-x) - " + x_start + ", 0) * max(var(--movement-x) - " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-x) - " + y_start + ", 0) * max(var(--movement-x) - " + y_end + ", 0))," + depth + ")"
+        return "min(abs(min(var(--movement-x) + " + x_start + ", 0) * max(var(--movement-x) + " + x_end + ", 0)), " + depth + ") * min(abs(min(var(--movement-y) + " + y_start + ", 0) * max(var(--movement-y) + " + y_end + ", 0))," + depth + ")"
+
+        
+class HeightDifferences:
+    height_differences: list[HeightDifference]
+
+    def __init__(self, height_differences: Iterable[HeightDifference]):
+        self.height_differences = list(height_differences)
+
+    def get_calcs(self):
+        return "max(" + ', '.join((diff.get_calc() for diff in self.height_differences)) + ")"
 
 
 class FurnitureBlueprint:
@@ -204,20 +214,21 @@ class FurnitureBlueprint:
 
     size: Size
     has_collision: bool
-    height_difference: int
+    height_difference_size: Size
     css_classes: list[str]
 
-    def __init__(self, size: Size, has_collision: bool, height_difference: int, css_classes: list[str]):
+    def __init__(self, size: Size, has_collision: bool, height_difference_depth: int, css_classes: list[str]):
         self.size = size
         self.has_collision = has_collision
-        self.height_difference = height_difference
+        self.height_difference_size = self.size.clone()
+        self.height_difference_size.depth = height_difference_depth
         self.css_classes = css_classes
     
     @staticmethod
     def from_json(json: dict[str, Any]):
         size = Size.from_json(json['size'])
         has_collision = json['has_collision']
-        if has_collision:
+        if not has_collision:
             height_difference = json['height_difference']
         else:
             height_difference = 0
@@ -233,6 +244,13 @@ with open('src/furniture.json') as file:
 class Furniture:
     blueprint: FurnitureBlueprint
     position: Coord
+
+    @property
+    def height_difference(self):
+        return HeightDifference(
+            self.position,
+            self.blueprint.height_difference_size,
+        )
 
     @property
     def part(self):
@@ -454,6 +472,19 @@ class Room:
             Size(size.width + wall_thickness, size.height + wall_thickness, 1),
             css_classes=["floor"],
         )
+
+        
+class MapResult:
+    colliders: str
+    visual_cubes: str
+    size: tuple[float, float]
+    height_differences: str
+
+    def __init__(self, colliders, visual_cubes, size, height_differences):
+        self.colliders = colliders
+        self.visual_cubes = visual_cubes
+        self.size = size
+        self.height_differences = height_differences
         
 
 class Map:
@@ -462,7 +493,8 @@ class Map:
     furnitures: list[Furniture]
     size: Size
 
-    def get_collision_parts(self):
+    @property
+    def collision_parts(self):
         for room in self.rooms:
             for part in room.get_collision_rects():
                 yield part.get_collision_rect()
@@ -474,7 +506,8 @@ class Map:
             if furniture.has_collision:
                 yield furniture.part.get_collision_rect()
     
-    def get_visual_parts(self):
+    @property
+    def visual_parts(self):
         for room in self.rooms:
             for part in room.get_collision_rects():
                 yield part.get_visual_cube()
@@ -489,8 +522,15 @@ class Map:
         for furniture in self.furnitures:
             yield furniture.part.get_visual_cube()
         
-    def get_size(self):
+    @property
+    def size_2d(self):
         return (self.size.width, self.size.height)
+
+    @property
+    def height_differences(self):
+        return HeightDifferences(
+            (furniture.height_difference for furniture in self.furnitures)
+        )
 
     def __init__(self):
         self.rooms = []
@@ -528,14 +568,18 @@ class Map:
 
     def _parse_furniture(self, furniture: dict[str, Any]):
         self.furnitures.append(Furniture.from_json(furniture))
+
+    def to_result(self):
+        return MapResult(
+            colliders='\n'.join((str(collider) for collider in self.collision_parts)),
+            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.visual_parts)),
+            size=self.size_2d,
+            height_differences=self.height_differences.get_calcs(),
+        )
         
 
 def getMap():
-    map = Map()
-    colliders = '\n'.join((str(collider) for collider in map.get_collision_parts()))
-    visual_cubes = '\n'.join((str(visual_cube) for visual_cube in map.get_visual_parts()))
-    size = map.get_size()
-    return colliders, visual_cubes, size
+    return Map().to_result()
   
 
 # ===================== TESTS ========================

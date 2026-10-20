@@ -2,6 +2,28 @@
       :root {
         --cs: 100px;
       }
+        .counter{
+          width: 100px;
+          height:100px;
+          position: absolute;
+          background-color:gray;
+
+        .z::before {
+          height:30%;
+          counter-reset: z-pos var(--movement-z);
+          content: "z " counter(z-pos) ": ";
+        }
+        .x::before {
+          height:30%;
+          counter-reset: x-pos var(--movement-x);
+          content: "x " counter(x-pos) ": ";
+        }
+        .y::before {
+          height:30%;
+          counter-reset: y-pos var(--movement-y);
+          content: "y " counter(y-pos) ": ";
+        }
+      }
 
       .controls {
         position: fixed;
@@ -15,6 +37,7 @@
         .angle, .motion {
           background-color: lightgray;
         }
+
 
         button {
           display: block;

@@ -51,6 +51,28 @@
       :root {
         --cs: 100px;
       }
+        .counter{
+          width: 100px;
+          height:100px;
+          position: absolute;
+          background-color:gray;
+
+        .z::before {
+          height:30%;
+          counter-reset: z-pos var(--movement-z);
+          content: "z " counter(z-pos) ": ";
+        }
+        .x::before {
+          height:30%;
+          counter-reset: x-pos var(--movement-x);
+          content: "x " counter(x-pos) ": ";
+        }
+        .y::before {
+          height:30%;
+          counter-reset: y-pos var(--movement-y);
+          content: "y " counter(y-pos) ": ";
+        }
+      }
 
       .controls {
         position: fixed;
@@ -64,6 +86,7 @@
         .angle, .motion {
           background-color: lightgray;
         }
+
 
         button {
           display: block;
@@ -222,7 +245,8 @@
   --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
   --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
 
-  --movement-z: calc(-50 -
+  --movement-z: calc(-50 - max(min(abs(min(var(--movement-x) + 1820, 0) * max(var(--movement-x) + 1880, 0)), 6.324555320336759) * min(abs(min(var(--movement-y) + 780, 0) * max(var(--movement-y) + 880, 0)),6.324555320336759), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 780, 0) * max(var(--movement-y) + 805, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 880, 0) * max(var(--movement-y) + 905, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 900, 0) * max(var(--movement-y) + 925, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 680, 0) * max(var(--movement-y) + 705, 0)),5.0)));
+  /* calc(-50 -
     (
       min(
         abs(min(var(--movement-x) - 1000, 0) * max(var(--movement-x) + 1000, 0)),
@@ -233,7 +257,7 @@
         10
       )
     )
-  );
+  );*/
   --world-depth: translateZ(calc(var(--movement-z) * 1px));
   --world-translation: translate(
       calc(var(--movement-x) * 1px),
@@ -457,6 +481,7 @@ to { width: 100px; }
       image-rendering: pixelated;
       background-size: 100% 100px, 210px 210px;
       background-position: bottom 0px center;
+      background-attachment: fixed;
       background-repeat: repeat-x, repeat;
     }
   }
@@ -1020,7 +1045,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed table " style="left: 1720px; top: 1700px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div class="cubed table " style="left: 1820px; top: 780px; --width: 60px; --height: 100px; --depth: 40px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1028,7 +1053,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed table " style="left: 1720px; top: 1800px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div class="cubed chair " style="left: 1920px; top: 780px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1036,7 +1061,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed table " style="left: 1700px; top: 1900px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div class="cubed chair " style="left: 1920px; top: 880px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1044,7 +1069,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed tv " style="left: 1750px; top: 1750px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div class="cubed chair " style="left: 1920px; top: 900px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1052,39 +1077,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed tv " style="left: 1800px; top: 1750px; --width: 8px; --height: 60px; --depth: 40px; ">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
-<div class="cubed tv " style="left: 1750px; top: 1820px; --width: 8px; --height: 60px; --depth: 40px; ">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
-<div class="cubed tv " style="left: 1750px; top: 1890px; --width: 8px; --height: 60px; --depth: 40px; ">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
-<div class="cubed chair " style="left: 1620px; top: 1720px; --width: 25px; --height: 25px; --depth: 20px; ">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-</div>
-<div class="cubed chair " style="left: 1620px; top: 1780px; --width: 25px; --height: 25px; --depth: 20px; ">
+<div class="cubed chair " style="left: 1920px; top: 680px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1098,6 +1091,11 @@ to { width: 100px; }
       </div>
 
       
+        <div class="counter">
+          <p class="x"></p>
+          <p class="y"></p>
+          <p class="z"></p>
+        </div>
       <div class="controls">
         <button class="angle">
           <div class="motion-grid">

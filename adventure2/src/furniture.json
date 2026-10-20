@@ -7,7 +7,7 @@
             "depth": 40
         },
         "has_collision": false,
-        "height_difference": 25,
+        "height_difference": 40,
         "css_classes": [
             "table"
         ]

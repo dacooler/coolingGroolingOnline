@@ -11,72 +11,40 @@
         "type": "furniture",
         "furniture_type": "table",
         "position": {
-            "x": 1720,
-            "y": 1700
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "table",
-        "position": {
-            "x": 1720,
-            "y": 1800
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "table",
-        "position": {
-            "x": 1700,
-            "y": 1900
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "tv",
-        "position": {
-            "x": 1750,
-            "y": 1750
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "tv",
-        "position": {
-            "x": 1800,
-            "y": 1750
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "tv",
-        "position": {
-            "x": 1750,
-            "y": 1820
-        }
-    },
-    {
-        "type": "furniture",
-        "furniture_type": "tv",
-        "position": {
-            "x": 1750,
-            "y": 1890
+            "x": 1820,
+            "y": 780
         }
     },
     {
         "type": "furniture",
         "furniture_type": "chair",
         "position": {
-            "x": 1620,
-            "y": 1720
+            "x": 1920,
+            "y": 780
         }
     },
     {
         "type": "furniture",
         "furniture_type": "chair",
         "position": {
-            "x": 1620,
-            "y": 1780
+            "x": 1920,
+            "y": 880
+        }
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "chair",
+        "position": {
+            "x": 1920,
+            "y": 900
+        }
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "chair",
+        "position": {
+            "x": 1920,
+            "y": 680
         }
     },
     {
