@@ -1,5 +1,5 @@
 import os
-from map import getMap
+from .map.map.map import Map
 
 dir = "src/"
 files = os.listdir(dir)
@@ -19,11 +19,13 @@ def addSrc(inText: str) -> str:
             add = addSrc(add)
         inText = inText.replace("_" + file + "_", add)
 
-    map = getMap()
-    cubes = map.colliders
-    cubesCubed = map.visual_cubes
-    size = map.size
-    height_differences = map.height_differences
+    map = Map()
+    map.load()
+    res = map.to_result()
+    cubes = res.colliders
+    cubesCubed = res.visual_cubes
+    size = res.size
+    height_differences = res.height_differences
 
     inText = inText.replace("_WORLDMAP_", cubesCubed)
     inText = inText.replace("_CONTROLMAP_", cubes)
