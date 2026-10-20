@@ -1,0 +1,3 @@
+<scale width="$minipixmap.width" height="$minipixmap.width">
+	<recall srcid="menu.folder_pixmap" default_src="large/FolderAquaBlue"/>
+</scale>

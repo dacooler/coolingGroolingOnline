@@ -76,7 +76,9 @@
   --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
   --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
 
-  --movement-z: calc(-50 -
+  --movement-z: _HEIGHT_DIFFERENCE_
+
+  /* calc(-50 -
     (
       min(
         abs(min(var(--movement-x) - 1000, 0) * max(var(--movement-x) + 1000, 0)),
@@ -87,7 +89,7 @@
         10
       )
     )
-  );
+  );*/
   --world-depth: translateZ(calc(var(--movement-z) * 1px));
   --world-translation: translate(
       calc(var(--movement-x) * 1px),

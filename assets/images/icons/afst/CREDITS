@@ -1,0 +1,217 @@
+From PICOL http://picol.org/icon_library.php, by Alessandro Gubitosi:
+				dots/accept
+				dots/eject
+				dots/synchronize
+
+Borrowed from KDE Aqua theme compiled by gregday@ecsis.net :
+        large/KAqua.lst
+        large/DVD
+        large/FolderBlueAqua
+        large/HomeAqua
+        large/FolderOpenBlueAqua
+        large/FolderOpenRedAqua
+        large/FolderYellowAqua
+        large/Harddrive2
+        large/Document
+        large/NetworkedGlobe
+
+Icons created by CmdrTaco ( Rob Malda ) http://cmdrtaco.net/yada/icons/ :
+        large/CD
+        large/CDR
+        large/DocumentScroll
+        large/Globe
+        large/Harddrive
+        large/Home
+        large/Speaker
+        large/Stopsign
+        large/RedLight
+        large/Typewriter
+        large/Window
+        large/Chat
+
+        logos/linux-penguin
+
+        normal\Desktop
+        normal\Battery
+        normal\Bell
+        normal\PackageBlack
+        normal\Bomb
+        normal\Boombox
+        normal\Boot
+        normal\Brain
+        normal\Brushes
+        normal\Bug
+        normal\Filecabinet2
+        normal\Calculator2
+        normal\Cardgames
+        normal\Cash
+        normal\CD
+        normal\CDInHand
+        normal\CDR
+        normal\CDRInHand
+        normal\Chair
+        normal\Charts
+        normal\Chip
+        normal\Clock
+        normal\Coffee
+        normal\ToolbarInHand
+        normal\Corkscrew
+        normal\Cpufan
+        normal\Chat
+        normal\Zip
+        normal\Zipdisk
+        normal\Package
+        normal\Crayon
+        normal\Cron
+        normal\Cube
+        normal\CutAndPaste
+        normal\Desktop2
+        normal\DNA
+        normal\Document
+        normal\DrawingPad
+        normal\Engine
+        normal\Eraser
+        normal\Ethernet
+        normal\ExpansionCard
+        normal\Eyedropper
+        normal\Fax
+        normal\Feather
+        normal\Fish
+        normal\Floppy
+        normal\Floppy525
+        normal\Font
+        normal\Camera2
+        normal\Gear
+        normal\Gear2
+        normal\Ghost
+        normal\Globe
+        normal\Glove
+        normal\HammerBrown
+        normal\Harddrive
+        normal\Headphones
+        normal\Helm
+        normal\House
+        normal\Scanner
+        normal\Key
+        normal\Camera3
+        normal\LaserPrinter
+        normal\Letter
+        normal\Library
+        normal\License
+        normal\Lifejacket
+        normal\Lightbulb
+        normal\LockClosed
+        normal\MagnifyingGlass
+        normal\Mail
+        normal\MailBox2
+        normal\MailBox3
+        normal\MenuEdit
+        normal\Modem
+        normal\Mona
+        normal\MonitorLCD
+        normal\Moon
+        normal\Mouse
+        normal\Move
+        normal\MovieProjector
+        normal\MusicalNote
+        normal\Newspaper
+        normal\Trashcan
+        normal\Pallette
+        normal\PaperClip
+        normal\Glue
+        normal\PCCase
+        normal\PCMCIA
+        normal\PDA
+        normal\Pen
+        normal\PencilCup
+        normal\Piano
+        normal\Player
+        normal\Pliers
+        normal\PowerOutlet
+        normal\PowerPlug
+        normal\InkJetPrinter
+        normal\HandshakeTransparent2
+        normal\PushPin
+        normal\Puzzle
+        normal\Pyramid
+        normal\Python
+        normal\RemoteControl
+        normal\Rolodex
+        normal\Rubberstamp
+        normal\Run
+        normal\Safe
+        normal\Scissors
+        normal\MoonInMonitor
+        normal\SCSIConnector
+        normal\Shell
+        normal\Shredder
+        normal\Speaker
+        normal\Stamp
+        normal\Stickynote
+        normal\Stopsign
+        normal\Stratacaster
+        normal\Cat
+        normal\Sword
+        normal\Tapemeasure
+        normal\Notebook
+        normal\Notebook2
+        normal\Thumbsup
+        normal\Leatherman
+        normal\SwissArmyKnife
+        normal\RedLight
+        normal\Trashcan2
+        normal\TV
+        normal\Typewriter
+        normal\LockOpen
+        normal\USB
+        normal\Window
+        normal\Wireless
+        normal\Wrench2
+        normal\WritingHand
+
+
+John T. Folden http://www.erinet.com/jag/NeXTVIEW/ - The NeXTVIEW :
+        large/Interface
+        large/Computer
+        large/Monitor3
+        large/Package
+        large/Document2
+        large/Bookshelf
+
+ Vinny FERRARI (Marseille,France) - vferr10626 (at) aol.com:
+        large/NeXTishTerm
+        large/Terminal
+
+Laurent Hivet(tildouf) - laurent.hivet (at) laposte.net :
+        large/Monitor1
+        large/Monitor2
+        normal/Monitor1
+        normal/FTP
+        normal/PaintEye
+        normal/EyeInMonitor
+        normal/GIMP
+        normal/MailBox
+        normal/Calculator
+        normal/CDRom
+        normal/CISCORouter
+        normal/Keyboard
+        normal/Chess
+        normal/Handshake
+        normal/EyeInMonitor2
+        normal/MCInMonitor
+        normal/People
+
+Nathan Mahon(vaevictus) - afterstep.org (at) vaevictus.net
+Original Artwork stolen from http://www.mozilla.org
+       logos/png/Thunderbird
+       logos/png/Firefox
+
+Sasha Vasko
+	normal/Windows
+
+Niklas Lunger(born2late) - niklas (at) fet.at
+	normal/WindowsMove
+	normal/WindowsIconify
+	normal/WindowsResize
+	normal/WindowsProperties
+	normal/WindowsBackground

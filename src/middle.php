@@ -18,6 +18,13 @@
           <div class="arrow a1"></div>
           <div class="arrow a2"></div>
         </div>
+        <a class="properties" href="./adventure2/">
+          <div class="house">
+
+          </div>
+          <div  class="text sheen">
+          </div>
+        </a>
         <img class="cool" src="./assets/images/KOLBILD.jpg" width="300" style="display:block;margin:auto">
                 <div class="cube">
                         <div id="c1"><img src="../assets/images/CERTIFIKAT SVARTVIT.jpg"></div>
