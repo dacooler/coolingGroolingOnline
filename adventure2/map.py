@@ -454,6 +454,19 @@ class Room:
             Size(size.width + wall_thickness, size.height + wall_thickness, 1),
             css_classes=["floor"],
         )
+
+        
+class MapResult:
+    colliders: str
+    visual_cubes: str
+    size: tuple[float, float]
+    height_differences: str
+
+    def __init__(self, colliders, visual_cubes, size, height_differences):
+        self.colliders = colliders
+        self.visual_cubes = visual_cubes
+        self.size = size
+        height_differences = height_differences
         
 
 class Map:
@@ -528,14 +541,18 @@ class Map:
 
     def _parse_furniture(self, furniture: dict[str, Any]):
         self.furnitures.append(Furniture.from_json(furniture))
+
+    def to_result(self):
+        return MapResult(
+            colliders='\n'.join((str(collider) for collider in self.get_collision_parts())),
+            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.get_visual_parts())),
+            size=self.get_size(),
+            height_differences='',
+        )
         
 
 def getMap():
-    map = Map()
-    colliders = '\n'.join((str(collider) for collider in map.get_collision_parts()))
-    visual_cubes = '\n'.join((str(visual_cube) for visual_cube in map.get_visual_parts()))
-    size = map.get_size()
-    return colliders, visual_cubes, size
+    return Map().to_result()
   
 
 # ===================== TESTS ========================
