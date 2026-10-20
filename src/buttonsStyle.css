@@ -13,16 +13,23 @@
   .text{
     background-image:url("../assets/images/text/properties.png");
     width:300px;
+    z-index: 1;
+    position:relative;
   }
-  .text:hover{
-    transform: none;
+  .sheen:hover::before{
+    transform: translateX(300px);
+    background-position: -300px 0px;
   }
   .sheen::before {
+    transition: 1s transform, 1s background-position;
+    background-image:inherit;
+    transform: translateX(-10px);
+    filter:grayscale(100%) brightness(2);
     content:"";
-    width:100px;
+    background-position: 10px 0px;
+    background-repeat: no-repeat;
+    width:10px;
     height:100px;
     display:block;
-    background-color: white;
-    mix-blend-mode: lighten;
   }
 }
