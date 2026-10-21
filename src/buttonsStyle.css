@@ -1,4 +1,5 @@
 
+
 .properties{
   display: block;
   width: 50%;
@@ -13,23 +14,26 @@
   .text{
     background-image:url("../assets/images/text/properties.png");
     width:300px;
+    height:110px;
     z-index: 1;
     position:relative;
   }
+}
   .sheen:hover::before{
-    transform: translateX(300px);
-    background-position: -300px 0px;
+    mask-position: calc(100% + 10px) 0px;
+    transition: mask 0.8s;
   }
   .sheen::before {
-    transition: 1s transform, 1s background-position;
+    transition: mask 0s;
     background-image:inherit;
-    transform: translateX(-10px);
     filter:grayscale(100%) brightness(2);
     content:"";
-    background-position: 10px 0px;
     background-repeat: no-repeat;
-    width:10px;
-    height:100px;
+    height:inherit;
+    width:inherit;
     display:block;
+    mask-image: linear-gradient(white, white);
+    mask-repeat: no-repeat;
+    mask-position: -10px 0;
+    mask-size: 10px 100%;
   }
-}
