@@ -19,21 +19,30 @@
     position:relative;
   }
 }
-  .sheen:hover::before{
-    mask-position: calc(100% + 10px) 0px;
-    transition: mask 0.8s;
-  }
-  .sheen::before {
-    transition: mask 0s;
-    background-image:inherit;
-    filter:grayscale(100%) brightness(2);
-    content:"";
-    background-repeat: no-repeat;
-    height:inherit;
-    width:inherit;
-    display:block;
-    mask-image: linear-gradient(white, white);
-    mask-repeat: no-repeat;
-    mask-position: -10px 0;
-    mask-size: 10px 100%;
-  }
+.sheen:hover::before{
+  /*
+  mask-position: calc(100% + 10px) 0px;
+  transition: mask 0.8s;
+  */
+  transition: clip-path 0.8s;
+  clip-path: shape(nonzero from calc(0px + 100%) 0px, line to calc(var(--tilt) + 100%) 100%, line to calc(var(--tilt) + var(--thickness) + 100%) 100%, line to calc(var(--thickness) + 100%) 0px, close);
+}
+.sheen::before {
+  --tilt: 20%;
+  --thickness: 15px;
+  transition: clip-path 0s;
+  background-image:inherit;
+  filter:grayscale(100%) brightness(2);
+  content:"";
+  background-repeat: no-repeat;
+  height:inherit;
+  width:inherit;
+  display:block;
+  clip-path: shape(nonzero from calc(0px - var(--tilt)) 0px, line to calc(var(--tilt) - var(--tilt)) 100%, line to calc(var(--tilt) + var(--thickness) - var(--tilt)) 100%, line to calc(var(--thickness) - var(--tilt)) 0px, close);
+  /*
+  mask-image: linear-gradient(white, white);
+  mask-repeat: no-repeat;
+  mask-position: -10px 0;
+  mask-size: 10px 100%;
+  */
+}
