@@ -1,5 +1,5 @@
 import os
-from .map.map.map import Map
+from map.map.map import Map
 
 dir = "src/"
 files = os.listdir(dir)

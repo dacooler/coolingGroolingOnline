@@ -1,6 +1,6 @@
 from ..coord import Coord
-from wall.wall import Wall
-from wall.wall_openings import WallOpenings
+from .wall.wall import Wall
+from .wall.wall_openings import WallOpenings
 from ..size import Size
 from ..sized_part import SizedPart
 

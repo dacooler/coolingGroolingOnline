@@ -1,6 +1,6 @@
 from typing import Iterable
 
-from height_difference import HeightDifference
+from .height_difference import HeightDifference
 
 
 class HeightDifferences:

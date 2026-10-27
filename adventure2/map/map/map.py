@@ -8,7 +8,7 @@ from ..room.room import Room
 from ..room.wall.wall_openings import WallOpenings
 from ..size import Size
 from ..sized_part import SizedPart
-from map_result import MapResult
+from .map_result import MapResult
 
 
 class Map:

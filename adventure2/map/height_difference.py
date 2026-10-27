@@ -1,5 +1,5 @@
-from coord import Coord
-from size import Size
+from .coord import Coord
+from .size import Size
 
 
 class HeightDifference:

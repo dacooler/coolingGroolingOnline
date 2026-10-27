@@ -1,0 +1,17 @@
+.wall.south div::before, .wall.north div::before{
+  background-position: calc(var(--movement-x) * 1px);
+}
+.wall.east div::before, .wall.west div::before{
+  background-position: calc(var(--movement-y) * -1px);
+}
+
+.wall div::before{
+  background-size: 100px 100px;
+  opacity:0.2;
+  display:block;
+  width: inherit;
+  height: inherit;
+  content: "";
+  background-image: url("../assets/images/grass.jpeg");
+  
+}

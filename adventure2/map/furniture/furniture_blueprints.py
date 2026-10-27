@@ -1,6 +1,6 @@
 from typing import Any
 
-from size import Size
+from ..size import Size
 
 
 class FurnitureBlueprint:

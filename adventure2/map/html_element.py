@@ -1,4 +1,4 @@
-from style import Style
+from .style import Style
 
 
 class HtmlElement:

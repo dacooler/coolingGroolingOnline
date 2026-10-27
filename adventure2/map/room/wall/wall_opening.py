@@ -1,6 +1,6 @@
 from typing import Any
 
-from wall_opening_type import WallOpeningType
+from .wall_opening_type import WallOpeningType
 
 
 class WallOpening:

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="compStyle.css">
     <link rel="stylesheet" href="skyStyle.css">
     <link rel="stylesheet" href="../styles/CubedStyle.css">
+    <link rel="stylesheet" href="../styles/utilstyle.css">
     <link rel="stylesheet" href="../assets/cubestyle.css">
     <style>
     :root {

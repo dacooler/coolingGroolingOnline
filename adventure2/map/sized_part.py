@@ -1,7 +1,7 @@
-from coord import Coord
-from part import Part
-from size import Size
-from style import Style
+from .coord import Coord
+from .part import Part
+from .size import Size
+from .style import Style
 
 
 class SizedPart(Part):

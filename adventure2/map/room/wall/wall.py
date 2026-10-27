@@ -1,8 +1,8 @@
 from ...coord import Coord
 from ...size import Size
-from sized_part import SizedPart
-from wall_opening import WallOpening
-from wall_opening_type import WallOpeningType
+from ...sized_part import SizedPart
+from .wall_opening import WallOpening
+from .wall_opening_type import WallOpeningType
 
 
 class Wall:

@@ -1,10 +1,10 @@
 from typing import Any
 
-from furniture.furniture_catalog import FurnitureCatalog
+from .furniture_catalog import FurnitureCatalog
 from ..coord import Coord
-from furniture_blueprints import FurnitureBlueprint
-from height_difference import HeightDifference
-from sized_part import SizedPart
+from .furniture_blueprints import FurnitureBlueprint
+from ..height_difference import HeightDifference
+from ..sized_part import SizedPart
 
 
 class Furniture:

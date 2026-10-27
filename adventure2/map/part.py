@@ -1,6 +1,6 @@
-from coord import Coord
-from html_element import HtmlElement
-from style import Style
+from .coord import Coord
+from .html_element import HtmlElement
+from .style import Style
 
 
 class Part:

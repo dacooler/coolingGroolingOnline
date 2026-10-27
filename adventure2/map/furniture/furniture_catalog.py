@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from furniture_blueprints import FurnitureBlueprint
+from .furniture_blueprints import FurnitureBlueprint
 
 
 class FurnitureCatalog:
@@ -17,7 +17,7 @@ class FurnitureCatalog:
 
     @staticmethod
     def load_catalog():
-        with open('src/furniture.json') as file:
+        with open('./src/furniture.json') as file:
             json_data: list[dict[str, Any]] = json.loads(file.read())
-            {furniture_data['type']: FurnitureBlueprint.from_json(furniture_data) for furniture_data in json_data}
+            FurnitureCatalog._catalog = {furniture_data['type']: FurnitureBlueprint.from_json(furniture_data) for furniture_data in json_data}
         
