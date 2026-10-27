@@ -245,7 +245,137 @@
   --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
   --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
 
-  --movement-z: calc(-50 - max(min(abs(min(var(--movement-x) + 1820, 0) * max(var(--movement-x) + 1880, 0)), 6.324555320336759) * min(abs(min(var(--movement-y) + 780, 0) * max(var(--movement-y) + 880, 0)),6.324555320336759), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 780, 0) * max(var(--movement-y) + 805, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 880, 0) * max(var(--movement-y) + 905, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 900, 0) * max(var(--movement-y) + 925, 0)),5.0), min(abs(min(var(--movement-x) + 1920, 0) * max(var(--movement-x) + 1945, 0)), 5.0) * min(abs(min(var(--movement-y) + 680, 0) * max(var(--movement-y) + 705, 0)),5.0)));
+  --movement-z: calc(-50 - max(
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1820,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1880,
+                    0
+                )
+            ),
+            6.324555320336759
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 780,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 880,
+                    0
+                )
+            ),
+            6.324555320336759
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1920,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1945,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 780,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 805,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1920,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1945,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 880,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 905,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1920,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1945,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 900,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 925,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1920,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1945,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 680,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 705,
+                    0
+                )
+            ),
+            5.0
+        )));
   /* calc(-50 -
     (
       min(
@@ -774,7 +904,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed " style="left: 400px; top: 420px; --width: 20px; --height: 60px; --depth: 210px; ">
+<div class="cubed wall Paper west " style="left: 400px; top: 420px; --width: 20px; --height: 60px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -782,7 +912,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed " style="left: 400px; top: 580px; --width: 20px; --height: 240px; --depth: 210px; ">
+<div class="cubed wall Paper west " style="left: 400px; top: 580px; --width: 20px; --height: 240px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -958,7 +1088,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed vertical pole " style="left: 400px; top: 480px; --width: 20px; --height: 100px; --depth: 110px; ">
+<div class="cubed wall Paper west vertical pole " style="left: 400px; top: 480px; --width: 20px; --height: 100px; --depth: 110px; ">
 <div></div>
 <div></div>
 <div></div>

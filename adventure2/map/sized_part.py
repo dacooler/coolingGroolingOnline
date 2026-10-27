@@ -20,7 +20,7 @@ class SizedPart(Part):
         collision_rect.styles += [
             Style('width', self.size.width, 'px'),
             Style('height', self.size.height, 'px'),
-        ]
+        ] + self.styles
         return collision_rect
 
     def get_visual_cube(self):
