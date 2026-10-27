@@ -113,7 +113,7 @@
           .world-content div {
             /* expandera hitboxar för bättre kollision */
             border: 5px solid black;
-            transform: translate(-5px, -5px);
+            transform: rotate(var(--rotation)) translate(-5px, -5px);
           }
         }
       }
