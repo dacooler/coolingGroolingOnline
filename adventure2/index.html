@@ -483,10 +483,10 @@ to { width: 100px; }
     --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
     div{
       image-rendering: pixelated;
-      background-size: 100% 100px, 210px 210px;
+      background-size: 100% 100px, 210px 210px, 100px 100px;
       background-position: bottom 0px center;
       background-attachment: fixed;
-      background-repeat: repeat-x, repeat;
+      background-repeat: repeat-x, repeat, no-repeat;
     }
   }
   div.pole{
@@ -519,6 +519,7 @@ to { width: 100px; }
     }
     .Paper{
     background-color:green;
+    --arg0: linear-gradient(#0000, #0000);
     --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png"), var(--arg0);
   }
   .north {
@@ -737,7 +738,7 @@ to { width: 100px; }
           <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
             <!-- Världen -->
               <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
-            <div class="cubed wall Paper north " style="left: 400px; top: 400px; --width: 60px; --height: 20px; --depth: 210px; ">
+            <div class="cubed " style="left: 400px; top: 400px; --width: 60px; --height: 20px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -745,7 +746,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper north " style="left: 560px; top: 400px; --width: 240px; --height: 20px; --depth: 210px; ">
+<div class="cubed " style="left: 560px; top: 400px; --width: 240px; --height: 20px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -761,7 +762,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper south " style="left: 420px; top: 800px; --width: 60px; --height: 20px; --depth: 210px; ">
+<div class="cubed wall Paper south " style="left: 420px; top: 800px; --arg0: url('../assets/images/skit på dig.webp'); --width: 60px; --height: 20px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -769,7 +770,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper south " style="left: 580px; top: 800px; --width: 240px; --height: 20px; --depth: 210px; ">
+<div class="cubed wall Paper south " style="left: 580px; top: 800px; --arg0: url('../assets/images/skit på dig.webp'); --width: 240px; --height: 20px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -777,7 +778,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper west " style="left: 400px; top: 420px; --width: 20px; --height: 60px; --depth: 210px; ">
+<div class="cubed " style="left: 400px; top: 420px; --width: 20px; --height: 60px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -785,7 +786,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper west " style="left: 400px; top: 580px; --width: 20px; --height: 240px; --depth: 210px; ">
+<div class="cubed " style="left: 400px; top: 580px; --width: 20px; --height: 240px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -945,7 +946,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper north horizontal pole " style="left: 460px; top: 400px; --width: 100px; --height: 20px; --depth: 110px; ">
+<div class="cubed horizontal pole " style="left: 460px; top: 400px; --width: 100px; --height: 20px; --depth: 110px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -953,7 +954,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper south horizontal pole " style="left: 480px; top: 800px; --width: 100px; --height: 20px; --depth: 110px; ">
+<div class="cubed wall Paper south horizontal pole " style="left: 480px; top: 800px; --arg0: url('../assets/images/skit på dig.webp'); --width: 100px; --height: 20px; --depth: 110px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -961,7 +962,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper west vertical pole " style="left: 400px; top: 480px; --width: 20px; --height: 100px; --depth: 110px; ">
+<div class="cubed vertical pole " style="left: 400px; top: 480px; --width: 20px; --height: 100px; --depth: 110px; ">
 <div></div>
 <div></div>
 <div></div>

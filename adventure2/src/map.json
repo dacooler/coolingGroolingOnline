@@ -98,6 +98,16 @@
             "wall",
             "Paper"
         ],
+        "walls": [
+            {
+                "direction": "south",
+                "args": ["url('../assets/images/skit på dig.webp')"]
+            },
+            {
+                "direction": "west",
+                "css_classes": []
+            }
+        ],
         "wall_openings": [
             {
                 "type": "door",
@@ -133,6 +143,28 @@
         "css_classes": [
             "wall",
             "Paper"
+        ],
+        "walls": [
+            {
+                "direction": "north",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "east",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "south",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "west",
+                "css_classes": [],
+                "args": []
+            }
         ],
         "wall_openings": [
             {

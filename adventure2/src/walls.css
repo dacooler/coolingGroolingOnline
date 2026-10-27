@@ -49,10 +49,10 @@
     --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
     div{
       image-rendering: pixelated;
-      background-size: 100% 100px, 210px 210px;
+      background-size: 100% 100px, 210px 210px, 100px 100px;
       background-position: bottom 0px center;
       background-attachment: fixed;
-      background-repeat: repeat-x, repeat;
+      background-repeat: repeat-x, repeat, no-repeat;
     }
   }
   div.pole{
@@ -85,6 +85,7 @@
     }
     .Paper{
     background-color:green;
+    --arg0: linear-gradient(#0000, #0000);
     --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png"), var(--arg0);
   }
   .north {

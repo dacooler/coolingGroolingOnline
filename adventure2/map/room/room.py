@@ -3,6 +3,7 @@ from .wall.wall import Wall
 from .wall.wall_openings import WallOpenings
 from ..size import Size
 from ..sized_part import SizedPart
+from .wall.wall_argss import WallArgss
 
 
 class Room:
@@ -24,38 +25,8 @@ class Room:
             for cube in wall.get_collision_rects():
                 yield cube
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings):
-        self.walls = [
-            Wall(
-                position,
-                Size(size.width, wall_thickness, size.depth),
-                doors.get_openings_of_wall(0),
-                css_classes + ['north'],
-                True
-            ),
-            Wall(
-                position + (size.width, 0),
-                Size(wall_thickness, size.height, size.depth),
-                doors.get_openings_of_wall(1),
-                css_classes + ['east'],
-                False
-            ),
-            Wall(
-                position + (wall_thickness, size.height),
-                Size(size.width, wall_thickness, size.depth),
-                doors.get_openings_of_wall(2),
-                css_classes + ['south'],
-                True
-            ),
-            Wall(
-                position + (0, wall_thickness),
-                Size(wall_thickness, size.height, size.depth),
-                doors.get_openings_of_wall(3),
-                css_classes + ['west'],
-                False
-            ),
-        ]
-
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss):
+        self.walls = wall_args.to_wall_list(position, size, wall_thickness, doors, css_classes)
         self.roof = SizedPart(
             position + (wall_thickness, wall_thickness),
             Size(size.width - wall_thickness, size.height - wall_thickness, Room.ROOF_THICCNESS),
