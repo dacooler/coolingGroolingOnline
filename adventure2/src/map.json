@@ -13,7 +13,8 @@
         "position": {
             "x": 1820,
             "y": 780
-        }
+        },
+        "rotation": 45
     },
     {
         "type": "furniture",
@@ -21,7 +22,9 @@
         "position": {
             "x": 1920,
             "y": 780
-        }
+        },
+        "rotation": 90
+
     },
     {
         "type": "furniture",
@@ -29,7 +32,8 @@
         "position": {
             "x": 1920,
             "y": 880
-        }
+        },
+        "rotation": 180
     },
     {
         "type": "furniture",
@@ -37,7 +41,8 @@
         "position": {
             "x": 1920,
             "y": 900
-        }
+        },
+        "rotation": 0
     },
     {
         "type": "furniture",
@@ -45,7 +50,8 @@
         "position": {
             "x": 1920,
             "y": 680
-        }
+        },
+        "rotation": 270
     },
     {
         "type": "block",
