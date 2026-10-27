@@ -46,13 +46,17 @@
     }
   }
   .wall{
-    --img:linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
+    --arg0: linear-gradient(#0000, #0000);
+    --img: linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
+    --arg1: 0px 0px;
+    --arg2: 0px 0px;
+    --arg3: no-repeat;
     div{
       image-rendering: pixelated;
-      background-size: 100% 100px, 210px 210px, 100px 100px;
-      background-position: bottom 0px center;
+      background-size: 100% 100px, 210px 210px;
+      background-position: bottom 0px center, bottom 0px center;
       background-attachment: fixed;
-      background-repeat: repeat-x, repeat, no-repeat;
+      background-repeat: repeat-x, repeat;
     }
   }
   div.pole{
@@ -73,39 +77,62 @@
       content:"";
     }
   }
-    .window.horizontal div:nth-child(5)::before{
-      width:var(--width);
-      transform-origin: 0 0;
-      transform:rotateX(90deg) translateZ(calc(var(--height) / -2));
-    }
-    .window.vertical div:nth-child(5)::before{
-      width:var(--height);
-      transform-origin: 0 0;
-      transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height))) translateZ(calc(var(--width) / -2));
-    }
-    .Paper{
+  .window.horizontal div:nth-child(5)::before{
+    width:var(--width);
+    transform-origin: 0 0;
+    transform:rotateX(90deg) translateZ(calc(var(--height) / -2));
+  }
+  .window.vertical div:nth-child(5)::before{
+    width:var(--height);
+    transform-origin: 0 0;
+    transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height))) translateZ(calc(var(--width) / -2));
+  }
+  .Paper{
     background-color:green;
-    --arg0: linear-gradient(#0000, #0000);
-    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png"), var(--arg0);
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+  }
+  .paper2{
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wallpaper.jpeg");
+  }
+  .cubed div::before{
+    background-image: var(--arg0);
+    background-position: var(--arg1);
+    background-size: var(--arg2);
+    background-repeat: no-repeat;
+    width: inherit;
+    height: inherit;
+    display:block;
   }
   .north {
     div:nth-child(2){
       background-image: var(--special);
+    }
+    div:nth-child(2)::before{
+      content: "";
     }
   }
   .west{
     div:nth-child(3){
       background-image: var(--special);
     }
+    div:nth-child(3)::before{
+      content: "";
+    }
   }
   .south{
     div:nth-child(1){
       background-image: var(--special);
     }
+    div:nth-child(1)::before{
+      content: "";
+    }
   }
   .east{
     div:nth-child(4){
       background-image: var(--special);
+    }
+    div:nth-child(4)::before{
+      content: "";
     }
   }
   .museum{

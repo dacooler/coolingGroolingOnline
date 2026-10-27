@@ -96,16 +96,16 @@
         },
         "css_classes": [
             "wall",
-            "Paper"
+            "paper2"
         ],
         "walls": [
             {
                 "direction": "south",
-                "args": ["url('../assets/images/skit på dig.webp')"]
+                "args": ["url('../assets/images/skit på dig.webp')", "100px 100px", "100px 100px"]
             },
             {
                 "direction": "west",
-                "css_classes": []
+                "args": ["url('../assets/images/hello.gif'), url('../assets/images/skit på dig.webp')", "100px 100px, 300px 100px", "100px 100px, 100px 100px"]
             }
         ],
         "wall_openings": [
