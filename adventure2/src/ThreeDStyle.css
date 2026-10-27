@@ -31,6 +31,7 @@
         --color: #000;
         --flipY: 0deg;
         --extraTransform: ;
+        transform: rotate(calc(1deg * var(--rotate)));
         /*
         DEBUG
         */
