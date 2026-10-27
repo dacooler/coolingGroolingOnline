@@ -98,6 +98,21 @@
             "wall",
             "Paper"
         ],
+        "walls": [
+            {
+                "direction": "north",
+                "css_classes": ["new-north-class", "nother-nothr-scss-class"],
+                "args": ["this-is-arg", "im-also-arg", "hello-args"]
+            },
+            {
+                "direction": "south",
+                "args": []
+            },
+            {
+                "direction": "west",
+                "css_classes": []
+            }
+        ],
         "wall_openings": [
             {
                 "type": "door",
@@ -133,6 +148,28 @@
         "css_classes": [
             "wall",
             "Paper"
+        ],
+        "walls": [
+            {
+                "direction": "north",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "east",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "south",
+                "css_classes": [],
+                "args": []
+            },
+            {
+                "direction": "west",
+                "css_classes": [],
+                "args": []
+            }
         ],
         "wall_openings": [
             {

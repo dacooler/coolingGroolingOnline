@@ -6,6 +6,7 @@ from ..furniture.furniture import Furniture
 from ..height_differences import HeightDifferences
 from ..room.room import Room
 from ..room.wall.wall_openings import WallOpenings
+from ..room.wall.wall_argss import WallArgss
 from ..size import Size
 from ..sized_part import SizedPart
 from .map_result import MapResult
@@ -91,8 +92,15 @@ class Map:
             Size.from_json(room['size']),
             room['css_classes'],
             20,
-            WallOpenings.from_json(room['wall_openings'])
+            WallOpenings.from_json(room['wall_openings']),
+            self._parse_wall_args(room),
         ))
+
+    def _parse_wall_args(self, json: dict[str, Any]):
+        try:
+            return WallArgss.from_json(json['walls'])
+        except KeyError:
+            return WallArgss()
 
     def _parse_furniture(self, furniture: dict[str, Any]):
         self.furnitures.append(Furniture.from_json(furniture))

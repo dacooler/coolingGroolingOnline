@@ -12,6 +12,7 @@ class Wall:
     size: Size
     wall_openings: list[WallOpening]
     css_classes: list[str]
+    args: list[str]
 
     _collision_parts: list[SizedPart]
     """Parts of the room that are both visual and have collision."""
@@ -24,11 +25,15 @@ class Wall:
     def get_collision_rects(self):
         return self._collision_parts
 
-    def __init__(self, position: Coord, size: Size, wall_openings: list[WallOpening], css_classes: list[str], is_horizontal: bool):
+    def __init__(self, position: Coord, size: Size, wall_openings: list[WallOpening], css_classes: list[str], is_horizontal: bool, args: list[str]=[]):
         self.position = position
         self.size = size
         self.wall_openings = wall_openings
         self.css_classes = css_classes
+        if args:
+            self.args = args
+        else:
+            self.args = []
 
         self._collision_parts = []
         self._visual_parts = []
@@ -36,7 +41,7 @@ class Wall:
         self._generate_parts(is_horizontal)
 
     def _generate_parts(self, is_horizontal: bool):
-        current_wall_part = SizedPart(self.position, self.size, self.css_classes)
+        current_wall_part = SizedPart(self.position, self.size, self.css_classes, self.args)
         for wall_opening in sorted(self.wall_openings):
             wall_opening_part = current_wall_part.clone()
             next_wall_part = current_wall_part.clone()

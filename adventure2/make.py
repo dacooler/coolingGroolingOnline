@@ -8,7 +8,7 @@ outName = "index.html"
 changeFile = open(inName)
 changeText = changeFile.read()
 changeFile.close()
-print(files)
+#print(files)
 
 def addSrc(inText: str) -> str:
     for file in files:
@@ -34,17 +34,17 @@ def addSrc(inText: str) -> str:
     inText = inText.replace("_HEIGHT_DIFFERENCE_", height_differences)
     return inText
 
-print("IN")
-print("===============")
-print(changeText)
-print("===============")
+#print("IN")
+#print("===============")
+#print(changeText)
+#print("===============")
 
 changeText = addSrc(changeText)
 
-print("OUT")
-print("===============")
-print(changeText)
-print("===============")
+#print("OUT")
+#print("===============")
+#print(changeText)
+#print("===============")
 with open(outName, "w") as f:
   f.write(changeText)
 
