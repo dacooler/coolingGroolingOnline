@@ -162,7 +162,7 @@
           .world-content div {
             /* expandera hitboxar för bättre kollision */
             border: 5px solid black;
-            transform: translate(-5px, -5px);
+            transform: rotate(var(--rotation)) translate(-5px, -5px);
           }
         }
       }
@@ -314,7 +314,10 @@ to { width: 100px; }
   animation: animator linear 1s infinite;
 }
 
-      .center{
+      *{
+        image-rendering: pixelated;
+}
+.center{
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -516,7 +519,7 @@ to { width: 100px; }
     }
     .Paper{
     background-color:green;
-    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png"), var(--arg0);
   }
   .north {
     div:nth-child(2){
@@ -663,19 +666,19 @@ to { width: 100px; }
 
 .cubed.chair{
   div{
-    background-image:url("../assets/images/wood.jpg");
+    background-image:url("../assets/images/chair_pillow.jpg");
   }
   div:nth-child(-n + 4){
-    background-image: url("../assets/images/tableLegs.png");
+    background-image: url("../assets/images/chair_legs.png");
     background-color: #0000;
     backface-visibility: visible;
   }
-  div:nth-child(4)::before{
-    content: "";
-    display:block;
-    height:25px;
-    background-image: url("../assets/images/wood.jpg");
-    transform:translateY(-25px);
+  div:nth-child(4){
+    background-image: url("../assets/images/chair_legs.png"), url("../assets/images/chair_back.png");
+    background-size: 100% calc(100% - 25px), 100% 25px;
+    background-position: 0 25px, 0 0;
+    background-repeat: no-repeat, no-repeat;
+    height:calc(var(--depth) + 25px);
   }
   background-color: #0000;
 }

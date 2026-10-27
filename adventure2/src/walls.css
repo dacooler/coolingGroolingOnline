@@ -85,7 +85,7 @@
     }
     .Paper{
     background-color:green;
-    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png"), var(--arg0);
   }
   .north {
     div:nth-child(2){

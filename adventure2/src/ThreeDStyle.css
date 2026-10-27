@@ -1,3 +1,6 @@
+*{
+        image-rendering: pixelated;
+}
 .center{
         top: 50%;
         left: 50%;
