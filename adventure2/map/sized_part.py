@@ -7,10 +7,12 @@ from .style import Style
 class SizedPart(Part):
     """Class representing a single part. Has a visual cube and a collision rect."""
     size: Size
+    styles: list[Style]
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = []):
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = [], styles: list[Style] = []):
         super().__init__(position, css_classes, args)
         self.size = size
+        self.styles = styles
 
     def get_collision_rect(self):
         """The collision rect of this part. Will be just a simple rectangle div."""
@@ -28,7 +30,7 @@ class SizedPart(Part):
             Style('--width', self.size.width, 'px'),
             Style('--height', self.size.height, 'px'),
             Style('--depth', self.size.depth, 'px'),
-        ]
+        ] + self.styles
         return visual_cube
         
     def clone(self):

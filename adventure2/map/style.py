@@ -6,7 +6,7 @@ class Style:
     value: Any
     unit: str
 
-    def __init__(self, property: str, value: Any, unit: str):
+    def __init__(self, property: str, value: Any, unit: str=''):
         self.property = property
         self.value = value
         self.unit = unit
