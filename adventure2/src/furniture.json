@@ -37,5 +37,19 @@
         "css_classes": [
             "tv"
         ]
+    },
+     {
+        "type": "shelf",
+        "size": {
+            "width": 25,
+            "height": 25,
+            "depth": 20
+        },
+        "divs": 8,
+        "has_collision": false,
+        "height_difference": 25,
+        "css_classes": [
+            "chair"
+        ]
     }
 ]
