@@ -26,6 +26,7 @@ class Furniture:
             self.blueprint.size,
             self.blueprint.css_classes,
             styles=[Style('--rotation', self.rotation)],
+            divs=self.blueprint.divs
         )
 
     @property

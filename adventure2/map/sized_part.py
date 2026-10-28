@@ -9,8 +9,8 @@ class SizedPart(Part):
     size: Size
     styles: list[Style]
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = [], styles: list[Style] = []):
-        super().__init__(position, css_classes, args)
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = [], styles: list[Style] = [], divs: int = 5):
+        super().__init__(position, css_classes, args, divs)
         self.size = size
         self.styles = styles
 
