@@ -41,15 +41,15 @@
      {
         "type": "shelf",
         "size": {
-            "width": 25,
-            "height": 25,
-            "depth": 20
+            "width": 60,
+            "height": 30,
+            "depth": 90
         },
-        "divs": 8,
+        "divs": 9,
         "has_collision": false,
-        "height_difference": 25,
+        "height_difference": 90,
         "css_classes": [
-            "chair"
+            "shelf"
         ]
     }
 ]

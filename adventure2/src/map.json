@@ -28,6 +28,16 @@
     },
     {
         "type": "furniture",
+        "furniture_type": "shelf",
+        "position": {
+            "x": 1920,
+            "y": 2000
+        },
+        "rotation": 0
+
+    },
+    {
+        "type": "furniture",
         "furniture_type": "chair",
         "position": {
             "x": 1920,

@@ -59,3 +59,53 @@
   height: 30px;
   top: 50%;
 }
+
+.cubed.shelf{
+    background-image: url("../assets/images/wood.jpg");
+    backface-visibility: initial;
+    --extraTransform: translateZ(1px);
+  div{
+    background-image: url("../assets/images/wood.jpg");
+    backface-visibility: initial;
+    --extraTransform: ;
+  }
+  div:nth-child(1){
+    background-image: url("../assets/images/wood.jpg");
+    mask:
+    repeating-linear-gradient(
+      brown 0px,
+      brown 3px,
+      transparent 3px,
+      transparent calc(var(--depth) * 0.2)
+    ),
+    linear-gradient(
+      90deg,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent calc(var(--width) - 3px),
+      black calc(var(--width) - 3px)
+      )
+    ;
+    mask-composite: add;
+    background-color: #0000;
+  }
+  div:nth-child(n + 6){
+    top: 0px;
+    left: 0px;
+    width: var(--width);
+    height: var(--height);
+  }
+  div:nth-child(6){
+    transform: translateZ(calc(var(--depth) * 0.2));
+  }
+  div:nth-child(7){
+    transform: translateZ(calc(var(--depth) * 0.4));
+  }
+  div:nth-child(8){
+    transform: translateZ(calc(var(--depth) * 0.6));
+  }
+  div:nth-child(9){
+    transform: translateZ(calc(var(--depth) * 0.8));
+  }
+}
