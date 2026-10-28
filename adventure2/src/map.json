@@ -140,6 +140,51 @@
         ]
     },
     {
+        "type": "furniture",
+        "furniture_type": "shelf",
+        "position": {
+            "x": 910,
+            "y": 440
+        },
+        "rotation": 90
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "table",
+        "position": {
+            "x": 1100,
+            "y": 400
+        },
+        "rotation": -90
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "tv",
+        "position": {
+            "x": 1120,
+            "y": 410
+        },
+        "rotation": -90
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "chair",
+        "position": {
+            "x": 1120,
+            "y": 510
+        },
+        "rotation": -90
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "chair",
+        "position": {
+            "x": 1220,
+            "y": 510
+        },
+        "rotation": -80
+    },
+    {
         "type": "room",
         "position": {
             "x": 900,
@@ -158,7 +203,7 @@
             {
                 "direction": "north",
                 "css_classes": [],
-                "args": []
+                "args": ["url('../assets/images/gameMachineLip.png')", "100px 60px", "100px 30px"]
             },
             {
                 "direction": "east",
@@ -171,9 +216,9 @@
                 "args": []
             },
             {
-                "direction": "west",
+                "direction": "east",
                 "css_classes": [],
-                "args": []
+                "args": ["url('../assets/images/coolingGrooling.gif')", "100px 100px", "100px 100px"]
             }
         ],
         "wall_openings": [

@@ -401,6 +401,136 @@
                 )
             ),
             5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 910,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 970,
+                    0
+                )
+            ),
+            9.486832980505138
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 440,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 470,
+                    0
+                )
+            ),
+            9.486832980505138
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1100,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1160,
+                    0
+                )
+            ),
+            6.324555320336759
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 400,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 500,
+                    0
+                )
+            ),
+            6.324555320336759
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1120,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1128,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 410,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 470,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1120,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1145,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 510,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 535,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1220,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1245,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 510,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 535,
+                    0
+                )
+            ),
+            5.0
         )));
   /* calc(-50 -
     (
@@ -865,9 +995,10 @@ to { width: 100px; }
 }
 
 .cubed.tv{
-  transform: translateZ(45px);
+  --extraTransform: translateZ(45px);
   div{
     background-image: radial-gradient(black, gray);
+    --extraTransform: ;
   }
   div:nth-child(4){
     background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
@@ -1017,7 +1148,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper north " style="left: 900px; top: 400px; --width: 800px; --height: 20px; --depth: 210px; ">
+<div class="cubed wall Paper north " style="left: 900px; top: 400px; --arg0: url('../assets/images/gameMachineLip.png'); --arg1: 100px 60px; --arg2: 100px 30px; --width: 800px; --height: 20px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1143,7 +1274,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="cubed wall Paper west " style="left: 900px; top: 420px; --width: 20px; --height: 400px; --depth: 210px; ">
+<div class="cubed wall Paper west " style="left: 900px; top: 420px; --arg0: url('../assets/images/coolingGrooling.gif'); --arg1: 100px 100px; --arg2: 100px 100px; --width: 20px; --height: 400px; --depth: 210px; ">
 <div></div>
 <div></div>
 <div></div>
@@ -1281,6 +1412,45 @@ to { width: 100px; }
 <div></div>
 </div>
 <div class="cubed chair " style="left: 1920px; top: 680px; --width: 25px; --height: 25px; --depth: 20px; --rotation: 270.0; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="left: 910px; top: 440px; --width: 60px; --height: 30px; --depth: 90px; --rotation: 90.0; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed table " style="left: 1100px; top: 400px; --width: 60px; --height: 100px; --depth: 40px; --rotation: -90.0; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="left: 1120px; top: 410px; --width: 8px; --height: 60px; --depth: 40px; --rotation: -90.0; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="left: 1120px; top: 510px; --width: 25px; --height: 25px; --depth: 20px; --rotation: -90.0; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="left: 1220px; top: 510px; --width: 25px; --height: 25px; --depth: 20px; --rotation: -80.0; ">
 <div></div>
 <div></div>
 <div></div>

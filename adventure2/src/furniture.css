@@ -30,9 +30,10 @@
 }
 
 .cubed.tv{
-  transform: translateZ(45px);
+  --extraTransform: translateZ(45px);
   div{
     background-image: radial-gradient(black, gray);
+    --extraTransform: ;
   }
   div:nth-child(4){
     background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
