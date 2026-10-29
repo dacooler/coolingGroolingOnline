@@ -166,11 +166,12 @@
       background-image:url("/assets/images/contact.gif");
     }
   }
-  .floor{
-    --img: url("/assets/images/wood.jpg");
-  }
 }
 @keyframes spin {
   0%{transform: rotate(0deg)}
   100%{transform: rotate(360deg)}
+}
+.floor{
+  background-image: url("/assets/images/wood.jpg");
+  transform: translateZ(0.1px);
 }

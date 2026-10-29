@@ -38,6 +38,7 @@ class Map:
                 yield part.get_visual_cube()
 
         for room in self.rooms:
+            yield room.floor
             for part in room.get_visual_cubes():
                 yield part.get_visual_cube()
 
