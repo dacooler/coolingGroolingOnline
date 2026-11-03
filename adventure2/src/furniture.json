@@ -46,10 +46,24 @@
             "depth": 90
         },
         "divs": 9,
-        "has_collision": false,
+        "has_collision": true,
         "height_difference": 90,
         "css_classes": [
             "shelf"
+        ]
+    },
+    {
+        "type": "drawers",
+        "size": {
+            "width": 60,
+            "height": 35,
+            "depth": 40
+        },
+        "divs": 9,
+        "has_collision": false,
+        "height_difference": 40,
+        "css_classes": [
+            "drawers"
         ]
     }
 ]

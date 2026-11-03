@@ -56,6 +56,15 @@
     },
     {
         "type": "furniture",
+        "furniture_type": "drawers",
+        "position": {
+            "x": 900,
+            "y": 900
+        },
+        "rotation": 0
+    },
+    {
+        "type": "furniture",
         "furniture_type": "chair",
         "position": {
             "x": 1920,
