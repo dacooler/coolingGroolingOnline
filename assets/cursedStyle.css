@@ -1,408 +1,479 @@
-@import url('https://db.onlinewebfonts.com/c/107eaa009712278feeb98175016a8a81?family=Papyrus'); 
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+ @font-face {
+   font-family: cursiveha;
+   /* set name */
+   src: url(fonts/GreatVibes-Regular.ttf);
+   /* url of the font */
+ }
 
-.graph{
-	width: 400px;
-	height:300px;
-}
-.GoNavigate{
-  margin-top: 20px;
-  position: relative;
-  width: 80%;
-  height: 80px;
-  margin-bottom: 40px;
-  .arrow{
-    animation: 1s blink infinite;
-    animation-timing-function: steps(2, jump-none);
-    position: absolute;
-    background-image: url("./images/icons/bigRedArrow.png");
-    background-size: 100% 100%;
-    width: 100px;
-    height: 80px;
-  }
-  .a1{
-    left: -50px;
-    transform: rotate(-80deg);
-  }
-  .a2{
-    right: -50px;
-    transform: rotate(80deg);
-  }
-  a{
-    position: absolute;
-    transition: transform 1s;
-    animation: 1s blinkSmall infinite;
-    animation-timing-function: steps(2, jump-none);
-    text-align: center;
-    line-height: 2.0;
-    width: 100%;
-    height: 100px;
-    display: block;
-    font-size:50px;
-    background-image: radial-gradient(green, blue, red);
-  }
-  a:hover{
-    animation: 0.3s blinkColor infinite;
-    animation-timing-function: steps(2, jump-none);
-    transform: scale(1.1);
-  }
-}
-  @keyframes blink{
-    0% {opacity: 1.0};
-    100% {opacity: 0.0};
-  }
-  @keyframes blinkColor{
-    0% {color: yellow};
-    100% {color: red; };
-  }
-  @keyframes blinkSmall{
-    0% {color: yellow};
-    100% {color: orange};
-}
+ .graph {
+   width: 400px;
+   height: 300px;
+ }
 
-body{
-	cursor: url(cursors/BlueglassArrow.cur), auto;	
-}
+ .GoNavigate {
+   margin-top: 20px;
+   position: relative;
+   width: 80%;
+   height: 80px;
+   margin-bottom: 40px;
 
-body > div{
-	display:grid;
-	grid-template-columns: 20% auto;
-}
+   .arrow {
+     animation: 1s blink infinite;
+     animation-timing-function: steps(2, jump-none);
+     position: absolute;
+     background-image: url("./images/icons/bigRedArrow.png");
+     background-size: 100% 100%;
+     width: 100px;
+     height: 80px;
+   }
 
-.middle img{
-	border-style: double;
-}
+   .a1 {
+     left: -50px;
+     transform: rotate(-80deg);
+   }
 
-img{
-	transition: transform 0.5s, width 1000s;
-  image-rendering: pixelated;
-}
+   .a2 {
+     right: -50px;
+     transform: rotate(80deg);
+   }
 
-h1{
-	background-color: red;
-}
+   a {
+     position: absolute;
+     transition: transform 1s;
+     animation: 1s blinkSmall infinite;
+     animation-timing-function: steps(2, jump-none);
+     text-align: center;
+     line-height: 2.0;
+     width: 100%;
+     height: 100px;
+     display: block;
+     font-size: 50px;
+     background-image: radial-gradient(green, blue, red);
+   }
 
+   a:hover {
+     animation: 0.3s blinkColor infinite;
+     animation-timing-function: steps(2, jump-none);
+     transform: scale(1.1);
+   }
+ }
 
-img:hover{
-	transform: rotateX(150deg);
-}
+ @keyframes blink {
+   0% {
+     opacity: 1.0
+   }
 
-ul li {
-  background: #cce5ff;
-  color: darkblue;
-  margin: 5px;
-  padding-left: 0px;
-	
-}
+   ;
 
-.minilinks{
-  padding-top:100px;
-  border-top: solid black 1px; 
-}
+   100% {
+     opacity: 0.0
+   }
 
-ul {
-	list-style-position: inside;
-}
+   ;
+ }
 
-a, button{
-	border: none;
-	text-align: justify;
-	transition: font-size 1s, width 1s, box-shadow 1s, transform 1s;
-	white-space: nowrap;
-	cursor: url(cursors/BlueGlassLink.cur), auto;	
-}
+ @keyframes blinkColor {
+   0% {
+     color: yellow
+   }
 
-.titleholder{
-  background-image: linear-gradient(brown, orange);
-  border-style: double;
-  width: 879px;
+   ;
 
-  .flexer{
-    margin-left: -30px;
-    .title{
-      background-image: linear-gradient(green, blue);
-    }
-  }
-}
+   100% {
+     color: red;
+   }
 
-.list{
-  margin: 5px;
-}
+   ;
+ }
 
-.list a, .list button{
-  display:block;
-  background-image: linear-gradient(red, yellow);
-  text-decoration: none;
-  width: 100%;
-  overflow: visible;
-  color: black;
-  font-size: 16px;
-}
+ @keyframes blinkSmall {
+   0% {
+     color: yellow
+   }
 
-.list p{
-  background-image: linear-gradient(blue, white);
-  display:block;
-  margin: 0px;
-}
+   ;
 
-.list p:not(:first-child) {
-  margin-top: 10px;
-}
+   100% {
+     color: orange
+   }
+
+   ;
+ }
+
+ body {
+   cursor: url(cursors/BlueglassArrow.cur), auto;
+ }
+
+ body>div {
+   display: grid;
+   grid-template-columns: 20% auto;
+ }
+
+ .middle img {
+   border-style: double;
+ }
+
+ img {
+   transition: transform 0.5s, width 1000s;
+   image-rendering: pixelated;
+ }
+
+ h1 {
+   background-color: red;
+ }
 
 
-a:hover .new{
-	height:32px;
-}
+ img:hover {
+   transform: rotateX(150deg);
+ }
 
-img.new{
-	transition: height 1s;
-	height: 16px;
-	transform: rotateX(0deg);
-}
-.left{
-	background-image: linear-gradient(to right, yellow, purple);
-	opacity: 0.7;
-	box-shadow: 5px 5px rgba(0,0,0,0.5);
-	transition: box-shadow 0.5s, opacity 1s;
-	border-style: outset;
-	overflow:visible;
-  a:hover, button:hover{
-    font-size: 32px;
-    width: 200%;
-    box-shadow: 5px 5px rgba(0,0,0,0.5);
-  }
-}
+ ul li {
+   background: #cce5ff;
+   color: darkblue;
+   margin: 5px;
+   padding-left: 0px;
 
-.left:hover{
-	opacity: 1;
-	box-shadow: 10px 10px rgba(0,0,0,0.5);
-}
+ }
 
-span{
-	text-shadow: 2px 2px red;	
-}
+ .minilinks {
+   padding-top: 100px;
+   border-top: solid black 1px;
+ }
 
-span:hover{
-	background-image: linear-gradient(green, blue);
-}
+ ul {
+   list-style-position: inside;
+ }
 
-.middle p{
-	background-color: white;
-	border-radius: 5px;
-}
+ a,
+ button {
+   border: none;
+   text-align: justify;
+   transition: font-size 1s, width 1s, box-shadow 1s, transform 1s;
+   white-space: nowrap;
+   cursor: url(cursors/BlueGlassLink.cur), auto;
+ }
 
-.speech{
-	background-image: url("./images/scroll-middle.png");
-	background-repeat: repeat-y;
-	height: 2%;
-	transition: height 10s;	
-	display:inline;
-	height:10px;
-	overflow:visible;
-}
+ .titleholder {
+   background-image: linear-gradient(brown, orange);
+   border-style: double;
+   width: 879px;
 
-.speechspeech{
-	display:flex;
-	transition: height 3s;
-	max-height: 300px;
-}
+   .flexer {
+     margin-left: -30px;
 
-.speechContainer{
-	display:flex;
-	flex-direction:column;
-	overflow:visible;
-	z-index:1000;
-	width:238px;
-	
-}
+     .title {
+       background-image: linear-gradient(green, blue);
+     }
+   }
+ }
 
-.speechContainer img{
-	border-style: none;
-	display:inline;
-	transform: rotateX(0deg);	
-}
+ .list {
+   margin: 5px;
+ }
 
-.speechContainer img:hover{
-}
-.speech p{
-  font-family: "Tangerine", cursive;
-  font-weight: 400;
-  font-style: normal;
-	background-color: rgba(0, 0, 0, 0);
-	font-size: 30px;
-  font-style: normal;
-  margin-left: 50px;
-  width: 50%;
-  height: 10px;
-  transition: height 10s;
-  overflow: hidden;
+ .list a,
+ .list button {
+   display: block;
+   background-image: linear-gradient(red, yellow);
+   text-decoration: none;
+   width: 100%;
+   overflow: visible;
+   color: black;
+   font-size: 16px;
+ }
 
-}
+ .list p {
+   background-image: linear-gradient(blue, white);
+   display: block;
+   margin: 0px;
+ }
 
-.speech:hover{
-	height: 10000px;
-}
-
-.speech:hover p{
-	height: 10000px;
-}
-
-.footer{
-grid-column: 1 / span 2;
-}
-
-.mitten{
-display:block;
-margin:auto;
-}
-
-.visitors{
-background-image: conic-gradient(red, yellow, green);
-display:flex;
-}
-
-.visitors p, img{
-	display:inline;
-	font-family:"Papyrus";
-	font-size:30px;
-	margin:0px;
-	text-shadow: 2px 2px white;
-}
-
-.wall{
-	padding: 20px;
-	background-image: url("./images/wallpaper.jpeg");
-	border-style: inset;
-	border-width: 2px;
-	border-color: brown;	
-}
-
-.wood{
-	border-style: outset;
-	border-width: 4px;
-	margin: 20px;
-	background-image: url("./images/wood.jpg"); 
-	padding: 20px;
-	border-color: brown;	
-}
-
-.books{
-	background-image: url("./images/books.jpg");
-}
+ .list p:not(:first-child) {
+   margin-top: 10px;
+ }
 
 
-.albums input:checked + label div {
-	transform: perspective(20cm) rotateY(-180deg);
-}
+ a:hover .new {
+   height: 32px;
+ }
 
-input{
-	display:none;
-}
+ img.new {
+   transition: height 1s;
+   height: 16px;
+   transform: rotateX(0deg);
+ }
 
-.front{
-	transform-style: preserve-3d;
+ .left {
+   background-image: linear-gradient(to right, yellow, purple);
+   opacity: 0.7;
+   box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+   transition: box-shadow 0.5s, opacity 1s;
+   border-style: outset;
+   overflow: visible;
 
-	position: relative;
+   a:hover,
+   button:hover {
+     font-size: 32px;
+     width: 200%;
+     box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+   }
+ }
 
-	top: 0px;
-	transition: transform 1s;
-	height: 450px;
-	width: 450px;
-	transform: perspective(20cm);
-	margin: 20px;
-}
+ .left:hover {
+   opacity: 1;
+   box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+ }
 
-.front:hover{
-        cursor:pointer;
-}
+ span {
+   text-shadow: 2px 2px red;
+ }
 
-.front img{
-	position:absolute;
-	left: 0px;
-	top: 0px;
-	transform: rotateY(0deg);
-}
+ span:hover {
+   background-image: linear-gradient(green, blue);
+ }
 
-input:checked + label div img:first-child{
-	z-index: 0;
-}
-.front img:first-child{
-	transition: z-index 1s;
-	z-index: 3;
-}
-.front img:nth-child(2){
-	z-index: 1;
-	transform: rotateY(180deg);
-}
+ .middle p {
+   background-color: white;
+   border-radius: 5px;
+ }
+
+ .speech {
+   background-image: url("./images/scroll-middle.png");
+   background-repeat: repeat-y;
+   height: 2%;
+   transition: height 10s;
+   display: inline;
+   height: 10px;
+   overflow: visible;
+ }
+
+ .speechspeech {
+   display: flex;
+   transition: height 3s;
+   max-height: 300px;
+ }
+
+ .speechContainer {
+   display: flex;
+   flex-direction: column;
+   overflow: visible;
+   z-index: 1000;
+   width: 238px;
+
+ }
+
+ .speechContainer img {
+   border-style: none;
+   display: inline;
+   transform: rotateX(0deg);
+ }
+
+ .speechContainer img:hover {}
+
+ .speech p {
+   font-family: "cursiveha", cursive;
+   font-weight: 400;
+   font-style: normal;
+   background-color: rgba(0, 0, 0, 0);
+   font-size: 30px;
+   font-style: normal;
+   margin-left: 50px;
+   width: 50%;
+   height: 10px;
+   transition: height 10s;
+   overflow: hidden;
+
+ }
+
+ .speech:hover {
+   height: 10000px;
+ }
+
+ .speech:hover p {
+   height: 10000px;
+ }
+
+ .footer {
+   grid-column: 1 / span 2;
+ }
+
+ .mitten {
+   display: block;
+   margin: auto;
+ }
+
+ .visitors {
+   background-image: conic-gradient(red, yellow, green);
+   display: flex;
+ }
+
+ .visitors p,
+ img {
+   display: inline;
+   font-family: "Papyrus";
+   font-size: 30px;
+   margin: 0px;
+   text-shadow: 2px 2px white;
+ }
+
+ .wall {
+   padding: 20px;
+   background-image: url("./images/wallpaper.jpeg");
+   border-style: inset;
+   border-width: 2px;
+   border-color: brown;
+ }
+
+ .wood {
+   border-style: outset;
+   border-width: 4px;
+   margin: 20px;
+   background-image: url("./images/wood.jpg");
+   padding: 20px;
+   border-color: brown;
+ }
+
+ .books {
+   background-image: url("./images/books.jpg");
+ }
 
 
+ .albums input:checked+label div {
+   transform: perspective(20cm) rotateY(-180deg);
+ }
 
-.bigContainer > div{
-	background-color: lightGray;
-	width: 98%;
-	border: 4px solid gray;
-	border-radius: 20px;
-	margin: 10px;
-	display: flex;
-}
+ input {
+   display: none;
+ }
 
-#grad{
-width: 70%;
-margin:AUTO;
-}
+ .front {
+   transform-style: preserve-3d;
 
-.bead{
-  transform: rotateX(45deg);
-  animation: perlsnurr 2s linear infinite;
-  transform-origin: 50% 50% 50px;
-  div{
-    filter: hue-rotate(90deg);
-    animation: rainbows 3s linear infinite;
-  }
-  div.octed{
-    filter: none;
-    animation: none;
-    position:absolute;
-    left:25px;
-    top:25px;
-    background-color: #0000;
-  }
+   position: relative;
 
-  div:nth-child(9), div:nth-child(10){
-    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 0px 0px,  
-url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 25px 25px !important; 
-    mask-size: 100%, 50% !important;
-    mask-composite: subtract, add!important;
-    --color: darkred;
-  }
-}
+   top: 0px;
+   transition: transform 1s;
+   height: 450px;
+   width: 450px;
+   transform: perspective(20cm);
+   margin: 20px;
+ }
 
-.closed{
-  background-image: url("./images/wood.jpg");
-  position: absolute;
-  font-size: 20px;
-  width: 150px;
-  height: 100px;
-  z-index: 10000;
-  border: 5px inset gray;
-  box-shadow: 3px 3px 3px black;
-}
+ .front:hover {
+   cursor: pointer;
+ }
 
+ .front img {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   transform: rotateY(0deg);
+ }
 
-@keyframes perlsnurr{
-  0%{transform: rotateY(0deg);};
-  100%{transform: rotate3d(1, 1, 1, 360deg);};
-}
-@keyframes rainbows{
-  0%{filter: hue-rotate(0deg);};
-  100%{filter: hue-rotate(360deg);};
-}
+ input:checked+label div img:first-child {
+   z-index: 0;
+ }
+
+ .front img:first-child {
+   transition: z-index 1s;
+   z-index: 3;
+ }
+
+ .front img:nth-child(2) {
+   z-index: 1;
+   transform: rotateY(180deg);
+ }
 
 
 
+ .bigContainer>div {
+   background-color: lightGray;
+   width: 98%;
+   border: 4px solid gray;
+   border-radius: 20px;
+   margin: 10px;
+   display: flex;
+ }
+
+ #grad {
+   width: 70%;
+   margin: AUTO;
+ }
+
+ .bead {
+   transform: rotateX(45deg);
+   animation: perlsnurr 2s linear infinite;
+   transform-origin: 50% 50% 50px;
+
+   div {
+     filter: hue-rotate(90deg);
+     animation: rainbows 3s linear infinite;
+   }
+
+   div.octed {
+     filter: none;
+     animation: none;
+     position: absolute;
+     left: 25px;
+     top: 25px;
+     background-color: #0000;
+   }
+
+   div:nth-child(9),
+   div:nth-child(10) {
+     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 0px 0px,
+       url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><polygon points="29.28932188134524,0 70.71067811865476,0 100,29.28932188134524 100,70.71067811865476 70.71067811865476,100 29.28932188134524,100 0,70.71067811865476 0,29.28932188134524" /></svg>') no-repeat 25px 25px !important;
+     mask-size: 100%, 50% !important;
+     mask-composite: subtract, add !important;
+     --color: darkred;
+   }
+ }
+
+ .closed {
+   background-image: url("./images/wood.jpg");
+   position: absolute;
+   font-size: 20px;
+   width: 150px;
+   height: 100px;
+   z-index: 10000;
+   border: 5px inset gray;
+   box-shadow: 3px 3px 3px black;
+ }
 
 
-/*DANGER DANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGER
+ @keyframes perlsnurr {
+   0% {
+     transform: rotateY(0deg);
+   }
+
+   ;
+
+   100% {
+     transform: rotate3d(1, 1, 1, 360deg);
+   }
+
+   ;
+ }
+
+ @keyframes rainbows {
+   0% {
+     filter: hue-rotate(0deg);
+   }
+
+   ;
+
+   100% {
+     filter: hue-rotate(360deg);
+   }
+
+   ;
+ }
+
+
+
+
+
+ /*DANGER DANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGERDANGER
 
 
 
@@ -415,5 +486,6 @@ curl 'https://wifi.liu.se/cgi-bin/login' -X POST --
 
 /* CURSED SKIT UNDER HÄR */
 
-#grad1{
-background-image:radial-gradient(#00f 0.00%, #000 0.77%, #02f 0.78%, #020 1.55%, #04f 1.56%, #040 2.33%, #06f 2.34%, #060 3.12%, #08f 3.12%, #080 3.90%, #0af 3.91%, #0a0 4.68%, #0cf 4.69%, #0c0 5.46%, #0ef 5.47%, #0e0 6.24%, #10f 6.25%, #100 7.02%, #12f 7.03%, #120 7.80%, #14f 7.81%, #140 8.58%, #16f 8.59%, #160 9.37%, #18f 9.38%, #180 10.15%, #1af 10.16%, #1a0 10.93%, #1cf 10.94%, #1c0 11.71%, #1ef 11.72%, #1e0 12.49%, #20f 12.50%, #200 13.27%, #22f 13.28%, #220 14.05%, #24f 14.06%, #240 14.83%, #26f 14.84%, #260 15.62%, #28f 15.62%, #280 16.40%, #2af 16.41%, #2a0 17.18%, #2cf 17.19%, #2c0 17.96%, #2ef 17.97%, #2e0 18.74%, #30f 18.75%, #300 19.52%, #32f 19.53%, #320 20.30%, #34f 20.31%, #340 21.08%, #36f 21.09%, #360 21.87%, #38f 21.88%, #380 22.65%, #3af 22.66%, #3a0 23.43%, #3cf 23.44%, #3c0 24.21%, #3ef 24.22%, #3e0 24.99%, #40f 25.00%, #400 25.77%, #42f 25.78%, #420 26.55%, #44f 26.56%, #440 27.33%, #46f 27.34%, #460 28.12%, #48f 28.12%, #480 28.90%, #4af 28.91%, #4a0 29.68%, #4cf 29.69%, #4c0 30.46%, #4ef 30.47%, #4e0 31.24%, #50f 31.25%, #500 32.02%, #52f 32.03%, #520 32.80%, #54f 32.81%, #540 33.58%, #56f 33.59%, #560 34.37%, #58f 34.38%, #580 35.15%, #5af 35.16%, #5a0 35.93%, #5cf 35.94%, #5c0 36.71%, #5ef 36.72%, #5e0 37.49%, #60f 37.50%, #600 38.27%, #62f 38.28%, #620 39.05%, #64f 39.06%, #640 39.83%, #66f 39.84%, #660 40.62%, #68f 40.62%, #680 41.40%, #6af 41.41%, #6a0 42.18%, #6cf 42.19%, #6c0 42.96%, #6ef 42.97%, #6e0 43.74%, #70f 43.75%, #700 44.52%, #72f 44.53%, #720 45.30%, #74f 45.31%, #740 46.08%, #76f 46.09%, #760 46.87%, #78f 46.88%, #780 47.65%, #7af 47.66%, #7a0 48.43%, #7cf 48.44%, #7c0 49.21%, #7ef 49.22%, #7e0 49.99%, #80f 50.00%, #800 50.77%, #82f 50.78%, #820 51.55%, #84f 51.56%, #840 52.33%, #86f 52.34%, #860 53.12%, #88f 53.12%, #880 53.90%, #8af 53.91%, #8a0 54.68%, #8cf 54.69%, #8c0 55.46%, #8ef 55.47%, #8e0 56.24%, #90f 56.25%, #900 57.02%, #92f 57.03%, #920 57.80%, #94f 57.81%, #940 58.58%, #96f 58.59%, #960 59.37%, #98f 59.38%, #980 60.15%, #9af 60.16%, #9a0 60.93%, #9cf 60.94%, #9c0 61.71%, #9ef 61.72%, #9e0 62.49%, #a0f 62.50%, #a00 63.27%, #a2f 63.28%, #a20 64.05%, #a4f 64.06%, #a40 64.83%, #a6f 64.84%, #a60 65.61%, #a8f 65.62%, #a80 66.40%, #aaf 66.41%, #aa0 67.18%, #acf 67.19%, #ac0 67.96%, #aef 67.97%, #ae0 68.74%, #b0f 68.75%, #b00 69.52%, #b2f 69.53%, #b20 70.30%, #b4f 70.31%, #b40 71.08%, #b6f 71.09%, #b60 71.86%, #b8f 71.88%, #b80 72.65%, #baf 72.66%, #ba0 73.43%, #bcf 73.44%, #bc0 74.21%, #bef 74.22%, #be0 74.99%, #c0f 75.00%, #c00 75.77%, #c2f 75.78%, #c20 76.55%, #c4f 76.56%, #c40 77.33%, #c6f 77.34%, #c60 78.11%, #c8f 78.12%, #c80 78.90%, #caf 78.91%, #ca0 79.68%, #ccf 79.69%, #cc0 80.46%, #cef 80.47%, #ce0 81.24%, #d0f 81.25%, #d00 82.02%, #d2f 82.03%, #d20 82.80%, #d4f 82.81%, #d40 83.58%, #d6f 83.59%, #d60 84.36%, #d8f 84.38%, #d80 85.15%, #daf 85.16%, #da0 85.93%, #dcf 85.94%, #dc0 86.71%, #def 86.72%, #de0 87.49%, #e0f 87.50%, #e00 88.27%, #e2f 88.28%, #e20 89.05%, #e4f 89.06%, #e40 89.83%, #e6f 89.84%, #e60 90.61%, #e8f 90.62%, #e80 91.40%, #eaf 91.41%, #ea0 92.18%, #ecf 92.19%, #ec0 92.96%, #eef 92.97%, #ee0 93.74%, #f0f 93.75%, #f00 94.52%, #f2f 94.53%, #f20 95.30%, #f4f 95.31%, #f40 96.08%, #f6f 96.09%, #f60 96.86%, #f8f 96.88%, #f80 97.65%, #faf 97.66%, #fa0 98.43%, #fcf 98.44%, #fc0 99.21%, #fef 99.22%, #fe0 99.99%);}
+ #grad1 {
+   background-image: radial-gradient(#00f 0.00%, #000 0.77%, #02f 0.78%, #020 1.55%, #04f 1.56%, #040 2.33%, #06f 2.34%, #060 3.12%, #08f 3.12%, #080 3.90%, #0af 3.91%, #0a0 4.68%, #0cf 4.69%, #0c0 5.46%, #0ef 5.47%, #0e0 6.24%, #10f 6.25%, #100 7.02%, #12f 7.03%, #120 7.80%, #14f 7.81%, #140 8.58%, #16f 8.59%, #160 9.37%, #18f 9.38%, #180 10.15%, #1af 10.16%, #1a0 10.93%, #1cf 10.94%, #1c0 11.71%, #1ef 11.72%, #1e0 12.49%, #20f 12.50%, #200 13.27%, #22f 13.28%, #220 14.05%, #24f 14.06%, #240 14.83%, #26f 14.84%, #260 15.62%, #28f 15.62%, #280 16.40%, #2af 16.41%, #2a0 17.18%, #2cf 17.19%, #2c0 17.96%, #2ef 17.97%, #2e0 18.74%, #30f 18.75%, #300 19.52%, #32f 19.53%, #320 20.30%, #34f 20.31%, #340 21.08%, #36f 21.09%, #360 21.87%, #38f 21.88%, #380 22.65%, #3af 22.66%, #3a0 23.43%, #3cf 23.44%, #3c0 24.21%, #3ef 24.22%, #3e0 24.99%, #40f 25.00%, #400 25.77%, #42f 25.78%, #420 26.55%, #44f 26.56%, #440 27.33%, #46f 27.34%, #460 28.12%, #48f 28.12%, #480 28.90%, #4af 28.91%, #4a0 29.68%, #4cf 29.69%, #4c0 30.46%, #4ef 30.47%, #4e0 31.24%, #50f 31.25%, #500 32.02%, #52f 32.03%, #520 32.80%, #54f 32.81%, #540 33.58%, #56f 33.59%, #560 34.37%, #58f 34.38%, #580 35.15%, #5af 35.16%, #5a0 35.93%, #5cf 35.94%, #5c0 36.71%, #5ef 36.72%, #5e0 37.49%, #60f 37.50%, #600 38.27%, #62f 38.28%, #620 39.05%, #64f 39.06%, #640 39.83%, #66f 39.84%, #660 40.62%, #68f 40.62%, #680 41.40%, #6af 41.41%, #6a0 42.18%, #6cf 42.19%, #6c0 42.96%, #6ef 42.97%, #6e0 43.74%, #70f 43.75%, #700 44.52%, #72f 44.53%, #720 45.30%, #74f 45.31%, #740 46.08%, #76f 46.09%, #760 46.87%, #78f 46.88%, #780 47.65%, #7af 47.66%, #7a0 48.43%, #7cf 48.44%, #7c0 49.21%, #7ef 49.22%, #7e0 49.99%, #80f 50.00%, #800 50.77%, #82f 50.78%, #820 51.55%, #84f 51.56%, #840 52.33%, #86f 52.34%, #860 53.12%, #88f 53.12%, #880 53.90%, #8af 53.91%, #8a0 54.68%, #8cf 54.69%, #8c0 55.46%, #8ef 55.47%, #8e0 56.24%, #90f 56.25%, #900 57.02%, #92f 57.03%, #920 57.80%, #94f 57.81%, #940 58.58%, #96f 58.59%, #960 59.37%, #98f 59.38%, #980 60.15%, #9af 60.16%, #9a0 60.93%, #9cf 60.94%, #9c0 61.71%, #9ef 61.72%, #9e0 62.49%, #a0f 62.50%, #a00 63.27%, #a2f 63.28%, #a20 64.05%, #a4f 64.06%, #a40 64.83%, #a6f 64.84%, #a60 65.61%, #a8f 65.62%, #a80 66.40%, #aaf 66.41%, #aa0 67.18%, #acf 67.19%, #ac0 67.96%, #aef 67.97%, #ae0 68.74%, #b0f 68.75%, #b00 69.52%, #b2f 69.53%, #b20 70.30%, #b4f 70.31%, #b40 71.08%, #b6f 71.09%, #b60 71.86%, #b8f 71.88%, #b80 72.65%, #baf 72.66%, #ba0 73.43%, #bcf 73.44%, #bc0 74.21%, #bef 74.22%, #be0 74.99%, #c0f 75.00%, #c00 75.77%, #c2f 75.78%, #c20 76.55%, #c4f 76.56%, #c40 77.33%, #c6f 77.34%, #c60 78.11%, #c8f 78.12%, #c80 78.90%, #caf 78.91%, #ca0 79.68%, #ccf 79.69%, #cc0 80.46%, #cef 80.47%, #ce0 81.24%, #d0f 81.25%, #d00 82.02%, #d2f 82.03%, #d20 82.80%, #d4f 82.81%, #d40 83.58%, #d6f 83.59%, #d60 84.36%, #d8f 84.38%, #d80 85.15%, #daf 85.16%, #da0 85.93%, #dcf 85.94%, #dc0 86.71%, #def 86.72%, #de0 87.49%, #e0f 87.50%, #e00 88.27%, #e2f 88.28%, #e20 89.05%, #e4f 89.06%, #e40 89.83%, #e6f 89.84%, #e60 90.61%, #e8f 90.62%, #e80 91.40%, #eaf 91.41%, #ea0 92.18%, #ecf 92.19%, #ec0 92.96%, #eef 92.97%, #ee0 93.74%, #f0f 93.75%, #f00 94.52%, #f2f 94.53%, #f20 95.30%, #f4f 95.31%, #f40 96.08%, #f6f 96.09%, #f60 96.86%, #f8f 96.88%, #f80 97.65%, #faf 97.66%, #fa0 98.43%, #fcf 98.44%, #fc0 99.21%, #fef 99.22%, #fe0 99.99%);
+ }

@@ -75,9 +75,5 @@
           </a>
           <iframe src="./graph/" class="graph"></iframe>
         <img src="./assets/images/ANI.gif" class="mitten">
-        <iframe frameborder="0"
-          src="https://itch.io/embed/3295620?border_width=5&amp;bg_color=1c7e84&amp;fg_color=ffffff&amp;link_color=0cfffb&amp;border_color=bebebe"
-          width="560" height="175"><a href="https://harald-thorsson.itch.io/robo-os">ROBO-OS by Harald
-            Thorsson</a></iframe>
       </div>
     </div>

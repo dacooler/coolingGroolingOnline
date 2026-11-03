@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="./src/titleStyle.css">
   <link rel="stylesheet" href="./src/buttonsStyle.css">
   <link rel="stylesheet" href="./styles/utilstyle.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
   <style>
     <?php
       require("./styles/OctedStyle.php");
@@ -34,8 +31,6 @@
       require("./src/middle.php");
     ?>
     <div class="footer">
-      <a href="http://cooltext.com" target="_top"><img src="https://cooltext.com/images/ct_button.gif" width="88"
-          height="31" alt="Cool Text: Logo and Graphics Generator" /></a>
       <img src="assets/images/thorssontplinkdns.gif" width="88" height="31">
       <img src="assets/images/coolingGrooling.gif" width="88" height="31">
     </div>
