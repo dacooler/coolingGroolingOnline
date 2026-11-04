@@ -45,7 +45,7 @@ class Room:
                 Style("width", size.width + wall_thickness, "px"),
                 Style("height", size.height + wall_thickness, "px"),
             ],
-            css_classes=["floor"],
+            css_classes=["floor", "wood"],
         )
         """
         self.floor = SizedPart(

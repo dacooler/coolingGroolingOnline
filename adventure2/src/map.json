@@ -8,6 +8,23 @@
         }
     },
     {
+        "type": "floor",
+        
+        "position": {
+            "x": 1000,
+            "y": 1000
+        },
+        "size": {
+            "width": 400,
+            "height": 500,
+            "depth": 0
+        },
+        "rotation": 10,
+        "css_classes": [
+            "street"
+        ]
+    },
+    {
         "type": "furniture",
         "furniture_type": "table",
         "position": {

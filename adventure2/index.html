@@ -914,10 +914,7 @@ to { width: 100px; }
   0%{transform: rotate(0deg)}
   100%{transform: rotate(360deg)}
 }
-.floor{
-  background-image: url("/assets/images/wood.jpg");
-  transform: translateZ(0.1px);
-}
+
 
       .skyboxHolder{
   --skyboxSize: 1000px;
@@ -1121,6 +1118,9 @@ to { width: 100px; }
   div {
     backface-visibility: initial;
   }
+  div:nth-child(1) {
+    pointer-events: none;
+  }
 
   div:nth-child(n + 6) {
     top: 0px;
@@ -1247,6 +1247,17 @@ to { width: 100px; }
     mask-composite: add;
     background-color: #0000;
   }
+}
+
+      .street{
+  background-image: linear-gradient(gray, black);
+}
+.floor{
+  --rotation: 0deg;
+  transform: rotate(var(--rotation)) translateZ(1px);
+}
+.wood{  
+  background-image: url("/assets/images/wood.jpg");
 }
 
     </style>
@@ -1454,7 +1465,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="floor " style="left: 400px; top: 400px; width: 420px; height: 420px; "></div>
+<div class="floor wood " style="left: 400px; top: 400px; width: 420px; height: 420px; "></div>
 <div class="cubed wall paper2 north horizontal pole " style="left: 460px; top: 400px; --width: 100px; --height: 20px; --depth: 110px; ">
 <div></div>
 <div></div>
@@ -1483,7 +1494,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
-<div class="floor " style="left: 900px; top: 400px; width: 820px; height: 420px; "></div>
+<div class="floor wood " style="left: 900px; top: 400px; width: 820px; height: 420px; "></div>
 <div class="cubed wall Paper east vertical pole " style="left: 1700px; top: 460px; --width: 20px; --height: 100px; --depth: 110px; ">
 <div></div>
 <div></div>
@@ -1633,6 +1644,7 @@ to { width: 100px; }
 <div></div>
 <div></div>
 </div>
+<div class="street floor " style="left: 1000px; top: 1000px; width: 400px; height: 500px; --rotation: 10deg; "></div>
             <div class="ground"></div>
           </div>
         </div>

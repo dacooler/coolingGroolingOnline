@@ -9,10 +9,13 @@ from ..room.wall.wall_openings import WallOpenings
 from ..room.wall.wall_argss import WallArgss
 from ..size import Size
 from ..sized_part import SizedPart
+from ..html_element import HtmlElement
+from ..style import Style
 from .map_result import MapResult
 
 
 class Map:
+    floors: list[HtmlElement]
     rooms: list[Room]
     blocks: list[SizedPart]
     furnitures: list[Furniture]
@@ -47,6 +50,9 @@ class Map:
 
         for furniture in self.furnitures:
             yield furniture.part.get_visual_cube()
+
+        for floor in self.floors:
+            yield floor
         
     @property
     def size_2d(self):
@@ -62,11 +68,13 @@ class Map:
         self.rooms = []
         self.blocks = []
         self.furnitures = []
+        self.floors = []
 
     def load(self):
         self.rooms = []
         self.blocks = []
         self.furnitures = []
+        self.floors = []
 
         with open('src/map.json') as file:
             map_data_raw = file.read()
@@ -76,6 +84,7 @@ class Map:
             match object['type']:
                 case "block": self._parse_block(object)
                 case "room": self._parse_room(object)
+                case "floor": self._parse_floor(object)
                 case "furniture": self._parse_furniture(object)
                 case "size": self.size = Size.from_json(object['size'])
                 case type: raise ValueError(f'invalid type "{type}" for object.')
@@ -96,6 +105,34 @@ class Map:
             WallOpenings.from_json(room['wall_openings']),
             self._parse_wall_args(room),
         ))
+
+    def _parse_floor(self, floor: dict[str, Any]):
+        pos = Coord.from_json(floor["position"])
+        size = Size.from_json(floor["size"])
+
+        self.floors.append(
+            HtmlElement(
+                style= [
+                    Style(
+                        "left", pos.x, "px"
+                    ),
+                    Style(
+                        "top", pos.y, "px"
+                    ),
+                    Style(
+                        "width", size.width, "px"
+                    ),
+                    Style(
+                        "height", size.height, "px"
+                    ),
+                    Style(
+                        "--rotation", floor["rotation"], "deg"
+                    )
+
+                ],
+                css_classes= floor["css_classes"] + ["floor"]
+            )
+        )
 
     def _parse_wall_args(self, json: dict[str, Any]):
         try:

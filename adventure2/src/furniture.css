@@ -129,6 +129,9 @@
   div {
     backface-visibility: initial;
   }
+  div:nth-child(1) {
+    pointer-events: none;
+  }
 
   div:nth-child(n + 6) {
     top: 0px;

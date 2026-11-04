@@ -1,0 +1,10 @@
+.street{
+  background-image: linear-gradient(gray, black);
+}
+.floor{
+  --rotation: 0deg;
+  transform: rotate(var(--rotation)) translateZ(1px);
+}
+.wood{  
+  background-image: url("/assets/images/wood.jpg");
+}
