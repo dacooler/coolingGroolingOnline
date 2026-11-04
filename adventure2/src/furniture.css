@@ -126,54 +126,118 @@
   --img: url("../assets/images/wood.jpg");
   backface-visibility: initial;
 
+  div {
+    backface-visibility: initial;
+  }
+
   div:nth-child(n + 6) {
     top: 0px;
     left: 3px;
     width: calc(var(--width) - 6px);
     height: var(--height);
+    transition: transform 1s;
   }
 
 
+
+  div:nth-child(6):hover,
+  div:nth-child(6):hover+div,
+  div:nth-child(6):hover+div+div,
+  div:nth-child(6):hover+div+div+div,
+  div:nth-child(10):hover,
+  div:nth-child(10):hover+div, 
+  div:nth-child(10):hover+div+div,
+  div:nth-child(10):hover+div+div+div{
+    transform: translateY(-20px) var(--transStart);
+  }
+
   div:nth-child(6) {
-    transform-origin: left top 0px;
     --transStart: translateZ(calc(var(--depth) / 3)) rotateX(90deg);
-    transform: var(--transStart);
+  }
+
+  div:nth-child(10) {
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateX(90deg);
+  }
+
+  div:nth-child(6),
+  div:nth-child(10) {
     height: calc(var(--depth) / 3 - 3px);
-    transition: transform 0.3s;
+    transform-origin: left top 0px;
+    transform: var(--transStart);
+  }
+
+  div:nth-child(6):hover+div,
+  div:nth-child(10):hover+div {
+    width: calc(var(--width) - 6px);
+    height: var(--height);
   }
 
   div:nth-child(7) {
     --transStart: translateZ(calc(var(--depth) / 3));
-    transform: var(--transStart);
-    transition: transform 0.3s;
   }
 
-  div:nth-child(6):hover,
-  div:nth-child(6):hover+div,
-  div:nth-child(8):hover,
-  div:nth-child(8):hover+div {
-    transform: translateY(-20px) var(--transStart);
-  }
-
-  div:nth-child(8) {
-    transform-origin: left top 0px;
-    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateX(90deg);
-    transform: var(--transStart);
-    height: calc(var(--depth) / 3 - 3px);
-    transition: transform 0.3s;
-  }
-
-
-
-  div:nth-child(9) {
+  div:nth-child(11) {
     --transStart: translateZ(calc(var(--depth) * 2 / 3));
+  }
+  
+  div:nth-child(7),
+  div:nth-child(11){
+    /*
+    width: 0px;
+    height: 0px;
+    */
+    width: calc(var(--width) - 6px);
+    height: var(--height);
     transform: var(--transStart);
-    transition: transform 0.3s;
   }
 
-  div {
-    backface-visibility: initial;
+  div:nth-child(6):hover+div+div,
+  div:nth-child(6):hover+div+div+div,
+  div:nth-child(10):hover+div+div,
+  div:nth-child(10):hover+div+div+div{
+    width: calc(var(--depth) / 3 - 3px);
+    height: var(--height);
   }
+
+  div:nth-child(8),
+  div:nth-child(12),
+  div:nth-child(9),
+  div:nth-child(13)
+  {
+    width: calc(var(--depth) / 3 - 3px);
+    height: var(--height);
+    /*
+    width: 0px;
+    height: 0px;
+    */
+    transform: var(--transStart);
+  }
+
+  div:nth-child(8){
+    transform-origin: left top;
+    --transStart: translateZ(calc(var(--depth) / 3)) rotateY(-90deg);
+  }
+  div:nth-child(9){
+    transform-origin: right top;
+    left: calc(100% - var(--depth) / 3);
+    --transStart: translateZ(calc(var(--depth) / 3)) rotateY(90deg);
+  }
+  div:nth-child(12){
+    transform-origin: left top;
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(-90deg);
+  }
+  div:nth-child(13){
+    transform-origin: right top;
+    left: calc(100% - var(--depth) / 3);
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(90deg);
+  }
+  
+
+
+  
+
+
+
 
   div:nth-child(1) {
     background-image: url("../assets/images/wood.jpg");
@@ -191,5 +255,4 @@
     mask-composite: add;
     background-color: #0000;
   }
-
 }

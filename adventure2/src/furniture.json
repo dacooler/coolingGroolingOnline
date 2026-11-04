@@ -59,7 +59,7 @@
             "height": 35,
             "depth": 40
         },
-        "divs": 9,
+        "divs": 13,
         "has_collision": false,
         "height_difference": 40,
         "css_classes": [
