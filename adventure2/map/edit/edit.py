@@ -1,3 +1,4 @@
+import argparse
 import json
 from types import SimpleNamespace
 from typing import Any, Callable
@@ -85,18 +86,27 @@ def apply(func: Callable[[RoomData], None]):
     save(json_data)
 
 
-def place_furniture():
-    apply(_place_furniture)
+def place_furniture(x: float, y: float):
+    apply(lambda json: _place_furniture(json, x, y))
 
 
-def _place_furniture(json_data: RoomData):
+def _place_furniture(json_data: RoomData, x: float, y: float):
     json_data.children.append(Furniture(
         "shelf",
-        Position(100, 100),
+        Position(x, y),
         67,
     ))
     return json_data
 
 
+parser = argparse.ArgumentParser(
+        prog='Editor',
+        description='Edits the room.json file to make edits to rooms.')
+
+parser.add_argument('x')
+parser.add_argument('y')
+
+
 if __name__ == '__main__':
-    place_furniture()
+    args = parser.parse_args()
+    place_furniture(args.x, args.y)
