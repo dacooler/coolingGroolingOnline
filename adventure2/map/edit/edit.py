@@ -111,4 +111,4 @@ parser.add_argument('rotation')
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    place_furniture(args.furniture_type, args.x, args.y, args.rotation)
+    place_furniture(args.furniture_type, float(args.x), float(args.y), float(args.rotation))

@@ -177,12 +177,30 @@
         },
         {
             "type": "furniture",
-            "furniture_type": "tv",
+            "furniture_type": "drawers",
             "position": {
-                "x": 40.0,
-                "y": 40.0
+                "x": 0.0,
+                "y": 100.0
             },
-            "rotation": "245"
+            "rotation": 0.0
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "chair",
+            "position": {
+                "x": 100.0,
+                "y": 20.0
+            },
+            "rotation": 0.0
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "chair",
+            "position": {
+                "x": 1000.0,
+                "y": 20.0
+            },
+            "rotation": 90.0
         }
     ]
 }
