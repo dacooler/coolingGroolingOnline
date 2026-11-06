@@ -1,11 +1,11 @@
 from typing import Any
 
 from .furniture_catalog import FurnitureCatalog
-from ..coord import Coord
+from ..primitives.coord import Coord
 from .furniture_blueprints import FurnitureBlueprint
-from ..height_difference import HeightDifference
-from ..sized_part import SizedPart
-from ..style import Style
+from ..primitives.height_difference import HeightDifference
+from ..primitives.part import Part
+from ..primitives.style import Style
 
 
 class Furniture:
@@ -21,7 +21,7 @@ class Furniture:
 
     @property
     def part(self):
-        return SizedPart(
+        return Part(
             self.position,
             self.blueprint.size,
             self.blueprint.css_classes,

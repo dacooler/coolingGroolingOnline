@@ -1,7 +1,7 @@
 from typing import Any
 
-from ...coord import Coord
-from ...size import Size
+from ...primitives.coord import Coord
+from ...primitives.size import Size
 from .wall_openings import WallOpenings
 from .wall import Wall
 from .wall_args import WallArgs

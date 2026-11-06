@@ -1,18 +1,18 @@
-from ..coord import Coord
+from ..primitives.coord import Coord
 from .wall.wall import Wall
 from .wall.wall_openings import WallOpenings
-from ..size import Size
-from ..sized_part import SizedPart
+from ..primitives.size import Size
+from ..primitives.part import Part
 from .wall.wall_argss import WallArgss
-from ..html_element import HtmlElement
-from ..style import Style
+from ..primitives.html_element import HtmlElement
+from ..primitives.style import Style
 
 
 class Room:
     ROOF_THICCNESS = 10
 
     walls: list[Wall]
-    roof: SizedPart 
+    roof: Part 
     """Part with no collision."""
 
     def get_visual_cubes(self):
@@ -31,7 +31,7 @@ class Room:
 
     def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss):
         self.walls = wall_args.to_wall_list(position, size, wall_thickness, doors, css_classes)
-        self.roof = SizedPart(
+        self.roof = Part(
             position + (wall_thickness, wall_thickness),
             Size(size.width - wall_thickness, size.height - wall_thickness, Room.ROOF_THICCNESS),
             css_classes=["roof"],

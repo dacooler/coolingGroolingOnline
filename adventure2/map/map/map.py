@@ -1,23 +1,23 @@
 import json
 from typing import Any
 
-from ..coord import Coord
+from ..primitives.coord import Coord
 from ..furniture.furniture import Furniture
-from ..height_differences import HeightDifferences
+from ..primitives.height_differences import HeightDifferences
 from ..room.room import Room
 from ..room.wall.wall_openings import WallOpenings
 from ..room.wall.wall_argss import WallArgss
-from ..size import Size
-from ..sized_part import SizedPart
-from ..html_element import HtmlElement
-from ..style import Style
+from ..primitives.size import Size
+from ..primitives.part import Part
+from ..primitives.html_element import HtmlElement
+from ..primitives.style import Style
 from .map_result import MapResult
 
 
 class Map:
     floors: list[HtmlElement]
     rooms: list[Room]
-    blocks: list[SizedPart]
+    blocks: list[Part]
     furnitures: list[Furniture]
     size: Size
 
@@ -81,16 +81,18 @@ class Map:
 
         map_json = json.loads(map_data_raw)
         for object in map_json:
+            kids = self._parse_children(object)
+
             match object['type']:
-                case "block": self._parse_block(object)
-                case "room": self._parse_room(object)
-                case "floor": self._parse_floor(object)
-                case "furniture": self._parse_furniture(object)
-                case "size": self.size = Size.from_json(object['size'])
-                case type: raise ValueError(f'invalid type "{type}" for object.')
+                case "block":     self._parse_block(object, kids)
+                case "room":      self._parse_room(object, kids)
+                case "floor":     self._parse_floor(object, kids)
+                case "furniture": self._parse_furniture(object, kids)
+                case "size":      self.size = Size.from_json(object['size'])
+                case type:        raise ValueError(f'invalid type "{type}" for object.')
 
     def _parse_block(self, block: dict[str, Any]):
-        self.blocks.append(SizedPart(
+        self.blocks.append(Part(
             Coord.from_json(block['position']),
             Size.from_json(block['size']),
             block['css_classes'],

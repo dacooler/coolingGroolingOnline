@@ -1,6 +1,6 @@
-from ...coord import Coord
-from ...size import Size
-from ...sized_part import SizedPart
+from ...primitives.coord import Coord
+from ...primitives.size import Size
+from ...primitives.part import Part
 from .wall_opening import WallOpening
 from .wall_opening_type import WallOpeningType
 
@@ -14,9 +14,9 @@ class Wall:
     css_classes: list[str]
     args: list[str]
 
-    _collision_parts: list[SizedPart]
+    _collision_parts: list[Part]
     """Parts of the room that are both visual and have collision."""
-    _visual_parts: list[SizedPart]
+    _visual_parts: list[Part]
     """Parts of the room that are only visual and have no collision."""
 
     def get_visual_cubes(self):
@@ -41,7 +41,7 @@ class Wall:
         self._generate_parts(is_horizontal)
 
     def _generate_parts(self, is_horizontal: bool):
-        current_wall_part = SizedPart(self.position, self.size, self.css_classes, self.args)
+        current_wall_part = Part(self.position, self.size, self.css_classes, self.args)
         for wall_opening in sorted(self.wall_openings):
             wall_opening_part = current_wall_part.clone()
             next_wall_part = current_wall_part.clone()
