@@ -119,10 +119,10 @@
       }
       .edit{
         background-image: url("../assets/images/icons/afst/normal/png/HammerBrown");
-        width: 100px;
-        height: 100px;
+        width: 48px;
+        height: 48px;
         display: block;
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 5px;
+        right: 5px;
       }
