@@ -50,7 +50,25 @@
       .editMenu{
   background-color:orange;
   z-index: 100;
+  position: absolute;
+  right: 0px;
+
+  form{
+    display:flex;
+    flex-direction: column;
+  }
 }
+
+.working{
+  width: 100vw;
+  height: 20px;
+  position: absolute;
+  bottom: 0px;
+  margin: none;
+  background-image:
+    repeating-linear-gradient(45deg, yellow 0px, yellow 10px, black 10px, black 20px);
+}
+
 
       
       :root {
@@ -170,6 +188,15 @@
             transform: rotate(var(--rotation)) translate(-5px, -5px);
           }
         }
+      }
+      .edit{
+        background-image: url("../assets/images/icons/afst/normal/png/HammerBrown");
+        width: 100px;
+        height: 100px;
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
       }
 
       
@@ -1605,6 +1632,18 @@ to { width: 100px; }
         </div>
       </div>
 
+      <div class="editMenu">
+  <h3> Place your furniture: </h3>
+  <form action="/adventure2/cool.php" method="post" target="result">
+    <input type="text" name="x">X</input>
+    <input type="text" name="y">Y</input>
+    <button type="submit">Send</button>
+  </form>
+  <iframe name="result"></iframe>
+</div>
+<div class="working"></div>
+
+
       
         <div class="counter">
           <p class="x"></p>
@@ -1658,21 +1697,7 @@ to { width: 100px; }
           </div>
         </button>
       </div>
-
-      <div class="editMenu">
-<input type="checkbox">
-<form action="/adventure2/cool.php" method="post" target="result">
-  <input type="text" name="cool"></input>
-  <input type="checkbox" name="cool2">Button</input>
-  <input type="radio" name="cool3" value="1">Button</input>
-  <input type="radio" name="cool3" value="2">Button</input>
-  <input type="radio" name="cool3" value="3">Button</input>
-  <input type="radio" name="cool3" value="4">Button</input>
-  <button type="submit">Send</button>
-</form>
-</div>
-<iframe name="result"></iframe>
-
+      <a class="edit" href="./edit/"></a>
 
     </div>
   </body>
