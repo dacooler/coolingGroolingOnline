@@ -16,11 +16,19 @@
     "walls": [
         {
             "direction": "south",
-            "args": ["url('../assets/images/skit på dig.webp')", "100px 100px", "100px 100px"]
+            "args": [
+                "url('../assets/images/skit p\u00e5 dig.webp')",
+                "100px 100px",
+                "100px 100px"
+            ]
         },
         {
             "direction": "west",
-            "args": ["url('../assets/images/hello.gif'), url('../assets/images/skit på dig.webp')", "100px 100px, 300px 100px", "100px 100px, 100px 100px"]
+            "args": [
+                "url('../assets/images/hello.gif'), url('../assets/images/skit p\u00e5 dig.webp')",
+                "100px 100px, 300px 100px",
+                "100px 100px, 100px 100px"
+            ]
         }
     ],
     "wall_openings": [
@@ -84,8 +92,70 @@
                         }
                     ]
                 }
-
             ]
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "rotation": 67
         }
     ]
 }
