@@ -165,6 +165,15 @@
                 "y": 900
             },
             "rotation": 67
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 5.0,
+                "y": 50.0
+            },
+            "rotation": 67
         }
     ]
 }
