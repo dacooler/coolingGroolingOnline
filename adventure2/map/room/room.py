@@ -32,7 +32,12 @@ class Room:
             for cube in wall.get_collision_rects():
                 yield cube
             for child in self.children:
-                yield child.part
+                if (child.has_collision):
+                    yield child.part
+
+    def get_height_differences(self):
+        for child in self.children:
+            yield child.height_difference
 
     def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss, children: list[Furniture]):
         self.walls = wall_args.to_wall_list(position, size, wall_thickness, doors, css_classes)

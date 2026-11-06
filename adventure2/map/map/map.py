@@ -62,6 +62,7 @@ class Map:
     def height_differences(self):
         return HeightDifferences(
             (furniture.height_difference for furniture in self.furnitures)
+            + (room.height_differences for room in self.rooms)
         )
 
     def __init__(self):
