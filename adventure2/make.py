@@ -10,7 +10,7 @@ changeText = changeFile.read()
 changeFile.close()
 
 editTemplateName = "src/eIndex.html"
-editOutName = "edit/index.html"
+editOutName = "edit.html"
 editChangedFile = open(editTemplateName)
 editChangedText = editChangedFile.read()
 editChangedFile.close()
