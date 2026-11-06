@@ -20,3 +20,6 @@ class Coord:
             return Coord(self.x + other[0], self.y + other[1])
         else:
             raise TypeError('Coord can only be added with other Coords or tuples or lists')
+
+    def __iadd__(self, other):
+        return self + other

@@ -88,7 +88,7 @@ class Map:
             case "block":     self._parse_block(object)
             case "room":      self._parse_room(object)
             case "floor":     self._parse_floor(object)
-            case "furniture": self._parse_furniture(object)
+            case "furniture": self._parse_and_add_furniture(object)
             case "size":      self.size = Size.from_json(object['size'])
             case type:        raise ValueError(f'invalid type "{type}" for object.')
 
@@ -101,6 +101,11 @@ class Map:
         ))
 
     def _parse_room(self, room: dict[str, Any]):
+        if "children" in room:
+            children = [self._parse_furniture(child) for child in room["children"]]
+        else:
+            children = []
+
         self.rooms.append(Room(
             Coord.from_json(room['position']),
             Size.from_json(room['size']),
@@ -108,6 +113,7 @@ class Map:
             20,
             WallOpenings.from_json(room['wall_openings']),
             self._parse_wall_args(room),
+            children,
         ))
 
     def _parse_floor(self, floor: dict[str, Any]):
@@ -144,8 +150,11 @@ class Map:
         except KeyError:
             return WallArgss()
 
+    def _parse_and_add_furniture(self, furniture: dict[str, Any]):
+        self.furnitures.append(self._parse_furniture(furniture))
+
     def _parse_furniture(self, furniture: dict[str, Any]):
-        self.furnitures.append(Furniture.from_json(furniture))
+        return Furniture.from_json(furniture)
 
     def to_result(self):
         return MapResult(

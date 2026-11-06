@@ -1,11 +1,12 @@
 from ..primitives.coord import Coord
-from .wall.wall import Wall
-from .wall.wall_openings import WallOpenings
 from ..primitives.size import Size
 from ..primitives.part import Part
-from .wall.wall_argss import WallArgss
 from ..primitives.html_element import HtmlElement
 from ..primitives.style import Style
+from ..furniture.furniture import Furniture
+from .wall.wall import Wall
+from .wall.wall_openings import WallOpenings
+from .wall.wall_argss import WallArgss
 
 
 class Room:
@@ -13,12 +14,14 @@ class Room:
 
     walls: list[Wall]
     roof: Part 
-    """Part with no collision."""
+    children: list["Furniture"]
 
     def get_visual_cubes(self):
         for wall in self.walls:
             for cube in wall.get_visual_cubes():
                 yield cube
+            for child in self.children:
+                yield child.part
         yield self.roof
 
     def get_html_elements(self):
@@ -28,8 +31,10 @@ class Room:
         for wall in self.walls:
             for cube in wall.get_collision_rects():
                 yield cube
+            for child in self.children:
+                yield child.part
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss):
+    def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss, children: list[Furniture]):
         self.walls = wall_args.to_wall_list(position, size, wall_thickness, doors, css_classes)
         self.roof = Part(
             position + (wall_thickness, wall_thickness),
@@ -47,10 +52,7 @@ class Room:
             ],
             css_classes=["floor", "wood"],
         )
-        """
-        self.floor = SizedPart(
-            position,
-            Size(size.width + wall_thickness, size.height + wall_thickness, 1),
-            css_classes=["floor"],
-        )
-        """
+
+        self.children = children
+        for child in self.children:
+            child.translate(position)

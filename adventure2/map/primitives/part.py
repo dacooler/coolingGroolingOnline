@@ -55,10 +55,13 @@ class Part:
             Style(f'--arg{i}', arg, '') for i, arg in enumerate(self.args)
         ]
 
+        children = [HtmlElement('div') for _ in range(self.divs)]
+        children[-1].children.extend((part.get_visual_cube() for part in self.child_parts))
+
         return HtmlElement(
             css_classes=['cubed'] + self.css_classes,
             style=style,
-            children=[HtmlElement('div') for _ in range(self.divs)] + [part.get_visual_cube() for part in self.child_parts]
+            children=children
         )
         
     def clone(self):
