@@ -1,6 +1,6 @@
 from math import sin, cos, radians
 
-from .primitives.coord import Coord
+from .coord import Coord
 from .size import Size
 
 

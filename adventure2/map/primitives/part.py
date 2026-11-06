@@ -12,14 +12,24 @@ class Part:
     divs: int
     size: Size
     styles: list[Style]
+    child_parts: list["Part"]
 
-    def __init__(self, position: Coord, size: Size, css_classes: list[str], args: list[str] = [], styles: list[Style] = [], divs: int = 5):
+    def __init__(
+            self,
+            position: Coord,
+            size: Size,
+            css_classes: list[str],
+            args: list[str] = [],
+            styles: list[Style] = [],
+            divs: int = 5,
+            child_parts: list["Part"] = []):
         self.position = position
         self.css_classes = css_classes
         self.args = args
         self.divs = divs
         self.size = size
         self.styles = styles
+        self.child_parts = child_parts
 
     def get_collision_rect(self):
         """The collision rect of this part. Will be just a simple rectangle div."""
@@ -48,7 +58,7 @@ class Part:
         return HtmlElement(
             css_classes=['cubed'] + self.css_classes,
             style=style,
-            children=[HtmlElement('div') for _ in range(self.divs)]
+            children=[HtmlElement('div') for _ in range(self.divs)] + [part.get_visual_cube() for part in self.child_parts]
         )
         
     def clone(self):

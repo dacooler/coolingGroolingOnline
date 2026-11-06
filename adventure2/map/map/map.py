@@ -81,15 +81,17 @@ class Map:
 
         map_json = json.loads(map_data_raw)
         for object in map_json:
-            kids = self._parse_children(object)
+            self._parse_object(object)
 
-            match object['type']:
-                case "block":     self._parse_block(object, kids)
-                case "room":      self._parse_room(object, kids)
-                case "floor":     self._parse_floor(object, kids)
-                case "furniture": self._parse_furniture(object, kids)
-                case "size":      self.size = Size.from_json(object['size'])
-                case type:        raise ValueError(f'invalid type "{type}" for object.')
+    def _parse_object(self, object: dict[str, Any]):
+        match object['type']:
+            case "block":     self._parse_block(object)
+            case "room":      self._parse_room(object)
+            case "floor":     self._parse_floor(object)
+            case "furniture": self._parse_furniture(object)
+            case "size":      self.size = Size.from_json(object['size'])
+            case type:        raise ValueError(f'invalid type "{type}" for object.')
+
 
     def _parse_block(self, block: dict[str, Any]):
         self.blocks.append(Part(

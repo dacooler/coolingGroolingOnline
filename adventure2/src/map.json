@@ -31,7 +31,18 @@
             "x": 1820,
             "y": 780
         },
-        "rotation": 45
+        "rotation": 45,
+        "children": [
+            {
+                "type": "furniture",
+                "furniture_type": "table",
+                "position": {
+                    "x": 100,
+                    "y": 100
+                },
+                "rotation": 45
+            }
+        ]
     },
     {
         "type": "furniture",
