@@ -8,6 +8,12 @@ outName = "index.html"
 changeFile = open(inName)
 changeText = changeFile.read()
 changeFile.close()
+
+editTemplateName = "src/eIndex.html"
+editOutName = "edit/index.html"
+editChangedFile = open(editTemplateName)
+editChangedText = editChangedFile.read()
+editChangedFile.close()
 #print(files)
 
 def addSrc(inText: str) -> str:
@@ -19,6 +25,9 @@ def addSrc(inText: str) -> str:
             add = addSrc(add)
         inText = inText.replace("_" + file + "_", add)
 
+    return inText
+
+def addMap(inText: str) -> str:
     map = Map()
     map.load()
     res = map.to_result()
@@ -32,6 +41,7 @@ def addSrc(inText: str) -> str:
     inText = inText.replace("_MAP_SIZE_X_", str(size[0]))
     inText = inText.replace("_MAP_SIZE_Y_", str(size[1]))
     inText = inText.replace("_HEIGHT_DIFFERENCE_", height_differences)
+
     return inText
 
 #print("IN")
@@ -40,6 +50,9 @@ def addSrc(inText: str) -> str:
 #print("===============")
 
 changeText = addSrc(changeText)
+changeText = addMap(changeText)
+editChangedText = addSrc(editChangedText)
+editChangedText = addMap(editChangedText)
 
 #print("OUT")
 #print("===============")
@@ -47,5 +60,8 @@ changeText = addSrc(changeText)
 #print("===============")
 with open(outName, "w") as f:
   f.write(changeText)
+
+with open(editOutName, "w") as f:
+  f.write(editChangedText)
 
         

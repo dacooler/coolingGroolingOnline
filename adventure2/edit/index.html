@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+  overflow: hidden;
+}
+.world-content {
+  position: relative;
+  width: 0px;
+  height: 0px;
+
+  div {
+    position: absolute;
+    background-color: black;
+  }
+}
+
+.world {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.ground {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: var(--mapSizeXPx);
+  height: var(--mapSizeYPx);
+  background-size: 300px 200px;
+  background-image: url("../assets/images/grass.jpeg");
+}
+
+
+.player {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+}
+
+      .editMenu{
+  background-color:orange;
+  z-index: 100;
+}
+
+      
+      :root {
+        --cs: 100px;
+      }
+        .counter{
+          width: 100px;
+          height:100px;
+          position: absolute;
+          background-color:gray;
+
+        .z::before {
+          height:30%;
+          counter-reset: z-pos var(--movement-z);
+          content: "z " counter(z-pos) ": ";
+        }
+        .x::before {
+          height:30%;
+          counter-reset: x-pos var(--movement-x);
+          content: "x " counter(x-pos) ": ";
+        }
+        .y::before {
+          height:30%;
+          counter-reset: y-pos var(--movement-y);
+          content: "y " counter(y-pos) ": ";
+        }
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 0px;
+        left: 0%;
+        display: grid;
+        grid-template-rows: var(--cs);
+        grid-template-columns: var(--cs) var(--cs);
+        display: grid;
+
+        .angle, .motion {
+          background-color: lightgray;
+        }
+
+
+        button {
+          display: block;
+          background: none;
+          margin: 0;
+          padding: 0;
+          border: none;
+
+          &:active span:hover {
+            background-color: pink;
+          }
+        }
+
+        .angle {
+          position: relative;
+          overflow: hidden;
+
+          .motion-grid{
+            display: grid;
+            position: static;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            width: 100%;
+            height: 100%;
+            transform-origin:50% 50%;
+            transform: rotateZ(135deg);
+            div{
+              height: calc(var(--cs)/2);
+              overflow: hidden;
+              span{
+                display: block;
+                width: 100%;
+                height: 100%;
+              }
+              .rot-u, .rot-d{
+                height: 720px;
+              }
+            }
+          }
+
+        }
+        .motion {
+          position: relative;
+          overflow: hidden;
+          border-radius: 100%;
+        }
+        .motion .motion-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          width: 100%;
+          height: 100%;
+          transform: rotateZ(-45deg);
+        }
+        .middle-cover{
+          width: 25%;
+          height: 25%;
+          position: absolute;
+          left: 37.5%;
+          top: 37.5%;
+          border-radius: 100%;
+          background-color: lightgray;
+        }
+        .cover {
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: scale(30);
+          opacity: 0.1;
+
+          .world-content div {
+            /* expandera hitboxar för bättre kollision */
+            border: 5px solid black;
+            transform: rotate(var(--rotation)) translate(-5px, -5px);
+          }
+        }
+      }
+
+      
+@property --world-rot-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-rot-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-pitch-pos{
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-pitch-neg{
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-x-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-pos {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --world-move-y-neg {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes rotate-pos { to { --world-rot-pos: 1; } }
+@keyframes rotate-neg { to { --world-rot-neg: 1; } }
+@keyframes pitch-pos{ to { --world-pitch-pos: 1; } }
+@keyframes pitch-neg { to { --world-pitch-neg: 1; } }
+@keyframes move-x-pos { to { --world-move-x-pos: 1; } }
+@keyframes move-x-neg { to { --world-move-x-neg: 1; } }
+@keyframes move-y-pos { to { --world-move-y-pos: 1; } }
+@keyframes move-y-neg { to { --world-move-y-neg: 1; } }
+
+.world-anim {
+  --mapSizeX: 1800;
+  --mapSizeY: 1800;
+  --mapSizeXPx: calc(var(--mapSizeX) * 1px);
+  --mapSizeYPx: calc(var(--mapSizeY) * 1px);
+
+  --moveTimeX: calc(var(--mapSizeX) / 100 * 1s);
+  --moveTimeY: calc(var(--mapSizeY) / 100 * 1s);
+
+  animation:
+    rotate-pos 5s linear infinite,
+    rotate-neg 5s linear infinite,
+    move-x-pos var(--moveTimeX) linear infinite,
+    move-x-neg var(--moveTimeX) linear infinite,
+    move-y-pos var(--moveTimeY) linear infinite,
+    move-y-neg var(--moveTimeY) linear infinite,
+    pitch-pos 5s linear infinite,
+    pitch-neg 5s linear infinite;
+  animation-play-state: paused, paused, paused, paused, paused, paused, paused, paused;
+
+  --world-rotation: rotate(calc((var(--world-rot-pos) - var(--world-rot-neg)) * -360deg));
+  --world-pitch: rotateX(calc((var(--world-pitch-pos) - var(--world-pitch-neg)) * -360deg));
+  --pitch-movement-down: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * -15% + 7.5% - 50%));
+  --pitch-movement-up: scale(14) translateY(calc(mod(var(--world-pitch-pos) - var(--world-pitch-neg) + 0.5, 1) * 15% - 7.5% - 50%)) ;
+  --movement-x:calc(mod(var(--world-move-x-pos) - var(--world-move-x-neg) + 0.5, 1) * var(--mapSizeX) * -1);
+  --movement-y:calc(mod(var(--world-move-y-pos) - var(--world-move-y-neg) + 0.5, 1) * var(--mapSizeY) * -1);
+
+  --movement-z: calc(-50 - max(
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 910,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 970,
+                    0
+                )
+            ),
+            0.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 440,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 470,
+                    0
+                )
+            ),
+            0.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1100,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1160,
+                    0
+                )
+            ),
+            6.324555320336759
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 400,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 500,
+                    0
+                )
+            ),
+            6.324555320336759
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1120,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1128,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 410,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 470,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1120,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1145,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 510,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 535,
+                    0
+                )
+            ),
+            5.0
+        ), 
+        min(
+            abs(
+                min(
+                    var(--movement-x) + 1220,
+                    0
+                ) *
+                max(
+                    var(--movement-x) + 1245,
+                    0
+                )
+            ),
+            5.0
+        ) *
+        min(
+            abs(
+                min(
+                    var(--movement-y) + 510,
+                    0
+                ) *
+                max(
+                    var(--movement-y) + 535,
+                    0
+                )
+            ),
+            5.0
+        )));
+  /* calc(-50 -
+    (
+      min(
+        abs(min(var(--movement-x) - 1000, 0) * max(var(--movement-x) + 1000, 0)),
+        10
+      ) *
+      min(
+        abs(min(var(--movement-y) - 1000, 0) * max(var(--movement-y) + 1000, 0)),
+        10
+      )
+    )
+  );*/
+  --world-depth: translateZ(calc(var(--movement-z) * 1px));
+  --world-translation: translate(
+      calc(var(--movement-x) * 1px),
+      calc(var(--movement-y) * 1px)
+    );
+
+  &:has(button:active .rot-r:hover) {
+    animation-play-state: running, paused, paused, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .rot-d:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, paused, running, paused;
+  }
+  &:has(button:active .rot-u:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, paused, paused, running;
+  }
+  &:has(button:active .rot-l:hover) {
+    animation-play-state: paused, running, paused, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .move-l:hover) {
+    animation-play-state: paused, paused, running, paused, paused, paused, paused, paused;
+  }
+  &:has(button:active .move-r:hover) {
+    animation-play-state: paused, paused, paused, running, paused, paused, paused, paused;
+  }
+  &:has(button:active .move-u:hover) {
+    animation-play-state: paused, paused, paused, paused, running, paused, paused, paused;
+  }
+  &:has(button:active .move-d:hover) {
+    animation-play-state: paused, paused, paused, paused, paused, running, paused, paused;
+  }
+}
+
+.world-translation {
+  transform: var(--world-translation);
+}
+.world-rotation {
+  transform: var(--world-rotation);
+}
+.pitch-control-movement-up {
+  transform: var(--pitch-movement-up);
+}
+.pitch-control-movement-down {
+  transform: var(--pitch-movement-down);
+}
+.world-transform {
+  transform:  var(--world-pitch) var(--world-depth) var(--world-rotation) var(--world-translation) ;
+}
+
+@keyframes animator {
+from { width: 0px; }
+to { width: 100px; }
+}
+.animator {
+  animation: animator linear 1s infinite;
+}
+
+      .center{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+.threeD{
+        margin-top: 100px;
+        margin-left: 100px;
+        transform-style: preserve-3d;
+        transform: perspective(100cm);
+}
+
+.threeD div{
+        transform-style: preserve-3d;
+        background-image: url("../assets/images/debug.png");
+        background-size: 100%;
+}
+
+/*front*/
+.cubed{
+        height:var(--height) !important;
+        width: var(--width) !important;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform-style: preserve-3d;
+        /*(in)SANE DEFAULTS*/
+        --width: 100px;
+        --height: 100px;
+        --depth: 100px;
+        --img: none;
+        --color: #000;
+        --flipY: 0deg;
+        --extraTransform: ;
+        transform: var(--extraTransform) rotate(calc(1deg * var(--rotation)));
+        /*
+        DEBUG
+        */
+        /* 
+        transform: perspective(100cm) rotate3D(1, 0, 1, 45deg);
+        animation-name: debug;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+*/
+}
+
+
+/* top */
+.cubed > div:nth-child(1){
+        position: absolute;
+        top: calc(var(--depth) / 2);
+        left: 50%;
+        width: var(--width);
+        height: var(--depth);
+        --baseTransform: translate(-50%, -50%) rotateX(90deg) rotate(180deg) translate(0, -100%);
+        transform-origin: 50% 0% 0;
+}
+
+/* bottom */
+.cubed > div:nth-child(2){
+        position: absolute;
+        top: calc(var(--height) - var(--depth) / 2);
+        left: 50%;
+        width: var(--width);
+        height: var(--depth);
+        --baseTransform: translate(-50%, -50%) rotateX(-90deg);
+        transform-origin: 50% 100% 0;
+}
+
+/* right */
+.cubed > div:nth-child(3){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--width) - var(--height) / 2);
+        width: var(--height); 
+        height: var(--depth);
+        --baseTransform: translate(-50%, -50%) rotateY(90deg) rotate(-90deg) translate(50%, -50%);
+        transform-origin: 100% 50% 0;
+}
+
+/* left */
+.cubed > div:nth-child(4){
+        position: absolute;
+        top: 50%;
+        left: calc(var(--height) / 2);
+        width: var(--height); 
+        height: var(--depth);
+        --baseTransform: translate(-50%, -50%) rotateY(-90deg) rotate(90deg) translate(-50%, -50%);
+        transform-origin: 0% 50% 0;
+}
+
+/*back*/
+.cubed > div:nth-child(5){
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height:var(--height);
+        width: var(--width);
+        --baseTransform: translate(-50%, -50%) translateZ(var(--depth));
+}
+
+
+@keyframes debug {
+        from {transform: perspective(100cm) rotate3D(1, 1, 1, 0deg);}
+        to {transform: perspective(100cm) rotate3D(1, 1, 1, 360deg);}
+}
+
+.cubed > div{
+        transform-style: preserve-3d;
+        background-image: var(--img);
+        background-color: var(--color);
+        transform: var(--baseTransform) var(--extraTransform);
+        background-size: 100% 100%;
+}
+
+      .world-content{
+  .roof{
+    transform: translateZ(var(--arg0));
+    --img:url("../assets/images/wood.jpg");
+    --roofImg:url("../assets/images/roof.jpg");
+    --angle: 45deg;
+    --overhang: 30px;
+    --roofA: calc((var(--height) / 2 + var(--overhang)));
+    div:nth-child(1){
+      transform: rotateX(var(--angle));
+      height: calc(var(--roofA) / cos(var(--angle)));
+      width:calc(var(--width) + var(--overhang) * 2);
+      left: calc(var(--overhang) * -1);
+      top: calc(var(--overhang) * -1);
+      backface-visibility: visible;
+      background-image: var(--roofImg);
+      background-size: 200px 200px;
+    }
+    div:nth-child(2){
+      transform: rotateX(calc(-1 * var(--angle)));
+      height: calc(var(--roofA) / cos(var(--angle)));
+      bottom: calc(var(--overhang) * -1);
+      top: initial;
+      width:calc(var(--width) + var(--overhang) * 2);
+      left: calc(var(--overhang) * -1);
+      backface-visibility: visible;
+      background-image: var(--roofImg);
+      background-size: 200px 200px;
+    }
+    div:nth-child(3){
+      height:calc(tan(var(--angle)) * var(--roofA));
+      left: calc(var(--width) - var(--height) / 2 - var(--overhang));
+      width:calc(var(--height) + var(--overhang) * 2);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+    div:nth-child(4){
+      height:calc(tan(var(--angle)) * var(--roofA));
+      left: calc(var(--height) / 2 + var(--overhang));
+      width:calc(var(--height) + var(--overhang) * 2);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+  }
+  div{
+    div{
+      backface-visibility:hidden;
+    }
+  }
+  .wall{
+    --arg0: linear-gradient(#0000, #0000);
+    --img: linear-gradient(#0000, #0007), url("../assets/images/bricks.jpg");
+    --arg1: 0px 0px;
+    --arg2: 0px 0px;
+    --arg3: no-repeat;
+    div{
+      image-rendering: pixelated;
+      background-size: 100% 100px, 210px 210px;
+      background-position: bottom 0px center, bottom 0px center;
+      background-attachment: fixed;
+      background-repeat: repeat-x, repeat;
+    }
+  }
+  div.pole{
+    --pHeight: 100px;
+    transform: translateZ(var(--pHeight));
+    div{
+      background-position: bottom calc(-1 * var(--pHeight)) center, bottom calc(-1 * var(--pHeight)) center;
+    }
+  }
+  .window{
+    --pHeight:100px;
+    --windowImage: url("../assets/images/window.png");
+    div:nth-child(5)::before{
+      display:block;
+      background-image: var(--windowImage);
+      background-size: 100% 100%;
+      height:60px;
+      content:"";
+    }
+  }
+  .window.horizontal div:nth-child(5)::before{
+    width:var(--width);
+    transform-origin: 0 0;
+    transform:rotateX(90deg) translateZ(calc(var(--height) / -2));
+  }
+  .window.vertical div:nth-child(5)::before{
+    width:var(--height);
+    transform-origin: 0 0;
+    transform: rotateY(-90deg) rotate(-90deg) translateX(calc(-1 * var(--height))) translateZ(calc(var(--width) / -2));
+  }
+  .Paper{
+    background-color:green;
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+  }
+  .paper2{
+    --special: linear-gradient(#0001, #000a), url("../assets/images/wallpaper.jpeg");
+  }
+  .cubed div::before{
+    background-image: var(--arg0);
+    background-position: var(--arg1);
+    background-size: var(--arg2);
+    background-repeat: no-repeat;
+    width: inherit;
+    height: inherit;
+    display:block;
+  }
+  .north {
+    div:nth-child(2){
+      background-image: var(--special);
+    }
+    div:nth-child(2)::before{
+      content: "";
+    }
+  }
+  .west{
+    div:nth-child(3){
+      background-image: var(--special);
+    }
+    div:nth-child(3)::before{
+      content: "";
+    }
+  }
+  .south{
+    div:nth-child(1){
+      background-image: var(--special);
+    }
+    div:nth-child(1)::before{
+      content: "";
+    }
+  }
+  .east{
+    div:nth-child(4){
+      background-image: var(--special);
+    }
+    div:nth-child(4)::before{
+      content: "";
+    }
+  }
+  .museum{
+      /*animation: spin 8s linear infinite;*/
+    div{
+      background-color:green;
+      background-image: linear-gradient(#0001, #000a), url("../assets/images/wall.png");
+    }
+    div:nth-child(3)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/contact.gif");
+    }
+    div:nth-child(4)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/hello.gif");
+    }
+    div:nth-child(5)::before{
+      content: "";
+      display:block;
+      width:inherit;
+      height:inherit;
+      background-repeat: no-repeat;
+      background-image:url("/assets/images/contact.gif");
+    }
+  }
+}
+@keyframes spin {
+  0%{transform: rotate(0deg)}
+  100%{transform: rotate(360deg)}
+}
+
+
+      .skyboxHolder{
+  --skyboxSize: 1000px;
+  transform-style:preserve-3d;
+  position: absolute;
+  width:0px;
+  height:0px;
+  left:50%;
+  top:50%;
+  transform: perspective(var(--fov)) translateZ(calc(var(--fov) - var(--skyboxSize)/2));
+  transition: transform 1s;
+  .skybox{
+    position:absolute;
+    left:calc(var(--skyboxSize)/-2);
+    top:calc(var(--skyboxSize)/-2);
+    --width:var(--skyboxSize);
+    --height:var(--skyboxSize);
+    --depth:var(--skyboxSize);
+    transform-origin: 50% 50% calc(var(--skyboxSize)/2);
+    transform: rotateX(90deg) var(--world-pitch) var(--world-rotation);
+    background-color:blue;
+    background-image: url("../assets/images/sky/daySimple/face_ny_bottom.png");
+    background-size: 100% 100%;
+    div{
+      background-size: 100% 100%;
+    }
+    div:nth-child(1){
+      background-image: url("../assets/images/sky/daySimple/face_nz_back.png")
+    }
+    div:nth-child(2){
+      background-image: url("../assets/images/sky/daySimple/face_pz_front.png")
+    }
+    div:nth-child(3){
+      background-image: url("../assets/images/sky/daySimple/face_px_right.png")
+    }
+    div:nth-child(4){
+      background-image: url("../assets/images/sky/daySimple/face_nx_left.png")
+    }
+    div:nth-child(5){
+      background-image: url("../assets/images/sky/daySimple/face_py_top.png")
+    }
+    div:nth-child(6){
+      background-image: url("../assets/images/sky/daySimple/face_ny_bottom.png")
+    }
+  }
+  .floor{
+    left:calc(var(--skyboxSize)/-2);
+    top:0px;
+    background-image:url("../assets/images/wood.jpg");
+    position:absolute;
+    width:var(--skyboxSize);
+    height:var(--skyboxSize);
+    transform: rotateX(89deg) var(--world-rotation);
+    transform-origin: top left;
+  }
+}
+
+      :root{
+  --fov: 11cm;
+}
+.world-inner {
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform: perspective(var(--fov)) translateZ(var(--fov))  rotateX(90deg);
+  transition: transform 2s;
+  top: 50%;
+  left: 50%;
+  width:0px;
+  height:0px;
+}
+
+      .cubed.table {
+  div {
+    background-image: url("../assets/images/wood.jpg");
+  }
+
+  div:nth-child(-n + 4) {
+    background-image: url("../assets/images/tableLegs.png");
+    background-color: #0000;
+    backface-visibility: visible;
+  }
+
+  background-color: #0000;
+}
+
+.cubed.chair {
+  > div {
+    background-image: url("../assets/images/chair_pillow.jpg");
+  }
+
+  > div:nth-child(-n + 4) {
+    background-image: url("../assets/images/chair_legs.png");
+    background-color: #0000;
+    backface-visibility: visible;
+  }
+
+  > div:nth-child(4) {
+    background-image: url("../assets/images/chair_legs.png"), url("../assets/images/chair_back.png");
+    background-size: 100% calc(100% - 25px), 100% 25px;
+    background-position: 0 25px, 0 0;
+    background-repeat: no-repeat, no-repeat;
+    height: calc(var(--depth) + 25px);
+  }
+
+  background-color: #0000;
+}
+
+.cubed.tv {
+  --extraTransform: translateZ(45px);
+
+  > div {
+    background-image: radial-gradient(black, gray);
+    --extraTransform: ;
+  }
+
+  > div:nth-child(4) {
+    background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
+  }
+}
+
+.cubed.tv::before {
+  content: "";
+  display: block;
+  position: absolute;
+  transform: translateX(-50%) rotateY(90deg) translateX(50%);
+  width: 4px;
+  height: 33%;
+  top: 33%;
+  left: 50%;
+  background-image: radial-gradient(black, gray);
+}
+
+.cubed.tv::after {
+  content: "";
+  display: block;
+  position: absolute;
+  transform: translateY(-50%) translateZ(-4px);
+  background-image: radial-gradient(black, gray);
+  width: 10px;
+  height: 30px;
+  top: 50%;
+}
+
+.cubed.shelf {
+  background-image: url("../assets/images/wood.jpg");
+  backface-visibility: initial;
+  --extraTransform: translateZ(1px);
+
+  > div {
+    background-image: url("../assets/images/wood.jpg");
+    backface-visibility: initial;
+    --extraTransform: ;
+  }
+
+  > div:nth-child(1) {
+    background-image: url("../assets/images/wood.jpg");
+    mask:
+      repeating-linear-gradient(brown 0px,
+        brown 3px,
+        transparent 3px,
+        transparent calc(var(--depth) * 0.2)),
+      linear-gradient(90deg,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent calc(var(--width) - 3px),
+        black calc(var(--width) - 3px));
+    mask-composite: add;
+    background-color: #0000;
+  }
+
+  > div:nth-child(n + 6) {
+    top: 0px;
+    left: 0px;
+    width: var(--width);
+    height: var(--height);
+  }
+
+  > div:nth-child(6) {
+    transform: translateZ(calc(var(--depth) * 0.2));
+  }
+
+  > div:nth-child(7) {
+    transform: translateZ(calc(var(--depth) * 0.4));
+  }
+
+  > div:nth-child(8) {
+    transform: translateZ(calc(var(--depth) * 0.6));
+  }
+
+  > div:nth-child(9) {
+    transform: translateZ(calc(var(--depth) * 0.8));
+  }
+}
+
+.cubed.drawers {
+  --img: url("../assets/images/wood.jpg");
+  backface-visibility: initial;
+
+  > div {
+    backface-visibility: initial;
+  }
+  > div:nth-child(1) {
+    pointer-events: none;
+  }
+
+  > div:nth-child(n + 6) {
+    top: 0px;
+    left: 3px;
+    width: calc(var(--width) - 6px);
+    height: var(--height);
+    transition: transform 1s;
+  }
+
+
+
+  > div:nth-child(6):hover,
+  > div:nth-child(6):hover+div,
+  > div:nth-child(6):hover+div+div,
+  > div:nth-child(6):hover+div+div+div,
+  > div:nth-child(10):hover,
+  > div:nth-child(10):hover+div, 
+  > div:nth-child(10):hover+div+div,
+  > div:nth-child(10):hover+div+div+div{
+    transform: translateY(-20px) var(--transStart);
+  }
+
+  > div:nth-child(6) {
+    --transStart: translateZ(calc(var(--depth) / 3)) rotateX(90deg);
+  }
+
+  > div:nth-child(10) {
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateX(90deg);
+  }
+
+  > div:nth-child(6),
+  > div:nth-child(10) {
+    height: calc(var(--depth) / 3 - 3px);
+    transform-origin: left top 0px;
+    transform: var(--transStart);
+  }
+
+  > div:nth-child(6):hover+div,
+  > div:nth-child(10):hover+div {
+    width: calc(var(--width) - 6px);
+    height: var(--height);
+  }
+
+  > div:nth-child(7) {
+    --transStart: translateZ(calc(var(--depth) / 3));
+  }
+
+  > div:nth-child(11) {
+    --transStart: translateZ(calc(var(--depth) * 2 / 3));
+  }
+  
+  > div:nth-child(7),
+  > div:nth-child(11){
+    /*
+    width: 0px;
+    height: 0px;
+    */
+    width: calc(var(--width) - 6px);
+    height: var(--height);
+    transform: var(--transStart);
+  }
+
+  > div:nth-child(6):hover+div+div,
+  > div:nth-child(6):hover+div+div+div,
+  > div:nth-child(10):hover+div+div,
+  > div:nth-child(10):hover+div+div+div{
+    width: calc(var(--depth) / 3 - 3px);
+    height: var(--height);
+  }
+
+  > div:nth-child(8),
+  > div:nth-child(12),
+  > div:nth-child(9),
+  > div:nth-child(13)
+  {
+    width: calc(var(--depth) / 3 - 3px);
+    height: var(--height);
+    /*
+    width: 0px;
+    height: 0px;
+    */
+    transform: var(--transStart);
+  }
+
+  > div:nth-child(8){
+    transform-origin: left top;
+    --transStart: translateZ(calc(var(--depth) / 3)) rotateY(-90deg);
+  }
+  > div:nth-child(9){
+    transform-origin: right top;
+    left: calc(100% - var(--depth) / 3);
+    --transStart: translateZ(calc(var(--depth) / 3)) rotateY(90deg);
+  }
+  > div:nth-child(12){
+    transform-origin: left top;
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(-90deg);
+  }
+  > div:nth-child(13){
+    transform-origin: right top;
+    left: calc(100% - var(--depth) / 3);
+    --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(90deg);
+  }
+  
+
+
+  
+
+
+
+
+  div:nth-child(1) {
+    background-image: url("../assets/images/wood.jpg");
+    mask:
+      repeating-linear-gradient(brown 0px,
+        brown 3px,
+        transparent 3px,
+        transparent calc(var(--depth) / 3)),
+      linear-gradient(90deg,
+        black 0px,
+        black 3px,
+        transparent 3px,
+        transparent calc(var(--width) - 3px),
+        black calc(var(--width) - 3px));
+    mask-composite: add;
+    background-color: #0000;
+  }
+}
+
+      .street{
+  background-image: linear-gradient(gray, black);
+}
+.floor{
+  --rotation: 0deg;
+  transform: rotate(var(--rotation)) translateZ(1px);
+}
+.wood{  
+  background-image: url("/assets/images/wood.jpg");
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="animator"></div>
+    <div class="world-anim">
+        <div class="skyboxHolder">
+    <div class="skybox cubed">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+      
+      <div class="world">
+        <div class="world-inner">
+          <div class="player"></div>
+          <div style="transform-style:preserve-3d" class="world-content world-transform" id="template-world">
+            <!-- Världen -->
+              <div style="left: 5px; top: 0px; width: 50px; height: 20px"></div>
+            <div class="cubed wall paper2 north " style="left: 400px; top: 400px; --width: 60px; --height: 20px; --depth: 210px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed wall paper2 north " style="left: 560px; top: 400px; --width: 240px; --height: 20px; --depth: 210px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed wall paper2 east " style="left: 800px; top: 400px; --width: 20px; --height: 400px; --depth: 210px; --arg0: url('../assets/images/hello.gif'), url('../assets/images/skit på dig.webp'); --arg1: 100px 100px, 300px 100px; --arg2: 100px 100px, 100px 100px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed wall paper2 south " style="left: 420px; top: 800px; --width: 60px; --height: 20px; --depth: 210px; --arg0: url('../assets/images/skit på dig.webp'); --arg1: 100px 100px; --arg2: 100px 100px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed wall paper2 south " style="left: 580px; top: 800px; --width: 240px; --height: 20px; --depth: 210px; --arg0: url('../assets/images/skit på dig.webp'); --arg1: 100px 100px; --arg2: 100px 100px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed wall paper2 west " style="left: 400px; top: 420px; --width: 20px; --height: 60px; --depth: 210px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed wall paper2 west " style="left: 400px; top: 580px; --width: 20px; --height: 240px; --depth: 210px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="floor wood " style="left: 400px; top: 400px; width: 420px; height: 420px; "></div>
+<div class="cubed wall paper2 north horizontal pole " style="left: 460px; top: 400px; --width: 100px; --height: 20px; --depth: 110px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed wall paper2 south horizontal pole " style="left: 480px; top: 800px; --width: 100px; --height: 20px; --depth: 110px; --arg0: url('../assets/images/skit på dig.webp'); --arg1: 100px 100px; --arg2: 100px 100px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed wall paper2 west vertical pole " style="left: 400px; top: 480px; --width: 20px; --height: 100px; --depth: 110px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 45.0; left: 600px; top: 600px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 100px; top: 50px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 135.0; left: 100px; top: 100px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div>
+<div class="cubed shelf " style="--rotation: 180.0; left: 25px; top: 25px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cubed roof " style="left: 420px; top: 420px; --width: 380px; --height: 380px; --depth: 10px; --arg0: 200px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed shelf " style="--rotation: 90.0; left: 910px; top: 440px; --width: 60px; --height: 30px; --depth: 90px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed table " style="--rotation: -90.0; left: 1100px; top: 400px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed tv " style="--rotation: -90.0; left: 1120px; top: 410px; --width: 8px; --height: 60px; --depth: 40px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="--rotation: -90.0; left: 1120px; top: 510px; --width: 25px; --height: 25px; --depth: 20px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="cubed chair " style="--rotation: -80.0; left: 1220px; top: 510px; --width: 25px; --height: 25px; --depth: 20px; ">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+<div class="street floor " style="left: 1000px; top: 1000px; width: 400px; height: 500px; --rotation: 10deg; "></div>
+            <div class="ground"></div>
+          </div>
+        </div>
+      </div>
+
+      
+        <div class="counter">
+          <p class="x"></p>
+          <p class="y"></p>
+          <p class="z"></p>
+        </div>
+      <div class="controls">
+        <button class="angle">
+          <div class="motion-grid">
+            <div>
+              <span class="rot-r"></span>
+            </div>
+            <div>
+              <span class="rot-d pitch-control-movement-down"></span>
+            </div>
+            <div>
+              <span class="rot-u pitch-control-movement-up"></span>
+            </div>
+            <div>
+              <span class="rot-l"></span>
+            </div>
+          </div>
+          <div class="middle-cover">
+          </div>
+        </button>
+        <button class="motion world-rotation">
+          <div class="motion-grid">
+            <span class="move-r"></span>
+            <span class="move-d"></span>
+            <span class="move-u"></span>
+            <span class="move-l"></span>
+          </div>
+          <div class="middle-cover">
+          </div>
+          <div class="cover">
+            <div class="world-content world-translation" id="template-world">
+              <!-- Hitboxar -->
+              <div style="left: 400px; top: 400px; width: 60px; height: 20px; "></div>
+<div style="left: 560px; top: 400px; width: 240px; height: 20px; "></div>
+<div style="--rotation: 45.0; left: 600px; top: 600px; width: 60px; height: 30px; "></div>
+<div style="left: 800px; top: 400px; width: 20px; height: 400px; "></div>
+<div style="--rotation: 45.0; left: 600px; top: 600px; width: 60px; height: 30px; "></div>
+<div style="left: 420px; top: 800px; width: 60px; height: 20px; "></div>
+<div style="left: 580px; top: 800px; width: 240px; height: 20px; "></div>
+<div style="--rotation: 45.0; left: 600px; top: 600px; width: 60px; height: 30px; "></div>
+<div style="left: 400px; top: 420px; width: 20px; height: 60px; "></div>
+<div style="left: 400px; top: 580px; width: 20px; height: 240px; "></div>
+<div style="--rotation: 45.0; left: 600px; top: 600px; width: 60px; height: 30px; "></div>
+<div style="--rotation: 90.0; left: 910px; top: 440px; width: 60px; height: 30px; "></div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div class="editMenu">
+<input type="checkbox">
+<form action="/adventure2/cool.php" method="post" target="result">
+  <input type="text" name="cool"></input>
+  <input type="checkbox" name="cool2">Button</input>
+  <input type="radio" name="cool3" value="1">Button</input>
+  <input type="radio" name="cool3" value="2">Button</input>
+  <input type="radio" name="cool3" value="3">Button</input>
+  <input type="radio" name="cool3" value="4">Button</input>
+  <button type="submit">Send</button>
+</form>
+</div>
+<iframe name="result"></iframe>
+
+
+    </div>
+  </body>
+</html>
