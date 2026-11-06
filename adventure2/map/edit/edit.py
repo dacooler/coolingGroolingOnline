@@ -86,15 +86,15 @@ def apply(func: Callable[[RoomData], None]):
     save(json_data)
 
 
-def place_furniture(x: float, y: float):
-    apply(lambda json: _place_furniture(json, x, y))
+def place_furniture(furniture_type: str, x: float, y: float, rotation: float):
+    apply(lambda json: _place_furniture(json, furniture_type, x, y, rotation))
 
 
-def _place_furniture(json_data: RoomData, x: float, y: float):
+def _place_furniture(json_data: RoomData, furniture_type: str, x: float, y: float, rotation: float):
     json_data.children.append(Furniture(
-        "shelf",
+        furniture_type,
         Position(x, y),
-        67,
+        rotation,
     ))
     return json_data
 
@@ -103,10 +103,12 @@ parser = argparse.ArgumentParser(
         prog='Editor',
         description='Edits the room.json file to make edits to rooms.')
 
+parser.add_argument('furniture_type')
 parser.add_argument('x')
 parser.add_argument('y')
+parser.add_argument('rotation')
 
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    place_furniture(args.x, args.y)
+    place_furniture(args.furniture_type, args.x, args.y, args.rotation)
