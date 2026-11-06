@@ -18,7 +18,11 @@ editChangedFile.close()
 
 def addSrc(inText: str) -> str:
     for file in files:
-        fileText = open(dir + file)
+        try:
+            fileText = open(dir + file)
+        except IsADirectoryError:
+            continue
+
         add = fileText.read()
         fileText.close()
         if "_" + file + "_" in inText:

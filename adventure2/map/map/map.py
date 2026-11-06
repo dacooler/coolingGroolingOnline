@@ -76,6 +76,11 @@ class Map:
         self.furnitures = []
         self.floors = []
 
+        self._load_objects()
+        self._load_room()
+
+
+    def _load_objects(self):
         with open('src/map.json') as file:
             map_data_raw = file.read()
 
@@ -83,10 +88,16 @@ class Map:
         for object in map_json:
             self._parse_object(object)
 
+    def _load_room(self):
+        with open('src/rooms/room.json') as file:
+            room_data_raw = file.read()
+
+        room_json = json.loads(room_data_raw)
+        self._parse_room(room_json)
+
     def _parse_object(self, object: dict[str, Any]):
         match object['type']:
             case "block":     self._parse_block(object)
-            case "room":      self._parse_room(object)
             case "floor":     self._parse_floor(object)
             case "furniture": self._parse_and_add_furniture(object)
             case "size":      self.size = Size.from_json(object['size'])
