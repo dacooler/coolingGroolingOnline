@@ -11,3 +11,6 @@ class HeightDifferences:
 
     def get_calcs(self):
         return "max(" + ', '.join((diff.get_calc() for diff in self.height_differences)) + ")"
+
+    def __add__(self, other):
+        return HeightDifferences(self.height_differences + other.height_differences)

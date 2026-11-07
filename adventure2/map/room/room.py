@@ -3,6 +3,7 @@ from ..primitives.size import Size
 from ..primitives.part import Part
 from ..primitives.html_element import HtmlElement
 from ..primitives.style import Style
+from ..primitives.height_differences import HeightDifferences
 from ..furniture.furniture import Furniture
 from .wall.wall import Wall
 from .wall.wall_openings import WallOpenings
@@ -35,9 +36,9 @@ class Room:
                 if (child.has_collision):
                     yield child.part
 
-    def get_height_differences(self):
-        for child in self.children:
-            yield child.height_difference
+    @property
+    def height_differences(self) -> HeightDifferences:
+        return HeightDifferences(child.height_difference for child in self.children)
 
     def __init__(self, position: Coord, size: Size, css_classes: list[str], wall_thickness: float, doors: WallOpenings, wall_args: WallArgss, children: list[Furniture]):
         self.walls = wall_args.to_wall_list(position, size, wall_thickness, doors, css_classes)
