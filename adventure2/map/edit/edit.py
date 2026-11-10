@@ -73,14 +73,14 @@ def load() -> RoomData:
     return json.loads(text, object_hook=SimpleNamespace)
 
 
-def save(json_data: dict[str, Any]):
+def save(json_data: RoomData):
     text = json.dumps(json_data, default=lambda obj: vars(obj), indent=4)
 
     with open(file_name, 'w') as file:
         file.write(text)
 
 
-def apply(func: Callable[[RoomData], None]):
+def apply(func: Callable[[RoomData], RoomData]):
     json_data = load()
     json_data = func(json_data)
     save(json_data)

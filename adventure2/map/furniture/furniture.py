@@ -3,6 +3,7 @@ from typing import Any
 from .furniture_catalog import FurnitureCatalog
 from ..primitives.coord import Coord
 from .furniture_blueprints import FurnitureBlueprint
+from ..primitives.html_element import HtmlElement
 from ..primitives.height_difference import HeightDifference
 from ..primitives.part import Part
 from ..primitives.style import Style
@@ -24,15 +25,16 @@ class Furniture:
             self.blueprint.height_difference_size,
         )
 
-    @property
-    def part(self):
+    def part(self, is_edit_mode: bool):
         return Part(
             self.position,
             self.blueprint.size,
             self.blueprint.css_classes,
             styles = [Style('--rotation', self.rotation)],
             divs = self.blueprint.divs,
-            child_parts = [furniture.part for furniture in self.children],
+            child_parts = [furniture.part(is_edit_mode) for furniture in self.children],
+            tag = 'form' if is_edit_mode else 'div',
+            child_divs_constructor = lambda: (HtmlElement('button') if is_edit_mode else HtmlElement('div')),
         )
 
     @property

@@ -1,3 +1,5 @@
+from typing import Callable
+
 from .html_element import HtmlElement
 from .coord import Coord
 from .size import Size
@@ -13,6 +15,8 @@ class Part:
     size: Size
     styles: list[Style]
     child_parts: list["Part"]
+    tag: str
+    child_divs_constructor: Callable[[], HtmlElement]
 
     def __init__(
             self,
@@ -22,7 +26,9 @@ class Part:
             args: list[str] = [],
             styles: list[Style] = [],
             divs: int = 5,
-            child_parts: list["Part"] = []):
+            child_parts: list["Part"] = [],
+            tag: str = 'div',
+            child_divs_constructor: Callable[[], HtmlElement] = lambda: HtmlElement()):
         self.position = position
         self.css_classes = css_classes
         self.args = args
@@ -30,6 +36,8 @@ class Part:
         self.size = size
         self.styles = styles
         self.child_parts = child_parts
+        self.tag = tag
+        self.child_divs_constructor = child_divs_constructor
 
     def get_collision_rect(self):
         """The collision rect of this part. Will be just a simple rectangle div."""
@@ -55,10 +63,12 @@ class Part:
             Style(f'--arg{i}', arg, '') for i, arg in enumerate(self.args)
         ]
 
-        children = [HtmlElement('div') for _ in range(self.divs)]
+        children = [self.child_divs_constructor() for _ in range(self.divs)]
+
         children[-1].children.extend((part.get_visual_cube() for part in self.child_parts))
 
         return HtmlElement(
+            tag = self.tag,
             css_classes=['cubed'] + self.css_classes,
             style=style,
             children=children

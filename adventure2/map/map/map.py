@@ -21,10 +21,9 @@ class Map:
     furnitures: list[Furniture]
     size: Size
 
-    @property
-    def collision_parts(self):
+    def collision_parts(self, is_edit_mode: bool):
         for room in self.rooms:
-            for part in room.get_collision_rects():
+            for part in room.get_collision_parts(is_edit_mode):
                 yield part.get_collision_rect()
 
         for block in self.blocks:
@@ -32,24 +31,21 @@ class Map:
 
         for furniture in self.furnitures:
             if furniture.has_collision:
-                yield furniture.part.get_collision_rect()
+                yield furniture.part(is_edit_mode).get_collision_rect()
     
-    @property
-    def visual_parts(self):
-        for room in self.rooms:
-            for part in room.get_collision_rects():
-                yield part.get_visual_cube()
-
+    def visual_parts(self, is_edit_mode: bool):
         for room in self.rooms:
             yield room.floor
-            for part in room.get_visual_cubes():
+            for part in room.get_collision_parts(is_edit_mode):
+                yield part.get_visual_cube()
+            for part in room.get_visual_parts(is_edit_mode):
                 yield part.get_visual_cube()
 
         for block in self.blocks:
             yield block.get_visual_cube()
 
         for furniture in self.furnitures:
-            yield furniture.part.get_visual_cube()
+            yield furniture.part(is_edit_mode).get_visual_cube()
 
         for floor in self.floors:
             yield floor
@@ -168,10 +164,10 @@ class Map:
     def _parse_furniture(self, furniture: dict[str, Any]):
         return Furniture.from_json(furniture)
 
-    def to_result(self):
+    def to_result(self, is_edit_mode: bool):
         return MapResult(
-            colliders='\n'.join((str(collider) for collider in self.collision_parts)),
-            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.visual_parts)),
+            colliders='\n'.join((str(collider) for collider in self.collision_parts(is_edit_mode))),
+            visual_cubes='\n'.join((str(visual_cube) for visual_cube in self.visual_parts(is_edit_mode))),
             size=self.size_2d,
             height_differences=self.height_differences.get_calcs(),
         )

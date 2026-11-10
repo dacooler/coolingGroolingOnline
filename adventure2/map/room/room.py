@@ -13,28 +13,30 @@ from .wall.wall_argss import WallArgss
 class Room:
     ROOF_THICCNESS = 10
 
+    floor:HtmlElement
     walls: list[Wall]
     roof: Part 
     children: list["Furniture"]
 
-    def get_visual_cubes(self):
+    def get_visual_parts(self, is_edit_mode: bool):
         for wall in self.walls:
             for cube in wall.get_visual_cubes():
                 yield cube
-            for child in self.children:
-                yield child.part
+        for child in self.children:
+            if not child.has_collision:
+                yield child.part(is_edit_mode)
         yield self.roof
 
     def get_html_elements(self):
         return self.floor
 
-    def get_collision_rects(self):
+    def get_collision_parts(self, is_edit_mode: bool):
         for wall in self.walls:
             for cube in wall.get_collision_rects():
                 yield cube
-            for child in self.children:
-                if (child.has_collision):
-                    yield child.part
+        for child in self.children:
+            if (child.has_collision):
+                yield child.part(is_edit_mode)
 
     @property
     def height_differences(self) -> HeightDifferences:

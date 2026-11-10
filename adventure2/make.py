@@ -22,6 +22,8 @@ def addSrc(inText: str) -> str:
             fileText = open(dir + file)
         except IsADirectoryError:
             continue
+        except PermissionError:
+            continue
 
         add = fileText.read()
         fileText.close()
@@ -31,10 +33,10 @@ def addSrc(inText: str) -> str:
 
     return inText
 
-def addMap(inText: str) -> str:
+def addMap(inText: str, is_edit_mode: bool) -> str:
     map = Map()
     map.load()
-    res = map.to_result()
+    res = map.to_result(is_edit_mode)
     cubes = res.colliders
     cubesCubed = res.visual_cubes
     size = res.size
@@ -54,9 +56,9 @@ def addMap(inText: str) -> str:
 #print("===============")
 
 changeText = addSrc(changeText)
-changeText = addMap(changeText)
+changeText = addMap(changeText, is_edit_mode=False)
 editChangedText = addSrc(editChangedText)
-editChangedText = addMap(editChangedText)
+editChangedText = addMap(editChangedText, is_edit_mode=True)
 
 #print("OUT")
 #print("===============")
