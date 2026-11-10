@@ -2881,17 +2881,19 @@ to { width: 100px; }
       <div class="editMenu">
   <h3> Place your furniture: </h3>
   <form action="/adventure2/cool.php" method="post" target="result">
-    <input type="furniture type" name="furniture">Furniture</input>
-    <input type="rotation" name="rotation">Rotation</input>
-    <input type="text" name="x">X</input>
-    <input type="text" name="y">Y</input>
+    <label for="furniture">Furniture type</label>
+    <input type="text" name="furniture"></input>
+    <label for="rotation">Rotation</label>
+    <input type="text" name="rotation"></input>
+    <label for="x">X</label>
+    <input type="text" name="x"></input>
+    <label for="y">Y</label>
+    <input type="text" name="y"></input>
     <button type="submit">Send</button>
   </form>
   <iframe name="result"></iframe>
 </div>
 <div class="working"></div>
-
-
       
         <div class="counter">
           <p class="x"></p>
