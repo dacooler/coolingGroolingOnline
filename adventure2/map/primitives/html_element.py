@@ -7,7 +7,7 @@ class HtmlElement:
     styles: list[Style]
     css_classes: list[str]
 
-    def __init__(self, tag: str = 'div', children: list['HtmlElement'] = [], style: list[Style] = [], css_classes: list[str] = []):
+    def __init__(self, tag: str = 'div', children: list['HtmlElement'] = [], style: list[Style] = [], css_classes: list[str] = [], attributes: dict[str, str] = {}):
         if tag: self.tag = tag
 
         if children:
@@ -25,6 +25,11 @@ class HtmlElement:
         else:
             self.css_classes = []
 
+        if attributes:
+            self.attributes = attributes
+        else:
+            self.attributes = {}
+
     def __str__(self):
         name = f'<{self.tag}'
 
@@ -39,6 +44,9 @@ class HtmlElement:
             for style in self.styles:
                 name += str(style) + " "
             name += '"'
+
+        for key, value in self.attributes.items():
+            name += f' {key}="{value}"'
 
         name += '>'
         for child in self.children:

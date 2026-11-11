@@ -56,142 +56,11 @@
             "type": "furniture",
             "furniture_type": "shelf",
             "position": {
-                "x": 200,
-                "y": 200
-            },
-            "rotation": 45,
-            "children": [
-                {
-                    "type": "furniture",
-                    "furniture_type": "shelf",
-                    "position": {
-                        "x": 100,
-                        "y": 50
-                    },
-                    "rotation": 45,
-                    "children": [
-                        {
-                            "type": "furniture",
-                            "furniture_type": "shelf",
-                            "position": {
-                                "x": 100,
-                                "y": 100
-                            },
-                            "rotation": 45,
-                            "children": [
-                                {
-                                    "type": "furniture",
-                                    "furniture_type": "shelf",
-                                    "position": {
-                                        "x": 25,
-                                        "y": 25
-                                    },
-                                    "rotation": 45
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 100,
-                "y": 100
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
                 "x": 900,
                 "y": 900
             },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "shelf",
-            "position": {
-                "x": 5.0,
-                "y": 50.0
-            },
-            "rotation": 67
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "drawers",
-            "position": {
-                "x": 0.0,
-                "y": 100.0
-            },
-            "rotation": 0.0
-        },
-        {
-            "type": "furniture",
-            "furniture_type": "chair",
-            "position": {
-                "x": 100.0,
-                "y": 20.0
-            },
-            "rotation": 0.0
+            "rotation": 67,
+            "id": "a83g8338i6"
         },
         {
             "type": "furniture",
@@ -200,7 +69,68 @@
                 "x": 1000.0,
                 "y": 20.0
             },
-            "rotation": 90.0
+            "rotation": 90.0,
+            "id": "a83g856yuuu"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "chair",
+            "position": {
+                "x": 200.0,
+                "y": 1002.0
+            },
+            "rotation": 45.0,
+            "id": "hej"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "chair",
+            "position": {
+                "x": 200.0,
+                "y": 1002.0
+            },
+            "rotation": 45.0,
+            "id": "c61315ce-4a79-4f67-8490-24008a0b263d"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "chair",
+            "position": {
+                "x": 100.0,
+                "y": 100.0
+            },
+            "rotation": 10.0,
+            "id": "47a8acdb-617d-4ad8-983f-2ffc7880326b"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "table",
+            "position": {
+                "x": 140.0,
+                "y": 100.0
+            },
+            "rotation": 10.0,
+            "id": "b5bb8c32-3a93-4d3f-a854-3388978dbda7"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "tv",
+            "position": {
+                "x": 140.0,
+                "y": 100.0
+            },
+            "rotation": 10.0,
+            "id": "56505e81-d06d-4ba3-9034-5fe74f5190b7"
+        },
+        {
+            "type": "furniture",
+            "furniture_type": "shelf",
+            "position": {
+                "x": 200.0,
+                "y": 100.0
+            },
+            "rotation": 0.0,
+            "id": "e9bcf456-d170-4c74-ab70-c85f9380bff7"
         }
     ]
 }

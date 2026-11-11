@@ -6,7 +6,7 @@ $yParam = escapeshellarg($_POST["y"]);
 $rotationParam = escapeshellarg($_POST["rotation"]);
 
 $output = shell_exec("python3 ./map/edit/edit.py " . $furnitureParam . " " . $xParam . " " . $yParam . " " . $rotationParam);
-$output = shell_exec("python3 ./make.py");
+$output2 = shell_exec("python3 ./make.py");
 
-echo "Output from Python: " . $output;
+echo "Output from Python: " . $output . $output2;
 ?>

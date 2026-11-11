@@ -1,6 +1,7 @@
-.furniture button {
+.furniture a {
   width: 100%;
   height: 100%;
+  display:block;
 }
 
 .cubed.table {

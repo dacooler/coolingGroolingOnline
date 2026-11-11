@@ -1,5 +1,6 @@
 import argparse
 import json
+import uuid
 from types import SimpleNamespace
 from typing import Any, Callable
 from typing import Literal
@@ -41,12 +42,14 @@ class Furniture:
     position: Position
     rotation: float
     children: None | list["Furniture"]
+    id: str
 
-    def __init__(self, furniture_type: str, position: Position, rotation: float, children: list["Furniture"] | None = None):
+    def __init__(self, furniture_type: str, position: Position, rotation: float, children: list["Furniture"], id: str | None = None):
         self.type = "furniture"
         self.furniture_type = furniture_type
         self.position = position
         self.rotation = rotation
+        self.id = id
 
         if children:
             self.children = children
@@ -95,6 +98,8 @@ def _place_furniture(json_data: RoomData, furniture_type: str, x: float, y: floa
         furniture_type,
         Position(x, y),
         rotation,
+        children=[],
+        id=str(uuid.uuid4())
     ))
     return json_data
 

@@ -14,6 +14,7 @@ class Furniture:
     position: Coord
     rotation: float
     children: list["Furniture"]
+    id: str
 
     def translate(self, translation: Coord):
         self.position += translation
@@ -33,29 +34,31 @@ class Furniture:
             styles = [Style('--rotation', self.rotation)],
             divs = self.blueprint.divs,
             child_parts = [furniture.part(is_edit_mode) for furniture in self.children],
-            tag = 'form' if is_edit_mode else 'div',
-            child_divs_constructor = lambda: (HtmlElement('div', [HtmlElement('button')]) if is_edit_mode else HtmlElement('div')),
+            tag = 'div',
+            child_divs_constructor = lambda: (HtmlElement('div', [HtmlElement('a', attributes={'href':f'./remove.php?id={self.id}'})]) if is_edit_mode else HtmlElement('div')),
         )
 
     @property
     def has_collision(self):
         return self.blueprint.has_collision
     
-    def __init__(self, blueprint: FurnitureBlueprint, position: Coord, rotation: float, children: list["Furniture"]):
+    def __init__(self, blueprint: FurnitureBlueprint, position: Coord, rotation: float, children: list["Furniture"], id: str):
         self.blueprint = blueprint
         self.position = position
         self.rotation = rotation
         self.children = children
+        self.id = id
 
     @staticmethod
     def from_json(json: dict[str, Any], parent_rotation: float = 0):
         blueprint = FurnitureCatalog.get_blueprint(json['furniture_type'])
         position = Coord.from_json(json['position'])
         rotation = float(json['rotation']) + parent_rotation
+        id = json["id"]
 
         if "children" in json:
             children = [Furniture.from_json(child, rotation) for child in json["children"]]
         else:
             children = []
 
-        return Furniture(blueprint, position, rotation, children)
+        return Furniture(blueprint, position, rotation, children, id)
