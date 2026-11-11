@@ -34,7 +34,7 @@ class Furniture:
             divs = self.blueprint.divs,
             child_parts = [furniture.part(is_edit_mode) for furniture in self.children],
             tag = 'form' if is_edit_mode else 'div',
-            child_divs_constructor = lambda: (HtmlElement('button') if is_edit_mode else HtmlElement('div')),
+            child_divs_constructor = lambda: (HtmlElement('div', [HtmlElement('button')]) if is_edit_mode else HtmlElement('div')),
         )
 
     @property

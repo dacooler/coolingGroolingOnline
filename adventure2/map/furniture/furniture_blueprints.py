@@ -34,5 +34,5 @@ class FurnitureBlueprint:
         except KeyError:
             divs = 5
 
-        return FurnitureBlueprint(size, has_collision, height_difference, css_classes, divs)
+        return FurnitureBlueprint(size, has_collision, height_difference, css_classes + ["furniture"], divs)
  

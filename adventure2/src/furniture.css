@@ -1,3 +1,8 @@
+.furniture button {
+  width: 100%;
+  height: 100%;
+}
+
 .cubed.table {
   div {
     background-image: url("../assets/images/wood.jpg");
@@ -13,17 +18,17 @@
 }
 
 .cubed.chair {
-  > div {
+  >div {
     background-image: url("../assets/images/chair_pillow.jpg");
   }
 
-  > div:nth-child(-n + 4) {
+  >div:nth-child(-n + 4) {
     background-image: url("../assets/images/chair_legs.png");
     background-color: #0000;
     backface-visibility: visible;
   }
 
-  > div:nth-child(4) {
+  >div:nth-child(4) {
     background-image: url("../assets/images/chair_legs.png"), url("../assets/images/chair_back.png");
     background-size: 100% calc(100% - 25px), 100% 25px;
     background-position: 0 25px, 0 0;
@@ -37,12 +42,12 @@
 .cubed.tv {
   --extraTransform: translateZ(45px);
 
-  > div {
+  >div {
     background-image: radial-gradient(black, gray);
     --extraTransform: ;
   }
 
-  > div:nth-child(4) {
+  >div:nth-child(4) {
     background-image: url("../assets/images/tv.png"), url("../assets/images/anikemar.gif");
   }
 }
@@ -75,13 +80,13 @@
   backface-visibility: initial;
   --extraTransform: translateZ(1px);
 
-  > div {
+  >div {
     background-image: url("../assets/images/wood.jpg");
     backface-visibility: initial;
     --extraTransform: ;
   }
 
-  > div:nth-child(1) {
+  >div:nth-child(1) {
     background-image: url("../assets/images/wood.jpg");
     mask:
       repeating-linear-gradient(brown 0px,
@@ -98,26 +103,26 @@
     background-color: #0000;
   }
 
-  > div:nth-child(n + 6) {
+  >div:nth-child(n + 6) {
     top: 0px;
     left: 0px;
     width: var(--width);
     height: var(--height);
   }
 
-  > div:nth-child(6) {
+  >div:nth-child(6) {
     transform: translateZ(calc(var(--depth) * 0.2));
   }
 
-  > div:nth-child(7) {
+  >div:nth-child(7) {
     transform: translateZ(calc(var(--depth) * 0.4));
   }
 
-  > div:nth-child(8) {
+  >div:nth-child(8) {
     transform: translateZ(calc(var(--depth) * 0.6));
   }
 
-  > div:nth-child(9) {
+  >div:nth-child(9) {
     transform: translateZ(calc(var(--depth) * 0.8));
   }
 }
@@ -126,14 +131,15 @@
   --img: url("../assets/images/wood.jpg");
   backface-visibility: initial;
 
-  > div {
+  >div {
     backface-visibility: initial;
   }
-  > div:nth-child(1) {
+
+  >div:nth-child(1) {
     pointer-events: none;
   }
 
-  > div:nth-child(n + 6) {
+  >div:nth-child(n + 6) {
     top: 0px;
     left: 3px;
     width: calc(var(--width) - 6px);
@@ -143,48 +149,48 @@
 
 
 
-  > div:nth-child(6):hover,
-  > div:nth-child(6):hover+div,
-  > div:nth-child(6):hover+div+div,
-  > div:nth-child(6):hover+div+div+div,
-  > div:nth-child(10):hover,
-  > div:nth-child(10):hover+div, 
-  > div:nth-child(10):hover+div+div,
-  > div:nth-child(10):hover+div+div+div{
+  >div:nth-child(6):hover,
+  >div:nth-child(6):hover+div,
+  >div:nth-child(6):hover+div+div,
+  >div:nth-child(6):hover+div+div+div,
+  >div:nth-child(10):hover,
+  >div:nth-child(10):hover+div,
+  >div:nth-child(10):hover+div+div,
+  >div:nth-child(10):hover+div+div+div {
     transform: translateY(-20px) var(--transStart);
   }
 
-  > div:nth-child(6) {
+  >div:nth-child(6) {
     --transStart: translateZ(calc(var(--depth) / 3)) rotateX(90deg);
   }
 
-  > div:nth-child(10) {
+  >div:nth-child(10) {
     --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateX(90deg);
   }
 
-  > div:nth-child(6),
-  > div:nth-child(10) {
+  >div:nth-child(6),
+  >div:nth-child(10) {
     height: calc(var(--depth) / 3 - 3px);
     transform-origin: left top 0px;
     transform: var(--transStart);
   }
 
-  > div:nth-child(6):hover+div,
-  > div:nth-child(10):hover+div {
+  >div:nth-child(6):hover+div,
+  >div:nth-child(10):hover+div {
     width: calc(var(--width) - 6px);
     height: var(--height);
   }
 
-  > div:nth-child(7) {
+  >div:nth-child(7) {
     --transStart: translateZ(calc(var(--depth) / 3));
   }
 
-  > div:nth-child(11) {
+  >div:nth-child(11) {
     --transStart: translateZ(calc(var(--depth) * 2 / 3));
   }
-  
-  > div:nth-child(7),
-  > div:nth-child(11){
+
+  >div:nth-child(7),
+  >div:nth-child(11) {
     /*
     width: 0px;
     height: 0px;
@@ -194,19 +200,18 @@
     transform: var(--transStart);
   }
 
-  > div:nth-child(6):hover+div+div,
-  > div:nth-child(6):hover+div+div+div,
-  > div:nth-child(10):hover+div+div,
-  > div:nth-child(10):hover+div+div+div{
+  >div:nth-child(6):hover+div+div,
+  >div:nth-child(6):hover+div+div+div,
+  >div:nth-child(10):hover+div+div,
+  >div:nth-child(10):hover+div+div+div {
     width: calc(var(--depth) / 3 - 3px);
     height: var(--height);
   }
 
-  > div:nth-child(8),
-  > div:nth-child(12),
-  > div:nth-child(9),
-  > div:nth-child(13)
-  {
+  >div:nth-child(8),
+  >div:nth-child(12),
+  >div:nth-child(9),
+  >div:nth-child(13) {
     width: calc(var(--depth) / 3 - 3px);
     height: var(--height);
     /*
@@ -216,28 +221,31 @@
     transform: var(--transStart);
   }
 
-  > div:nth-child(8){
+  >div:nth-child(8) {
     transform-origin: left top;
     --transStart: translateZ(calc(var(--depth) / 3)) rotateY(-90deg);
   }
-  > div:nth-child(9){
+
+  >div:nth-child(9) {
     transform-origin: right top;
     left: calc(100% - var(--depth) / 3);
     --transStart: translateZ(calc(var(--depth) / 3)) rotateY(90deg);
   }
-  > div:nth-child(12){
+
+  >div:nth-child(12) {
     transform-origin: left top;
     --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(-90deg);
   }
-  > div:nth-child(13){
+
+  >div:nth-child(13) {
     transform-origin: right top;
     left: calc(100% - var(--depth) / 3);
     --transStart: translateZ(calc(var(--depth) * 2 / 3)) rotateY(90deg);
   }
-  
 
 
-  
+
+
 
 
 
