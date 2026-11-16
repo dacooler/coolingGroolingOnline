@@ -124,13 +124,13 @@
         },
         {
             "type": "furniture",
-            "furniture_type": "shelf",
+            "furniture_type": "drawers",
             "position": {
-                "x": 200.0,
+                "x": 220.0,
                 "y": 100.0
             },
             "rotation": 0.0,
-            "id": "e9bcf456-d170-4c74-ab70-c85f9380bff7"
+            "id": "ea56c62f-24db-4807-add8-4816cd117715"
         }
     ]
 }
