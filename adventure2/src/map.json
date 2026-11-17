@@ -73,5 +73,15 @@
         },
         "rotation": -80,
         "id": "hjejhee"
+    },
+    {
+        "type": "furniture",
+        "furniture_type": "table",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "rotation": 0,
+        "id": "hjejhee2"
     }
 ]

@@ -281,11 +281,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 910,
+                    (var(--movement-x) + 940.0) * 1.0 + (var(--movement-y) + 455.0) * 0.0 - 940.0 + 910,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 970,
+                    (var(--movement-x) + 940.0) * 1.0 + (var(--movement-y) + 455.0) * 0.0 - 940.0 + 970,
                     0
                 )
             ),
@@ -294,11 +294,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 440,
+                    (var(--movement-y) + 455.0) * 1.0 - (var(--movement-x) + 940.0) * 0.0 - 455.0 + 440,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 470,
+                    (var(--movement-y) + 455.0) * 1.0 - (var(--movement-x) + 940.0) * 0.0 - 455.0 + 470,
                     0
                 )
             ),
@@ -307,11 +307,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1100,
+                    (var(--movement-x) + 1130.0) * 1.0 + (var(--movement-y) + 450.0) * 0.0 - 1130.0 + 1100,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1160,
+                    (var(--movement-x) + 1130.0) * 1.0 + (var(--movement-y) + 450.0) * 0.0 - 1130.0 + 1160,
                     0
                 )
             ),
@@ -320,11 +320,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 400,
+                    (var(--movement-y) + 450.0) * 1.0 - (var(--movement-x) + 1130.0) * 0.0 - 450.0 + 400,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 500,
+                    (var(--movement-y) + 450.0) * 1.0 - (var(--movement-x) + 1130.0) * 0.0 - 450.0 + 500,
                     0
                 )
             ),
@@ -333,11 +333,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1120,
+                    (var(--movement-x) + 1124.0) * 1.0 + (var(--movement-y) + 440.0) * 0.0 - 1124.0 + 1120,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1128,
+                    (var(--movement-x) + 1124.0) * 1.0 + (var(--movement-y) + 440.0) * 0.0 - 1124.0 + 1128,
                     0
                 )
             ),
@@ -346,11 +346,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 410,
+                    (var(--movement-y) + 440.0) * 1.0 - (var(--movement-x) + 1124.0) * 0.0 - 440.0 + 410,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 470,
+                    (var(--movement-y) + 440.0) * 1.0 - (var(--movement-x) + 1124.0) * 0.0 - 440.0 + 470,
                     0
                 )
             ),
@@ -359,11 +359,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1120,
+                    (var(--movement-x) + 1132.5) * 1.0 + (var(--movement-y) + 522.5) * 0.0 - 1132.5 + 1120,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1145,
+                    (var(--movement-x) + 1132.5) * 1.0 + (var(--movement-y) + 522.5) * 0.0 - 1132.5 + 1145,
                     0
                 )
             ),
@@ -372,11 +372,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 510,
+                    (var(--movement-y) + 522.5) * 1.0 - (var(--movement-x) + 1132.5) * 0.0 - 522.5 + 510,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 535,
+                    (var(--movement-y) + 522.5) * 1.0 - (var(--movement-x) + 1132.5) * 0.0 - 522.5 + 535,
                     0
                 )
             ),
@@ -385,11 +385,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1220,
+                    (var(--movement-x) + 1232.5) * 1.0 + (var(--movement-y) + 522.5) * 0.0 - 1232.5 + 1220,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1245,
+                    (var(--movement-x) + 1232.5) * 1.0 + (var(--movement-y) + 522.5) * 0.0 - 1232.5 + 1245,
                     0
                 )
             ),
@@ -398,11 +398,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 510,
+                    (var(--movement-y) + 522.5) * 1.0 - (var(--movement-x) + 1232.5) * 0.0 - 522.5 + 510,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 535,
+                    (var(--movement-y) + 522.5) * 1.0 - (var(--movement-x) + 1232.5) * 0.0 - 522.5 + 535,
                     0
                 )
             ),
@@ -411,11 +411,37 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1300,
+                    (var(--movement-x) + 30.0) * 1.0 + (var(--movement-y) + 50.0) * 0.0 - 30.0 + 0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1360,
+                    (var(--movement-x) + 30.0) * 1.0 + (var(--movement-y) + 50.0) * 0.0 - 30.0 + 60,
+                    0
+                )
+            ),
+            6.324555320336759
+        ) *
+        min(
+            abs(
+                min(
+                    (var(--movement-y) + 50.0) * 1.0 - (var(--movement-x) + 30.0) * 0.0 - 50.0 + 0,
+                    0
+                ) *
+                max(
+                    (var(--movement-y) + 50.0) * 1.0 - (var(--movement-x) + 30.0) * 0.0 - 50.0 + 100,
+                    0
+                )
+            ),
+            6.324555320336759
+        ), 
+        min(
+            abs(
+                min(
+                    (var(--movement-x) + 1330.0) * 1.0 + (var(--movement-y) + 1315.0) * 0.0 - 1330.0 + 1300,
+                    0
+                ) *
+                max(
+                    (var(--movement-x) + 1330.0) * 1.0 + (var(--movement-y) + 1315.0) * 0.0 - 1330.0 + 1360,
                     0
                 )
             ),
@@ -424,11 +450,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 1300,
+                    (var(--movement-y) + 1315.0) * 1.0 - (var(--movement-x) + 1330.0) * 0.0 - 1315.0 + 1300,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 1330,
+                    (var(--movement-y) + 1315.0) * 1.0 - (var(--movement-x) + 1330.0) * 0.0 - 1315.0 + 1330,
                     0
                 )
             ),
@@ -437,11 +463,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 1400.0,
+                    (var(--movement-x) + 1412.5) * 1.0 + (var(--movement-y) + 432.5) * 0.0 - 1412.5 + 1400.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 1425.0,
+                    (var(--movement-x) + 1412.5) * 1.0 + (var(--movement-y) + 432.5) * 0.0 - 1412.5 + 1425.0,
                     0
                 )
             ),
@@ -450,11 +476,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 420.0,
+                    (var(--movement-y) + 432.5) * 1.0 - (var(--movement-x) + 1412.5) * 0.0 - 432.5 + 420.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 445.0,
+                    (var(--movement-y) + 432.5) * 1.0 - (var(--movement-x) + 1412.5) * 0.0 - 432.5 + 445.0,
                     0
                 )
             ),
@@ -463,11 +489,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 600.0,
+                    (var(--movement-x) + 612.5) * 1.0 + (var(--movement-y) + 1414.5) * 0.0 - 612.5 + 600.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 625.0,
+                    (var(--movement-x) + 612.5) * 1.0 + (var(--movement-y) + 1414.5) * 0.0 - 612.5 + 625.0,
                     0
                 )
             ),
@@ -476,11 +502,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 1402.0,
+                    (var(--movement-y) + 1414.5) * 1.0 - (var(--movement-x) + 612.5) * 0.0 - 1414.5 + 1402.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 1427.0,
+                    (var(--movement-y) + 1414.5) * 1.0 - (var(--movement-x) + 612.5) * 0.0 - 1414.5 + 1427.0,
                     0
                 )
             ),
@@ -489,11 +515,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 600.0,
+                    (var(--movement-x) + 612.5) * 1.0 + (var(--movement-y) + 1414.5) * 0.0 - 612.5 + 600.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 625.0,
+                    (var(--movement-x) + 612.5) * 1.0 + (var(--movement-y) + 1414.5) * 0.0 - 612.5 + 625.0,
                     0
                 )
             ),
@@ -502,11 +528,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 1402.0,
+                    (var(--movement-y) + 1414.5) * 1.0 - (var(--movement-x) + 612.5) * 0.0 - 1414.5 + 1402.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 1427.0,
+                    (var(--movement-y) + 1414.5) * 1.0 - (var(--movement-x) + 612.5) * 0.0 - 1414.5 + 1427.0,
                     0
                 )
             ),
@@ -515,11 +541,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 500.0,
+                    (var(--movement-x) + 512.5) * 1.0 + (var(--movement-y) + 512.5) * 0.0 - 512.5 + 500.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 525.0,
+                    (var(--movement-x) + 512.5) * 1.0 + (var(--movement-y) + 512.5) * 0.0 - 512.5 + 525.0,
                     0
                 )
             ),
@@ -528,11 +554,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 500.0,
+                    (var(--movement-y) + 512.5) * 1.0 - (var(--movement-x) + 512.5) * 0.0 - 512.5 + 500.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 525.0,
+                    (var(--movement-y) + 512.5) * 1.0 - (var(--movement-x) + 512.5) * 0.0 - 512.5 + 525.0,
                     0
                 )
             ),
@@ -541,11 +567,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 540.0,
+                    (var(--movement-x) + 570.0) * 1.0 + (var(--movement-y) + 550.0) * 0.0 - 570.0 + 540.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 600.0,
+                    (var(--movement-x) + 570.0) * 1.0 + (var(--movement-y) + 550.0) * 0.0 - 570.0 + 600.0,
                     0
                 )
             ),
@@ -554,11 +580,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 500.0,
+                    (var(--movement-y) + 550.0) * 1.0 - (var(--movement-x) + 570.0) * 0.0 - 550.0 + 500.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 600.0,
+                    (var(--movement-y) + 550.0) * 1.0 - (var(--movement-x) + 570.0) * 0.0 - 550.0 + 600.0,
                     0
                 )
             ),
@@ -567,11 +593,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 540.0,
+                    (var(--movement-x) + 544.0) * 1.0 + (var(--movement-y) + 530.0) * 0.0 - 544.0 + 540.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 548.0,
+                    (var(--movement-x) + 544.0) * 1.0 + (var(--movement-y) + 530.0) * 0.0 - 544.0 + 548.0,
                     0
                 )
             ),
@@ -580,11 +606,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 500.0,
+                    (var(--movement-y) + 530.0) * 1.0 - (var(--movement-x) + 544.0) * 0.0 - 530.0 + 500.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 560.0,
+                    (var(--movement-y) + 530.0) * 1.0 - (var(--movement-x) + 544.0) * 0.0 - 530.0 + 560.0,
                     0
                 )
             ),
@@ -593,11 +619,11 @@
         min(
             abs(
                 min(
-                    var(--movement-x) + 620.0,
+                    (var(--movement-x) + 650.0) * 1.0 + (var(--movement-y) + 517.5) * 0.0 - 650.0 + 620.0,
                     0
                 ) *
                 max(
-                    var(--movement-x) + 680.0,
+                    (var(--movement-x) + 650.0) * 1.0 + (var(--movement-y) + 517.5) * 0.0 - 650.0 + 680.0,
                     0
                 )
             ),
@@ -606,11 +632,11 @@
         min(
             abs(
                 min(
-                    var(--movement-y) + 500.0,
+                    (var(--movement-y) + 517.5) * 1.0 - (var(--movement-x) + 650.0) * 0.0 - 517.5 + 500.0,
                     0
                 ) *
                 max(
-                    var(--movement-y) + 535.0,
+                    (var(--movement-y) + 517.5) * 1.0 - (var(--movement-x) + 650.0) * 0.0 - 517.5 + 535.0,
                     0
                 )
             ),
@@ -1460,7 +1486,7 @@ form.cubed {
 <div></div>
 <div></div>
 </div>
-<div class="cubed chair furniture " style="--rotation: 90.0; left: 1400.0px; top: 420.0px; --width: 25px; --height: 25px; --depth: 20px; ">
+<div class="cubed chair furniture " style="--rotation: 45.0; left: 1400.0px; top: 420.0px; --width: 25px; --height: 25px; --depth: 20px; ">
 <div>
 <a href="./remove.php?id=a83g856yuuu"></a>
 </div>
@@ -1705,6 +1731,23 @@ form.cubed {
 </div>
 <div>
 <a href="./remove.php?id=hjejhee"></a>
+</div>
+</div>
+<div class="cubed table furniture " style="--rotation: 0.0; left: 0px; top: 0px; --width: 60px; --height: 100px; --depth: 40px; ">
+<div>
+<a href="./remove.php?id=hjejhee2"></a>
+</div>
+<div>
+<a href="./remove.php?id=hjejhee2"></a>
+</div>
+<div>
+<a href="./remove.php?id=hjejhee2"></a>
+</div>
+<div>
+<a href="./remove.php?id=hjejhee2"></a>
+</div>
+<div>
+<a href="./remove.php?id=hjejhee2"></a>
 </div>
 </div>
 <div class="street floor " style="left: 1000px; top: 1000px; width: 400px; height: 500px; --rotation: 10deg; "></div>
