@@ -1,5 +1,6 @@
 import os
 from map.map.map import Map
+from map.edit.furniture_catalog import get_furniture_catalog_entries
 
 dir = "src/"
 files = os.listdir(dir)
@@ -47,6 +48,7 @@ def addMap(inText: str, is_edit_mode: bool) -> str:
     inText = inText.replace("_MAP_SIZE_X_", str(size[0]))
     inText = inText.replace("_MAP_SIZE_Y_", str(size[1]))
     inText = inText.replace("_HEIGHT_DIFFERENCE_", height_differences)
+    inText = inText.replace("_FURNITURE_CATALOG_", str(get_furniture_catalog_entries()))
 
     return inText
 

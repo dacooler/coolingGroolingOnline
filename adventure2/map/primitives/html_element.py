@@ -6,8 +6,23 @@ class HtmlElement:
     children: list['HtmlElement']
     styles: list[Style]
     css_classes: list[str]
+    text: str
+    closing: bool
 
-    def __init__(self, tag: str = 'div', children: list['HtmlElement'] = [], style: list[Style] = [], css_classes: list[str] = [], attributes: dict[str, str] = {}):
+    def __init__(
+            self,
+            tag: str = 'div',
+            children: list['HtmlElement'] = [],
+            style: list[Style] = [],
+            css_classes: list[str] = [],
+            attributes: dict[str, str] = {},
+            text: str = '',
+            closing: bool = True,
+            ):
+
+        self.text = text
+        self.closing = closing
+
         if tag: self.tag = tag
 
         if children:
@@ -49,14 +64,20 @@ class HtmlElement:
             name += f' {key}="{value}"'
 
         name += '>'
+        name += self.text
+
         for child in self.children:
             name += '\n'
             name += str(child)
         if self.children: name += '\n'
 
-        name += f'</{self.tag}>'
+        if self.closing:
+            name += f'</{self.tag}>'
 
         return name
+
+    def __repr__(self):
+        return str(self)
 
 
 # ===================== TESTS ========================
