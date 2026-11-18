@@ -1,3 +1,4 @@
+import math
 from typing import Any
 
 from .furniture_catalog import FurnitureCatalog
@@ -24,6 +25,7 @@ class Furniture:
         return HeightDifference(
             self.position,
             self.blueprint.height_difference_size,
+            math.radians(self.rotation)
         )
 
     def part(self, is_edit_mode: bool):

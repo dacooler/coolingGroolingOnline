@@ -9,10 +9,10 @@ class HeightDifference:
     size: Size
     rotation: float
     
-    def __init__(self, position: Coord, size: Size):
+    def __init__(self, position: Coord, size: Size, rotation_radians: float):
         self.position = position
         self.size = size
-        self.rotation = 0
+        self.rotation = rotation_radians
 
     @property
     def _raw_x(self):
